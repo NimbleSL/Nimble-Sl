@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NimbleSl - Nimble Software Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // Blue
+                        secondary: '#10B981', // Green
+                        dark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-primary">Nimble<span class="text-secondary">SL</span></span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#services" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                        <a href="#about" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#contact" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium">Get Started</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="bg-primary border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#services" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+                <a href="#about" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="#contact" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium w-full">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-500 to-teal-400 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 text-center md:text-left text-white">
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                        Bringing Ideas to Life with
+                        <span class="block text-yellow-300">Nimble Software</span>
+                    </h1>
+                    <p class="mt-3 max-w-md mx-auto md:mx-0 text-lg text-white opacity-90 md:mt-5 md:max-w-3xl">
+                        Accelerate your digital transformation with our agile development team. We build innovative software solutions that drive business growth.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                        <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50">
+                            Get in Touch
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white hover:bg-opacity-10">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2 mt-10 md:mt-0">
+                    <img src="/api/placeholder/600/400" alt="Nimble Software Development" class="rounded-lg shadow-xl" />
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,213.3C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-white" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Our Services
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Comprehensive software solutions tailored to your business needs
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-primary flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Software Development</h3>
+                    <p class="text-gray-600">We build tailor-made software solutions to address your unique business challenges and requirements.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-secondary flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Mobile App Development</h3>
+                    <p class="text-gray-600">Create engaging and functional mobile experiences for iOS and Android platforms.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-primary flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Cloud Solutions</h3>
+                    <p class="text-gray-600">Leverage the power of cloud computing with our scalable and secure cloud-based applications.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-secondary flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Data Analytics</h3>
+                    <p class="text-gray-600">Turn your data into actionable insights with our advanced analytics and visualization solutions.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-primary flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Cybersecurity</h3>
+                    <p class="text-gray-600">Protect your digital assets with our comprehensive security solutions and best practices.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition duration-300">
+                    <div class="h-12 w-12 rounded-md bg-secondary flex items-center justify-center mb-4">
+                        <i class="fas fa-headset text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">IT Consulting</h3>
+                    <p class="text-gray-600">Strategic technology guidance to help you make informed decisions and optimize your IT investments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-gray-50" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:w-1/2 lg:pr-8">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        About Nimble Software Lab
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        At Nimble Software Lab, we're passionate about creating software that makes a difference. Our team of experienced developers, designers, and project managers work together to deliver high-quality solutions that exceed client expectations.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Founded with a vision to make advanced technology accessible to businesses of all sizes, we combine technical expertise with a deep understanding of business needs to create solutions that drive growth and efficiency.
+                    </p>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <div class="text-3xl font-bold text-primary">5+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <div class="text-3xl font-bold text-primary">100+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <div class="text-3xl font-bold text-secondary">20+</div>
+                            <div class="text-gray-600">Team Members</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <div class="text-3xl font-bold text-secondary">98%</div>
+                            <div class="text-gray-600">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 lg:w-1/2">
+                    <img src="/api/placeholder/600/500" alt="About Nimble Software Lab" class="rounded-lg shadow-xl" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    What Our Clients Say
+                </h2>
+            </div>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Nimble Software Lab transformed our business with their custom CRM solution. Their team was professional, responsive, and delivered exactly what we needed."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold">JD</span>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-gray-900">John Doe</h4>
+                            <p class="text-xs text-gray-500">CEO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Working with Nimble Software Lab has been a game-changer for our organization. Their mobile app development expertise helped us reach new customers."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold">JS</span>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-gray-900">Jane Smith</h4>
+                            <p class="text-xs text-gray-500">Marketing Director, GrowthCo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "The team at Nimble Software Lab delivered our project on time and within budget. Their attention to detail and commitment to quality is impressive."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold">RJ</span>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-gray-900">Robert Johnson</h4>
+                            <p class="text-xs text-gray-500">CTO, InnovateX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:w-1/2 lg:pr-8">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Get in Touch
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Interested in working with us? Fill out the form and we'll get back to you as soon as possible.
+                    </p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div class="ml-4 text-gray-600">
+                                123 Tech Street, Innovation District, CA 94107
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div class="ml-4 text-gray-600">
+                                info@nimblesl.com
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-phone-alt text-primary"></i>
+                            </div>
+                            <div class="ml-4 text-gray-600">
+                                +1 (555) 123-4567
+                            </div>
+                        </div>
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 lg:w-1/2">
+                    <form class="bg-white shadow-md rounded-lg p-8">
+                        <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+                                <div class="mt-1">
+                                    <input type="text" id="first-name" name="first-name" autocomplete="given-name" class="py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+                                <div class="mt-1">
+                                    <input type="text" id="last-name" name="last-name" autocomplete="family-name" class="py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <div class="mt-1">
+                                    <input id="email" name="email" type="email" autocomplete="email" class="py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                                <div class="mt-1">
+                                    <input type="text" id="company" name="company" autocomplete="organization" class="py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <div class="mt-1">
+                                    <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border border-gray-300 rounded-md"></textarea>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-white">Nimble<span class="text-secondary">SL</span></span>
+                    </div>
+                    <p class="mt-4 text-gray-300">
+                        Building software solutions that power business growth and innovation.
+                    </p>
+                    <div class="flex space-x-6 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Solutions</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Custom Software</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Mobile Apps</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Web Applications</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Cloud Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2025 Nimble Software Lab. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
