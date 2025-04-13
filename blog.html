@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Nimble Software Lab</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#0070F3',
+                    secondary: '#00CC8F',
+                    dark: '#111827',
+                    darker: '#050A19',
+                    light: '#F0F9FF',
+                },
+                fontFamily: {
+                    sans: ['Space Grotesk', 'sans-serif'],
+                    mono: ['JetBrains Mono', 'monospace'],
+                },
+                animation: {
+                    'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    'bounce': 'bounce 2s infinite',
+                    'float': 'float 6s ease-in-out infinite',
+                    'gradient': 'gradient 15s ease infinite',
+                    'spin-slow': 'spin 8s linear infinite',
+                    'glow': 'glow 2s ease-in-out infinite alternate',
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-20px)' },
+                    },
+                    gradient: {
+                        '0%': { backgroundPosition: '0% 50%' },
+                        '50%': { backgroundPosition: '100% 50%' },
+                        '100%': { backgroundPosition: '0% 50%' },
+                    },
+                    glow: {
+                        '0%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.2), 0 0 20px rgba(0, 112, 243, 0.2)' },
+                        '100%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.6), 0 0 25px rgba(0, 112, 243, 0.6)' }
+                    }
+                },
+                backgroundImage: {
+                    'cyber-grid': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    .bg-gradient-animate {
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .text-outline {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    }
+    
+    .glass-card {
+        backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(17, 24, 39, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+    
+    .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: 300% 300%;
+        animation: gradient 8s ease infinite;
+    }
+    
+    .typing-animation {
+        border-right: 2px solid rgba(255,255,255,.75);
+        animation: blinkCursor 0.7s steps(1) infinite;
+    }
+    
+    @keyframes blinkCursor {
+        50% { border-right-color: transparent; }
+    }
+</style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-darker/80 backdrop-filter backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <span class="text-2xl font-bold">
+                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
+                            <span class="text-white">SL</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
+                    <a href="index.html#services" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Services</a>
+                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
+                    <a href="team.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Team</a>
+                    <a href="blog.html" class="border-primary text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
+                </div>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                <button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
+                    <span>Get Started</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
+            <a href="index.html" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
+            <a href="index.html#services" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Services</a>
+            <a href="index.html#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
+            <a href="team.html" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Team</a>
+            <a href="blog.html" class="bg-primary/10 border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Blog</a>
+            <a href="index.html#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-white/10 bg-dark">
+            <div class="flex items-center px-4">
+                <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium w-full flex items-center justify-center space-x-2 group transition-all duration-300">
+                    <span>Get Started</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-24 pb-16 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
+    <!-- Background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+        <!-- Background gradient with animation -->
+        <div class="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker bg-gradient-animate"></div>
+        
+        <!-- Cyber grid pattern -->
+        <div class="absolute inset-0 bg-cyber-grid opacity-20"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col items-center text-center">
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+                Our <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Blog</span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-lg text-gray-300 text-center">
+                Insights, tutorials, and industry trends from the Nimble Software Lab team. Stay updated with the latest in technology and software development.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Article -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:flex lg:items-center lg:gap-x-12">
+            <div class="lg:w-1/2">
+                <img src="/api/placeholder/800/450" alt="Understanding the Power of GPT-4" class="w-full h-auto rounded-xl shadow-lg">
+            </div>
+            <div class="mt-10 lg:mt-0 lg:w-1/2">
+                <div class="text-sm text-primary font-medium mb-1">FEATURED POST</div>
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">
+                    Understanding the Power of GPT-4 and How It's Transforming Business Solutions
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Explore how OpenAI's latest language model is revolutionizing customer service, content creation, and data analysis. Learn practical implementation strategies for various industries.
+                </p>
+                <div class="flex items-center mt-6">
+                    <img src="/api/placeholder/40/40" alt="Sarah Johnson" class="h-10 w-10 rounded-full">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900">Sarah Johnson</p>
+                        <p class="text-sm text-gray-500">April 10, 2025 • 12 min read</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="blog-post.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition-colors">
+                        Read Article
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Categories -->
+<section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-3">
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">All Posts</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">AI & Machine Learning</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">Web Development</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">Mobile Apps</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">Cloud Solutions</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">Company News</a>
+            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors">Tech Trends</a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Article 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="The Future of AI in Software Development" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-blue-600 font-medium mb-1">AI & Machine Learning</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">The Future of AI in Software Development</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">How AI is changing the way we build software, from automated testing to self-healing systems and intelligent code completion.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="James Wilson" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">James Wilson</p>
+                            <p class="text-xs text-gray-500">April 8, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="Building Scalable Microservices with Kubernetes" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-green-600 font-medium mb-1">Cloud Solutions</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">Building Scalable Microservices with Kubernetes</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">A comprehensive guide to designing, deploying, and managing microservices architecture using Kubernetes orchestration.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="Marcus Jackson" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Marcus Jackson</p>
+                            <p class="text-xs text-gray-500">April 5, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="10 UX Principles for Better Mobile Experiences" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-indigo-600 font-medium mb-1">Mobile Apps</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">10 UX Principles for Better Mobile Experiences</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">Essential design principles that can significantly improve user engagement and satisfaction in your mobile applications.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="Maya Thompson" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Maya Thompson</p>
+                            <p class="text-xs text-gray-500">April 2, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="ML.NET: Machine Learning for .NET Developers" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-blue-600 font-medium mb-1">AI & Machine Learning</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">ML.NET: Machine Learning for .NET Developers</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">A practical introduction to Microsoft's ML.NET framework with real-world examples and implementation strategies.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="Carlos Mendez" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Carlos Mendez</p>
+                            <p class="text-xs text-gray-500">March 30, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="Optimizing React Performance: Best Practices" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-purple-600 font-medium mb-1">Web Development</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">Optimizing React Performance: Best Practices</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">Advanced techniques to improve React application performance including code splitting, memoization, and component optimization.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="Mike Zhang" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Mike Zhang</p>
+                            <p class="text-xs text-gray-500">March 28, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <a href="blog-post.html">
+                    <img src="/api/placeholder/400/250" alt="Nimble Software Lab Recognized as Top Cloud Service Provider" class="w-full h-48 object-cover">
+                </a>
+                <div class="p-6">
+                    <div class="text-sm text-yellow-600 font-medium mb-1">Company News</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        <a href="blog-post.html" class="hover:text-primary transition-colors">Nimble Software Lab Recognized as Top Cloud Service Provider</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">We're proud to announce that Nimble Software Lab has been recognized as a top cloud service provider for the third consecutive year.</p>
+                    <div class="flex items-center mt-4">
+                        <img src="/api/placeholder/40/40" alt="Alex Mitchell" class="h-8 w-8 rounded-full">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Alex Mitchell</p>
+                            <p class="text-xs text-gray-500">March 25, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+            <nav class="inline-flex rounded-md shadow">
+                <a href="#" class="inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Previous
+                </a>
+                <a href="#" class="inline-flex items-center px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-primary hover:bg-gray-50">
+                    1
+                </a>
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-l-0 border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    2
+                </a>
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-l-0 border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    3
+                </a>
+                <span class="inline-flex items-center px-4 py-2 border border-l-0 border-gray-300 bg-white text-sm font-medium text-gray-700">
+                    ...
+                </span>
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-l-0 border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    8
+                </a>
+                <a href="#" class="inline-flex items-center px-4 py-2 rounded-r-md border border-l-0 border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    Next
+                    <svg class="h-5 w-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:flex lg:items-center lg:justify-between">
+            <div class="max-w-xl">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Subscribe to Our Newsletter
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Stay up-to-date with the latest technology trends, industry insights, and Nimble Software Lab news. We send a monthly digest of our best content and upcoming events.
+                </p>
+            </div>
+            <div class="mt-8 lg:mt-0 lg:ml-8">
+                <form class="sm:flex">
+                    <label for="email-address" class="sr-only">Email address</label>
+                    <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-5 py-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:ring-primary focus:border-primary rounded-md" placeholder="Enter your email">
+                    <div class="mt-3 sm:mt-0 sm:ml-3">
+                        <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+                <p class="mt-3 text-sm text-gray-500">
+                    We care about your data. Read our <a href="#" class="text-primary font-medium underline">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-darker text-white border-t border-white/5">
+    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <span class="text-2xl font-bold">
+                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
+                            <span class="text-white">SL</span>
+                        </span>
+                    </a>
+                </div>
+                <p class="mt-4 text-gray-300">
+                    Building software solutions that power business growth and innovation.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Solutions</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Custom Software</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Mobile Apps</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Web Applications</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cloud Services</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Company</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-300">Team</a></li>
+                    <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li>
+                    <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Legal</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-gray-700 pt-8">
+            <p class="text-base text-gray-400 text-center">
+                &copy; 2025 Nimble Software Lab. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+        } else {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

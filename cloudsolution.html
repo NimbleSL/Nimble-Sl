@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Solutions - Nimble Software Lab</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#0070F3',
+                    secondary: '#00CC8F',
+                    dark: '#111827',
+                    darker: '#050A19',
+                    light: '#F0F9FF',
+                },
+                fontFamily: {
+                    sans: ['Space Grotesk', 'sans-serif'],
+                    mono: ['JetBrains Mono', 'monospace'],
+                },
+                animation: {
+                    'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    'bounce': 'bounce 2s infinite',
+                    'float': 'float 6s ease-in-out infinite',
+                    'gradient': 'gradient 15s ease infinite',
+                    'spin-slow': 'spin 8s linear infinite',
+                    'glow': 'glow 2s ease-in-out infinite alternate',
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-20px)' },
+                    },
+                    gradient: {
+                        '0%': { backgroundPosition: '0% 50%' },
+                        '50%': { backgroundPosition: '100% 50%' },
+                        '100%': { backgroundPosition: '0% 50%' },
+                    },
+                    glow: {
+                        '0%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.2), 0 0 20px rgba(0, 112, 243, 0.2)' },
+                        '100%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.6), 0 0 25px rgba(0, 112, 243, 0.6)' }
+                    }
+                },
+                backgroundImage: {
+                    'cyber-grid': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    .bg-gradient-animate {
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .text-outline {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    }
+    
+    .glass-card {
+        backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(17, 24, 39, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+    
+    .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: 300% 300%;
+        animation: gradient 8s ease infinite;
+    }
+    
+    .typing-animation {
+        border-right: 2px solid rgba(255,255,255,.75);
+        animation: blinkCursor 0.7s steps(1) infinite;
+    }
+    
+    @keyframes blinkCursor {
+        50% { border-right-color: transparent; }
+    }
+</style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-darker/80 backdrop-filter backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <span class="text-2xl font-bold">
+                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
+                            <span class="text-white">SL</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
+                    <a href="index.html#services" class="border-primary text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
+                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
+                </div>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                <button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
+                    <span>Get Started</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
+            <a href="index.html" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
+            <a href="index.html#services" class="bg-primary/10 border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+            <a href="index.html#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
+            <a href="index.html#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-white/10 bg-dark">
+            <div class="flex items-center px-4">
+                <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium w-full flex items-center justify-center space-x-2 group transition-all duration-300">
+                    <span>Get Started</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section - Service Specific -->
+<section class="pt-24 pb-16 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
+    <!-- Background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+        <!-- Background gradient with animation -->
+        <div class="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker bg-gradient-animate"></div>
+        
+        <!-- Cyber grid pattern -->
+        <div class="absolute inset-0 bg-cyber-grid opacity-20"></div>
+        
+        <!-- Floating cloud elements -->
+        <div class="absolute inset-0 flex flex-wrap justify-between content-start opacity-20 overflow-hidden">
+            <span class="text-xs font-mono text-green-400">aws_cloudformation</span>
+            <span class="text-xs font-mono text-blue-400">azure_kubernetes</span>
+            <span class="text-xs font-mono text-purple-400">gcp_compute</span>
+            <span class="text-xs font-mono text-yellow-400">lambda_function</span>
+            <span class="text-xs font-mono text-red-400">docker_container</span>
+            <span class="text-xs font-mono text-teal-400">kubernetes_cluster</span>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col items-center text-center">
+            <div class="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                <span class="text-primary font-mono text-sm">OUR SERVICES</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+                Cloud <span class="bg-gradient-to-r from-green-400 to-teal-500 text-gradient">Solutions</span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-lg text-gray-300 text-center">
+                Scalable, secure, and cost-effective cloud infrastructure designed to power your business growth.
+            </p>
+            
+            <!-- Service quick stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 w-full max-w-4xl">
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-green-400">99.99%</div>
+                    <div class="text-gray-300 text-sm">Guaranteed Uptime</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-teal-400">40%</div>
+                    <div class="text-gray-300 text-sm">Avg. Cost Reduction</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-blue-400">200+</div>
+                    <div class="text-gray-300 text-sm">Cloud Migrations</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-purple-400">24/7</div>
+                    <div class="text-gray-300 text-sm">Monitoring Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Introduction -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:flex lg:items-center lg:justify-between">
+            <div class="lg:w-1/2 lg:pr-12">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Unlock the Full Potential of Cloud Computing
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    At Nimble Software Lab, we help businesses leverage the power of the cloud to increase agility, enhance security, and reduce infrastructure costs. Our cloud solutions are tailored to your specific business needs, whether you're looking to migrate existing workloads to the cloud, build cloud-native applications, or optimize your current cloud environment.
+                </p>
+                <p class="mt-4 text-lg text-gray-600">
+                    Our team of certified cloud architects and engineers has extensive experience with AWS, Azure, and Google Cloud Platform, ensuring that you receive expert guidance and support throughout your cloud journey.
+                </p>
+                
+                <!-- Key benefits list -->
+                <div class="mt-8 space-y-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 text-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-lg font-medium text-gray-900">Scalable Infrastructure</p>
+                            <p class="text-base text-gray-600">Easily scale resources up or down based on demand, ensuring optimal performance during peak times.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 text-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-lg font-medium text-gray-900">Cost Optimization</p>
+                            <p class="text-base text-gray-600">Only pay for the resources you use with transparent pricing models and optimized cloud spending.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 text-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-lg font-medium text-gray-900">Enhanced Security</p>
+                            <p class="text-base text-gray-600">Implement robust security measures with automated monitoring, threat detection, and compliance controls.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 lg:mt-0 lg:w-1/2">
+                <img src="/api/placeholder/600/400" alt="Cloud Solutions" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Cloud Services -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Comprehensive Cloud Services
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                From strategy to implementation and management, we provide end-to-end cloud solutions.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-exchange-alt text-green-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Migration</h3>
+                <p class="text-gray-600 mb-4">We help you migrate applications, data, and infrastructure to the cloud with minimal disruption and maximum security. Our proven methodology ensures a smooth transition whether you're moving from on-premises or between cloud providers.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Comprehensive migration assessment
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Detailed migration planning
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Seamless execution and validation
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-teal-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-code-branch text-teal-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud-Native Development</h3>
+                <p class="text-gray-600 mb-4">We design and build modern applications specifically for cloud environments, utilizing microservices architecture, containerization, and serverless computing to create scalable, resilient, and easily maintainable solutions.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-teal-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Microservices architecture
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-teal-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Container orchestration with Kubernetes
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-teal-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Serverless computing implementation
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-shield-alt text-blue-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Security & Compliance</h3>
+                <p class="text-gray-600 mb-4">We implement robust security measures and compliance controls to protect your cloud infrastructure from threats while ensuring adherence to industry standards and regulatory requirements such as GDPR, HIPAA, and SOC 2.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Security architecture design
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Continuous compliance monitoring
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Threat detection and response
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-cogs text-purple-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">DevOps Automation</h3>
+                <p class="text-gray-600 mb-4">We implement DevOps practices and tools to automate your software delivery pipeline, enabling continuous integration and deployment, infrastructure as code, and automated testing for faster and more reliable releases.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        CI/CD pipeline implementation
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Infrastructure as Code (IaC)
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Automated testing and monitoring
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-chart-line text-red-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Cost Optimization</h3>
+                <p class="text-gray-600 mb-4">We help you optimize your cloud spending by identifying cost-saving opportunities, implementing resource management strategies, and providing ongoing recommendations to ensure you're getting the most value from your cloud investment.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Cloud spend analysis
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Resource right-sizing
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Reserved instance recommendations
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-headset text-yellow-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Managed Cloud Services</h3>
+                <p class="text-gray-600 mb-4">We provide ongoing management and support for your cloud environment, including 24/7 monitoring, proactive maintenance, incident response, and regular optimization to ensure maximum performance and reliability.</p>
+                <ul class="space-y-2 text-gray-600 mb-4">
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-yellow-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        24/7 monitoring and alerting
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-yellow-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Incident response and resolution
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-5 w-5 text-yellow-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Regular maintenance and updates
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cloud Platforms -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Cloud Platforms We Work With
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                We have extensive experience with all major cloud platforms and can help you choose the right one for your needs.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- AWS -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="h-20 w-20 mx-auto rounded-full bg-orange-100 flex items-center justify-center mb-6">
+                    <i class="fab fa-aws text-orange-500 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Amazon Web Services</h3>
+                <p class="text-gray-600 mb-4">Comprehensive suite of cloud services including EC2, S3, Lambda, RDS, and more, allowing for flexible and scalable solutions.</p>
+                <div class="mt-6 flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">EC2</span>
+                    <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">S3</span>
+                    <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">Lambda</span>
+                    <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">RDS</span>
+                    <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">EKS</span>
+                </div>
+            </div>
+            
+            <!-- Azure -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="h-20 w-20 mx-auto rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                    <i class="fab fa-microsoft text-blue-600 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Microsoft Azure</h3>
+                <p class="text-gray-600 mb-4">Integrated cloud services including Azure VMs, App Service, Azure Functions, and strong integration with Microsoft's ecosystem.</p>
+                <div class="mt-6 flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Virtual Machines</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">App Service</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Functions</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Cosmos DB</span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">AKS</span>
+                </div>
+            </div>
+            
+            <!-- GCP -->
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="h-20 w-20 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-6">
+                    <i class="fab fa-google text-red-500 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Google Cloud Platform</h3>
+                <p class="text-gray-600 mb-4">Innovative cloud services including Compute Engine, App Engine, GKE, BigQuery, and advanced AI/ML capabilities.</p>
+                <div class="mt-6 flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">Compute Engine</span>
+                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">App Engine</span>
+                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">GKE</span>
+                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">BigQuery</span>
+                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">Cloud Functions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Cloud Technologies We Use
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                We leverage modern technologies and tools to build robust and scalable cloud solutions.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            <!-- Tech 1 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fab fa-docker text-blue-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Docker</p>
+            </div>
+            
+            <!-- Tech 2 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-dharmachakra text-blue-600 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Kubernetes</p>
+            </div>
+            
+            <!-- Tech 3 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fab fa-terraform text-purple-600 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Terraform</p>
+            </div>
+            
+            <!-- Tech 4 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fab fa-jenkins text-red-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Jenkins</p>
+            </div>
+            
+            <!-- Tech 5 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fab fa-github-alt text-gray-800 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">GitHub Actions</p>
+            </div>
+            
+            <!-- Tech 6 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-network-wired text-green-600 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Ansible</p>
+            </div>
+            
+            <!-- Tech 7 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-chart-area text-blue-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Grafana</p>
+            </div>
+            
+            <!-- Tech 8 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-chart-line text-orange-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Prometheus</p>
+            </div>
+            
+            <!-- Tech 9 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-code-branch text-indigo-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">GitOps</p>
+            </div>
+            
+            <!-- Tech 10 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-server text-gray-700 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Serverless</p>
+            </div>
+            
+            <!-- Tech 11 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-shield-alt text-red-600 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Vault</p>
+            </div>
+            
+            <!-- Tech 12 -->
+            <div class="flex flex-col items-center">
+                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                    <i class="fas fa-sitemap text-green-500 text-3xl"></i>
+                </div>
+                <p class="text-gray-900 font-medium text-center">Service Mesh</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Cloud Success Stories
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                Real examples of how our cloud solutions have transformed businesses.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Case Study 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="/api/placeholder/400/200" alt="Case Study 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="text-sm text-green-500 font-medium mb-1">Cloud Migration</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">E-commerce Platform Migration</h3>
+                    <p class="text-gray-600 mb-4">We migrated a high-traffic e-commerce platform to AWS, resulting in 99.99% uptime, 40% cost reduction, and 65% faster page load times.</p>
+                    <a href="#" class="text-green-500 font-medium flex items-center">
+                        Read case study
+                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Case Study 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="/api/placeholder/400/200" alt="Case Study 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="text-sm text-blue-500 font-medium mb-1">Cloud-Native Development</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Microservices Transformation</h3>
+                    <p class="text-gray-600 mb-4">We rebuilt a monolithic application into microservices on Kubernetes, enabling independent scaling, 300% faster feature deployment, and improved resilience.</p>
+                    <a href="#" class="text-blue-500 font-medium flex items-center">
+                        Read case study
+                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Case Study 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="/api/placeholder/400/200" alt="Case Study 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="text-sm text-purple-500 font-medium mb-1">DevOps Automation</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">CI/CD Pipeline Implementation</h3>
+                    <p class="text-gray-600 mb-4">We implemented automated DevOps pipelines for a fintech company, reducing deployment time from days to minutes and increasing release frequency by 400%.</p>
+                    <a href="#" class="text-purple-500 font-medium flex items-center">
+                        Read case study
+                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Frequently Asked Questions
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                Common questions about our cloud solutions and services.
+            </p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto divide-y divide-gray-200">
+            <!-- FAQ Item 1 -->
+            <div class="py-6">
+                <h3 class="text-lg font-medium text-gray-900">How long does a cloud migration typically take?</h3>
+                <p class="mt-3 text-gray-600">Cloud migration timelines vary based on the complexity of your infrastructure and applications. Simple migrations can take 1-2 months, while large enterprise migrations may take 6-12 months or more. We begin with a thorough assessment to provide you with a realistic timeline based on your specific environment.</p>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="py-6">
+                <h3 class="text-lg font-medium text-gray-900">Which cloud provider is best for my business?</h3>
+                <p class="mt-3 text-gray-600">The best cloud provider depends on your specific requirements, existing technology stack, budget, and goals. AWS offers the most comprehensive service portfolio, Azure provides strong integration with Microsoft products, and Google Cloud excels in data analytics and machine learning. We help you evaluate your needs and recommend the most suitable provider or even a multi-cloud approach if appropriate.</p>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="py-6">
+                <h3 class="text-lg font-medium text-gray-900">How do you ensure security in the cloud?</h3>
+                <p class="mt-3 text-gray-600">We implement a comprehensive security strategy that includes identity and access management, network security, encryption, security monitoring, and compliance controls. We follow cloud security best practices and industry standards such as the AWS Well-Architected Framework and CIS Benchmarks. Our team regularly performs security assessments and stays updated on the latest security threats and solutions.</p>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="py-6">
+                <h3 class="text-lg font-medium text-gray-900">How do you help optimize cloud costs?</h3>
+                <p class="mt-3 text-gray-600">We employ several strategies for cloud cost optimization, including right-sizing resources, leveraging reserved instances or savings plans, implementing auto-scaling, identifying and removing unused resources, and setting up detailed cost monitoring and alerting. We provide regular cost optimization recommendations and work with you to balance performance needs with budget constraints.</p>
+            </div>
+            
+            <!-- FAQ Item 5 -->
+            <div class="py-6">
+                <h3 class="text-lg font-medium text-gray-900">What level of support do you provide after migration?</h3>
+                <p class="mt-3 text-gray-600">We offer different tiers of managed services to support your cloud environment after migration. Our standard support includes 24/7 monitoring, incident response, regular maintenance, and monthly reporting. For more comprehensive support, our premium managed services include proactive optimization, advanced security monitoring, and dedicated support engineers. We tailor our support offerings to meet your specific needs and budget.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
+    <!-- Background elements -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-500 opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-teal-500 opacity-20 blur-3xl"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="lg:flex lg:items-center lg:justify-between">
+            <div class="lg:w-1/2 lg:pr-12">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
+                    Ready to Transform Your Business with Cloud Technology?
+                </h2>
+                <p class="mt-4 text-lg text-gray-300">
+                    Contact us today to schedule a free cloud assessment. Our experts will evaluate your current infrastructure and provide recommendations tailored to your business needs.
+                </p>
+            </div>
+            <div class="mt-8 lg:mt-0">
+                <div class="glass-card p-6 rounded-xl border border-white/10">
+                    <form>
+                        <div class="grid grid-cols-1 gap-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-green-500 focus:border-green-500 text-white placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input id="email" name="email" type="email" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-green-500 focus:border-green-500 text-white placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Description</label>
+                                <textarea id="message" name="message" rows="3" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-green-500 focus:border-green-500 text-white placeholder-gray-400"></textarea>
+                            </div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 group">
+                                <span class="flex items-center">
+                                    Request Cloud Assessment
+                                    <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Services -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Related Services
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                Explore our other services that complement cloud solutions.
+            </p>
+        </div>
+        
+        <div class="grid gap-8 md:grid-cols-3">
+            <!-- Related Service 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-laptop-code text-primary text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Software Development</h3>
+                <p class="text-gray-600 mb-4">Tailored software solutions designed to address your unique business challenges and drive growth.</p>
+                <a href="#" class="text-primary font-medium flex items-center">
+                    Learn more
+                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Related Service 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-mobile-alt text-blue-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
+                <p class="text-gray-600 mb-4">Create engaging and functional mobile experiences for iOS and Android platforms with the latest technologies.</p>
+                <a href="#" class="text-blue-500 font-medium flex items-center">
+                    Learn more
+                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Related Service 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-6">
+                    <i class="fas fa-brain text-indigo-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
+                <p class="text-gray-600 mb-4">Leverage artificial intelligence to automate processes, gain insights, and create intelligent applications.</p>
+                <a href="#" class="text-indigo-500 font-medium flex items-center">
+                    Learn more
+                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-darker text-white border-t border-white/5">
+    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <span class="text-2xl font-bold">
+                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
+                            <span class="text-white">SL</span>
+                        </span>
+                    </a>
+                </div>
+                <p class="mt-4 text-gray-300">
+                    Building software solutions that power business growth and innovation.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Solutions</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Custom Software</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Mobile Apps</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Web Applications</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cloud Services</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Company</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Careers</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li>
+                    <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Legal</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-gray-700 pt-8">
+            <p class="text-base text-gray-400 text-center">
+                &copy; 2025 Nimble Software Lab. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+        } else {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
