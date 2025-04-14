@@ -89,7 +89,24 @@
         border-right: 2px solid rgba(255,255,255,.75);
         animation: blinkCursor 0.7s steps(1) infinite;
     }
-    
+    .services-dropdown-wrapper {
+        position: relative;
+    }
+    .services-dropdown-menu {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: 
+            visibility 0.2s ease-in-out, 
+            opacity 0.2s ease-in-out, 
+            transform 0.2s ease-in-out;
+    }
+    .services-dropdown-wrapper:hover .services-dropdown-menu,
+    .services-dropdown-menu:hover {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
     @keyframes blinkCursor {
         50% { border-right-color: transparent; }
     }
@@ -106,26 +123,58 @@
                         <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
                         <span class="text-2xl font-bold">
                             <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="text-white">SL</span>
+                            <span class="dark:text-white text-gray-900">SL</span>
                         </span>
                     </a>
                 </div>
                 <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                    <a href="#" class="border-primary text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
-                    <a href="#services" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Services</a>
+                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
+                    
+                    <!-- Services Dropdown for Desktop -->
+                    <div class="services-dropdown-wrapper relative group">
+                        <button class="services-dropdown-trigger border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">
+                            Services
+                            <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div class="services-dropdown-menu absolute z-50 left-0 mt-2 w-56 origin-top-left bg-darker border border-white/10 rounded-lg shadow-lg py-2">
+                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                Custom Software
+                            </a>
+                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                Mobile Apps
+                            </a>
+                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                Web Applications
+                            </a>
+                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                Cloud Services
+                            </a>
+                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                Backend Development
+                            </a>
+                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
+                                AI Solutions
+                            </a>
+                        </div>
+                    </div>
+
                     <a href="team.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Team</a>
-                    <a href="#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
-                    <a href="#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
-                    <a href="blog.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">blog</a>
+                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
+                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
+                    <a href="blog.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Blog</a>
                 </div>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
+                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
                     <span>Get Started</span>
                     <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </button>
+                </a>
             </div>
             <div class="-mr-2 flex items-center sm:hidden">
                 <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
@@ -141,10 +190,29 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
-            <a href="index.html" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
-            <a href="index.html#services" class="bg-primary/10 border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
-            <a href="index.html#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
-            <a href="index.html#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
+            <a href="#" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
+            
+            <!-- Mobile Services Dropdown -->
+            <div class="relative">
+                <button class="services-mobile-dropdown-trigger w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white text-base font-medium transition-all duration-300">
+                    Services
+                    <svg class="float-right h-5 w-5 transform" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                
+                <div class="services-mobile-dropdown-menu hidden">
+                    <a href="customsoftware.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Custom Software</a>
+                    <a href="mobileapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Mobile Apps</a>
+                    <a href="webapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Web Applications</a>
+                    <a href="cloudsolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Cloud Services</a>
+                    <a href="backend.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Backend Development</a>
+                    <a href="aisolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">AI Solutions</a>
+                </div>
+            </div>
+
+            <a href="#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
+            <a href="#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
         </div>
         <div class="pt-4 pb-3 border-t border-white/10 bg-dark">
             <div class="flex items-center px-4">
@@ -743,7 +811,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Software Development</h3>
                 <p class="text-gray-600 mb-4">Tailored software solutions designed to address your unique business challenges and drive growth.</p>
-                <a href="#" class="text-primary font-medium flex items-center">
+                <a href="customsoftware.html" class="text-primary font-medium flex items-center">
                     Learn more
                     <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -758,7 +826,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Solutions</h3>
                 <p class="text-gray-600 mb-4">Leverage the power of cloud computing with our scalable and secure cloud-based applications and infrastructure.</p>
-                <a href="#" class="text-green-500 font-medium flex items-center">
+                <a href="cloudsolution.html" class="text-green-500 font-medium flex items-center">
                     Learn more
                     <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -773,7 +841,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
                 <p class="text-gray-600 mb-4">Leverage artificial intelligence to automate processes, gain insights, and create intelligent applications.</p>
-                <a href="#" class="text-indigo-500 font-medium flex items-center">
+                <a href="aisolution.html" class="text-indigo-500 font-medium flex items-center">
                     Learn more
                     <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -837,7 +905,7 @@
                 <ul class="mt-4 space-y-4">
                     <li><a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
                     <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Careers</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li>
+                    <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li>
                     <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
                 </ul>
             </div>
@@ -859,17 +927,18 @@
 </footer>
 
 <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.remove('hidden');
-        } else {
-            mobileMenu.classList.add('hidden');
-        }
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
-    // Smooth scrolling for anchor links
+    // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -885,13 +954,95 @@
                 });
                 
                 // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (!mobileMenu.classList.contains('hidden')) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
             }
         });
     });
+
+    // Mobile Services Dropdown
+    const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
+    if (mobileTrigger) {
+        mobileTrigger.addEventListener('click', function() {
+            const dropdownMenu = this.nextElementSibling;
+            const chevron = this.querySelector('svg');
+            
+            if (dropdownMenu && chevron) {
+                dropdownMenu.classList.toggle('hidden');
+                chevron.classList.toggle('rotate-180');
+            }
+        });
+    }
+
+    // Desktop Services Dropdown
+    const dropdownWrapper = document.querySelector('.services-dropdown-wrapper');
+    const dropdownMenu = document.querySelector('.services-dropdown-menu');
+    const dropdownTrigger = document.querySelector('.services-dropdown-trigger');
+
+    if (dropdownWrapper && dropdownMenu && dropdownTrigger) {
+        let isManuallyOpened = false;
+
+        // Dropdown Visibility Management
+        function manageDropdownVisibility(visible) {
+            dropdownMenu.style.visibility = visible ? 'visible' : 'hidden';
+            dropdownMenu.style.opacity = visible ? '1' : '0';
+            dropdownMenu.style.transform = visible 
+                ? 'translateY(0)' 
+                : 'translateY(10px)';
+        }
+
+        // Dropdown Trigger Click Handler
+        dropdownTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            isManuallyOpened = !isManuallyOpened;
+            manageDropdownVisibility(isManuallyOpened);
+        });
+
+        // Hover Interactions
+        dropdownWrapper.addEventListener('mouseenter', () => {
+            if (!isManuallyOpened) {
+                manageDropdownVisibility(true);
+            }
+        });
+
+        dropdownWrapper.addEventListener('mouseleave', () => {
+            if (!isManuallyOpened) {
+                manageDropdownVisibility(false);
+            }
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        dropdownMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    // Close Dropdowns When Clicking Outside
+    document.addEventListener('click', function(event) {
+        const desktopDropdown = document.querySelector('.services-dropdown-menu');
+        const mobileDropdown = document.querySelector('.services-mobile-dropdown-menu');
+        const desktopTrigger = document.querySelector('.services-dropdown-trigger');
+        const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
+
+        // Desktop Dropdown Close
+        if (desktopDropdown && desktopTrigger) {
+            if (!desktopDropdown.contains(event.target) && !desktopTrigger.contains(event.target)) {
+                desktopDropdown.style.visibility = 'hidden';
+                desktopDropdown.style.opacity = '0';
+                desktopDropdown.style.transform = 'translateY(10px)';
+            }
+        }
+
+        // Mobile Dropdown Close
+        if (mobileDropdown && mobileTrigger) {
+            if (!mobileDropdown.contains(event.target) && !mobileTrigger.contains(event.target)) {
+                mobileDropdown.classList.add('hidden');
+                mobileTrigger.querySelector('svg')?.classList.remove('rotate-180');
+            }
+        }
+    });
+});
 </script>
 </body>
 </html>
