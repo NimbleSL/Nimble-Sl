@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mobile App Development - Nimble Software Lab</title>
-<link rel="icon" type="image/x-icon" href="logo.png">
+<link rel="icon" type="image/x-icon" href="images/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <script>
@@ -120,7 +120,7 @@
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="index.html" class="flex items-center">
-                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
                         <span class="text-2xl font-bold">
                             <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
                             <span class="dark:text-white text-gray-900">SL</span>
@@ -761,25 +761,54 @@
             </div>
             <div class="mt-8 lg:mt-0">
                 <div class="glass-card p-6 rounded-xl border border-white/10">
-                    <form>
+                    <form action="https://formspree.io/f/xjkyzbry" method="POST">
                         <div class="grid grid-cols-1 gap-y-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                                <input type="text" id="name" name="name" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400">
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required 
+                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
+                                >
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                                <input id="email" name="email" type="email" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400">
+                                <input 
+                                    id="email" 
+                                    name="email" 
+                                    type="email" 
+                                    required 
+                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
+                                >
                             </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Description</label>
-                                <textarea id="message" name="message" rows="3" class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"></textarea>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    rows="3" 
+                                    required 
+                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
+                                ></textarea>
                             </div>
-                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 group">
+                            <button 
+                                type="submit" 
+                                class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 group"
+                            >
                                 <span class="flex items-center">
-                                    Request Consultation
-                                    <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    Request AI Consultation
+                                    <svg 
+                                        class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                                        viewBox="0 0 20 20" 
+                                        fill="currentColor"
+                                    >
+                                        <path 
+                                            fill-rule="evenodd" 
+                                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
+                                            clip-rule="evenodd" 
+                                        />
                                     </svg>
                                 </span>
                             </button>
@@ -859,7 +888,7 @@
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center">
-                        <img src="logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
+                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
                         <span class="text-2xl font-bold">
                             <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
                             <span class="text-white">SL</span>
@@ -1042,6 +1071,68 @@
             }
         }
     });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const consultationForm = document.querySelector('form[action*="formspree.io"]');
+    
+    if (consultationForm) {
+        consultationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(consultationForm);
+            
+            // Validate required fields
+            const requiredFields = ['name', 'email', 'message'];
+            const missingFields = requiredFields.filter(field => 
+                !formData.get(field) || formData.get(field).trim() === ''
+            );
+            
+            if (missingFields.length > 0) {
+                alert(`Please fill in the following required fields: ${missingFields.join(', ')}`);
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.get('email'))) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Submission logic
+            fetch(consultationForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success handling
+                    const successMessage = document.createElement('div');
+                    successMessage.classList.add('text-green-400', 'mt-4', 'text-center');
+                    successMessage.textContent = 'Thank you for your consultation request! We will get back to you soon.';
+                    
+                    // Clear form and show success message
+                    consultationForm.reset();
+                    consultationForm.appendChild(successMessage);
+                    
+                    // Remove success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                } else {
+                    // Error handling
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem submitting the form. Please try again.');
+            });
+        });
+    }
 });
 </script>
 </body>
