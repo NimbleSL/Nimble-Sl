@@ -1,1361 +1,437 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Application Development - Nimble Software Lab</title>
+<title>Web Application Development - ASP.NET MVC, Blazor, React | Nimble Software Lab</title>
 <link rel="icon" type="image/x-icon" href="images/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
     tailwind.config = {
+        darkMode: 'class',
         theme: {
             extend: {
                 colors: {
                     primary: '#0070F3',
                     secondary: '#00CC8F',
-                    dark: '#111827',
-                    darker: '#050A19',
-                    light: '#F0F9FF',
                 },
                 fontFamily: {
-                    sans: ['Space Grotesk', 'sans-serif'],
-                    mono: ['JetBrains Mono', 'monospace'],
+                    sans: ['Inter', 'sans-serif'],
                 },
-                animation: {
-                    'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    'bounce': 'bounce 2s infinite',
-                    'float': 'float 6s ease-in-out infinite',
-                    'gradient': 'gradient 15s ease infinite',
-                    'spin-slow': 'spin 8s linear infinite',
-                    'glow': 'glow 2s ease-in-out infinite alternate',
-                },
-                keyframes: {
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0)' },
-                        '50%': { transform: 'translateY(-20px)' },
-                    },
-                    gradient: {
-                        '0%': { backgroundPosition: '0% 50%' },
-                        '50%': { backgroundPosition: '100% 50%' },
-                        '100%': { backgroundPosition: '0% 50%' },
-                    },
-                    glow: {
-                        '0%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.2), 0 0 20px rgba(0, 112, 243, 0.2)' },
-                        '100%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.6), 0 0 25px rgba(0, 112, 243, 0.6)' }
-                    }
-                },
-                backgroundImage: {
-                    'cyber-grid': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
-                }
             }
         }
     }
 </script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-    
-    .bg-gradient-animate {
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-    }
-    
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    .text-outline {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-    }
-    
-    .glass-card {
-        backdrop-filter: blur(16px) saturate(180%);
-        background-color: rgba(17, 24, 39, 0.75);
-        border: 1px solid rgba(255, 255, 255, 0.125);
-    }
-    
-    .text-gradient {
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        background-size: 300% 300%;
-        animation: gradient 8s ease infinite;
-    }
-    
-    .typing-animation {
-        border-right: 2px solid rgba(255,255,255,.75);
-        animation: blinkCursor 0.7s steps(1) infinite;
-    }
-    
-    @keyframes blinkCursor {
-        50% { border-right-color: transparent; }
-    }
-
-    .code-block {
-        background-color: #1E293B;
-        border-radius: 0.5rem;
-        font-family: 'JetBrains Mono', monospace;
-        overflow-x: auto;
-    }
-    
-    .framework-card {
-        transition: all 0.3s ease;
-    }
-    
-    .framework-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .tech-pill {
-        transition: all 0.2s ease;
-    }
-    
-    .tech-pill:hover {
-        transform: scale(1.05);
-    }
-    .services-dropdown-wrapper {
-        position: relative;
-    }
-    .services-dropdown-menu {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 
-            visibility 0.2s ease-in-out, 
-            opacity 0.2s ease-in-out, 
-            transform 0.2s ease-in-out;
-    }
-    .services-dropdown-wrapper:hover .services-dropdown-menu,
-    .services-dropdown-menu:hover {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
 </head>
-<body class="font-sans antialiased text-gray-900 bg-white">
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-darker/80 backdrop-filter backdrop-blur-lg border-b border-white/10">
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="dark:text-white text-gray-900">SL</span>
-                        </span>
-                    </a>
-                </div>
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logo.png" alt="Logo" class="h-8 w-auto mr-2">
+                    <span class="text-2xl font-bold text-gray-900 dark:text-white">NimbleSL</span>
+                </a>
                 <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
-                    
-                    <!-- Services Dropdown for Desktop -->
-                    <div class="services-dropdown-wrapper relative group">
-                        <button class="services-dropdown-trigger border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">
+                    <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Home</a>
+                    <div class="relative group">
+                        <button class="text-primary border-b-2 border-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">
                             Services
                             <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
                         </button>
-                        
-                        <!-- Dropdown Menu -->
-                        <div class="services-dropdown-menu absolute z-50 left-0 mt-2 w-56 origin-top-left bg-darker border border-white/10 rounded-lg shadow-lg py-2">
-                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Custom Software
-                            </a>
-                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Mobile Apps
-                            </a>
-                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Web Applications
-                            </a>
-                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Cloud Services
-                            </a>
-                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Backend Development
-                            </a>
-                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                AI Solutions
-                            </a>
+                        <div class="absolute left-0 mt-2 w-56 origin-top-left bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200">
+                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Custom Software</a>
+                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Mobile Apps</a>
+                            <a href="webapp.html" class="block px-4 py-2 text-sm text-primary dark:text-primary bg-blue-50 dark:bg-blue-900/20 font-medium">Web Applications</a>
+                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Cloud Services</a>
+                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Backend Development</a>
+                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">AI Solutions</a>
                         </div>
                     </div>
-
-                    <!-- <a href="team.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Team</a> -->
-                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
-                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
-                    <!-- <a href="blog.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Blog</a> -->
+                    <a href="products.html" class="text-gray-600 dark:text-gray-300 hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Products</a>
+                    <a href="case-studies.html" class="text-gray-600 dark:text-gray-300 hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Case Studies</a>
+                    <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">About</a>
+                    <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Contact</a>
                 </div>
             </div>
-            <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
-                    <span>Get Started</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+            <div class="hidden sm:flex sm:items-center space-x-4">
+                <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:text-primary">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600">Get Started</a>
             </div>
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+            <div class="flex items-center sm:hidden">
+                <button id="mobile-menu-button" class="p-2 rounded-md text-gray-600 dark:text-gray-300">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden hidden" id="mobile-menu">
-        <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
-            <a href="#" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
-            
-            <!-- Mobile Services Dropdown -->
-            <div class="relative">
-                <button class="services-mobile-dropdown-trigger w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white text-base font-medium transition-all duration-300">
-                    Services
-                    <svg class="float-right h-5 w-5 transform" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                
-                <div class="services-mobile-dropdown-menu hidden">
-                    <a href="customsoftware.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Custom Software</a>
-                    <a href="mobileapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Mobile Apps</a>
-                    <a href="webapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Web Applications</a>
-                    <a href="cloudsolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Cloud Services</a>
-                    <a href="backend.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Backend Development</a>
-                    <a href="aisolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">AI Solutions</a>
-                </div>
-            </div>
-
-            <a href="#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
-            <a href="#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
-        </div>
-        <div class="pt-4 pb-3 border-t border-white/10 bg-dark">
-            <div class="flex items-center px-4">
-                <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium w-full flex items-center justify-center space-x-2 group transition-all duration-300">
-                    <span>Get Started</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden sm:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Products</a>
+            <a href="case-studies.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Case Studies</a>
+            <a href="index.html#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+            <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+            <button id="mobile-theme-toggle" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center">
+                <i class="fas fa-moon dark:hidden mr-2"></i>
+                <i class="fas fa-sun hidden dark:inline mr-2"></i>
+                <span class="dark:hidden">Dark Mode</span>
+                <span class="hidden dark:inline">Light Mode</span>
+            </button>
+            <a href="index.html#contact" class="block mx-3 mt-4 px-4 py-2 bg-primary text-white rounded-md text-center font-medium">Get Started</a>
         </div>
     </div>
 </nav>
 
-<!-- Hero Section - Service Specific -->
-<section class="pt-24 pb-16 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
-    <!-- Background elements -->
-    <div class="absolute inset-0 overflow-hidden">
-        <!-- Background gradient with animation -->
-        <div class="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker bg-gradient-animate"></div>
-        
-        <!-- Cyber grid pattern -->
-        <div class="absolute inset-0 bg-cyber-grid opacity-20"></div>
-        
-        <!-- Floating code elements -->
-        <div class="absolute inset-0 flex flex-wrap justify-between content-start opacity-20 overflow-hidden">
-            <span class="text-xs font-mono text-primary">&lt;app-component&gt;</span>
-            <span class="text-xs font-mono text-green-400">@Controller</span>
-            <span class="text-xs font-mono text-blue-300">import { Component }</span>
-            <span class="text-xs font-mono text-green-400">[HttpGet]</span>
-            <span class="text-xs font-mono text-yellow-400">ngOnInit()</span>
-            <span class="text-xs font-mono text-primary">&lt;/div&gt;</span>
+<section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-block mb-6 px-6 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+            <span class="text-primary font-semibold text-sm">WEB APPLICATION DEVELOPMENT</span>
         </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex flex-col items-center text-center">
-            <div class="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
-                <span class="text-primary font-mono text-sm">OUR SERVICES</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Web <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Application</span> Development
-            </h1>
-            <p class="mt-4 max-w-2xl text-lg text-gray-300 text-center">
-                Modern, responsive, and feature-rich web applications built with .NET Core, .NET MVC, Spring Boot, and Angular.
-            </p>
-            
-            <!-- Service quick stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 w-full max-w-4xl">
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-primary">2+</div>
-                    <div class="text-gray-300 text-sm">Web Apps Delivered</div>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-secondary">4</div>
-                    <div class="text-gray-300 text-sm">Elite Frameworks</div>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-blue-400">2+</div>
-                    <div class="text-gray-300 text-sm">Enterprise Clients</div>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-purple-400">100%</div>
-                    <div class="text-gray-300 text-sm">Client Satisfaction</div>
-                </div>
-            </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Modern Web Application Development</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">Expert in ASP.NET MVC, Blazor, React, Angular, Vue - Building scalable, responsive web applications for the modern web</p>
+        <div class="flex flex-wrap justify-center gap-3">
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">ASP.NET MVC</span>
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Blazor</span>
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">React</span>
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Angular</span>
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Vue.js</span>
+            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Next.js</span>
         </div>
     </div>
 </section>
 
-<!-- Service Introduction -->
-<section class="py-16 bg-white">
+<section class="py-20 bg-white dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="lg:w-1/2 lg:pr-12">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Modern Web Applications for Modern Businesses
-                </h2>
-                <p class="mt-4 text-lg text-gray-600">
-                    At Nimble Software Lab, we build powerful web applications that combine elegant frontends with robust backends. Our multi-framework expertise allows us to select the perfect technology stack for your specific business requirements.
-                </p>
-                <p class="mt-4 text-lg text-gray-600">
-                    Whether you need an enterprise-grade solution with .NET Core or Spring Boot on the server-side, or a dynamic single-page application with Angular, we deliver scalable, maintainable, and secure web applications that drive business growth.
-                </p>
-                
-                <!-- Key benefits list -->
-                <div class="mt-8 space-y-4">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Framework Flexibility</p>
-                            <p class="text-base text-gray-600">Choose from .NET Core, .NET MVC, Spring Boot, and Angular based on your specific needs.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Full-Stack Excellence</p>
-                            <p class="text-base text-gray-600">End-to-end expertise from frontend design to backend development and database integration.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Cloud-Ready Architecture</p>
-                            <p class="text-base text-gray-600">Applications built for seamless deployment to Azure and other cloud platforms.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Microsoft .NET Web Technologies</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">We specialize in building enterprise web applications using Microsoft's powerful .NET ecosystem. From traditional ASP.NET MVC to modern Blazor, we deliver high-quality, maintainable solutions.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i><span class="text-gray-600 dark:text-gray-400"><strong class="text-gray-900 dark:text-white">ASP.NET MVC 5 & Core MVC:</strong> Model-View-Controller architecture for complex web apps</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i><span class="text-gray-600 dark:text-gray-400"><strong class="text-gray-900 dark:text-white">Razor Pages:</strong> Page-focused framework for simpler scenarios</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i><span class="text-gray-600 dark:text-gray-400"><strong class="text-gray-900 dark:text-white">Blazor Server & WebAssembly:</strong> Build interactive web UIs using C# instead of JavaScript</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-secondary mt-1 mr-3"></i><span class="text-gray-600 dark:text-gray-400"><strong class="text-gray-900 dark:text-white">ASP.NET Web Forms:</strong> Legacy application maintenance and modernization</span></li>
+                </ul>
             </div>
-            <div class="mt-10 lg:mt-0 lg:w-1/2">
-                <img src="/api/placeholder/600/400" alt="Web Application Development" class="rounded-lg shadow-xl">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div class="h-96 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 flex items-center justify-center">
+                    <i class="fab fa-microsoft text-purple-600 dark:text-purple-400 text-8xl"></i>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Our Technology Stack -->
-<section class="py-16 bg-gray-50">
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Our Web Application Stack
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                We leverage the best-in-class frameworks and technologies to build robust web applications.
-            </p>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Web Frameworks & Technologies</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400">Full-stack expertise across modern web development platforms</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- .NET Core -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 framework-card">
-                <div class="h-16 w-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 mx-auto">
-                    <i class="fab fa-microsoft text-blue-600 text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">.NET Core</h3>
-                <p class="text-gray-600 text-center mb-6">
-                    Microsoft's modern, cross-platform framework for building high-performance web applications.
-                </p>
-                <div class="flex flex-wrap justify-center gap-2 mt-auto">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs tech-pill">C#</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs tech-pill">Razor Pages</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs tech-pill">Blazor</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs tech-pill">Entity Framework</span>
-                </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fab fa-microsoft text-primary mr-2"></i> Microsoft .NET
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• ASP.NET Core MVC</li>
+                    <li>• ASP.NET MVC 5</li>
+                    <li>• Razor Pages</li>
+                    <li>• Blazor Server</li>
+                    <li>• Blazor WebAssembly</li>
+                    <li>• SignalR (Real-time)</li>
+                    <li>• .NET MAUI Hybrid</li>
+                    <li>• Entity Framework Core</li>
+                </ul>
             </div>
-            
-            <!-- .NET MVC -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 framework-card">
-                <div class="h-16 w-16 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 mx-auto">
-                    <i class="fab fa-microsoft text-purple-600 text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">.NET MVC</h3>
-                <p class="text-gray-600 text-center mb-6">
-                    Powerful, patterns-based way to build dynamic websites with clean separation of concerns.
-                </p>
-                <div class="flex flex-wrap justify-center gap-2 mt-auto">
-                    <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs tech-pill">C#</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs tech-pill">Razor Views</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs tech-pill">Tag Helpers</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs tech-pill">LINQ</span>
-                </div>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fab fa-react text-cyan-500 mr-2"></i> React Ecosystem
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• React 18+ (Hooks, Context)</li>
+                    <li>• Next.js (SSR, SSG, ISR)</li>
+                    <li>• Redux & Redux Toolkit</li>
+                    <li>• React Router</li>
+                    <li>• Material-UI / Ant Design</li>
+                    <li>• Styled Components</li>
+                    <li>• React Query / SWR</li>
+                    <li>• TypeScript Integration</li>
+                </ul>
             </div>
-            
-            <!-- Spring Boot -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 framework-card">
-                <div class="h-16 w-16 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-leaf text-green-600 text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Spring Boot</h3>
-                <p class="text-gray-600 text-center mb-6">
-                    Java-based framework for creating stand-alone, production-grade applications with minimal configuration.
-                </p>
-                <div class="flex flex-wrap justify-center gap-2 mt-auto">
-                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs tech-pill">Java</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs tech-pill">Spring MVC</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs tech-pill">Thymeleaf</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs tech-pill">JPA/Hibernate</span>
-                </div>
-            </div>
-            
-            <!-- Angular -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 framework-card">
-                <div class="h-16 w-16 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 mx-auto">
-                    <i class="fab fa-angular text-red-600 text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Angular</h3>
-                <p class="text-gray-600 text-center mb-6">
-                    Platform for building mobile and desktop web applications with elegant UI and powerful features.
-                </p>
-                <div class="flex flex-wrap justify-center gap-2 mt-auto">
-                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs tech-pill">TypeScript</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs tech-pill">RxJS</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs tech-pill">Angular Material</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs tech-pill">NgRx</span>
-                </div>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fab fa-angular text-red-600 mr-2"></i> Angular Framework
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Angular 15+ (Standalone)</li>
+                    <li>• TypeScript</li>
+                    <li>• RxJS & Observables</li>
+                    <li>• Angular Material</li>
+                    <li>• NgRx State Management</li>
+                    <li>• Angular Universal (SSR)</li>
+                    <li>• Angular CLI & Schematics</li>
+                    <li>• Reactive Forms</li>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Solution Architectures -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Our Solution Architectures
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                We offer flexible architecture patterns to match your specific business needs.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- .NET Core + Angular -->
-            <div class="bg-gray-50 rounded-xl p-8 border border-gray-100">
-                <div class="flex items-center mb-6">
-                    <div class="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                        <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
-                    </div>
-                    <div class="h-6 w-6 -ml-2 z-10 rounded-full bg-red-100 border-2 border-gray-50 flex items-center justify-center">
-                        <i class="fab fa-angular text-red-600 text-sm"></i>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-gray-900">.NET Core + Angular</h3>
-                </div>
-                
-                <p class="text-gray-600 mb-6">
-                    Combining .NET Core's robust backend capabilities with Angular's dynamic frontend framework for powerful single-page applications.
-                </p>
-                
-                <div class="bg-white rounded-lg p-4 mb-6">
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">Ideal For:</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Enterprise applications with complex business logic</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Interactive dashboards and data-heavy applications</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Microsoft ecosystem integration with modern UI needs</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-lg p-4 code-block">
-                    <pre class="text-xs text-gray-200 overflow-x-auto">
-<span class="text-blue-300">// .NET Core Backend + Angular Frontend Architecture</span>
-
-<span class="text-green-400">Client-Side</span> (Angular)
-└── <span class="text-purple-300">Components</span>, <span class="text-purple-300">Services</span>, <span class="text-purple-300">Modules</span>
-└── <span class="text-purple-300">State Management</span> (NgRx)
-└── <span class="text-purple-300">Angular Material UI</span>
-
-<span class="text-green-400">Server-Side</span> (.NET Core)
-└── <span class="text-yellow-300">REST API Controllers</span>
-└── <span class="text-yellow-300">Business Logic Services</span>
-└── <span class="text-yellow-300">Data Access</span> (Entity Framework Core)
-└── <span class="text-yellow-300">Identity & Authentication</span></pre>
-                </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fab fa-vuejs text-green-600 mr-2"></i> Vue.js Ecosystem
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Vue 3 (Composition API)</li>
+                    <li>• Nuxt.js (Meta Framework)</li>
+                    <li>• Vuex / Pinia</li>
+                    <li>• Vue Router</li>
+                    <li>• Vuetify / Element Plus</li>
+                    <li>• Vite Build Tool</li>
+                </ul>
             </div>
-            
-            <!-- Spring Boot + Angular -->
-            <div class="bg-gray-50 rounded-xl p-8 border border-gray-100">
-                <div class="flex items-center mb-6">
-                    <div class="h-12 w-12 rounded-xl bg-green-100 flex items-center justify-center">
-                        <i class="fas fa-leaf text-green-600 text-2xl"></i>
-                    </div>
-                    <div class="h-6 w-6 -ml-2 z-10 rounded-full bg-red-100 border-2 border-gray-50 flex items-center justify-center">
-                        <i class="fab fa-angular text-red-600 text-sm"></i>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-gray-900">Spring Boot + Angular</h3>
-                </div>
-                
-                <p class="text-gray-600 mb-6">
-                    Leveraging Spring Boot's enterprise-grade backend with Angular's powerful frontend for scalable, feature-rich applications.
-                </p>
-                
-                <div class="bg-white rounded-lg p-4 mb-6">
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">Ideal For:</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Organizations with existing Java infrastructure</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Microservices architecture with modern UI layer</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-gray-700">Enterprise applications needing extensive integration options</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-lg p-4 code-block">
-                    <pre class="text-xs text-gray-200 overflow-x-auto">
-<span class="text-blue-300">// Spring Boot Backend + Angular Frontend Architecture</span>
 
-<span class="text-green-400">Client-Side</span> (Angular)
-└── <span class="text-purple-300">Components</span>, <span class="text-purple-300">Services</span>, <span class="text-purple-300">Modules</span>
-└── <span class="text-purple-300">State Management</span> (NgRx)
-└── <span class="text-purple-300">Angular Material UI</span>
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-layer-group text-primary mr-2"></i> Full-Stack Frameworks
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Next.js (React)</li>
+                    <li>• Nuxt.js (Vue)</li>
+                    <li>• Remix (React)</li>
+                    <li>• SvelteKit</li>
+                    <li>• Astro (Multi-framework)</li>
+                    <li>• Gatsby (Static)</li>
+                </ul>
+            </div>
 
-<span class="text-green-400">Server-Side</span> (Spring Boot)
-└── <span class="text-yellow-300">REST Controllers</span>
-└── <span class="text-yellow-300">Service Layer</span>
-└── <span class="text-yellow-300">Data Access</span> (Spring Data JPA)
-└── <span class="text-yellow-300">Spring Security</span></pre>
-                </div>
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-palette text-secondary mr-2"></i> UI Frameworks
+                </h3>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Tailwind CSS</li>
+                    <li>• Bootstrap 5</li>
+                    <li>• Material-UI (MUI)</li>
+                    <li>• Ant Design</li>
+                    <li>• Chakra UI</li>
+                    <li>• Shadcn/ui</li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Technology Comparison -->
-<section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Framework Comparison
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Understanding the strengths of each technology helps us choose the right solution for your needs.
-            </p>
-        </div>
-        
-        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-300">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Framework</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Best For</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Strengths</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Ideal Use Cases</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200 bg-white">
-                    <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
-                                    <i class="fab fa-microsoft text-blue-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="font-medium text-gray-900">.NET Core</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Enterprise applications with Microsoft ecosystem</td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>High performance</li>
-                                <li>Cross-platform</li>
-                                <li>Mature ecosystem</li>
-                                <li>Strong Azure integration</li>
-                            </ul>
-                        </td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Enterprise applications</li>
-                                <li>Cloud-native solutions</li>
-                                <li>Microservices architecture</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 flex-shrink-0 rounded-full bg-purple-100 flex items-center justify-center">
-                                    <i class="fab fa-microsoft text-purple-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="font-medium text-gray-900">.NET MVC</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Server-rendered applications with strong SEO requirements</td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Server-side rendering</li>
-                                <li>SEO-friendly</li>
-                                <li>Form-based workflows</li>
-                                <li>Mature ecosystem</li>
-                            </ul>
-                        </td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Content-driven websites</li>
-                                <li>Traditional web applications</li>
-                                <li>Business applications</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 flex-shrink-0 rounded-full bg-green-100 flex items-center justify-center">
-                                    <i class="fas fa-leaf text-green-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="font-medium text-gray-900">Spring Boot</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Enterprise Java applications with extensive integrations</td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Enterprise-grade</li>
-                                <li>Extensive ecosystem</li>
-                                <li>Mature security</li>
-                                <li>Robust APIs</li>
-                            </ul>
-                        </td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Enterprise Java apps</li>
-                                <li>Microservices</li>
-                                <li>Complex integrations</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 flex-shrink-0 rounded-full bg-red-100 flex items-center justify-center">
-                                    <i class="fab fa-angular text-red-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="font-medium text-gray-900">Angular</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Rich interactive single-page applications</td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Component-based</li>
-                                <li>Enterprise-ready</li>
-                                <li>TypeScript integration</li>
-                                <li>Complete framework</li>
-                            </ul>
-                        </td>
-                        <td class="px-3 py-4 text-sm text-gray-500">
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Enterprise SPAs</li>
-                                <li>Complex dashboards</li>
-                                <li>Progressive web apps</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- Development Process -->
-<section class="py-16 bg-white">
+<section class="py-20 bg-white dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Our Web Development Process
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                A systematic approach to ensure the successful delivery of your web application.
-            </p>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Blazor - The Future of .NET Web Development</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400">Build interactive web UIs using C# instead of JavaScript</p>
         </div>
-        
-        <div class="lg:grid lg:grid-cols-7 lg:gap-8 lg:items-center">
-            <div class="lg:col-span-3">
-                <div class="space-y-10">
-                    <!-- Step 1 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">1</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Discovery & Requirements</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                We start by deeply understanding your business goals, user needs, and technical requirements through collaborative workshops and research.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">2</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">UX/UI Design & Architecture</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                We create user-centered designs and plan the technical architecture, selecting the optimal framework combination for your needs.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">3</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Iterative Development & Testing</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                Our agile development process involves continuous integration, automated testing, and regular sprint reviews to ensure quality.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-8 rounded-lg border border-purple-200 dark:border-purple-800">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Blazor Server</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Run your app on the server with real-time UI updates via SignalR</p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✓ Low initial download size</li>
+                    <li>✓ Full .NET runtime on server</li>
+                    <li>✓ Immediate access to server resources</li>
+                    <li>✓ Works on older browsers</li>
+                    <li>✓ Real-time updates with SignalR</li>
+                </ul>
             </div>
-            
-            <div class="mt-10 lg:mt-0 lg:col-span-1 flex justify-center">
-                <div class="h-full w-px bg-gray-200"></div>
-            </div>
-            
-            <div class="mt-10 lg:mt-0 lg:col-span-3">
-                <div class="space-y-10">
-                    <!-- Step 4 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">4</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Security & Performance Optimization</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                We implement industry-leading security measures and optimize your application for speed, accessibility, and user experience.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 5 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">5</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Deployment & DevOps Setup</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                We deploy your application to the cloud with robust CI/CD pipelines, monitoring, and alerts for seamless operations.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 6 -->
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <span class="text-xl font-bold">6</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Training & Ongoing Support</h3>
-                            <p class="mt-2 text-base text-gray-600">
-                                We provide comprehensive documentation, training, and ongoing maintenance to ensure your application's long-term success.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 rounded-lg border border-blue-200 dark:border-blue-800">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Blazor WebAssembly</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Run your app client-side in the browser using WebAssembly</p>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>✓ No server required (static hosting)</li>
+                    <li>✓ Offline capability</li>
+                    <li>✓ Fast after initial load</li>
+                    <li>✓ Progressive Web App (PWA)</li>
+                    <li>✓ Reduced server load</li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Case Studies -->
-<!-- <section class="py-16 bg-gray-50">
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Success Stories
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Real examples of how our web applications have transformed businesses.
-            </p>
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Modern Web Development Features</h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-                <img src="/api/placeholder/400/200" alt="Healthcare Portal" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-blue-600 font-medium mb-1">.NET Core + Angular</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Healthcare Patient Portal</h3>
-                    <p class="text-gray-600 mb-4">We built a secure patient portal that improved patient engagement by 65% while reducing administrative workload by streamlining appointment scheduling and medical record access.</p>
-                    <a href="#" class="text-primary font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-                <img src="/api/placeholder/400/200" alt="Financial Dashboard" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-green-600 font-medium mb-1">Spring Boot + Angular</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Financial Analytics Dashboard</h3>
-                    <p class="text-gray-600 mb-4">Our real-time financial analytics platform helped a multinational firm increase decision-making speed by 40% with interactive data visualization and customizable reporting.</p>
-                    <a href="#" class="text-secondary font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-                <img src="/api/placeholder/400/200" alt="E-commerce Platform" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-purple-600 font-medium mb-1">.NET MVC Enterprise Platform</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">E-commerce Management System</h3>
-                    <p class="text-gray-600 mb-4">We developed a comprehensive e-commerce management system that integrated inventory, order processing, and customer service, reducing operational costs by 25%.</p>
-                    <a href="#" class="text-blue-500 font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 
-<!-- FAQ Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Frequently Asked Questions
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Common questions about our web application development services.
-            </p>
-        </div>
-        
-        <div class="max-w-3xl mx-auto divide-y divide-gray-200">
-            <!-- FAQ Item 1 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How do you choose between different frameworks for our project?</h3>
-                <p class="mt-3 text-gray-600">We evaluate multiple factors including your business requirements, existing technology investments, developer expertise, performance needs, and long-term maintenance plans. For example, we might recommend .NET Core and Angular for Microsoft-centric organizations needing rich UIs, while Spring Boot might be more suitable for companies with Java expertise.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-mobile-alt text-4xl text-primary mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Responsive Design</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Mobile-first, adaptive layouts</p>
             </div>
-            
-            <!-- FAQ Item 2 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How long does it typically take to develop a web application?</h3>
-                <p class="mt-3 text-gray-600">Development time varies based on complexity. A basic web application might take 2-3 months, while complex enterprise applications can take 6-12 months. We use an agile methodology with regular releases, allowing you to see progress throughout the development lifecycle and providing early business value.</p>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-bolt text-4xl text-yellow-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Progressive Web Apps</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Offline-capable, installable</p>
             </div>
-            
-            <!-- FAQ Item 3 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How do you ensure the security of web applications?</h3>
-                <p class="mt-3 text-gray-600">Security is integrated throughout our development process. We implement authentication, authorization, data encryption, input validation, and protection against common vulnerabilities like XSS and CSRF. We also conduct regular security audits and penetration testing to identify and address potential vulnerabilities.</p>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-tachometer-alt text-4xl text-secondary mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Performance Optimization</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Code splitting, lazy loading</p>
             </div>
-            
-            <!-- FAQ Item 4 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">Can you integrate with our existing systems and databases?</h3>
-                <p class="mt-3 text-gray-600">Yes, we specialize in system integration. Our web applications can seamlessly integrate with your existing databases, APIs, authentication systems, and third-party services. We use standard protocols and create custom adapters when needed to ensure smooth data flow between systems.</p>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-search text-4xl text-purple-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">SEO Optimized</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Server-side rendering (SSR)</p>
             </div>
-            
-            <!-- FAQ Item 5 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How do you handle responsive design and mobile compatibility?</h3>
-                <p class="mt-3 text-gray-600">All our web applications are built with a mobile-first approach, ensuring they work perfectly across desktops, tablets, and smartphones. We use responsive design techniques, progressive enhancement, and conduct thorough testing across multiple devices and browsers to guarantee a consistent user experience.</p>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-plug text-4xl text-orange-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">API Integration</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">RESTful, GraphQL APIs</p>
             </div>
-        </div>
-    </div>
-</section>
-<section class="py-16 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
-    <!-- Background elements -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary opacity-20 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-secondary opacity-20 blur-3xl"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="lg:w-1/2 lg:pr-12">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
-                    Ready to Transform Your Business with Custom Software?
-                </h2>
-                <p class="mt-4 text-lg text-gray-300">
-                    Contact us today to schedule a free consultation. Our experts will discuss your business needs and help you determine the best software solution for your goals.
-                </p>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Security</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Authentication, authorization</p>
             </div>
-            <div class="mt-8 lg:mt-0">
-                <div class="glass-card p-6 rounded-xl border border-white/10">
-                    <form action="https://formspree.io/f/xjkyzbry" method="POST">
-                        <div class="grid grid-cols-1 gap-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                >
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                                <input 
-                                    id="email" 
-                                    name="email" 
-                                    type="email" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                >
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Description</label>
-                                <textarea 
-                                    id="message" 
-                                    name="message" 
-                                    rows="3" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                ></textarea>
-                            </div>
-                            <button 
-                                type="submit" 
-                                class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 group"
-                            >
-                                <span class="flex items-center">
-                                    Request AI Consultation
-                                    <svg 
-                                        class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
-                                        viewBox="0 0 20 20" 
-                                        fill="currentColor"
-                                    >
-                                        <path 
-                                            fill-rule="evenodd" 
-                                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
-                                            clip-rule="evenodd" 
-                                        />
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-comments text-4xl text-cyan-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Real-time Features</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">WebSockets, SignalR</p>
             </div>
-        </div>
-    </div>
-</section>
-<!-- Related Services -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Related Services
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Explore our other services that complement cloud solutions.
-            </p>
-        </div>
-        
-        <div class="grid gap-8 md:grid-cols-3">
-            <!-- Related Service 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-laptop-code text-primary text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Software Development</h3>
-                <p class="text-gray-600 mb-4">Tailored software solutions designed to address your unique business challenges and drive growth.</p>
-                <a href="customsoftware.html" class="text-primary font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Related Service 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-mobile-alt text-blue-500 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
-                <p class="text-gray-600 mb-4">Create engaging and functional mobile experiences for iOS and Android platforms with the latest technologies.</p>
-                <a href="mobileapp.html" class="text-blue-500 font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Related Service 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-brain text-indigo-500 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
-                <p class="text-gray-600 mb-4">Leverage artificial intelligence to automate processes, gain insights, and create intelligent applications.</p>
-                <a href="aisolution.html" class="text-indigo-500 font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg text-center border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-chart-line text-4xl text-pink-600 mb-4"></i>
+                <h4 class="font-bold text-gray-900 dark:text-white mb-2">Analytics</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">User tracking, insights</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-darker text-white border-t border-white/5">
-    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="text-white">SL</span>
-                        </span>
-                    </a>
-                </div>
-                <p class="mt-4 text-gray-300">
-                    Building software solutions that power business growth and innovation.
-                </p>
-                <div class="flex space-x-4 mt-6">
-                    <a href="https://www.facebook.com/nimblesl" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/nimblesoftwarelab" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/nimble-software-lab" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Solutions</h3>
-                <ul class="mt-4 space-y-4">
-                    <ul class="mt-4 space-y-4">
-                        <li><a href="customsoftware.html" class="text-gray-300 hover:text-white transition-colors duration-300">Custom Software</a></li>
-                        <li><a href="mobileapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Mobile Apps</a></li>
-                        <li><a href="webapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Web Applications</a></li>
-                        <li><a href="cloudsolution.html" class="text-gray-300 hover:text-white transition-colors duration-300">Cloud Services</a></li>
-                        <li><a href="backend.html" class="text-gray-300 hover:text-white transition-colors duration-300">Backend development</a></li>
-                        <li><a href="webapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Web App Development</a></li>
-                    </ul>
+<section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Development Tools & Practices</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <h4 class="font-bold text-gray-900 dark:text-white mb-3">Build Tools</h4>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                    <li>• Webpack & Vite</li>
+                    <li>• Rollup & esbuild</li>
+                    <li>• Parcel</li>
+                    <li>• MSBuild (.NET)</li>
                 </ul>
             </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Company</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Careers</a></li>
-                    <!-- <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li> -->
-                    <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <h4 class="font-bold text-gray-900 dark:text-white mb-3">Testing</h4>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                    <li>• Jest & Vitest</li>
+                    <li>• React Testing Library</li>
+                    <li>• Cypress & Playwright</li>
+                    <li>• xUnit / NUnit (.NET)</li>
                 </ul>
             </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Legal</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <h4 class="font-bold text-gray-900 dark:text-white mb-3">Deployment</h4>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                    <li>• Azure App Service</li>
+                    <li>• Vercel & Netlify</li>
+                    <li>• AWS Amplify</li>
+                    <li>• Docker & Kubernetes</li>
                 </ul>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-700 pt-8">
-            <p class="text-base text-gray-400 text-center">
-                &copy; 2025 Nimble Software Lab. All rights reserved.
-            </p>
+    </div>
+</section>
+
+<section class="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-primary to-blue-700 rounded-3xl p-12 text-center shadow-xl">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready to Build Your Web Application?</h2>
+            <p class="text-xl text-blue-100 mb-8">Let's create a modern, scalable web application with ASP.NET MVC, Blazor, or React</p>
+            <a href="index.html#contact" class="px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-blue-50 inline-flex items-center">
+                <span>Get Started</span><i class="fas fa-arrow-right ml-2"></i>
+            </a>
         </div>
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto py-12 px-4 text-center">
+        <span class="text-2xl font-bold">NimbleSL</span>
+        <p class="mt-4 text-gray-400">&copy; 2025 Nimble Software Lab. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Utility function for dropdown management
-    function createDropdownManager(dropdownWrapper, dropdownMenu, dropdownTrigger) {
-        let isManuallyOpened = false;
+const themeToggle = document.getElementById('theme-toggle');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+const htmlElement = document.documentElement;
+const currentTheme = localStorage.getItem('theme') || 'light';
+htmlElement.classList.remove('light', 'dark');
+htmlElement.classList.add(currentTheme);
 
-        function setVisibility(visible) {
-            dropdownMenu.style.visibility = visible ? 'visible' : 'hidden';
-            dropdownMenu.style.opacity = visible ? '1' : '0';
-            dropdownMenu.style.transform = visible 
-                ? 'translateY(0)' 
-                : 'translateY(10px)';
-            isManuallyOpened = visible;
-        }
-
-        // Trigger click handler
-        dropdownTrigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            setVisibility(!isManuallyOpened);
-        });
-
-        // Hover interactions
-        dropdownWrapper.addEventListener('mouseenter', () => {
-            if (!isManuallyOpened) {
-                setVisibility(true);
-            }
-        });
-
-        dropdownWrapper.addEventListener('mouseleave', () => {
-            if (!isManuallyOpened) {
-                setVisibility(false);
-            }
-        });
-
-        // Prevent dropdown from closing when clicking inside
-        dropdownMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        return {
-            close: () => setVisibility(false)
-        };
+function toggleTheme() {
+    if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        localStorage.setItem('theme', 'light');
+    } else {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     }
+}
 
-    // Mobile Menu Toggle
-    function setupMobileMenu() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-    }
+themeToggle.addEventListener('click', toggleTheme);
+mobileThemeToggle.addEventListener('click', toggleTheme);
 
-    // Smooth Scrolling
-    function setupSmoothScrolling() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-    }
-
-    // Mobile Services Dropdown
-    function setupMobileDropdown() {
-        const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
-        if (mobileTrigger) {
-            mobileTrigger.addEventListener('click', function() {
-                const dropdownMenu = this.nextElementSibling;
-                const chevron = this.querySelector('svg');
-                
-                if (dropdownMenu && chevron) {
-                    dropdownMenu.classList.toggle('hidden');
-                    chevron.classList.toggle('rotate-180');
-                }
-            });
-        }
-    }
-
-    // Close Dropdowns When Clicking Outside
-    function setupOutsideClickHandler() {
-        document.addEventListener('click', function(event) {
-            const desktopDropdown = document.querySelector('.services-dropdown-menu');
-            const mobileDropdown = document.querySelector('.services-mobile-dropdown-menu');
-            const desktopTrigger = document.querySelector('.services-dropdown-trigger');
-            const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
-
-            // Desktop Dropdown Close
-            if (desktopDropdown && desktopTrigger) {
-                if (!desktopDropdown.contains(event.target) && !desktopTrigger.contains(event.target)) {
-                    desktopDropdown.style.visibility = 'hidden';
-                    desktopDropdown.style.opacity = '0';
-                    desktopDropdown.style.transform = 'translateY(10px)';
-                }
-            }
-
-            // Mobile Dropdown Close
-            if (mobileDropdown && mobileTrigger) {
-                if (!mobileDropdown.contains(event.target) && !mobileTrigger.contains(event.target)) {
-                    mobileDropdown.classList.add('hidden');
-                    mobileTrigger.querySelector('svg')?.classList.remove('rotate-180');
-                }
-            }
-        });
-    }
-
-    // Desktop Services Dropdown
-    function setupDesktopDropdown() {
-        const dropdownWrapper = document.querySelector('.services-dropdown-wrapper');
-        const dropdownMenu = document.querySelector('.services-dropdown-menu');
-        const dropdownTrigger = document.querySelector('.services-dropdown-trigger');
-
-        if (dropdownWrapper && dropdownMenu && dropdownTrigger) {
-            createDropdownManager(dropdownWrapper, dropdownMenu, dropdownTrigger);
-        }
-    }
-
-    // Initialize all navigation interactions
-    setupMobileMenu();
-    setupSmoothScrolling();
-    setupMobileDropdown();
-    setupOutsideClickHandler();
-    setupDesktopDropdown();
+// Mobile Menu Toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const consultationForm = document.querySelector('form[action*="formspree.io"]');
-    
-    if (consultationForm) {
-        consultationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(consultationForm);
-            
-            // Validate required fields
-            const requiredFields = ['name', 'email', 'message'];
-            const missingFields = requiredFields.filter(field => 
-                !formData.get(field) || formData.get(field).trim() === ''
-            );
-            
-            if (missingFields.length > 0) {
-                alert(`Please fill in the following required fields: ${missingFields.join(', ')}`);
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.get('email'))) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
-            // Submission logic
-            fetch(consultationForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success handling
-                    const successMessage = document.createElement('div');
-                    successMessage.classList.add('text-green-400', 'mt-4', 'text-center');
-                    successMessage.textContent = 'Thank you for your consultation request! We will get back to you soon.';
-                    
-                    // Clear form and show success message
-                    consultationForm.reset();
-                    consultationForm.appendChild(successMessage);
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                } else {
-                    // Error handling
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was a problem submitting the form. Please try again.');
-            });
-        });
-    }
+
+// Close mobile menu when clicking on links
+const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
 });
+
+// Close mobile menu when clicking theme toggle
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
+}
 </script>
 </body>
 </html>

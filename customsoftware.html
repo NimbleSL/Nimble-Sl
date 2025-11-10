@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,276 +7,137 @@
 <link rel="icon" type="image/x-icon" href="images/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
     tailwind.config = {
+        darkMode: 'class',
         theme: {
             extend: {
                 colors: {
                     primary: '#0070F3',
                     secondary: '#00CC8F',
-                    dark: '#111827',
-                    darker: '#050A19',
-                    light: '#F0F9FF',
                 },
                 fontFamily: {
-                    sans: ['Space Grotesk', 'sans-serif'],
-                    mono: ['JetBrains Mono', 'monospace'],
+                    sans: ['Inter', 'sans-serif'],
                 },
-                animation: {
-                    'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    'bounce': 'bounce 2s infinite',
-                    'float': 'float 6s ease-in-out infinite',
-                    'gradient': 'gradient 15s ease infinite',
-                    'spin-slow': 'spin 8s linear infinite',
-                    'glow': 'glow 2s ease-in-out infinite alternate',
-                },
-                keyframes: {
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0)' },
-                        '50%': { transform: 'translateY(-20px)' },
-                    },
-                    gradient: {
-                        '0%': { backgroundPosition: '0% 50%' },
-                        '50%': { backgroundPosition: '100% 50%' },
-                        '100%': { backgroundPosition: '0% 50%' },
-                    },
-                    glow: {
-                        '0%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.2), 0 0 20px rgba(0, 112, 243, 0.2)' },
-                        '100%': { boxShadow: '0 0 5px rgba(0, 112, 243, 0.6), 0 0 25px rgba(0, 112, 243, 0.6)' }
-                    }
-                },
-                backgroundImage: {
-                    'cyber-grid': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
-                }
             }
         }
     }
 </script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-    
-    .bg-gradient-animate {
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-    }
-    
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    .text-outline {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-    }
-    
-    .glass-card {
-        backdrop-filter: blur(16px) saturate(180%);
-        background-color: rgba(17, 24, 39, 0.75);
-        border: 1px solid rgba(255, 255, 255, 0.125);
-    }
-    
-    .text-gradient {
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        background-size: 300% 300%;
-        animation: gradient 8s ease infinite;
-    }
-    
-    .typing-animation {
-        border-right: 2px solid rgba(255,255,255,.75);
-        animation: blinkCursor 0.7s steps(1) infinite;
-    }
-    .services-dropdown-wrapper {
-        position: relative;
-    }
-    .services-dropdown-menu {
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 
-            visibility 0.2s ease-in-out, 
-            opacity 0.2s ease-in-out, 
-            transform 0.2s ease-in-out;
-    }
-    .services-dropdown-wrapper:hover .services-dropdown-menu,
-    .services-dropdown-menu:hover {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-    }
-    @keyframes blinkCursor {
-        50% { border-right-color: transparent; }
-    }
-</style>
 </head>
-<body class="font-sans antialiased text-gray-900 bg-white">
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
 <!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-darker/80 backdrop-filter backdrop-blur-lg border-b border-white/10">
+<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="index.html" class="flex items-center">
                         <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="dark:text-white text-gray-900">SL</span>
-                        </span>
+                        <span class="text-2xl font-bold text-gray-900 dark:text-white">NimbleSL</span>
                     </a>
                 </div>
                 <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
-                    
-                    <!-- Services Dropdown for Desktop -->
-                    <div class="services-dropdown-wrapper relative group">
-                        <button class="services-dropdown-trigger border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">
+                    <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Home</a>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group">
+                        <button class="text-primary border-b-2 border-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">
                             Services
                             <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
                         </button>
-                        
-                        <!-- Dropdown Menu -->
-                        <div class="services-dropdown-menu absolute z-50 left-0 mt-2 w-56 origin-top-left bg-darker border border-white/10 rounded-lg shadow-lg py-2">
-                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Custom Software
-                            </a>
-                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Mobile Apps
-                            </a>
-                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Web Applications
-                            </a>
-                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Cloud Services
-                            </a>
-                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Backend Development
-                            </a>
-                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                AI Solutions
-                            </a>
+                        <div class="absolute left-0 mt-2 w-56 origin-top-left bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200">
+                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-primary dark:text-primary bg-blue-50 dark:bg-blue-900/20 font-medium">Custom Software</a>
+                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Mobile Apps</a>
+                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Web Applications</a>
+                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Cloud Services</a>
+                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Backend Development</a>
+                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">AI Solutions</a>
                         </div>
                     </div>
 
-                    <!-- <a href="team.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Team</a> -->
-                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
-                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
-                    <!-- <a href="blog.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Blog</a> -->
+                    <a href="products.html" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Products</a>
+                    <a href="case-studies.html" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Case Studies</a>
+                    <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">About</a>
+                    <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors">Contact</a>
                 </div>
             </div>
-            <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
-                    <span>Get Started</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+            <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-4">
+                <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300">
+                    Get Started
                 </a>
             </div>
             <div class="-mr-2 flex items-center sm:hidden">
-                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
+    <!-- Mobile menu -->
     <div class="sm:hidden hidden" id="mobile-menu">
-        <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
-            <a href="#" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
-            
-            <!-- Mobile Services Dropdown -->
-            <div class="relative">
-                <button class="services-mobile-dropdown-trigger w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white text-base font-medium transition-all duration-300">
-                    Services
-                    <svg class="float-right h-5 w-5 transform" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                
-                <div class="services-mobile-dropdown-menu hidden">
-                    <a href="customsoftware.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Custom Software</a>
-                    <a href="mobileapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Mobile Apps</a>
-                    <a href="webapp.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Web Applications</a>
-                    <a href="cloudsolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Cloud Services</a>
-                    <a href="backend.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">Backend Development</a>
-                    <a href="aisolution.html" class="block pl-6 pr-4 py-2 text-gray-300 hover:bg-darker hover:text-white">AI Solutions</a>
-                </div>
-            </div>
-
-            <a href="#about" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">About</a>
-            <a href="#contact" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Contact</a>
-        </div>
-        <div class="pt-4 pb-3 border-t border-white/10 bg-dark">
-            <div class="flex items-center px-4">
-                <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium w-full flex items-center justify-center space-x-2 group transition-all duration-300">
-                    <span>Get Started</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
+        <div class="pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <a href="index.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+            <a href="customsoftware.html" class="block pl-3 pr-4 py-2 text-primary bg-blue-50 dark:bg-blue-900/20">Custom Software</a>
+            <a href="mobileapp.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Mobile Apps</a>
+            <a href="webapp.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Web Applications</a>
+            <a href="cloudsolution.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Cloud Services</a>
+            <a href="backend.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Backend Development</a>
+            <a href="aisolution.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">AI Solutions</a>
+            <a href="products.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Products</a>
+            <a href="case-studies.html" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Case Studies</a>
+            <a href="index.html#about" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+            <a href="index.html#contact" class="block pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+            <button id="mobile-theme-toggle" class="w-full text-left pl-3 pr-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center">
+                <i class="fas fa-moon dark:hidden mr-2"></i>
+                <i class="fas fa-sun hidden dark:inline mr-2"></i>
+                <span class="dark:hidden">Dark Mode</span>
+                <span class="hidden dark:inline">Light Mode</span>
+            </button>
+            <a href="index.html#contact" class="block ml-3 mr-3 mt-4 px-4 py-2 bg-primary text-white rounded-md text-center font-medium">Get Started</a>
         </div>
     </div>
 </nav>
 
-<!-- Hero Section - Service Specific -->
-<section class="pt-24 pb-16 bg-gradient-to-b from-darker to-dark relative overflow-hidden">
-    <!-- Background elements -->
-    <div class="absolute inset-0 overflow-hidden">
-        <!-- Background gradient with animation -->
-        <div class="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker bg-gradient-animate"></div>
-        
-        <!-- Cyber grid pattern -->
-        <div class="absolute inset-0 bg-cyber-grid opacity-20"></div>
-        
-        <!-- Floating code elements -->
-        <div class="absolute inset-0 flex flex-wrap justify-between content-start opacity-20 overflow-hidden">
-            <span class="text-xs font-mono text-primary">&lt;script&gt;</span>
-            <span class="text-xs font-mono text-green-400">class</span>
-            <span class="text-xs font-mono text-blue-300">function()</span>
-            <span class="text-xs font-mono text-green-400">extends</span>
-            <span class="text-xs font-mono text-yellow-400">Component</span>
-            <span class="text-xs font-mono text-primary">&lt;/&gt;</span>
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex flex-col items-center text-center">
-            <div class="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
-                <span class="text-primary font-mono text-sm">OUR SERVICES</span>
+<!-- Hero Section -->
+<section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="inline-block mb-6 px-6 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                <span class="text-primary font-semibold text-sm">OUR SERVICES</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Custom <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Software</span> Development
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Custom Software Development
             </h1>
-            <p class="mt-4 max-w-2xl text-lg text-gray-300 text-center">
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
                 Tailored software solutions designed to address your unique business challenges and drive growth.
             </p>
-            
-            <!-- Service quick stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 w-full max-w-4xl">
-                <div class="glass-card p-4 rounded-xl text-center">
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
                     <div class="text-3xl font-bold text-primary">3+</div>
-                    <div class="text-gray-300 text-sm">Projects Completed</div>
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">Projects Completed</div>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
                     <div class="text-3xl font-bold text-secondary">100%</div>
-                    <div class="text-gray-300 text-sm">Client Satisfaction</div>
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">Client Satisfaction</div>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-blue-400">2+</div>
-                    <div class="text-gray-300 text-sm">Industries Served</div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-primary">2+</div>
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">Industries Served</div>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <div class="text-3xl font-bold text-purple-400">5+</div>
-                    <div class="text-gray-300 text-sm">Tech Stacks</div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-secondary">5+</div>
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">Tech Stacks</div>
                 </div>
             </div>
         </div>
@@ -284,473 +145,177 @@
 </section>
 
 <!-- Service Introduction -->
-<section class="py-16 bg-white">
+<section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="lg:w-1/2 lg:pr-12">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                     Tailor-Made Solutions for Your Business
                 </h2>
-                <p class="mt-4 text-lg text-gray-600">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                     At Nimble Software Lab, we specialize in creating custom software solutions that are specifically designed to address your unique business challenges. Off-the-shelf software often requires your business to adapt to its limitations, but our custom solutions are built around your specific workflows, objectives, and growth plans.
                 </p>
-                <p class="mt-4 text-lg text-gray-600">
+                <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                     Our team of experienced developers, designers, and project managers work collaboratively to deliver high-quality software that not only meets your current needs but is also scalable and adaptable to accommodate future growth and changing requirements.
                 </p>
-                
-                <!-- Key benefits list -->
-                <div class="mt-8 space-y-4">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Tailored to Your Needs</p>
-                            <p class="text-base text-gray-600">Solutions precisely aligned with your business processes and objectives.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Scalable Architecture</p>
-                            <p class="text-base text-gray-600">Designed to grow with your business and adapt to changing requirements.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-6 w-6 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-lg font-medium text-gray-900">Competitive Advantage</p>
-                            <p class="text-base text-gray-600">Gain an edge with software that competitors can't simply purchase.</p>
-                        </div>
+            </div>
+            <div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <div class="h-96 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 flex items-center justify-center">
+                        <i class="fas fa-code text-primary text-8xl"></i>
                     </div>
                 </div>
-            </div>
-            <div class="mt-10 lg:mt-0 lg:w-1/2">
-                <img src="/api/placeholder/600/400" alt="Custom Software Development" class="rounded-lg shadow-xl">
             </div>
         </div>
     </div>
 </section>
 
 <!-- Our Process -->
-<section class="py-16 bg-gray-50">
+<section class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Our Development Process
             </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                We follow a systematic approach to ensure the successful delivery of your custom software solution.
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                We follow a proven methodology to deliver exceptional custom software solutions
             </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="grid md:grid-cols-3 gap-8">
             <!-- Step 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 relative">
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
-                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-comments text-primary text-xl"></i>
+            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span class="text-white font-bold text-xl">1</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Discovery & Analysis</h3>
-                <p class="text-gray-600">We start by thoroughly understanding your business, challenges, and goals through in-depth consultations and research.</p>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Discovery & Planning</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                    We start by understanding your business goals, challenges, and requirements to create a comprehensive project roadmap.
+                </p>
             </div>
-            
+
             <!-- Step 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 relative">
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-pencil-ruler text-primary text-xl"></i>
+            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span class="text-white font-bold text-xl">2</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Design & Planning</h3>
-                <p class="text-gray-600">We create detailed specifications, wireframes, and project plans to establish a clear roadmap for development.</p>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Design & Development</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Our team designs intuitive interfaces and develops robust solutions using cutting-edge technologies and best practices.
+                </p>
             </div>
-            
+
             <!-- Step 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 relative">
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-code text-primary text-xl"></i>
+            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span class="text-white font-bold text-xl">3</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Development</h3>
-                <p class="text-gray-600">Our expert developers build your solution using modern technologies and best practices, with regular progress updates.</p>
-            </div>
-            
-            <!-- Step 4 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 relative">
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
-                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-check-circle text-primary text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Testing & Deployment</h3>
-                <p class="text-gray-600">We conduct thorough testing, perform user acceptance testing, and deploy your solution with ongoing support.</p>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Testing & Deployment</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Rigorous testing ensures quality and reliability before we deploy your solution and provide ongoing support.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Technologies Section -->
-<section class="py-16 bg-white">
+<section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Technologies We Use
             </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                We leverage modern technologies and frameworks to build robust and scalable software solutions.
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                We leverage modern, robust technologies to build scalable and efficient solutions
             </p>
         </div>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            <!-- Tech 1 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-angular text-red-600 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">Angular</p>
-            </div>
-            
-            <!-- Tech 2 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-microsoft text-blue-600 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">.NET Core</p>
-            </div>
-            
-            <!-- Tech 3 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-microsoft text-blue-500 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">Azure</p>
-            </div>
-            
-            <!-- Tech 4 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-aws text-orange-500 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">AWS</p>
-            </div>
-            
-            <!-- Tech 5 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-python text-blue-600 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">Python</p>
-            </div>
-            
-            <!-- Tech 6 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fas fa-brain text-purple-600 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">ML.NET</p>
-            </div>
-            
-            <!-- Tech 7 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fas fa-window-restore text-blue-700 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">.NET Core MVC</p>
-            </div>
-            
-            <!-- Tech 8 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fas fa-leaf text-green-600 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">Spring Boot</p>
-            </div>
-            
-            <!-- Tech 9 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-android text-green-500 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">Android</p>
-            </div>
-            
-            <!-- Tech 10 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fab fa-apple text-gray-800 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">iOS</p>
-            </div>
-            
-            <!-- Tech 11 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fas fa-database text-gray-700 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">SQL/NoSQL</p>
-            </div>
-            
-            <!-- Tech 12 -->
-            <div class="flex flex-col items-center">
-                <div class="h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-                    <i class="fas fa-cogs text-gray-700 text-3xl"></i>
-                </div>
-                <p class="text-gray-900 font-medium text-center">DevOps</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Case Studies -->
-<!-- <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Success Stories
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Real examples of how our custom software solutions have transformed businesses.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="/api/placeholder/400/200" alt="Case Study 1" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-primary font-medium mb-1">Enterprise Resource Planning</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Manufacturing Process Optimization</h3>
-                    <p class="text-gray-600 mb-4">We developed a custom ERP system for a manufacturing client that streamlined operations and reduced production time by 35%.</p>
-                    <a href="#" class="text-primary font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Technology 1 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-js text-5xl text-yellow-500"></i>
                 </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">JavaScript</h4>
             </div>
-            
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="/api/placeholder/400/200" alt="Case Study 2" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-secondary font-medium mb-1">Healthcare Management</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Patient Care Platform</h3>
-                    <p class="text-gray-600 mb-4">Our custom healthcare management system improved patient scheduling efficiency by 42% and reduced administrative workload.</p>
-                    <a href="#" class="text-secondary font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="/api/placeholder/400/200" alt="Case Study 3" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="text-sm text-blue-500 font-medium mb-1">E-commerce Solution</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Retail Platform</h3>
-                    <p class="text-gray-600 mb-4">We built a specialized e-commerce platform that increased our client's online sales by 120% within the first year of launch.</p>
-                    <a href="#" class="text-blue-500 font-medium flex items-center">
-                        Read case study
-                        <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 
-<!-- FAQ Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Frequently Asked Questions
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Common questions about our custom software development services.
-            </p>
-        </div>
-        
-        <div class="max-w-3xl mx-auto divide-y divide-gray-200">
-            <!-- FAQ Item 1 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How long does it take to develop custom software?</h3>
-                <p class="mt-3 text-gray-600">The timeline varies depending on the complexity of the project. Simple applications may take 2-3 months, while complex enterprise solutions can take 6-12 months. During our initial consultation, we'll provide a more precise estimate for your specific project.</p>
+            <!-- Technology 2 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-python text-5xl text-blue-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Python</h4>
             </div>
-            
-            <!-- FAQ Item 2 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">How much does custom software development cost?</h3>
-                <p class="mt-3 text-gray-600">Custom software is an investment, with costs ranging from $25,000 for smaller projects to $250,000+ for enterprise solutions. We work with you to establish a clear budget and ensure you're getting maximum value for your investment.</p>
+
+            <!-- Technology 3 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-react text-5xl text-cyan-500"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">React</h4>
             </div>
-            
-            <!-- FAQ Item 3 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">Will I own the source code?</h3>
-                <p class="mt-3 text-gray-600">Yes, you will have full ownership of the custom software source code upon project completion and final payment. This gives you complete control over your software and the freedom to modify it as needed in the future.</p>
+
+            <!-- Technology 4 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-node text-5xl text-green-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Node.js</h4>
             </div>
-            
-            <!-- FAQ Item 4 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">Do you provide ongoing support after the software is launched?</h3>
-                <p class="mt-3 text-gray-600">Absolutely. We offer various support and maintenance packages to ensure your software remains secure, up-to-date, and performing optimally. We can also implement new features and enhancements as your business needs evolve.</p>
+
+            <!-- Technology 5 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-angular text-5xl text-red-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Angular</h4>
             </div>
-            
-            <!-- FAQ Item 5 -->
-            <div class="py-6">
-                <h3 class="text-lg font-medium text-gray-900">Can you work with our existing systems and integrate new software?</h3>
-                <p class="mt-3 text-gray-600">Yes, we specialize in system integrations. Our team can develop custom solutions that seamlessly integrate with your existing software, databases, APIs, and third-party services to create a cohesive ecosystem.</p>
+
+            <!-- Technology 6 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-java text-5xl text-orange-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Java</h4>
+            </div>
+
+            <!-- Technology 7 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fab fa-docker text-5xl text-blue-500"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Docker</h4>
+            </div>
+
+            <!-- Technology 8 -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                <div class="h-16 flex items-center justify-center mb-3">
+                    <i class="fas fa-database text-5xl text-gray-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 dark:text-white">Databases</h4>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 bg-gradient-to-b from-dark to-darker relative overflow-hidden">
-    <!-- Background elements -->
-    <div class="absolute inset-0 opacity-20">
-        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary opacity-20 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-secondary opacity-20 blur-3xl"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="lg:flex lg:items-center lg:justify-between">
-            <div class="lg:w-1/2 lg:pr-12">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
-                    Ready to Transform Your Business with Custom Software?
-                </h2>
-                <p class="mt-4 text-lg text-gray-300">
-                    Contact us today to schedule a free consultation. Our experts will discuss your business needs and help you determine the best software solution for your goals.
-                </p>
-            </div>
-            <div class="mt-8 lg:mt-0">
-                <div class="glass-card p-6 rounded-xl border border-white/10">
-                    <form action="https://formspree.io/f/xjkyzbry" method="POST">
-                        <div class="grid grid-cols-1 gap-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                >
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                                <input 
-                                    id="email" 
-                                    name="email" 
-                                    type="email" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                >
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Description</label>
-                                <textarea 
-                                    id="message" 
-                                    name="message" 
-                                    rows="3" 
-                                    required 
-                                    class="py-3 px-4 block w-full bg-white/5 border border-white/10 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400"
-                                ></textarea>
-                            </div>
-                            <button 
-                                type="submit" 
-                                class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 group"
-                            >
-                                <span class="flex items-center">
-                                    Request AI Consultation
-                                    <svg 
-                                        class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
-                                        viewBox="0 0 20 20" 
-                                        fill="currentColor"
-                                    >
-                                        <path 
-                                            fill-rule="evenodd" 
-                                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
-                                            clip-rule="evenodd" 
-                                        />
-                                    </svg>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Related Services -->
-<section class="py-16 bg-gray-50">
+<section class="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Related Services
+        <div class="bg-gradient-to-br from-primary to-blue-700 rounded-3xl p-12 text-center shadow-xl">
+            <h2 class="text-4xl font-bold text-white mb-6">
+                Ready to Build Your Custom Solution?
             </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Explore our other services that complement custom software development.
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                Let's discuss your project and create a tailored software solution that drives your business forward
             </p>
-        </div>
-        
-        <div class="grid gap-8 md:grid-cols-3">
-            <!-- Related Service 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-mobile-alt text-blue-500 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
-                <p class="text-gray-600 mb-4">Create engaging and functional mobile experiences for iOS and Android platforms with the latest technologies.</p>
-                <a href="mobileapp.html" class="text-blue-500 font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 inline-flex items-center justify-center">
+                    <span>Get Started</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-            </div>
-            
-            <!-- Related Service 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-cloud text-green-500 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Solutions</h3>
-                <p class="text-gray-600 mb-4">Leverage the power of cloud computing with our scalable and secure cloud-based applications and infrastructure.</p>
-                <a href="cloudsolution.html" class="text-green-500 font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Related Service 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div class="h-12 w-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-6">
-                    <i class="fas fa-brain text-indigo-500 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
-                <p class="text-gray-600 mb-4">Leverage artificial intelligence to automate processes, gain insights, and create intelligent applications.</p>
-                <a href="aisolution.html" class="text-indigo-500 font-medium flex items-center">
-                    Learn more
-                    <svg class="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <a href="case-studies.html" class="px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white/10 transition-all duration-300">
+                    <span>View Case Studies</span>
                 </a>
             </div>
         </div>
@@ -758,67 +323,57 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-darker text-white border-t border-white/5">
-    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+<footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="text-white">SL</span>
-                        </span>
-                    </a>
-                </div>
-                <p class="mt-4 text-gray-300">
+            <div>
+                <span class="text-2xl font-bold">NimbleSL</span>
+                <p class="mt-4 text-gray-400">
                     Building software solutions that power business growth and innovation.
                 </p>
                 <div class="flex space-x-4 mt-6">
-                    <a href="https://www.facebook.com/nimblesl" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="https://www.facebook.com/nimblesl" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.instagram.com/nimblesoftwarelab" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="https://www.instagram.com/nimblesoftwarelab" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.linkedin.com/company/nimble-software-lab" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="https://www.linkedin.com/company/nimble-software-lab" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Solutions</h3>
-                <ul class="mt-4 space-y-4">
-                    <ul class="mt-4 space-y-4">
-                        <li><a href="customsoftware.html" class="text-gray-300 hover:text-white transition-colors duration-300">Custom Software</a></li>
-                        <li><a href="mobileapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Mobile Apps</a></li>
-                        <li><a href="webapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Web Applications</a></li>
-                        <li><a href="cloudsolution.html" class="text-gray-300 hover:text-white transition-colors duration-300">Cloud Services</a></li>
-                        <li><a href="backend.html" class="text-gray-300 hover:text-white transition-colors duration-300">Backend development</a></li>
-                        <li><a href="webapp.html" class="text-gray-300 hover:text-white transition-colors duration-300">Web App Development</a></li>
-                    </ul>
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Solutions</h3>
+                <ul class="space-y-3">
+                    <li><a href="customsoftware.html" class="text-gray-400 hover:text-white transition-colors">Custom Software</a></li>
+                    <li><a href="mobileapp.html" class="text-gray-400 hover:text-white transition-colors">Mobile Apps</a></li>
+                    <li><a href="webapp.html" class="text-gray-400 hover:text-white transition-colors">Web Applications</a></li>
+                    <li><a href="cloudsolution.html" class="text-gray-400 hover:text-white transition-colors">Cloud Services</a></li>
+                    <li><a href="backend.html" class="text-gray-400 hover:text-white transition-colors">Backend Development</a></li>
+                    <li><a href="aisolution.html" class="text-gray-400 hover:text-white transition-colors">AI Solutions</a></li>
                 </ul>
             </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Company</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="index.html#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Careers</a></li>
-                    <!-- <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li> -->
-                    <li><a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                    <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                    <li><a href="case-studies.html" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                    <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                 </ul>
             </div>
-            <div class="col-span-1">
-                <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Legal</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+            <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Legal</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
                 </ul>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-700 pt-8">
-            <p class="text-base text-gray-400 text-center">
+        <div class="mt-12 border-t border-gray-800 pt-8">
+            <p class="text-gray-400 text-center">
                 &copy; 2025 Nimble Software Lab. All rights reserved.
             </p>
         </div>
@@ -826,184 +381,53 @@
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
+const themeToggle = document.getElementById('theme-toggle');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+const htmlElement = document.documentElement;
+const currentTheme = localStorage.getItem('theme') || 'light';
+htmlElement.classList.remove('light', 'dark');
+htmlElement.classList.add(currentTheme);
 
-    // Smooth Scrolling for Anchor Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            }
+function toggleTheme() {
+    if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        localStorage.setItem('theme', 'light');
+    } else {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+themeToggle.addEventListener('click', toggleTheme);
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+}
+
+// Mobile Menu Toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on links
+    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
     });
 
-    // Mobile Services Dropdown
-    const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
-    if (mobileTrigger) {
-        mobileTrigger.addEventListener('click', function() {
-            const dropdownMenu = this.nextElementSibling;
-            const chevron = this.querySelector('svg');
-            
-            if (dropdownMenu && chevron) {
-                dropdownMenu.classList.toggle('hidden');
-                chevron.classList.toggle('rotate-180');
-            }
+    // Close mobile menu when clicking theme toggle
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
     }
-
-    // Desktop Services Dropdown
-    const dropdownWrapper = document.querySelector('.services-dropdown-wrapper');
-    const dropdownMenu = document.querySelector('.services-dropdown-menu');
-    const dropdownTrigger = document.querySelector('.services-dropdown-trigger');
-
-    if (dropdownWrapper && dropdownMenu && dropdownTrigger) {
-        let isDropdownOpen = false;
-
-        // Dropdown Visibility Management
-        function setDropdownVisibility(visible) {
-            dropdownMenu.style.visibility = visible ? 'visible' : 'hidden';
-            dropdownMenu.style.opacity = visible ? '1' : '0';
-            dropdownMenu.style.transform = visible 
-                ? 'translateY(0)' 
-                : 'translateY(10px)';
-            isDropdownOpen = visible;
-        }
-
-        // Trigger Click Handler
-        dropdownTrigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            setDropdownVisibility(!isDropdownOpen);
-        });
-
-        // Hover Interactions
-        dropdownWrapper.addEventListener('mouseenter', () => {
-            if (!isDropdownOpen) {
-                setDropdownVisibility(true);
-            }
-        });
-
-        dropdownWrapper.addEventListener('mouseleave', () => {
-            if (!isDropdownOpen) {
-                setDropdownVisibility(false);
-            }
-        });
-
-        // Prevent dropdown from closing when clicking inside
-        dropdownMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
-
-    // Close Dropdowns When Clicking Outside
-    document.addEventListener('click', function(event) {
-        const desktopDropdown = document.querySelector('.services-dropdown-menu');
-        const mobileDropdown = document.querySelector('.services-mobile-dropdown-menu');
-        const desktopTrigger = document.querySelector('.services-dropdown-trigger');
-        const mobileTrigger = document.querySelector('.services-mobile-dropdown-trigger');
-
-        // Desktop Dropdown
-        if (desktopDropdown && desktopTrigger) {
-            if (!desktopDropdown.contains(event.target) && !desktopTrigger.contains(event.target)) {
-                desktopDropdown.style.visibility = 'hidden';
-                desktopDropdown.style.opacity = '0';
-                desktopDropdown.style.transform = 'translateY(10px)';
-            }
-        }
-
-        // Mobile Dropdown
-        if (mobileDropdown && mobileTrigger) {
-            if (!mobileDropdown.contains(event.target) && !mobileTrigger.contains(event.target)) {
-                mobileDropdown.classList.add('hidden');
-                mobileTrigger.querySelector('svg')?.classList.remove('rotate-180');
-            }
-        }
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const consultationForm = document.querySelector('form[action*="formspree.io"]');
-    
-    if (consultationForm) {
-        consultationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(consultationForm);
-            
-            // Validate required fields
-            const requiredFields = ['name', 'email', 'message'];
-            const missingFields = requiredFields.filter(field => 
-                !formData.get(field) || formData.get(field).trim() === ''
-            );
-            
-            if (missingFields.length > 0) {
-                alert(`Please fill in the following required fields: ${missingFields.join(', ')}`);
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.get('email'))) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
-            // Submission logic
-            fetch(consultationForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success handling
-                    const successMessage = document.createElement('div');
-                    successMessage.classList.add('text-green-400', 'mt-4', 'text-center');
-                    successMessage.textContent = 'Thank you for your consultation request! We will get back to you soon.';
-                    
-                    // Clear form and show success message
-                    consultationForm.reset();
-                    consultationForm.appendChild(successMessage);
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                } else {
-                    // Error handling
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was a problem submitting the form. Please try again.');
-            });
-        });
-    }
-});
+}
 </script>
 </body>
 </html>
