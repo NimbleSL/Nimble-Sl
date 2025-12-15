@@ -6,14 +6,23 @@
 <title>Our Team - Nimble Software Lab</title>
 <link rel="icon" type="image/x-icon" href="images/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(-10px); transition: all 0.2s ease; }
+    .dropdown:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: #4ade80 !important; }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background-color: #4ade80; }
+    .dark .nav-link:hover, .dark .nav-link.active { color: #4ade80 !important; }
+    .dark .dropdown-menu a:hover { background-color: rgba(74, 222, 128, 0.1) !important; color: #4ade80 !important; }
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <script>
     tailwind.config = {
         theme: {
             extend: {
                 colors: {
-                    primary: '#0070F3',
-                    secondary: '#00CC8F',
+                    primary: '#1a2a44',
+                    secondary: '#4ade80', navy: '#1a2a44', accent: '#4ade80',
                     dark: '#111827',
                     darker: '#050A19',
                     light: '#F0F9FF',
@@ -52,6 +61,15 @@
         }
     }
 </script>
+<style>
+    .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(-10px); transition: all 0.2s ease; }
+    .dropdown:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: #4ade80 !important; }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background-color: #4ade80; }
+    .dark .nav-link:hover, .dark .nav-link.active { color: #4ade80 !important; }
+    .dark .dropdown-menu a:hover { background-color: rgba(74, 222, 128, 0.1) !important; color: #4ade80 !important; }
+</style>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
@@ -116,68 +134,56 @@
 <!-- Navigation -->
 <nav class="fixed top-0 w-full z-50 bg-darker/80 backdrop-filter backdrop-blur-lg border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
-                            <span class="dark:text-white text-gray-900">SL</span>
-                        </span>
+                    <a href="index.html" class="flex items-center group">
+                        <img src="images/logo-white.png" alt="Nimble Software Lab Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
+                        <div class="hidden lg:block ml-3 border-l border-white/20 pl-3">
+                            <span class="text-xs text-gray-400 block leading-tight">Leading Through Innovation</span>
+                            <span class="text-xs text-secondary font-medium block leading-tight">Delivering Through Excellence</span>
+                        </div>
                     </a>
                 </div>
-                <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                    <a href="index.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Home</a>
-                    
+                <div class="hidden md:ml-8 md:flex md:space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium transition-colors">Home</a>
+
                     <!-- Services Dropdown for Desktop -->
                     <div class="services-dropdown-wrapper relative group">
-                        <button class="services-dropdown-trigger border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">
+                        <button class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium inline-flex items-center transition-colors">
                             Services
                             <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
                         </button>
-                        
+
                         <!-- Dropdown Menu -->
                         <div class="services-dropdown-menu absolute z-50 left-0 mt-2 w-56 origin-top-left bg-darker border border-white/10 rounded-lg shadow-lg py-2">
-                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Custom Software
-                            </a>
-                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Mobile Apps
-                            </a>
-                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Web Applications
-                            </a>
-                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Cloud Services
-                            </a>
-                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                Backend Development
-                            </a>
-                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark hover:text-white transition-colors duration-300">
-                                AI Solutions
-                            </a>
+                            <a href="customsoftware.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Custom Software</a>
+                            <a href="mobileapp.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Mobile Apps</a>
+                            <a href="webapp.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Web Applications</a>
+                            <a href="cloudsolution.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Cloud Services</a>
+                            <a href="backend.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Backend Development</a>
+                            <a href="aisolution.html" class="block px-4 py-2.5 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">AI Solutions</a>
                         </div>
                     </div>
 
-                    <!-- <a href="team.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Team</a> -->
-                    <a href="index.html#about" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">About</a>
-                    <a href="index.html#contact" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Contact</a>
-                    <!-- <a href="blog.html" class="border-transparent text-gray-300 hover:text-white hover:border-white/50 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300">Blog</a> -->
+                    <a href="products.html" class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium transition-colors">Products</a>
+                    <a href="case-studies.html" class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium transition-colors">Case Studies</a>
+                    <a href="index.html#about" class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium transition-colors">About</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-secondary px-2 py-2 text-sm font-medium transition-colors">Contact</a>
                 </div>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-300 flex items-center space-x-2 group">
+                <a href="index.html#contact" class="bg-secondary text-primary px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-green-400 transition-all hover:shadow-lg flex items-center space-x-2 group">
                     <span>Get Started</span>
                     <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none" aria-expanded="false" id="mobile-menu-button">
+            <div class="-mr-2 flex items-center md:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-secondary focus:outline-none" aria-expanded="false" id="mobile-menu-button">
                     <span class="sr-only">Open main menu</span>
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -190,10 +196,23 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1 bg-dark border-b border-white/10">
-            <a href="#" class="border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-all duration-300">Home</a>
-            
-            <!-- Mobile Services Dropdown -->
-            <div class="relative">
+            <a href="index.html" class="block px-4 py-3 text-gray-300 hover:bg-green-900/20 hover:text-secondary transition-colors">Home</a>
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-2">Services</p>
+            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">Custom Software</a>
+            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">Mobile Apps</a>
+            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">Web Applications</a>
+            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">Cloud Services</a>
+            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">Backend Development</a>
+            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-green-900/20 hover:text-secondary">AI Solutions</a>
+            <div class="border-t border-white/10 my-2"></div>
+            <a href="products.html" class="block px-4 py-3 text-gray-300 hover:bg-green-900/20 hover:text-secondary">Products</a>
+            <a href="case-studies.html" class="block px-4 py-3 text-gray-300 hover:bg-green-900/20 hover:text-secondary">Case Studies</a>
+            <a href="index.html#about" class="block px-4 py-3 text-gray-300 hover:bg-green-900/20 hover:text-secondary">About</a>
+            <a href="index.html#contact" class="block px-4 py-3 text-gray-300 hover:bg-green-900/20 hover:text-secondary">Contact</a>
+            <a href="index.html#contact" class="block mx-4 mt-4 px-4 py-3 bg-secondary text-primary rounded-lg text-center font-semibold hover:bg-green-400 transition-colors">Get Started</a>
+
+            <!-- Mobile Services Dropdown (old - to be removed) -->
+            <div class="relative hidden">
                 <button class="services-mobile-dropdown-trigger w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-300 hover:bg-darker hover:border-white/30 hover:text-white text-base font-medium transition-all duration-300">
                     Services
                     <svg class="float-right h-5 w-5 transform" fill="currentColor" viewBox="0 0 20 20">
@@ -740,7 +759,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
+                    <a href="index.html" class="flex items-center group">
                         <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-8 w-auto mr-2">
                         <span class="text-2xl font-bold">
                             <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Nimble</span>
@@ -920,5 +939,14 @@
     });
 });
 </script>
+<style>
+    .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(-10px); transition: all 0.2s ease; }
+    .dropdown:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: #4ade80 !important; }
+    .nav-link.active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background-color: #4ade80; }
+    .dark .nav-link:hover, .dark .nav-link.active { color: #4ade80 !important; }
+    .dark .dropdown-menu a:hover { background-color: rgba(74, 222, 128, 0.1) !important; color: #4ade80 !important; }
+</style>
 </body>
 </html>

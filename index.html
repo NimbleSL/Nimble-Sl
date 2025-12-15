@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="images/logo.png">
-<title>NimbleSL - Enterprise Software Solutions</title>
+<title>Nimble Software Lab - Leading Through Innovation, Delivering Through Excellence</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <script>
@@ -13,8 +13,10 @@
         theme: {
             extend: {
                 colors: {
-                    primary: '#0070F3',
-                    secondary: '#00CC8F',
+                    primary: '#1a2a44',
+                    secondary: '#4ade80',
+                    navy: '#1a2a44',
+                    accent: '#4ade80',
                 }
             }
         }
@@ -35,59 +37,108 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* Nav link styles */
+    .nav-link {
+        position: relative;
+        transition: color 0.2s ease;
+    }
+    .nav-link:hover {
+        color: #4ade80 !important;
+    }
+    .nav-link.active {
+        color: #4ade80 !important;
+    }
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #4ade80;
+    }
+
+    /* Dark mode specific */
+    .dark .nav-link:hover {
+        color: #4ade80 !important;
+    }
+    .dark .dropdown-menu a:hover {
+        background-color: rgba(74, 222, 128, 0.1) !important;
+        color: #4ade80 !important;
+    }
 </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
 
+<!-- Announcement Banner -->
+<div id="announcement-banner" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-primary via-primary to-green-900 text-white py-2.5 px-4 transition-transform duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-center relative">
+        <div class="flex items-center space-x-2 text-sm md:text-base">
+            <i class="fas fa-rocket text-secondary animate-pulse"></i>
+            <span class="font-medium">Want to launch your startup?</span>
+            <span class="hidden sm:inline text-gray-300">|</span>
+            <span class="hidden sm:inline">Build your MVP in <span class="text-secondary font-bold">1 month</span> with us!</span>
+            <a href="index.html#contact" class="ml-2 bg-secondary text-primary px-3 py-1 rounded-full text-xs font-bold hover:bg-green-400 transition-colors">
+                Get Started <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        <button id="close-banner" class="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors" aria-label="Close banner">
+            <i class="fas fa-times text-gray-300 hover:text-white"></i>
+        </button>
+    </div>
+</div>
+
 <!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-white dark:bg-gray-900 shadow-sm transition-colors duration-300">
+<nav id="main-nav" class="fixed top-10 w-full z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="images/logo.png" alt="NimbleSL Logo" class="h-8 w-auto mr-2">
-                        <span class="text-2xl font-bold">
-                            <span class="text-primary">Nimble</span>
-                            <span class="text-gray-900 dark:text-white">SL</span>
-                        </span>
+                    <a href="index.html" class="flex items-center group">
+                        <img src="images/logo.png" alt="Nimble Software Lab Logo" class="h-12 w-auto transition-transform group-hover:scale-105 dark:hidden">
+                        <img src="images/logo-white.png" alt="Nimble Software Lab Logo" class="h-14 w-auto transition-transform group-hover:scale-105 hidden dark:block">
+                        <div class="hidden lg:block ml-3 border-l border-gray-300 dark:border-gray-600 pl-3">
+                            <span class="text-xs text-gray-500 dark:text-gray-400 block leading-tight">Leading Through Innovation</span>
+                            <span class="text-xs text-secondary font-medium block leading-tight">Delivering Through Excellence</span>
+                        </div>
                     </a>
                 </div>
-                <div class="hidden md:ml-10 md:flex md:space-x-8">
-                    <a href="index.html" class="border-b-2 border-primary text-gray-900 dark:text-white px-1 pt-1 text-sm font-medium">Home</a>
+                <div class="hidden md:ml-8 md:flex md:space-x-6">
+                    <a href="index.html" class="nav-link active text-gray-900 dark:text-white px-2 py-2 text-sm font-medium">Home</a>
 
                     <div class="relative dropdown">
-                        <button class="border-b-2 border-transparent text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-1 pt-1 text-sm font-medium inline-flex items-center">
+                        <button class="nav-link text-gray-600 dark:text-gray-300 px-2 py-2 text-sm font-medium inline-flex items-center">
                             Services
                             <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </button>
-                        <div class="dropdown-menu absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2">
-                            <a href="customsoftware.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">Custom Software</a>
-                            <a href="mobileapp.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">Mobile Apps</a>
-                            <a href="webapp.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">Web Applications</a>
-                            <a href="cloudsolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">Cloud Services</a>
-                            <a href="backend.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">Backend Development</a>
-                            <a href="aisolution.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary">AI Solutions</a>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-2">
+                            <a href="customsoftware.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">Custom Software</a>
+                            <a href="mobileapp.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">Mobile Apps</a>
+                            <a href="webapp.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">Web Applications</a>
+                            <a href="cloudsolution.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">Cloud Services</a>
+                            <a href="backend.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">Backend Development</a>
+                            <a href="aisolution.html" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary transition-colors">AI Solutions</a>
                         </div>
                     </div>
 
-                    <a href="products.html" class="border-b-2 border-transparent text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:border-gray-300 px-1 pt-1 text-sm font-medium">Products</a>
-                    <a href="case-studies.html" class="border-b-2 border-transparent text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:border-gray-300 px-1 pt-1 text-sm font-medium">Case Studies</a>
-                    <a href="#about" class="border-b-2 border-transparent text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:border-gray-300 px-1 pt-1 text-sm font-medium">About</a>
-                    <a href="#contact" class="border-b-2 border-transparent text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:border-gray-300 px-1 pt-1 text-sm font-medium">Contact</a>
+                    <a href="products.html" class="nav-link text-gray-600 dark:text-gray-300 px-2 py-2 text-sm font-medium">Products</a>
+                    <a href="case-studies.html" class="nav-link text-gray-600 dark:text-gray-300 px-2 py-2 text-sm font-medium">Case Studies</a>
+                    <a href="index.html#about" class="nav-link text-gray-600 dark:text-gray-300 px-2 py-2 text-sm font-medium">About</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 dark:text-gray-300 px-2 py-2 text-sm font-medium">Contact</a>
                 </div>
             </div>
             <div class="hidden md:flex md:items-center md:space-x-4">
-                <button id="theme-toggle" class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:inline"></i>
+                <button id="theme-toggle" class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-secondary transition-colors">
+                    <i class="fas fa-moon dark:hidden text-lg"></i>
+                    <i class="fas fa-sun hidden dark:inline text-lg"></i>
                 </button>
-                <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-md text-sm font-medium hover:bg-blue-600 transition-colors">
+                <a href="index.html#contact" class="bg-secondary text-primary px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-green-400 transition-all hover:shadow-lg">
                     Get Started
                 </a>
             </div>
             <div class="flex items-center md:hidden">
-                <button id="mobile-menu-button" class="p-2 rounded-md text-gray-600 dark:text-gray-300">
+                <button id="mobile-menu-button" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-secondary">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
@@ -95,44 +146,54 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800">Home</a>
-            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Products</a>
-            <a href="case-studies.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Case Studies</a>
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
-            <button id="mobile-theme-toggle" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center">
-                <i class="fas fa-moon dark:hidden mr-2"></i>
-                <i class="fas fa-sun hidden dark:inline mr-2"></i>
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div class="px-4 pt-4 pb-4 space-y-2">
+            <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-secondary bg-green-50 dark:bg-green-900/20">Home</a>
+            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+            <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Services</p>
+            <a href="customsoftware.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Custom Software</a>
+            <a href="mobileapp.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Mobile Apps</a>
+            <a href="webapp.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Web Applications</a>
+            <a href="cloudsolution.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Cloud Services</a>
+            <a href="backend.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Backend Development</a>
+            <a href="aisolution.html" class="block px-4 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">AI Solutions</a>
+            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+            <a href="products.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Products</a>
+            <a href="case-studies.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Case Studies</a>
+            <a href="index.html#about" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">About</a>
+            <a href="index.html#contact" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-secondary">Contact</a>
+            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+            <button id="mobile-theme-toggle" class="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center">
+                <i class="fas fa-moon dark:hidden mr-3"></i>
+                <i class="fas fa-sun hidden dark:inline mr-3"></i>
                 <span class="dark:hidden">Dark Mode</span>
                 <span class="hidden dark:inline">Light Mode</span>
             </button>
-            <a href="#contact" class="block mx-3 mt-4 px-4 py-2 bg-primary text-white rounded-md text-center font-medium">Get Started</a>
+            <a href="index.html#contact" class="block mt-4 px-4 py-3 bg-secondary text-primary rounded-lg text-center font-semibold hover:bg-green-400 transition-colors">Get Started</a>
         </div>
     </div>
 </nav>
 
 <!-- Hero Section -->
-<section class="pt-32 pb-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+<section class="pt-28 pb-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-4xl mx-auto mb-16">
-            <div class="inline-block mb-6 px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
-                <span class="text-primary text-sm font-medium">ENTERPRISE SOFTWARE SOLUTIONS</span>
+            <div class="inline-block mb-6 px-4 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-full border border-green-200 dark:border-green-800">
+                <span class="text-secondary text-sm font-medium">LEADING THROUGH INNOVATION, DELIVERING THROUGH EXCELLENCE</span>
             </div>
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                Transform Your Business<br/>
-                with <span class="text-primary">Intelligent Software</span>
+                Transform Your Vision<br/>
+                into <span class="text-secondary">Reality</span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300 mb-10">
-                We build enterprise-grade software solutions that drive growth, efficiency, and innovation for businesses worldwide.
+                We bridge the gap between business ambition and technical execution. Enterprise-grade applications, from complex web platforms to SaaS products designed to drive real results.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#contact" class="px-8 py-4 bg-primary text-white font-medium rounded-md hover:bg-blue-600 transition-colors inline-flex items-center">
+                <a href="#contact" class="px-8 py-4 bg-secondary text-primary font-semibold rounded-md hover:bg-green-400 transition-colors inline-flex items-center">
                     Get Started
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-                <a href="#services" class="px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium rounded-md border-2 border-gray-300 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:text-primary transition-colors">
+                <a href="#services" class="px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium rounded-md border-2 border-primary dark:border-gray-700 hover:bg-primary hover:text-white transition-colors">
                     View Services
                 </a>
             </div>
@@ -177,8 +238,8 @@
 <section id="services" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <div class="inline-block mb-4 px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
-                <span class="text-primary text-sm font-medium">OUR SERVICES</span>
+            <div class="inline-block mb-4 px-4 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-full border border-green-200 dark:border-green-800">
+                <span class="text-secondary text-sm font-medium">OUR SERVICES</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Solutions That Drive Growth
@@ -339,15 +400,15 @@
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-primary to-blue-600 rounded-lg p-8 text-center text-white">
-            <div class="inline-block mb-4 px-4 py-1.5 bg-white/20 rounded-full">
-                <span class="text-white text-sm font-medium">AI-POWERED FEATURES</span>
+        <div class="bg-gradient-to-r from-primary to-navy rounded-lg p-8 text-center text-white">
+            <div class="inline-block mb-4 px-4 py-1.5 bg-secondary/20 rounded-full">
+                <span class="text-secondary text-sm font-medium">AI-POWERED FEATURES</span>
             </div>
             <h3 class="text-2xl font-bold mb-4">Intelligent Automation</h3>
             <p class="mb-6 max-w-3xl mx-auto">
                 RAG Chatbot, Email Automation, Lead Generation, Fraud Detection, Document Forgery Detection, and OCR
             </p>
-            <a href="products.html" class="inline-flex items-center px-8 py-3 bg-white text-primary font-medium rounded-md hover:bg-gray-100 transition-colors">
+            <a href="products.html" class="inline-flex items-center px-8 py-3 bg-secondary text-primary font-semibold rounded-md hover:bg-green-400 transition-colors">
                 Explore All Products
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -360,17 +421,17 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <div class="inline-block mb-4 px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
-                    <span class="text-primary text-sm font-medium">ABOUT US</span>
+                <div class="inline-block mb-4 px-4 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-full border border-green-200 dark:border-green-800">
+                    <span class="text-secondary text-sm font-medium">ABOUT US</span>
                 </div>
                 <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                    We're Redefining Software Development
+                    Engineering the Future of Digital Innovation
                 </h2>
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
-                    At Nimble Software Lab, we're passionate about creating software that makes a difference. Our team of experienced developers, designers, and project managers work together to deliver high-quality solutions that exceed client expectations.
+                    Nimble Software Lab is a Bangladesh-based software development company committed to transforming business challenges into scalable, high-impact technology solutions. Founded by four technologists united by a vision of engineering excellence beyond borders, we combine deep technical expertise with strategic business understanding to deliver software that drives real results.
                 </p>
                 <p class="text-gray-600 dark:text-gray-400 mb-8">
-                    Founded with a vision to make advanced technology accessible to businesses of all sizes, we combine technical expertise with a deep understanding of business needs to create solutions that drive growth and efficiency.
+                    Our work is guided by <strong class="text-secondary">OWN IT</strong> - our core values of Openness & Transparency, Work Excellence, Next-Gen Innovation, Integrity, and Teamwork. When you work with Nimble, you gain more than technical capability; you gain a team genuinely invested in your success.
                 </p>
 
                 <div class="grid grid-cols-2 gap-6">
@@ -422,8 +483,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-12">
             <div>
-                <div class="inline-block mb-4 px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800">
-                    <span class="text-primary text-sm font-medium">GET IN TOUCH</span>
+                <div class="inline-block mb-4 px-4 py-1.5 bg-green-50 dark:bg-green-900/30 rounded-full border border-green-200 dark:border-green-800">
+                    <span class="text-secondary text-sm font-medium">GET IN TOUCH</span>
                 </div>
                 <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
                     Let's Build Something Together
@@ -434,8 +495,8 @@
 
                 <div class="space-y-6">
                     <div class="flex items-start">
-                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-secondary"></i>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-gray-900 dark:text-white font-medium">Our Location</h3>
@@ -444,22 +505,22 @@
                     </div>
 
                     <div class="flex items-start">
-                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-envelope text-primary"></i>
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-secondary"></i>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-gray-900 dark:text-white font-medium">Email Us</h3>
-                            <p class="text-gray-600 dark:text-gray-400">admin@nimblesl.com</p>
+                            <p class="text-gray-600 dark:text-gray-400">sales@nimblesl.com<br>hello@nimblesl.com</p>
                         </div>
                     </div>
 
                     <div class="flex items-start">
-                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-phone-alt text-primary"></i>
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone-alt text-secondary"></i>
                         </div>
                         <div class="ml-4">
                             <h3 class="text-gray-900 dark:text-white font-medium">Call Us</h3>
-                            <p class="text-gray-600 dark:text-gray-400">+880-1796109979<br>Mon-Fri: 9am-6pm</p>
+                            <p class="text-gray-600 dark:text-gray-400">+88017 9610 9979<br>Mon-Fri: 9am-6pm</p>
                         </div>
                     </div>
                 </div>
@@ -505,7 +566,7 @@
                         <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
                         <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                     </div>
-                    <button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                    <button type="submit" class="w-full px-6 py-3 bg-secondary text-primary font-semibold rounded-md hover:bg-green-400 transition-colors">
                         Send Message
                     </button>
                 </form>
@@ -515,60 +576,57 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<footer class="bg-primary dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <div class="flex items-center mb-4">
-                    <span class="text-2xl font-bold">
-                        <span class="text-primary">Nimble</span>
-                        <span class="text-gray-900 dark:text-white">SL</span>
-                    </span>
+                    <img src="images/logo-white.png" alt="Nimble Software Lab" class="h-10 w-auto">
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                    Building software solutions that power business growth and innovation.
+                <p class="text-gray-300 dark:text-gray-400 mb-4">
+                    Leading Through Innovation, Delivering Through Excellence. Building software solutions that power business growth and innovation.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/nimblesl" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                    <a href="https://www.facebook.com/nimblesl" class="text-gray-300 hover:text-secondary transition-colors">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.instagram.com/nimblesoftwarelab" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                    <a href="https://www.instagram.com/nimblesoftwarelab" class="text-gray-300 hover:text-secondary transition-colors">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.linkedin.com/company/nimble-software-lab" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/company/nimble-software-lab" class="text-gray-300 hover:text-secondary transition-colors">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
             <div>
-                <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Solutions</h3>
+                <h3 class="text-sm font-semibold text-white mb-4">Solutions</h3>
                 <ul class="space-y-2">
-                    <li><a href="customsoftware.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Custom Software</a></li>
-                    <li><a href="mobileapp.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Mobile Apps</a></li>
-                    <li><a href="webapp.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Web Applications</a></li>
-                    <li><a href="cloudsolution.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Cloud Services</a></li>
+                    <li><a href="customsoftware.html" class="text-gray-300 hover:text-secondary transition-colors">Custom Software</a></li>
+                    <li><a href="mobileapp.html" class="text-gray-300 hover:text-secondary transition-colors">Mobile Apps</a></li>
+                    <li><a href="webapp.html" class="text-gray-300 hover:text-secondary transition-colors">Web Applications</a></li>
+                    <li><a href="cloudsolution.html" class="text-gray-300 hover:text-secondary transition-colors">Cloud Services</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Company</h3>
+                <h3 class="text-sm font-semibold text-white mb-4">Company</h3>
                 <ul class="space-y-2">
-                    <li><a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">About</a></li>
-                    <li><a href="products.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Products</a></li>
-                    <li><a href="case-studies.html" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Case Studies</a></li>
-                    <li><a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="#about" class="text-gray-300 hover:text-secondary transition-colors">About</a></li>
+                    <li><a href="products.html" class="text-gray-300 hover:text-secondary transition-colors">Products</a></li>
+                    <li><a href="case-studies.html" class="text-gray-300 hover:text-secondary transition-colors">Case Studies</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-secondary transition-colors">Contact</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Legal</h3>
+                <h3 class="text-sm font-semibold text-white mb-4">Contact</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">Cookie Policy</a></li>
+                    <li class="text-gray-300"><i class="fas fa-phone mr-2 text-secondary"></i>+88017 9610 9979</li>
+                    <li class="text-gray-300"><i class="fas fa-envelope mr-2 text-secondary"></i>sales@nimblesl.com</li>
+                    <li class="text-gray-300"><i class="fas fa-globe mr-2 text-secondary"></i>www.nimblesl.com</li>
                 </ul>
             </div>
         </div>
-        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <p class="text-center text-gray-600 dark:text-gray-400">
+        <div class="mt-8 pt-8 border-t border-gray-600">
+            <p class="text-center text-gray-300">
                 &copy; 2025 Nimble Software Lab. All rights reserved.
             </p>
         </div>
@@ -576,6 +634,29 @@
 </footer>
 
 <script>
+// Announcement Banner
+const banner = document.getElementById('announcement-banner');
+const closeBanner = document.getElementById('close-banner');
+const mainNav = document.getElementById('main-nav');
+
+// Check if banner was previously closed
+if (localStorage.getItem('bannerClosed') === 'true') {
+    banner.style.display = 'none';
+    mainNav.style.top = '0';
+} else {
+    banner.style.display = 'block';
+    mainNav.style.top = '40px';
+}
+
+closeBanner.addEventListener('click', () => {
+    banner.style.transform = 'translateY(-100%)';
+    setTimeout(() => {
+        banner.style.display = 'none';
+        mainNav.style.top = '0';
+    }, 300);
+    localStorage.setItem('bannerClosed', 'true');
+});
+
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const mobileThemeToggle = document.getElementById('mobile-theme-toggle');

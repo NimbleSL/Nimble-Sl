@@ -3,7 +3,9 @@
     "allow": [
       "Bash(for file in webapp.html cloudsolution.html aisolution.html mobileapp.html)",
       "Bash(do echo \"Processing $file\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(mkdir:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
