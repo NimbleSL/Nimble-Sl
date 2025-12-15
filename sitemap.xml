@@ -6,7 +6,7 @@
 
     <!-- Homepage - Highest Priority -->
     <url>
-        <loc>https://nimblesoftwarelab.com/</loc>
+        <loc>https://www.nimblesl.com/</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
     <!-- SEO Landing Page - Highest Priority -->
     <url>
-        <loc>https://nimblesoftwarelab.com/software-development-company-bangladesh.html</loc>
+        <loc>https://www.nimblesl.com/software-development-company-bangladesh.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -22,42 +22,42 @@
 
     <!-- Service Pages - High Priority -->
     <url>
-        <loc>https://nimblesoftwarelab.com/webapp.html</loc>
+        <loc>https://www.nimblesl.com/webapp.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/mobileapp.html</loc>
+        <loc>https://www.nimblesl.com/mobileapp.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/cloudsolution.html</loc>
+        <loc>https://www.nimblesl.com/cloudsolution.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/aisolution.html</loc>
+        <loc>https://www.nimblesl.com/aisolution.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/backend.html</loc>
+        <loc>https://www.nimblesl.com/backend.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/customsoftware.html</loc>
+        <loc>https://www.nimblesl.com/customsoftware.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -65,14 +65,14 @@
 
     <!-- Products & Portfolio Pages -->
     <url>
-        <loc>https://nimblesoftwarelab.com/products.html</loc>
+        <loc>https://www.nimblesl.com/products.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/case-studies.html</loc>
+        <loc>https://www.nimblesl.com/case-studies.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -80,14 +80,14 @@
 
     <!-- Team & Blog Pages -->
     <url>
-        <loc>https://nimblesoftwarelab.com/team.html</loc>
+        <loc>https://www.nimblesl.com/team.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://nimblesoftwarelab.com/blog.html</loc>
+        <loc>https://www.nimblesl.com/blog.html</loc>
         <lastmod>2025-12-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>

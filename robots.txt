@@ -1,5 +1,5 @@
 # Robots.txt for Nimble Software Lab
-# https://nimblesoftwarelab.com
+# https://www.nimblesl.com
 
 User-agent: *
 Allow: /
@@ -24,7 +24,7 @@ User-agent: YandexBot
 Allow: /
 
 # Sitemap location
-Sitemap: https://nimblesoftwarelab.com/sitemap.xml
+Sitemap: https://www.nimblesl.com/sitemap.xml
 
 # Crawl-delay (optional - be polite to servers)
 Crawl-delay: 10
