@@ -85,14 +85,7 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- Team & Blog Pages -->
-    <url>
-        <loc>https://www.nimblesl.com/team.html</loc>
-        <lastmod>2025-12-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
+    <!-- Blog Pages -->
     <url>
         <loc>https://www.nimblesl.com/blog.html</loc>
         <lastmod>2025-12-16</lastmod>
