@@ -8,7 +8,15 @@
       "Bash(grep:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ng version:*)",
+      "Bash(npx @angular/cli:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npm config set:*)",
+      "Bash(npm install)",
+      "Bash(npm start)",
+      "Bash(npm run build:*)",
+      "Bash(git ls-tree:*)"
     ],
     "deny": [],
     "ask": []
