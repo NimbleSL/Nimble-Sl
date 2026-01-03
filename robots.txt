@@ -32,15 +32,15 @@ Crawl-delay: 10
 # Disallow admin or private directories (if any)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /*.xml$
 
 # Allow important files
 Allow: /sitemap.xml
-Allow: /images/
+Allow: /manifest.json
+Allow: /assets/
 Allow: /*.css
 Allow: /*.js
 Allow: /*.png
 Allow: /*.jpg
 Allow: /*.gif
 Allow: /*.svg
+Allow: /*.ico
