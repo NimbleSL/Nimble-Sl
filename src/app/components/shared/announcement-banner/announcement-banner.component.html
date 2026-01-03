@@ -1,0 +1,16 @@
+<div *ngIf="isVisible" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-primary via-primary to-green-900 text-white py-2.5 px-4 transition-transform duration-300">
+  <div class="max-w-7xl mx-auto flex items-center justify-center relative">
+    <div class="flex items-center space-x-2 text-sm md:text-base">
+      <i class="fas fa-rocket text-secondary animate-pulse"></i>
+      <span class="font-medium">Want to launch your startup?</span>
+      <span class="hidden sm:inline text-gray-300">|</span>
+      <span class="hidden sm:inline">Build your MVP in <span class="text-secondary font-bold">1 month</span> with us!</span>
+      <a routerLink="/" fragment="contact" class="ml-2 bg-secondary text-primary px-3 py-1 rounded-full text-xs font-bold hover:bg-green-400 transition-colors">
+        Get Started <i class="fas fa-arrow-right ml-1"></i>
+      </a>
+    </div>
+    <button (click)="closeBanner()" class="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors" aria-label="Close banner">
+      <i class="fas fa-times text-gray-300 hover:text-white"></i>
+    </button>
+  </div>
+</div>
