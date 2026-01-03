@@ -468,18 +468,14 @@
 </footer>
 
 <script>
-// Announcement Banner
+// Announcement Banner - Always show on page load
 const banner = document.getElementById('announcement-banner');
 const closeBanner = document.getElementById('close-banner');
 const mainNav = document.getElementById('main-nav');
 
-if (localStorage.getItem('bannerClosed') === 'true') {
-    banner.style.display = 'none';
-    mainNav.style.top = '0';
-} else {
-    banner.style.display = 'block';
-    mainNav.style.top = '40px';
-}
+// Always show banner
+banner.style.display = 'block';
+mainNav.style.top = '40px';
 
 closeBanner.addEventListener('click', () => {
     banner.style.transform = 'translateY(-100%)';
@@ -487,7 +483,6 @@ closeBanner.addEventListener('click', () => {
         banner.style.display = 'none';
         mainNav.style.top = '0';
     }, 300);
-    localStorage.setItem('bannerClosed', 'true');
 });
 
 const themeToggle = document.getElementById('theme-toggle');
