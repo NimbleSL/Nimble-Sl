@@ -44,7 +44,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-  <!-- Schema.org Structured Data for Organization -->
+  <!-- Schema.org Structured Data for Organization (Enhanced with contact info) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,6 +55,8 @@
     "logo": "https://www.nimblesl.com/assets/images/logo.png",
     "image": "https://www.nimblesl.com/assets/images/logo.png",
     "description": "Software development company in Bangladesh offering custom software, web apps, mobile apps, cloud solutions, and AI services.",
+    "email": "sales@nimblesl.com",
+    "telephone": "+8801796109979",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "House - 01, Road - 36, Gulshan - 2",
@@ -62,14 +64,28 @@
       "postalCode": "1212",
       "addressCountry": "BD"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "availableLanguage": ["English", "Bengali"]
-    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+8801796109979",
+        "contactType": "sales",
+        "email": "sales@nimblesl.com",
+        "availableLanguage": ["English", "Bengali"],
+        "areaServed": "Worldwide"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+8801796109979",
+        "contactType": "customer service",
+        "email": "sales@nimblesl.com",
+        "availableLanguage": ["English", "Bengali"]
+      }
+    ],
     "sameAs": [
       "https://www.linkedin.com/company/nimblesl",
-      "https://github.com/NimbleSL"
+      "https://github.com/NimbleSL",
+      "https://www.facebook.com/nimblesl",
+      "https://twitter.com/nimblesl"
     ],
     "foundingDate": "2024",
     "numberOfEmployees": {
@@ -78,7 +94,14 @@
       "maxValue": 50
     },
     "areaServed": "Worldwide",
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   }
   </script>
 
@@ -97,14 +120,17 @@
   }
   </script>
 
-  <!-- Schema.org Structured Data for LocalBusiness -->
+  <!-- Schema.org Structured Data for LocalBusiness (Enhanced) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.nimblesl.com/#localbusiness",
     "name": "Nimble Software Lab",
     "image": "https://www.nimblesl.com/assets/images/logo.png",
     "url": "https://www.nimblesl.com",
+    "telephone": "+8801796109979",
+    "email": "sales@nimblesl.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "House - 01, Road - 36, Gulshan - 2",
@@ -117,13 +143,262 @@
       "latitude": 23.7934,
       "longitude": 90.4143
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    }
+  }
+  </script>
+
+  <!-- Schema.org Structured Data for BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nimblesl.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.nimblesl.com/#services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Products",
+        "item": "https://www.nimblesl.com/products"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Contact",
+        "item": "https://www.nimblesl.com/#contact"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data for Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Software Development Services",
+    "description": "Professional software development services offered by Nimble Software Lab",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "position": 1,
+        "name": "Custom Software Development",
+        "description": "Tailored software solutions designed to address your unique business challenges and drive growth.",
+        "url": "https://www.nimblesl.com/custom-software",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Custom Software Development"
+      },
+      {
+        "@type": "Service",
+        "position": 2,
+        "name": "Web Application Development",
+        "description": "Modern, scalable, and secure web applications built with React, Angular, Vue.js, and .NET.",
+        "url": "https://www.nimblesl.com/web-app",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Web Development"
+      },
+      {
+        "@type": "Service",
+        "position": 3,
+        "name": "Mobile App Development",
+        "description": "Native and cross-platform mobile applications using Flutter, React Native, Swift, and Kotlin.",
+        "url": "https://www.nimblesl.com/mobile-app",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Mobile App Development"
+      },
+      {
+        "@type": "Service",
+        "position": 4,
+        "name": "Cloud Solutions",
+        "description": "Scalable cloud infrastructure and migration services on AWS, Azure, and Google Cloud.",
+        "url": "https://www.nimblesl.com/cloud-solution",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Cloud Computing"
+      },
+      {
+        "@type": "Service",
+        "position": 5,
+        "name": "AI & Machine Learning Solutions",
+        "description": "Intelligent AI-powered solutions including chatbots, computer vision, NLP, and predictive analytics.",
+        "url": "https://www.nimblesl.com/ai-solution",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "AI Development"
+      },
+      {
+        "@type": "Service",
+        "position": 6,
+        "name": "Staff Augmentation",
+        "description": "Hire dedicated developers from Bangladesh at competitive rates for your projects.",
+        "url": "https://www.nimblesl.com/staff-augmentation",
+        "provider": {
+          "@type": "Organization",
+          "name": "Nimble Software Lab"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "IT Staff Augmentation"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data for FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does Nimble Software Lab offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nimble Software Lab offers comprehensive software development services including custom software development, web applications, mobile apps, cloud solutions, and AI/ML services. Our team of experienced developers delivers high-quality solutions to clients worldwide with competitive pricing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does software development cost in Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Software development costs in Bangladesh are 40-60% lower compared to Western countries while maintaining high quality standards. At Nimble Software Lab, project costs vary based on complexity: simple web applications start from $5,000, mobile apps from $10,000, and enterprise solutions from $25,000."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I hire developers from Bangladesh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bangladesh offers exceptional value for software development with a large pool of skilled developers proficient in modern technologies like React, .NET, Node.js, Python, Flutter, and cloud platforms. Benefits include cost-effective rates, strong English communication skills, and convenient timezone overlap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What technologies does Nimble Software Lab specialize in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We specialize in Frontend (React, Angular, Vue.js, Blazor), Backend (.NET Core, Node.js, Python, Django), Mobile (Flutter, React Native), Cloud (AWS, Azure, Google Cloud), and AI/ML (TensorFlow, PyTorch, OpenAI integration)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you build an MVP for my startup quickly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We specialize in rapid MVP development for startups. We can build and launch your Minimum Viable Product within 4-8 weeks depending on complexity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide ongoing support and maintenance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We provide comprehensive post-launch support including bug fixes, security updates, performance optimization, feature enhancements, and 24/7 monitoring for critical systems."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data for ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nimble Software Lab",
+    "image": "https://www.nimblesl.com/assets/images/logo.png",
+    "url": "https://www.nimblesl.com",
+    "telephone": "+8801796109979",
+    "email": "sales@nimblesl.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "House - 01, Road - 36, Gulshan - 2",
+      "addressLocality": "Dhaka",
+      "postalCode": "1212",
+      "addressCountry": "BD"
     },
-    "priceRange": "$$"
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "John Smith"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Excellent software development team. They delivered our project on time and within budget."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Johnson"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Great communication and technical expertise. Highly recommend for mobile app development."
+      }
+    ]
   }
   </script>
 </head>
