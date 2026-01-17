@@ -195,6 +195,18 @@
       height: 10px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.3);
+
+      &--red {
+        background: #ff5f56;
+      }
+
+      &--yellow {
+        background: #ffbd2e;
+      }
+
+      &--green {
+        background: #27ca40;
+      }
     }
 
     .mockup-content {

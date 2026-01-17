@@ -1,0 +1,78 @@
+<main class="page case-studies-page">
+  <!-- Hero -->
+  <section class="cs-hero">
+    <div class="container">
+      <span class="text-overline">Case Studies</span>
+      <h1 class="cs-hero__title">
+        Real Results,<br />
+        <span class="text-gradient">Real Impact</span>
+      </h1>
+      <p class="cs-hero__subtitle">
+        Explore how we've helped companies transform their businesses with custom software solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Case Studies List -->
+  <section class="cs-list">
+    <div class="container">
+      @for (study of caseStudies; track study.id) {
+      <article class="cs-card" [class]="'cs-card--' + study.color">
+        <!-- Header -->
+        <header class="cs-card__header">
+          <div class="cs-card__meta">
+            <span class="cs-badge">{{ study.industry }}</span>
+            <span class="cs-client">{{ study.client }}</span>
+          </div>
+          <h2 class="cs-card__title">{{ study.title }}</h2>
+        </header>
+
+        <div class="cs-card__content">
+          <!-- Context -->
+          <div class="cs-card__section">
+            <h3>The Challenge</h3>
+            <p>{{ study.challenge }}</p>
+          </div>
+
+          <div class="cs-card__section">
+            <h3>The Solution</h3>
+            <p>{{ study.solution }}</p>
+          </div>
+
+          <!-- Results -->
+          <div class="cs-card__results">
+            <h3>Key Results</h3>
+            <ul>
+              @for (result of study.results; track result) {
+              <li>
+                <span class="check-icon">✓</span>
+                {{ result }}
+              </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="cs-card__tech">
+            <span class="label">Technologies:</span>
+            <div class="tags">
+              @for (tech of study.technologies; track tech) {
+              <span class="tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+      }
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cs-cta">
+    <div class="container text-center">
+      <h2>Ready to write your success story?</h2>
+      <p>Join the list of companies growing with Nimble Software Lab.</p>
+      <a routerLink="/contact" class="btn btn-primary">Start Your Project</a>
+    </div>
+  </section>
+</main>

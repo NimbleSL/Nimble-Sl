@@ -38,6 +38,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    loadComponent: () => import('./features/not-found/not-found.component').then(m => m.NotFoundComponent),
+    title: 'Page Not Found | Nimble Software Lab'
   }
 ];
