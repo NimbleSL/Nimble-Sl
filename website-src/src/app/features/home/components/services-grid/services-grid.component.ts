@@ -7,7 +7,7 @@ interface Service {
   icon: string;
   title: string;
   description: string;
-  features: string[];
+  technologies: string[];
 }
 
 @Component({
@@ -23,22 +23,43 @@ export class ServicesGridComponent {
       id: 'custom-software',
       icon: 'code',
       title: 'Custom Software',
-      description: 'Tailored enterprise solutions designed to solve your unique business challenges and drive growth.',
-      features: ['Enterprise Platforms', 'SaaS Products', 'Legacy Modernization']
+      description: 'Tailored enterprise solutions designed to address your unique business challenges and drive growth.',
+      technologies: ['.NET Core', 'Node.js', 'Python']
     },
     {
-      id: 'digital-products',
-      icon: 'layers',
-      title: 'Digital Products',
-      description: 'Modern web and mobile applications that deliver exceptional user experiences across all devices.',
-      features: ['Web Applications', 'Mobile Apps', 'Progressive Web Apps']
+      id: 'web-development',
+      icon: 'globe',
+      title: 'Web Applications',
+      description: 'Modern, scalable, and secure web applications that deliver exceptional user experiences.',
+      technologies: ['React', 'Angular', 'Vue.js']
     },
     {
-      id: 'ai-cloud',
-      icon: 'cpu',
-      title: 'AI & Cloud',
-      description: 'Intelligent solutions powered by AI and scalable cloud infrastructure for the modern enterprise.',
-      features: ['AI Integration', 'Cloud Migration', 'DevOps & Infrastructure']
+      id: 'mobile-apps',
+      icon: 'smartphone',
+      title: 'Mobile Apps',
+      description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
+      technologies: ['Flutter', 'React Native', 'Swift']
+    },
+    {
+      id: 'cloud-solutions',
+      icon: 'cloud',
+      title: 'Cloud Solutions',
+      description: 'Scalable cloud infrastructure and migration services for modern enterprises.',
+      technologies: ['AWS', 'Azure', 'Google Cloud']
+    },
+    {
+      id: 'ai-ml',
+      icon: 'brain',
+      title: 'AI & ML Solutions',
+      description: 'Intelligent AI-powered solutions including chatbots, computer vision, and NLP.',
+      technologies: ['OpenAI', 'TensorFlow', 'PyTorch']
+    },
+    {
+      id: 'ui-ux',
+      icon: 'palette',
+      title: 'UI/UX Design',
+      description: 'User-centric design that creates intuitive and engaging digital experiences.',
+      technologies: ['Figma', 'Design Systems', 'Prototyping']
     }
   ];
 }

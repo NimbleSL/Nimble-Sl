@@ -9,6 +9,4 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cta-section.component.html',
   styleUrl: './cta-section.component.scss'
 })
-export class CtaSectionComponent {
-  // Nothing needed here, just static content
-}
+export class CtaSectionComponent { }

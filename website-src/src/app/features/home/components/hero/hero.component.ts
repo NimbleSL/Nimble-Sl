@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -9,60 +9,36 @@ import { RouterLink } from '@angular/router';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
-export class HeroComponent implements OnInit, AfterViewInit {
-  @ViewChild('heroSection') heroSection!: ElementRef;
+export class HeroComponent implements OnInit, OnDestroy {
+  // Typewriter effect for dynamic headlines
+  phrases = [
+    'that drives results.',
+    'that scales with you.',
+    'that just works.'
+  ];
 
-  // Stats for credibility
+  currentPhrase = signal(this.phrases[0]);
+  private phraseIndex = 0;
+  private intervalId: any;
+
+  // Stats
   stats = [
     { value: '50+', label: 'Projects Delivered' },
     { value: '12', label: 'Countries Served' },
     { value: '98%', label: 'Client Satisfaction' }
   ];
 
-  // Typing effect text
-  typewriterPhrases = [
-    'scales with your business',
-    'moves fast',
-    'just works'
-  ];
-  currentPhraseIndex = 0;
-  displayText = '';
-  isDeleting = false;
-
   ngOnInit(): void {
-    this.startTypewriter();
+    // Rotate phrases every 3 seconds
+    this.intervalId = setInterval(() => {
+      this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+      this.currentPhrase.set(this.phrases[this.phraseIndex]);
+    }, 3000);
   }
 
-  ngAfterViewInit(): void {
-    // Could add scroll parallax effects here
-  }
-
-  private startTypewriter(): void {
-    const currentPhrase = this.typewriterPhrases[this.currentPhraseIndex];
-
-    if (!this.isDeleting) {
-      // Typing
-      this.displayText = currentPhrase.substring(0, this.displayText.length + 1);
-
-      if (this.displayText === currentPhrase) {
-        // Pause before deleting
-        setTimeout(() => {
-          this.isDeleting = true;
-          this.startTypewriter();
-        }, 2000);
-        return;
-      }
-    } else {
-      // Deleting
-      this.displayText = currentPhrase.substring(0, this.displayText.length - 1);
-
-      if (this.displayText === '') {
-        this.isDeleting = false;
-        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.typewriterPhrases.length;
-      }
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
-
-    const speed = this.isDeleting ? 50 : 100;
-    setTimeout(() => this.startTypewriter(), speed);
   }
 }

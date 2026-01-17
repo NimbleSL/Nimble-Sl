@@ -17,6 +17,16 @@ export const routes: Routes = [
     title: 'Services | Nimble Software Lab'
   },
   {
+    path: 'products',
+    loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent),
+    title: 'Our Products | Nimble Software Lab'
+  },
+  {
+    path: 'products/:productId',
+    loadComponent: () => import('./features/products/product-detail/product-detail.component').then(m => m.ProductDetailComponent),
+    title: 'Product | Nimble Software Lab'
+  },
+  {
     path: 'case-studies',
     loadComponent: () => import('./features/case-studies/case-studies.component').then(m => m.CaseStudiesComponent),
     title: 'Case Studies | Nimble Software Lab'

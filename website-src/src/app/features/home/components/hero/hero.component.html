@@ -1,51 +1,46 @@
-<section #heroSection class="hero">
+<section class="hero">
   <!-- Background Elements -->
   <div class="hero__bg">
-    <div class="hero__bg-gradient"></div>
-    <div class="hero__bg-pattern"></div>
-    <!-- Animated Swift Bird -->
-    <div class="hero__bird">
-      <img src="assets/images/logo/logo.png" alt="" class="hero__bird-img animate-bird" aria-hidden="true" />
-    </div>
+    <div class="hero__gradient"></div>
+    <div class="hero__pattern"></div>
   </div>
 
+  <!-- Content -->
   <div class="hero__container">
     <div class="hero__content">
-      <!-- Overline Badge -->
-      <div class="hero__badge animate-reveal">
+      <!-- Badge -->
+      <div class="hero__badge">
         <span class="hero__badge-dot"></span>
-        Software Development Partner
+        Software Development Company in Bangladesh
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="hero__title animate-reveal animate-delay-1">
+      <!-- Headline -->
+      <h1 class="hero__title">
         We Build Software<br />
-        <span class="hero__title-accent">
-          That <span class="hero__typewriter">{{ displayText }}<span class="hero__cursor">|</span></span>
-        </span>
+        <span class="hero__title-dynamic">{{ currentPhrase() }}</span>
       </h1>
 
-      <!-- Subtitle -->
-      <p class="hero__subtitle animate-reveal animate-delay-2">
-        From custom enterprise platforms to AI-powered applications,
-        we help companies build software that delivers real business results.
+      <!-- Subheadline -->
+      <p class="hero__subtitle">
+        Custom software, web apps, mobile apps, cloud solutions, and AI services
+        for clients worldwide. <strong>40-60% cost savings</strong> with no compromise on quality.
       </p>
 
-      <!-- CTA Buttons -->
-      <div class="hero__actions animate-reveal animate-delay-3">
-        <a routerLink="/contact" class="btn btn-primary btn-lg">
+      <!-- CTAs -->
+      <div class="hero__ctas">
+        <a routerLink="/contact" class="hero__cta hero__cta--primary">
           Schedule a Consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </a>
-        <a routerLink="/case-studies" class="btn btn-ghost btn-lg">
+        <a routerLink="/case-studies" class="hero__cta hero__cta--secondary">
           View Our Work
         </a>
       </div>
 
       <!-- Stats -->
-      <div class="hero__stats animate-reveal animate-delay-4">
+      <div class="hero__stats">
         @for (stat of stats; track stat.label) {
         <div class="hero__stat">
           <span class="hero__stat-value">{{ stat.value }}</span>
@@ -58,7 +53,8 @@
 
   <!-- Scroll Indicator -->
   <div class="hero__scroll">
-    <span>Scroll to explore</span>
-    <div class="hero__scroll-line"></div>
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-wheel"></div>
+    </div>
   </div>
 </section>

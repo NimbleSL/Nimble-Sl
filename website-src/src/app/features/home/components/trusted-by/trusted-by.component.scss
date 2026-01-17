@@ -1,9 +1,9 @@
 @use '../../../../../styles/mixins' as *;
 
-
 .trusted {
-  padding: var(--space-12) 0;
+  padding: var(--space-10) 0;
   border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-background);
 
   &__container {
     @include container;
@@ -11,34 +11,44 @@
   }
 
   &__label {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-4);
   }
 
-  &__logos {
+  &__industries {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
-    gap: var(--space-8);
+    align-items: center;
+    gap: var(--space-2);
 
-    @media (min-width: $breakpoint-md) {
-      gap: var(--space-12);
+    @include tablet-up {
+      gap: var(--space-3);
     }
   }
 
-  &__logo {
+  &__industry {
     font-family: var(--font-display);
-    font-weight: var(--font-weight-bold);
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
-    opacity: 0.5;
-    transition: opacity var(--transition-fast);
+    font-weight: var(--font-weight-semibold);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+
+    @include tablet-up {
+      font-size: 1.125rem;
+    }
 
     &:hover {
-      opacity: 0.8;
+      color: var(--color-text-primary);
     }
+  }
+
+  &__divider {
+    color: var(--color-border);
+    font-size: 0.75rem;
   }
 }

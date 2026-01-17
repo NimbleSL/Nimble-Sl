@@ -1,0 +1,133 @@
+<main class="page products-page">
+  <!-- Hero -->
+  <section class="products-hero">
+    <div class="container">
+      <span class="text-overline">Our Products</span>
+      <h1 class="products-hero__title">
+        Software We<br />
+        <span class="text-accent">Build & Own</span>
+      </h1>
+      <p class="products-hero__subtitle">
+        Beyond client work, we invest in building our own products to solve real business problems.
+        These tools power businesses around the world.
+      </p>
+    </div>
+  </section>
+
+  <!-- Products List -->
+  <section class="products-list">
+    <div class="container">
+      @for (product of products; track product.id; let i = $index) {
+      <article class="product-card" [class]="'product-card--' + product.color" [id]="product.id">
+        <div class="product-card__content">
+          <!-- Badge -->
+          @if (product.status === 'coming-soon') {
+          <span class="product-card__badge">Coming Soon</span>
+          } @else {
+          <span class="product-card__badge product-card__badge--live">Live</span>
+          }
+
+          <!-- Name & Tagline -->
+          <h2 class="product-card__name">{{ product.name }}</h2>
+          <p class="product-card__tagline">{{ product.tagline }}</p>
+
+          <!-- Description -->
+          <p class="product-card__desc">{{ product.description }}</p>
+
+          <!-- Features -->
+          <ul class="product-card__features">
+            @for (feature of product.features; track feature) {
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              {{ feature }}
+            </li>
+            }
+          </ul>
+
+          <!-- CTA -->
+          <div class="product-card__cta">
+            @if (product.status === 'live') {
+            <a [routerLink]="['/products', product.id]" class="btn btn-primary">
+              Explore {{ product.name }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            } @else {
+            <a [routerLink]="['/contact']" class="btn btn-secondary">
+              Join Waitlist
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            }
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="product-card__visual">
+          @switch (product.id) {
+          @case ('nimblebot') {
+          <div class="product-card__mockup product-card__mockup--chat">
+            <div class="mockup-header">
+              <span class="mockup-dot"></span>
+              <span class="mockup-dot"></span>
+              <span class="mockup-dot"></span>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-message mockup-message--bot">
+                Hi! I'm your AI assistant. How can I help you today?
+              </div>
+              <div class="mockup-message mockup-message--user">
+                What are your pricing plans?
+              </div>
+              <div class="mockup-message mockup-message--bot">
+                We offer flexible plans starting from $49/mo...
+              </div>
+            </div>
+          </div>
+          }
+          @case ('nimblesoft') {
+          <div class="product-card__mockup product-card__mockup--dashboard">
+            <div class="mockup-header">
+              <span class="mockup-dot"></span>
+              <span class="mockup-dot"></span>
+              <span class="mockup-dot"></span>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-sidebar">
+                <div class="mockup-menu-item"></div>
+                <div class="mockup-menu-item"></div>
+                <div class="mockup-menu-item mockup-menu-item--active"></div>
+                <div class="mockup-menu-item"></div>
+              </div>
+              <div class="mockup-main">
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-table"></div>
+              </div>
+            </div>
+          </div>
+          }
+          }
+        </div>
+      </article>
+      }
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="products-cta">
+    <div class="container">
+      <div class="products-cta__content">
+        <h2>Have a Product Idea?</h2>
+        <p>We love building products. If you have an idea you'd like to explore together, let's talk.</p>
+        <a routerLink="/contact" class="btn btn-primary">
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
