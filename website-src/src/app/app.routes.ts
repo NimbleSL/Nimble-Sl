@@ -1,0 +1,33 @@
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
+    title: 'Nimble Software Lab | Software Development Company Bangladesh'
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent),
+    title: 'About Us | Nimble Software Lab'
+  },
+  {
+    path: 'services',
+    loadComponent: () => import('./features/services/services.component').then(m => m.ServicesComponent),
+    title: 'Services | Nimble Software Lab'
+  },
+  {
+    path: 'case-studies',
+    loadComponent: () => import('./features/case-studies/case-studies.component').then(m => m.CaseStudiesComponent),
+    title: 'Case Studies | Nimble Software Lab'
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent),
+    title: 'Contact Us | Nimble Software Lab'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+];

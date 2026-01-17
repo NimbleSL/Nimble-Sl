@@ -1,0 +1,48 @@
+<header class="header" [class.header--scrolled]="isScrolled()" [class.header--menu-open]="isMobileMenuOpen()">
+  <div class="header__container">
+    <!-- Logo -->
+    <a routerLink="/" class="header__logo" (click)="closeMobileMenu()">
+      <img src="assets/images/logo/logo.png" alt="Nimble Software Lab" class="header__logo-img" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav hide-mobile">
+      @for (item of navItems; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active" class="header__nav-link">
+        {{ item.label }}
+      </a>
+      }
+    </nav>
+
+    <!-- CTA Button (Desktop) -->
+    <a routerLink="/contact" class="btn btn-primary header__cta hide-mobile">
+      Let's Talk
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button class="header__menu-btn hide-tablet-up" (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen()" aria-label="Toggle menu">
+      <span class="header__menu-icon" [class.open]="isMobileMenuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  @if (isMobileMenuOpen()) {
+  <div class="header__mobile-menu" @slideIn>
+    <nav class="header__mobile-nav">
+      @for (item of navItems; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active" class="header__mobile-link" (click)="closeMobileMenu()">
+        {{ item.label }}
+      </a>
+      }
+      <a routerLink="/contact" class="btn btn-primary btn-lg header__mobile-cta" (click)="closeMobileMenu()">
+        Let's Talk
+      </a>
+    </nav>
+  </div>
+  }
+</header>

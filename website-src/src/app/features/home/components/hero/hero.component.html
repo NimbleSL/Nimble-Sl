@@ -1,0 +1,64 @@
+<section #heroSection class="hero">
+  <!-- Background Elements -->
+  <div class="hero__bg">
+    <div class="hero__bg-gradient"></div>
+    <div class="hero__bg-pattern"></div>
+    <!-- Animated Swift Bird -->
+    <div class="hero__bird">
+      <img src="assets/images/logo/logo.png" alt="" class="hero__bird-img animate-bird" aria-hidden="true" />
+    </div>
+  </div>
+
+  <div class="hero__container">
+    <div class="hero__content">
+      <!-- Overline Badge -->
+      <div class="hero__badge animate-reveal">
+        <span class="hero__badge-dot"></span>
+        Software Development Partner
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero__title animate-reveal animate-delay-1">
+        We Build Software<br />
+        <span class="hero__title-accent">
+          That <span class="hero__typewriter">{{ displayText }}<span class="hero__cursor">|</span></span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle animate-reveal animate-delay-2">
+        From custom enterprise platforms to AI-powered applications,
+        we help companies build software that delivers real business results.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero__actions animate-reveal animate-delay-3">
+        <a routerLink="/contact" class="btn btn-primary btn-lg">
+          Schedule a Consultation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a routerLink="/case-studies" class="btn btn-ghost btn-lg">
+          View Our Work
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero__stats animate-reveal animate-delay-4">
+        @for (stat of stats; track stat.label) {
+        <div class="hero__stat">
+          <span class="hero__stat-value">{{ stat.value }}</span>
+          <span class="hero__stat-label">{{ stat.label }}</span>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero__scroll">
+    <span>Scroll to explore</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>

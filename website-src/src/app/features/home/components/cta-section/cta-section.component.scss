@@ -1,0 +1,109 @@
+@use '../../../../../styles/mixins' as *;
+
+
+.cta {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  overflow: hidden;
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  // Badge
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(74, 222, 128, 0.15);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+    margin-bottom: var(--space-6);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Title
+  &__title {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: var(--space-6);
+
+    &-accent {
+      color: var(--color-accent);
+    }
+  }
+
+  // Description
+  &__description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-8);
+  }
+
+  // Actions
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  &__email {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  // Decorative circles
+  &__decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__circle {
+    position: absolute;
+    border-radius: 50%;
+
+    &--1 {
+      width: 400px;
+      height: 400px;
+      top: -200px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+    }
+
+    &--2 {
+      width: 300px;
+      height: 300px;
+      bottom: -150px;
+      left: -50px;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
+    }
+  }
+}
