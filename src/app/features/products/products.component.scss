@@ -11,9 +11,13 @@
 
 // Hero
 .products-hero {
-  padding: var(--space-16) 0 var(--space-12);
+  padding: var(--space-10) 0 var(--space-8);
   background: var(--color-background-alt);
   text-align: center;
+
+  @include tablet-up {
+    padding: var(--space-16) 0 var(--space-12);
+  }
 
   .text-overline {
     display: block;
@@ -23,17 +27,21 @@
   &__title {
     font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     line-height: 1.1;
     margin-bottom: var(--space-6);
   }
 
   &__subtitle {
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: var(--color-text-secondary);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.7;
+
+    @include tablet-up {
+      font-size: 1.125rem;
+    }
   }
 }
 
@@ -43,23 +51,35 @@
 
 // Products List
 .products-list {
-  padding: var(--space-16) 0;
+  padding: var(--space-10) 0;
+
+  @include tablet-up {
+    padding: var(--space-16) 0;
+  }
 }
 
 .product-card {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
-  padding: var(--space-8);
-  margin-bottom: var(--space-12);
+  gap: var(--space-5);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
   background: var(--color-surface);
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
 
   @include tablet-up {
     grid-template-columns: 1fr 1fr;
-    padding: var(--space-10);
+    padding: var(--space-8);
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
     align-items: center;
+    border-radius: var(--radius-2xl);
+  }
+
+  @include desktop-up {
+    padding: var(--space-10);
+    margin-bottom: var(--space-12);
   }
 
   &:nth-child(even) {

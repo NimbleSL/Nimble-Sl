@@ -56,18 +56,16 @@
   &__logos {
     display: flex;
     align-items: center;
-    gap: var(--space-8); // Gap between items
-    padding-right: var(--space-8); // Exact same gap padding to ensure perfect loop
+    gap: var(--space-8);
+    padding-right: var(--space-8);
 
     span {
       font-family: var(--font-display);
-      font-weight: 800; // Extra Bold
+      font-weight: 800;
       font-size: 2.5rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       white-space: nowrap;
-
-      // The aesthetic "hollow" or outline style common in modern tech sites
       color: transparent;
       -webkit-text-stroke: 1px var(--color-border);
       transition: all var(--transition-base);
@@ -88,7 +86,7 @@
         font-size: 1.5rem;
         -webkit-text-stroke: 0;
         color: var(--color-border);
-        transform: translateY(-4px); // Align center optically
+        transform: translateY(-4px);
       }
     }
   }

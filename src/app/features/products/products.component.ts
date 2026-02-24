@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '../../shared/services/seo/seo.service';
 
 interface Product {
   id: string;
@@ -19,7 +20,21 @@ interface Product {
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeo({
+      title: 'Our Products',
+      description: 'Discover our innovative software products - NimbleBot AI chatbot platform and NimbleSoft ERP. Enterprise-grade solutions built for modern businesses.',
+      keywords: 'NimbleBot, AI chatbot, RAG chatbot, NimbleSoft ERP, business management software, software products bangladesh',
+      url: 'https://www.nimblesl.com/products'
+    });
+    this.seoService.setBreadcrumbSchema([
+      { name: 'Home', url: 'https://www.nimblesl.com/' },
+      { name: 'Products', url: 'https://www.nimblesl.com/products' }
+    ]);
+  }
   products: Product[] = [
     {
       id: 'nimblebot',

@@ -1,0 +1,27 @@
+<section class="clients">
+  <div class="clients__container">
+    <div class="clients__header">
+      <span class="clients__badge">OUR CLIENTS</span>
+      <h2 class="clients__title">Trusted By Industry Leaders</h2>
+    </div>
+
+    <div class="clients__marquee">
+      <div class="clients__track">
+        <div class="clients__logos">
+          @for (client of clients; track client.name) {
+            <div class="clients__item">
+              <img [src]="client.logo" [alt]="client.name" class="clients__logo" width="100" height="60" loading="lazy" />
+            </div>
+          }
+        </div>
+        <div class="clients__logos" aria-hidden="true">
+          @for (client of clients; track client.name) {
+            <div class="clients__item">
+              <img [src]="client.logo" [alt]="client.name" class="clients__logo" width="100" height="60" loading="lazy" />
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

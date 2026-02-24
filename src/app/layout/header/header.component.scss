@@ -19,15 +19,23 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border-light);
-    padding: var(--space-3) 0;
+    padding: var(--space-2) 0;
     box-shadow: var(--shadow-sm);
 
+    @include tablet-up {
+      padding: var(--space-3) 0;
+    }
+
     .header__logo-img {
-      height: 60px;
+      height: 45px;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
 
       @include tablet-up {
-        height: 80px;
+        height: 55px;
+      }
+
+      @include desktop-up {
+        height: 70px;
       }
 
       &:hover {
@@ -51,21 +59,28 @@
   }
 
   &__logo-img {
-    height: 80px; // Very prominent on mobile
+    height: 55px;
     width: auto;
     object-fit: contain;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform-origin: center left;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
-    animation: gentlePulse 4s infinite ease-in-out;
 
     @include tablet-up {
-      height: 110px; // Maximum safe height before pushing nav
+      height: 70px;
+    }
+
+    @include desktop-up {
+      height: 90px;
+      animation: gentlePulse 4s infinite ease-in-out;
     }
 
     &:hover {
-      animation: wobble 0.5s ease-in-out;
       filter: drop-shadow(0 4px 12px rgba(74, 222, 128, 0.15));
+
+      @include desktop-up {
+        animation: wobble 0.5s ease-in-out;
+      }
     }
   }
 
@@ -122,19 +137,30 @@
     }
   }
 
-  // Hamburger
+  // Hamburger - 44px minimum for touch targets
   &__hamburger {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    width: 32px;
-    height: 32px;
-    background: none;
-    border: none;
+    align-items: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    background: var(--color-background-alt);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    padding: 0;
+    padding: 10px;
     z-index: 10;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-border-light);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
 
     @include desktop-up {
       display: none;
@@ -142,16 +168,22 @@
 
     span {
       display: block;
-      width: 100%;
+      width: 22px;
       height: 2px;
       background: var(--color-text-primary);
-      border-radius: 1px;
+      border-radius: 2px;
       transition: all var(--transition-fast);
     }
 
     &--active {
+      background: var(--color-primary);
+
+      span {
+        background: var(--color-accent);
+      }
+
       span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
       }
 
       span:nth-child(2) {
@@ -159,7 +191,7 @@
       }
 
       span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
       }
     }
   }

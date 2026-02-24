@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { SeoService } from '../../shared/services/seo/seo.service';
 
 interface ServiceDetail {
   id: string;
@@ -131,9 +132,20 @@ export class ServicesComponent implements OnInit {
 
   activeFaqIndex: number | null = null;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private seoService: SeoService) { }
 
   ngOnInit(): void {
+    this.seoService.updateSeo({
+      title: 'Services',
+      description: 'Explore our comprehensive software development services including custom software, web apps, mobile apps, cloud solutions, AI/ML, and UI/UX design. Enterprise-grade solutions for businesses worldwide.',
+      keywords: 'custom software development, web application development, mobile app development, cloud solutions, AI machine learning, UI UX design, software services bangladesh',
+      url: 'https://www.nimblesl.com/services'
+    });
+    this.seoService.setBreadcrumbSchema([
+      { name: 'Home', url: 'https://www.nimblesl.com/' },
+      { name: 'Services', url: 'https://www.nimblesl.com/services' }
+    ]);
+
     // Check for fragment and scroll to it
     this.route.fragment.subscribe(fragment => {
       if (fragment) {

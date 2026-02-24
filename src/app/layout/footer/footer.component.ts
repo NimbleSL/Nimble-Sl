@@ -65,30 +65,20 @@ export class FooterComponent {
   socialLinks: SocialLink[] = [
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/company/nimblesl',
+      url: 'https://www.linkedin.com/company/nimble-software-lab',
       icon: 'linkedin'
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com/NimbleSL',
-      icon: 'github'
     },
     {
       name: 'Facebook',
       url: 'https://www.facebook.com/nimblesl',
       icon: 'facebook'
-    },
-    {
-      name: 'WhatsApp',
-      url: 'https://wa.me/8801796109979',
-      icon: 'whatsapp'
     }
   ];
 
   contactInfo = {
     email: 'nimblesoftwarelab@gmail.com',
     phone: '+880-1796-109979',
-    address: 'Gulshan-2, Dhaka, Bangladesh'
+    address: 'House - 1, Road - 36, Gulshan - 2, Dhaka-1219, Bangladesh'
   };
 
   email = '';

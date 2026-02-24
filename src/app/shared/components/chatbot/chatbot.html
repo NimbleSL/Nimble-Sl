@@ -1,12 +1,19 @@
 <div class="chatbot-wrapper" [class.is-open]="isOpen">
-  <!-- Chat Button -->
+  <!-- Chat Button with Label -->
   @if (!isOpen) {
-  <button class="chatbot-toggle" (click)="toggleChat()" [attr.aria-expanded]="isOpen" aria-label="Toggle Chat">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-  </button>
+  <div class="chatbot-trigger">
+    <div class="chatbot-label">
+      <span class="label-text">Let's Talk</span>
+      <span class="label-subtext">We're online!</span>
+    </div>
+    <button class="chatbot-toggle" (click)="toggleChat()" [attr.aria-expanded]="isOpen" aria-label="Toggle Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span class="pulse-ring"></span>
+    </button>
+  </div>
   }
 
   <!-- Chat Window -->

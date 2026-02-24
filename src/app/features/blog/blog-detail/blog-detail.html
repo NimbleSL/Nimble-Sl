@@ -4,7 +4,7 @@
     <!-- Article Header -->
     <header class="article__header">
       <div class="article__container">
-        <a routerLink="/blog" class="back-link">
+        <a [routerLink]="['/blog']" class="back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
@@ -72,7 +72,7 @@
         <hr class="article__divider" />
 
         <div class="article__footer">
-          <a routerLink="/blog" class="btn btn--outline">Browse More Articles</a>
+          <a [routerLink]="['/blog']" class="btn btn--outline">Browse More Articles</a>
         </div>
 
       </div>

@@ -9,6 +9,7 @@ interface BlogPostPreview {
   category: string;
   date: string;
   readTime: string;
+  image: string;
 }
 
 @Component({
@@ -26,23 +27,26 @@ export class BlogPreviewComponent {
       excerpt: 'How large language models and RAG architectures are fundamentally transforming how businesses build and interact with internal tools.',
       category: 'Artificial Intelligence',
       date: 'Feb 15, 2026',
-      readTime: '6 min read'
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'
     },
     {
-      id: 'from-monolith-to-microservices',
-      title: 'Scaling from Monolith to Microservices on AWS',
-      excerpt: 'A practical, technical deep-dive into the strategies and pitfalls of breaking down legacy applications for modern cloud environments.',
-      category: 'Cloud Architecture',
-      date: 'Feb 02, 2026',
-      readTime: '8 min read'
-    },
-    {
-      id: 'modern-frontend-angular',
-      title: 'Why Angular 19+ is the Enterprise Choice for 2026',
-      excerpt: 'Exploring the new reactive primitives, standalone components, and performance gains that make modern Angular a powerhouse.',
+      id: 'fixing-memory-leaks-nodejs',
+      title: 'How We Fixed a Critical Memory Leak in Production Node.js',
+      excerpt: 'Our step-by-step investigation into a memory leak that crashed our client\'s servers every 6 hours, and the surprising root cause.',
       category: 'Web Development',
-      date: 'Jan 22, 2026',
-      readTime: '5 min read'
+      date: 'Feb 10, 2026',
+      readTime: '10 min read',
+      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80'
+    },
+    {
+      id: 'kubernetes-downtime-incident',
+      title: 'Post-Mortem: The Kubernetes Incident That Taught Us Everything',
+      excerpt: 'A transparent breakdown of how a misconfigured liveness probe caused cascading failures across our microservices.',
+      category: 'Cloud Architecture',
+      date: 'Feb 05, 2026',
+      readTime: '8 min read',
+      image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&q=80'
     }
   ];
 }

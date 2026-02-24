@@ -214,20 +214,19 @@
       <div class="faq-list">
         @for (faq of faqs; track faq.question; let i = $index) {
         <div class="faq-item" [class.is-open]="activeFaqIndex === i">
-          <button class="faq-toggle" (click)="toggleFaq(i)" [attr.aria-expanded]="activeFaqIndex === i">
+          <button type="button" class="faq-toggle" (click)="toggleFaq(i)">
             <span class="faq-question">{{ faq.question }}</span>
-            <span class="faq-icon">
+            <span class="faq-icon" [class.rotated]="activeFaqIndex === i">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </span>
           </button>
+          @if (activeFaqIndex === i) {
           <div class="faq-answer">
-            <div class="faq-answer-inner">
-              <p>{{ faq.answer }}</p>
-            </div>
+            <p>{{ faq.answer }}</p>
           </div>
+          }
         </div>
         }
       </div>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '../../shared/services/seo/seo.service';
 
 @Component({
   selector: 'app-about',
@@ -9,7 +10,21 @@ import { RouterLink } from '@angular/router';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeo({
+      title: 'About Us',
+      description: 'Learn about Nimble Software Lab - a leading software development company in Bangladesh. Meet our team, discover our values, and see how we deliver excellence in custom software development.',
+      keywords: 'about nimble software lab, software development team bangladesh, IT company dhaka, software engineers bangladesh',
+      url: 'https://www.nimblesl.com/about'
+    });
+    this.seoService.setBreadcrumbSchema([
+      { name: 'Home', url: 'https://www.nimblesl.com/' },
+      { name: 'About Us', url: 'https://www.nimblesl.com/about' }
+    ]);
+  }
   stats = [
     { value: '50+', label: 'Projects Delivered' },
     { value: '12', label: 'Countries Served' },
