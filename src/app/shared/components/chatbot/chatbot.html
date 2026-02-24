@@ -1,0 +1,69 @@
+<div class="chatbot-wrapper" [class.is-open]="isOpen">
+  <!-- Chat Button -->
+  <button class="chatbot-toggle" (click)="toggleChat()" [attr.aria-expanded]="isOpen" aria-label="Toggle Chat">
+    @if (!isOpen) {
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    } @else {
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    }
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" *ngIf="isOpen">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <h3>NimbleBot</h3>
+        <span class="status">Online</span>
+      </div>
+      <button class="close-btn" (click)="toggleChat()" aria-label="Close Chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="chatbot-messages" #messagesContainer>
+      @for (message of chatService.messages$ | async; track message) {
+      <div class="message" [class.user]="message.role === 'user'" [class.assistant]="message.role === 'assistant'"
+        [class.system]="message.role === 'system'">
+        <div class="message-content">
+          {{ message.content }}
+        </div>
+      </div>
+      }
+
+      @if (chatService.isLoading$ | async) {
+      <div class="message assistant typing">
+        <div class="message-content">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Input Area -->
+    <div class="chatbot-input">
+      <textarea [(ngModel)]="userInput" (keydown)="handleKeyDown($event)" placeholder="Ask about NimbleSL..." rows="1"
+        [disabled]="(chatService.isLoading$ | async) === true"></textarea>
+      <button class="send-btn" (click)="sendMessage()"
+        [disabled]="!userInput.trim() || (chatService.isLoading$ | async)" aria-label="Send Message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
