@@ -14,10 +14,13 @@ export class HeaderComponent {
   isMobileMenuOpen = signal(false);
 
   navLinks = [
+    { label: 'Home', path: '/' },
     { label: 'Services', path: '/services' },
     { label: 'Products', path: '/products' },
     { label: 'Case Studies', path: '/case-studies' },
-    { label: 'About', path: '/about' }
+    { label: 'Blog', path: '/blog' },
+    { label: 'About', path: '/about' },
+    { label: 'Careers', path: '/careers' }
   ];
 
   @HostListener('window:scroll')

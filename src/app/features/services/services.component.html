@@ -203,6 +203,37 @@
     }
   </div>
 
+  <!-- FAQ Section -->
+  <section class="faq-section section-padding">
+    <div class="container container--narrow">
+      <div class="faq-header text-center">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about engaging with NimbleSL.</p>
+      </div>
+
+      <div class="faq-list">
+        @for (faq of faqs; track faq.question; let i = $index) {
+        <div class="faq-item" [class.is-open]="activeFaqIndex === i">
+          <button class="faq-toggle" (click)="toggleFaq(i)" [attr.aria-expanded]="activeFaqIndex === i">
+            <span class="faq-question">{{ faq.question }}</span>
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>{{ faq.answer }}</p>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="services-cta">
     <div class="container text-center">

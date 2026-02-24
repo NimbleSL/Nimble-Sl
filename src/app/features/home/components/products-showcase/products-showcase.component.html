@@ -75,14 +75,14 @@
         <div class="products__card-footer">
           @if (product.status === 'live') {
           <a [routerLink]="['/products', product.id]" class="products__cta">
-            Explore {{ product.name }}
+            Join Waitlist
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
           } @else {
           <a [routerLink]="['/products', product.id]" class="products__cta products__cta--secondary">
-            Learn More
+            Join Waitlist
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>

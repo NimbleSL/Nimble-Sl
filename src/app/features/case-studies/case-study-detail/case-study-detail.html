@@ -1,0 +1,90 @@
+@if (caseStudy) {
+<section class="case-detail pt-32 pb-20">
+  <div class="case-detail__container">
+    <div class="case-detail__back">
+      <a routerLink="/case-studies" class="case-detail__back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Back to Case Studies
+      </a>
+    </div>
+
+    <header class="case-detail__header">
+      <div class="case-detail__badge-wrapper">
+        <span class="case-detail__industry">{{ caseStudy.industry }}</span>
+      </div>
+      <h1 class="case-detail__title">{{ caseStudy.title }}</h1>
+      <p class="case-detail__client">In partnership with <strong>{{ caseStudy.client }}</strong></p>
+
+      @if (caseStudy.metrics && caseStudy.metrics.length) {
+      <div class="case-detail__metrics">
+        @for (metric of caseStudy.metrics; track metric.label) {
+        <div class="case-detail__metric">
+          <span class="case-detail__metric-value">{{ metric.value }}</span>
+          <span class="case-detail__metric-label">{{ metric.label }}</span>
+        </div>
+        }
+      </div>
+      }
+    </header>
+
+    <div class="case-detail__content">
+      <div class="case-detail__main">
+        <section class="case-detail__section case-detail__section--intro">
+          <h2>Overview</h2>
+          <p>{{ caseStudy.description }}</p>
+        </section>
+
+        <section class="case-detail__section">
+          <h2>The Challenge</h2>
+          <p>{{ caseStudy.challenge }}</p>
+        </section>
+
+        <section class="case-detail__section">
+          <h2>Our Solution</h2>
+          <p>{{ caseStudy.solution }}</p>
+        </section>
+
+        <section class="case-detail__section">
+          <h2>Key Results & Impact</h2>
+          <ul class="case-detail__results">
+            @for (result of caseStudy.results; track result) {
+            <li>
+              <div class="result-icon">
+                <svg viewBox="0 0 24 24" fill="none" class="stroke-accent" stroke-width="2">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              </div>
+              <span>{{ result }}</span>
+            </li>
+            }
+          </ul>
+        </section>
+      </div>
+
+      <aside class="case-detail__sidebar">
+        <div class="case-detail__card">
+          <h3>Technologies Used</h3>
+          <div class="case-detail__tech-tags">
+            @for (tech of caseStudy.technologies; track tech) {
+            <span class="case-detail__tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="case-detail__cta">
+          <h3>Ready to build your next big thing?</h3>
+          <p>Let's discuss how we can solve your complex technical challenges.</p>
+          <a routerLink="/contact" class="btn btn--primary w-full group">
+            Book a Meeting
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+}

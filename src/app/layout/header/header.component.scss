@@ -23,17 +23,15 @@
     box-shadow: var(--shadow-sm);
 
     .header__logo-img {
-      height: 50px;
-      // Scrolled state on light background: Original color, no invert
+      height: 60px;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
 
       @include tablet-up {
-        height: 70px;
+        height: 80px;
       }
 
       &:hover {
-        transform: scale(1.05) translateY(-2px);
-        filter: drop-shadow(0 4px 12px rgba(74, 222, 128, 0.25)); // Optional subtle brand color glow
+        filter: drop-shadow(0 4px 12px rgba(74, 222, 128, 0.25));
       }
     }
   }
@@ -53,22 +51,21 @@
   }
 
   &__logo-img {
-    height: 60px; // Very prominent on mobile
+    height: 80px; // Very prominent on mobile
     width: auto;
     object-fit: contain;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform-origin: center left;
-
-    // Initial state on dark background: Make it pure white with a soft shadow
-    filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    animation: gentlePulse 4s infinite ease-in-out;
 
     @include tablet-up {
-      height: 90px; // Maximum safe height before pushing nav
+      height: 110px; // Maximum safe height before pushing nav
     }
 
     &:hover {
-      transform: scale(1.05) translateY(-2px);
-      filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.4));
+      animation: wobble 0.5s ease-in-out;
+      filter: drop-shadow(0 4px 12px rgba(74, 222, 128, 0.15));
     }
   }
 
@@ -241,5 +238,37 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes gentlePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes wobble {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+
+  75% {
+    transform: rotate(-1deg);
   }
 }

@@ -32,9 +32,34 @@ export const routes: Routes = [
     title: 'Case Studies | Nimble Software Lab'
   },
   {
+    path: 'case-studies/:id',
+    loadComponent: () => import('./features/case-studies/case-study-detail/case-study-detail').then(m => m.CaseStudyDetailComponent),
+    title: 'Case Study | Nimble Software Lab'
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent),
     title: 'Contact Us | Nimble Software Lab'
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./features/terms/terms').then(m => m.TermsComponent),
+    title: 'Terms & Conditions | Nimble Software Lab'
+  },
+  {
+    path: 'careers',
+    loadComponent: () => import('./features/careers/careers').then(m => m.CareersComponent),
+    title: 'Careers | Nimble Software Lab'
+  },
+  {
+    path: 'blog',
+    loadComponent: () => import('./features/blog/blog').then(m => m.BlogComponent),
+    title: 'Blog | Nimble Software Lab'
+  },
+  {
+    path: 'blog/:id',
+    loadComponent: () => import('./features/blog/blog-detail/blog-detail').then(m => m.BlogDetailComponent),
+    title: 'Article | Nimble Software Lab'
   },
   {
     path: 'privacy',

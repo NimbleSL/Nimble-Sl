@@ -13,56 +13,60 @@
     </div>
   </section>
 
-  <!-- Case Studies List -->
+  <!-- Case Studies Grid -->
   <section class="cs-list">
     <div class="container">
-      @for (study of caseStudies; track study.id) {
-      <article class="cs-card" [class]="'cs-card--' + study.color">
-        <!-- Header -->
-        <header class="cs-card__header">
-          <div class="cs-card__meta">
-            <span class="cs-badge">{{ study.industry }}</span>
-            <span class="cs-client">{{ study.client }}</span>
-          </div>
-          <h2 class="cs-card__title">{{ study.title }}</h2>
-        </header>
-
-        <div class="cs-card__content">
-          <!-- Context -->
-          <div class="cs-card__section">
-            <h3>The Challenge</h3>
-            <p>{{ study.challenge }}</p>
-          </div>
-
-          <div class="cs-card__section">
-            <h3>The Solution</h3>
-            <p>{{ study.solution }}</p>
-          </div>
-
-          <!-- Results -->
-          <div class="cs-card__results">
-            <h3>Key Results</h3>
-            <ul>
-              @for (result of study.results; track result) {
-              <li>
-                <span class="check-icon">✓</span>
-                {{ result }}
-              </li>
-              }
-            </ul>
-          </div>
-
-          <!-- Tech Stack -->
-          <div class="cs-card__tech">
-            <span class="label">Technologies:</span>
-            <div class="tags">
-              @for (tech of study.technologies; track tech) {
-              <span class="tag">{{ tech }}</span>
-              }
+      <div class="cs-grid">
+        @for (study of paginatedCases; track study.id) {
+        <a [routerLink]="['/case-studies', study.id]" class="cs-card">
+          <!-- Header -->
+          <header class="cs-card__header">
+            <h2 class="cs-card__title">{{ study.title }}</h2>
+            <div class="cs-card__subtitles">
+              <p class="cs-client"><strong>Industry:</strong> {{ study.industry }}</p>
+              <p class="cs-client"><strong>Client:</strong> {{ study.client }}</p>
             </div>
+          </header>
+
+          <div class="cs-card__content">
+            <p class="cs-card__desc">{{ study.description }}</p>
           </div>
+
+          <div class="cs-card__footer">
+            <span class="cs-card__link">
+              Read Full Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </div>
+        </a>
+        }
+      </div>
+
+      <!-- Pagination -->
+      @if (totalPages > 1) {
+      <div class="cs-pagination">
+        <button class="cs-pagination__btn" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div class="cs-pagination__numbers">
+          @for (page of pages; track page) {
+          <button class="cs-pagination__number" [class.active]="page === currentPage" (click)="setPage(page)">
+            {{ page }}
+          </button>
+          }
         </div>
-      </article>
+
+        <button class="cs-pagination__btn" [disabled]="currentPage === totalPages" (click)="setPage(currentPage + 1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
       }
     </div>
   </section>
@@ -72,7 +76,7 @@
     <div class="container text-center">
       <h2>Ready to write your success story?</h2>
       <p>Join the list of companies growing with Nimble Software Lab.</p>
-      <a routerLink="/contact" class="btn btn-primary">Start Your Project</a>
+      <a routerLink="/contact" class="btn btn-primary">Book a Meeting</a>
     </div>
   </section>
 </main>

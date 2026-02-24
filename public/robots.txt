@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.nimblesl.com/sitemap.xml

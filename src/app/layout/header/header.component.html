@@ -8,7 +8,8 @@
     <!-- Desktop Navigation -->
     <nav class="header__nav">
       @for (link of navLinks; track link.path) {
-      <a [routerLink]="link.path" routerLinkActive="header__nav-link--active" class="header__nav-link">
+      <a [routerLink]="link.path" routerLinkActive="header__nav-link--active"
+        [routerLinkActiveOptions]="{exact: link.path === '/'}" class="header__nav-link">
         {{ link.label }}
       </a>
       }
@@ -16,7 +17,7 @@
 
     <!-- Desktop CTA -->
     <a routerLink="/contact" class="header__cta">
-      Contact Us
+      Book a Meeting
     </a>
 
     <!-- Mobile Menu Toggle -->
@@ -33,13 +34,13 @@
   <div class="header__mobile-menu">
     <nav class="header__mobile-nav">
       @for (link of navLinks; track link.path) {
-      <a [routerLink]="link.path" routerLinkActive="header__mobile-link--active" class="header__mobile-link"
-        (click)="closeMobileMenu()">
+      <a [routerLink]="link.path" routerLinkActive="header__mobile-link--active"
+        [routerLinkActiveOptions]="{exact: link.path === '/'}" class="header__mobile-link" (click)="closeMobileMenu()">
         {{ link.label }}
       </a>
       }
       <a routerLink="/contact" class="header__mobile-cta" (click)="closeMobileMenu()">
-        Contact Us
+        Book a Meeting
       </a>
     </nav>
   </div>

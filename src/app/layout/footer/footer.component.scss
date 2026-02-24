@@ -15,6 +15,97 @@
     @include container;
   }
 
+  // Newsletter Section
+  &__newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-bottom: var(--space-12);
+    margin-bottom: var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-content {
+      max-width: 500px;
+    }
+
+    &-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--space-2);
+      color: #ffffff;
+    }
+
+    &-desc {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    &-form {
+      display: flex;
+      gap: var(--space-2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    &-input {
+      flex: 1;
+      padding: var(--space-3) var(--space-4);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: #ffffff;
+      font-size: 0.9375rem;
+      transition: all var(--transition-fast);
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-accent);
+      color: var(--color-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-weight-semibold);
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+
+      svg {
+        width: 16px;
+        height: 16px;
+        transition: transform var(--transition-fast);
+      }
+
+      &:hover {
+        background: #86efac; // Lighter accent
+
+        svg {
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+
   &__main {
     display: grid;
     grid-template-columns: 1fr;

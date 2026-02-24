@@ -1,5 +1,32 @@
 <footer class="footer">
   <div class="footer__container">
+    <!-- Newsletter Section -->
+    <div class="footer__newsletter">
+      <div class="footer__newsletter-content">
+        <h3 class="footer__newsletter-title">Subscribe to our Newsletter</h3>
+        <p class="footer__newsletter-desc">Get the latest updates on software engineering, AI, and company news.</p>
+      </div>
+      <form class="footer__newsletter-form" (ngSubmit)="subscribeToNewsletter()">
+        <input type="email" name="email" [(ngModel)]="email" class="footer__newsletter-input"
+          placeholder="Enter your email address" required [disabled]="isSubscribing" />
+        <button type="submit" class="footer__newsletter-button" [disabled]="isSubscribing || !email">
+          @if (isSubscribing) {
+          Subscribing...
+          } @else if (subscribeStatus === 'success') {
+          Subscribed ✓
+          } @else if (subscribeStatus === 'error') {
+          Error! Try Again
+          } @else {
+          Subscribe
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+          }
+        </button>
+      </form>
+    </div>
+
     <!-- Main Footer Content -->
     <div class="footer__main">
       <!-- Brand Column -->

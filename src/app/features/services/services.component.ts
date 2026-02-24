@@ -106,6 +106,31 @@ export class ServicesComponent implements OnInit {
     }
   ];
 
+  faqs = [
+    {
+      question: 'Do you build custom enterprise software?',
+      answer: 'Yes, we specialize in Custom Software Development, including ERPs, CRMs, and Supply Chain Management Systems tailored to address your specific business challenges from architecture to deployment.'
+    },
+    {
+      question: 'Can you develop both web and mobile applications?',
+      answer: 'Absolutely. We build modern Web Applications (SPAs, PWAs, SaaS products) using React and Angular, as well as native and cross-platform Mobile Apps using Flutter and React Native for iOS and Android.'
+    },
+    {
+      question: 'Do you provide cloud migration and DevOps services?',
+      answer: 'Yes, our Cloud Solutions & DevOps team leverages AWS, Azure, and Google Cloud to set up scalable infrastructure, automate CI/CD pipelines, and securely migrate your existing applications to the cloud.'
+    },
+    {
+      question: 'Can you integrate AI and Machine Learning into our products?',
+      answer: 'Yes, we implement cutting-edge AI & Machine Learning algorithms for Natural Language Processing (NLP), Computer Vision, predictive analytics, and custom virtual assistants using tools like OpenAI and TensorFlow.'
+    },
+    {
+      question: 'How do you handle the design of the applications?',
+      answer: 'Our in-house UI/UX Design team focuses on user-centric design through wireframing, prototyping, and creating comprehensive design systems to ensure your applications are intuitive and engaging.'
+    }
+  ];
+
+  activeFaqIndex: number | null = null;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -120,5 +145,9 @@ export class ServicesComponent implements OnInit {
         }, 100);
       }
     });
+  }
+
+  toggleFaq(index: number): void {
+    this.activeFaqIndex = this.activeFaqIndex === index ? null : index;
   }
 }

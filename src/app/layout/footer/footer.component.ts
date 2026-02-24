@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 interface FooterLink {
   label: string;
@@ -22,12 +23,14 @@ interface SocialLink {
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   footerSections: FooterSection[] = [
     {
@@ -83,8 +86,51 @@ export class FooterComponent {
   ];
 
   contactInfo = {
-    email: 'hello@nimblesl.com',
+    email: 'nimblesoftwarelab@gmail.com',
     phone: '+880-1796-109979',
     address: 'Gulshan-2, Dhaka, Bangladesh'
   };
+
+  email = '';
+  isSubscribing = false;
+  subscribeStatus: 'idle' | 'success' | 'error' = 'idle';
+
+  subscribeToNewsletter(): void {
+    if (!this.email) return;
+
+    this.isSubscribing = true;
+    this.subscribeStatus = 'idle';
+    this.cdr.detectChanges();
+
+    fetch('https://formsubmit.co/ajax/nimblesoftwarelab@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        email: this.email,
+        _subject: 'New Newsletter Subscriber - NimbleSL.com'
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          this.subscribeStatus = 'success';
+          this.email = '';
+          setTimeout(() => {
+            this.subscribeStatus = 'idle';
+            this.cdr.detectChanges();
+          }, 4000);
+        } else {
+          this.subscribeStatus = 'error';
+        }
+      })
+      .catch(() => {
+        this.subscribeStatus = 'error';
+      })
+      .finally(() => {
+        this.isSubscribing = false;
+        this.cdr.detectChanges();
+      });
+  }
 }
