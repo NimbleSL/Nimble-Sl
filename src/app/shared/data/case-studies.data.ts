@@ -99,40 +99,40 @@ export const CASE_STUDIES_DATA: CaseStudy[] = [
   },
   {
     id: 'authnexus4',
-    title: 'AuthNexus4 - Federated Identity & SSO Hub',
-    client: 'Law Enforcement Agencies',
-    industry: 'GovTech / Cybersecurity',
-    description: 'A production-grade Federated Identity and Access Management platform built as the central authentication backbone for interconnected law enforcement applications.',
-    challenge: 'Fragmented digital platforms caused duplicate accounts, password fatigue, manual onboarding, and lack of cross-system audit trails across agencies.',
-    solution: 'A SAML 2.0 Identity Provider with integration into Salesforce for organization data sync, centralizing user management, role mapping, and 2FA enforcement.',
+    title: 'AuthNexus4 - Enterprise Identity & Access Management',
+    client: 'Enterprise Organizations',
+    industry: 'Enterprise / Cybersecurity',
+    description: 'A production-grade Identity and Access Management platform built as the central authentication backbone for interconnected enterprise applications.',
+    challenge: 'Fragmented digital platforms caused duplicate accounts, password fatigue, manual onboarding, and lack of cross-system audit trails across departments.',
+    solution: 'A secure Identity Provider with CRM integration for organization data sync, centralizing user management, role mapping, and multi-factor authentication enforcement.',
     results: [
-      'Sub-second SSO redirect across partner platforms',
-      'Automated Salesforce department syncing',
-      '90%+ SAML success rate',
+      'Sub-second authentication redirect across partner platforms',
+      'Automated department and role syncing',
+      '90%+ authentication success rate',
       'Unified cross-system audit trails for logins'
     ],
-    technologies: ['ASP.NET Core', 'SAML 2.0', 'Salesforce OAuth', 'RabbitMQ', 'Entity Framework'],
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Redis', 'Docker'],
     metrics: [
       { label: 'Auth Success', value: '90%+' },
-      { label: 'SSO Speed', value: '<1s' }
+      { label: 'Auth Speed', value: '<1s' }
     ],
     color: 'indigo'
   },
   {
     id: 'civicrecruit7',
-    title: 'CivicRecruit7 - Digital Government Recruitment',
-    client: 'Government Examination Authority',
-    industry: 'GovTech / Public Sector',
-    description: 'A comprehensive digital platform managing the complete recruitment lifecycle for law enforcement positions involving thousands of candidates.',
+    title: 'CivicRecruit7 - Digital Recruitment Platform',
+    client: 'Large Enterprise',
+    industry: 'Enterprise / HR Tech',
+    description: 'A comprehensive digital platform managing the complete recruitment lifecycle for enterprise positions involving thousands of candidates.',
     challenge: 'Manual data collection, complex quota-based distribution, disconnected examination phases, and error-prone paper-based attendance reconciliation.',
-    solution: 'A full-stack web platform using Clean Architecture, featuring automated merit list generation, dynamic RDLC reporting, and quota-compliant seat distribution.',
+    solution: 'A full-stack web platform using Clean Architecture, featuring automated merit list generation, dynamic reporting, and quota-compliant seat distribution.',
     results: [
       'Handles thousands of concurrent candidate workflows',
       'Zero manual tabulation errors',
       'Sub-30-second official report generation',
       'Automated quota distribution with remainders'
     ],
-    technologies: ['Angular', '.NET Core', 'SQL Server', 'ag-Grid', 'Docker'],
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Redis', 'Docker'],
     metrics: [
       { label: 'Report Gen', value: '<30s' },
       { label: 'Errors', value: '0%' }
@@ -141,19 +141,19 @@ export const CASE_STUDIES_DATA: CaseStudy[] = [
   },
   {
     id: 'experteval11',
-    title: 'ExpertEval11 - DRE Case Management',
-    client: 'Law Enforcement Agencies',
-    industry: 'GovTech / Law Enforcement',
-    description: 'An enterprise-grade platform digitizing the complete Drug Recognition Expert evaluation workflow with forensic-grade audit trails.',
+    title: 'ExpertEval11 - Expert Evaluation Case Management',
+    client: 'Enterprise Organizations',
+    industry: 'Enterprise / Case Management',
+    description: 'An enterprise-grade platform digitizing the complete expert evaluation workflow with forensic-grade audit trails.',
     challenge: 'Unstructured paper documentation led to errors, disconnected media, missing audit trails, and lack of real-time analytics for supervisors.',
-    solution: 'A modular web app with strict permission enforcement, AI-assisted narrative generation, Tableau integration, and AWS S3 media management.',
+    solution: 'A modular web app with strict permission enforcement, AI-assisted narrative generation, analytics integration, and cloud media management.',
     results: [
       'Complete forensic pre-deletion audit trail',
-      'AI-assisted reports saving significant officer time',
-      'Real-time Tableau operational analytics',
+      'AI-assisted reports saving significant team time',
+      'Real-time operational analytics dashboard',
       'Passive physiological data anomaly detection'
     ],
-    technologies: ['ASP.NET Core', 'OpenAI GPT-4', 'Tableau', 'RabbitMQ', 'AWS S3'],
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Redis', 'Docker'],
     metrics: [
       { label: 'Audit Trail', value: '100%' },
       { label: 'Media Storage', value: 'Unlimited' }
@@ -162,19 +162,19 @@ export const CASE_STUDIES_DATA: CaseStudy[] = [
   },
   {
     id: 'fieldlaw16',
-    title: 'FieldLaw16 - DUI/DWI Case Automation',
-    client: 'Law Enforcement Agencies',
-    industry: 'GovTech / Law Enforcement',
-    description: 'A cloud-connected platform automating the complete DUI/DWI case lifecycle, from roadside stops to judicial submission.',
-    challenge: 'Hours of post-shift reporting, manual hand-offs, disconnected systems, and lack of digital signature capabilities vulnerable in court proceedings.',
-    solution: 'A Clean Architecture platform featuring dynamic document generation, AI narrative scoring, digital signatures, and real-time District Attorney integration.',
+    title: 'FieldLaw16 - Field Case Automation',
+    client: 'Enterprise Organizations',
+    industry: 'Enterprise / Legal Services',
+    description: 'A cloud-connected platform automating the complete field case lifecycle, from initial documentation to final submission.',
+    challenge: 'Hours of post-shift reporting, manual hand-offs, disconnected systems, and lack of digital signature capabilities.',
+    solution: 'A Clean Architecture platform featuring dynamic document generation, AI narrative scoring, digital signatures, and real-time stakeholder integration.',
     results: [
-      'Court-ready reports generated in <2 minutes',
+      'Reports generated in <2 minutes',
       'Automated case templates reducing typing',
-      'Cross-jurisdiction real-time tracking',
-      'Digital signatures accepted in judicial workflow'
+      'Cross-department real-time tracking',
+      'Digital signatures accepted in workflow'
     ],
-    technologies: ['ASP.NET Core', 'Redis', 'TX TextControl', 'OpenAI', 'SAML 2.0'],
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Redis', 'Docker'],
     metrics: [
       { label: 'Report Gen', value: '<2m' },
       { label: 'Signatures', value: 'Digital' }
@@ -183,19 +183,19 @@ export const CASE_STUDIES_DATA: CaseStudy[] = [
   },
   {
     id: 'victimshield9',
-    title: 'VictimShield9 - Victim Protection Platform',
-    client: 'Justice & Victim Services',
-    industry: 'GovTech / Judicial Services',
-    description: 'An integrated digital case management system orchestrating family violence response across law enforcement, courts, and victim services.',
-    challenge: 'Disconnected paper forms delayed Emergency Protective Orders (EPOs) and made cross-agency collaboration difficult during critical safety windows.',
-    solution: 'An end-to-end digital tracker utilizing event-driven synchronization, dynamic TX TextControl PDF generation, and SAML-based federation.',
+    title: 'VictimShield9 - Case Protection Platform',
+    client: 'Enterprise Organizations',
+    industry: 'Enterprise / Case Management',
+    description: 'An integrated digital case management system orchestrating response workflows across multiple departments and service providers.',
+    challenge: 'Disconnected paper forms delayed critical orders and made cross-department collaboration difficult during time-sensitive windows.',
+    solution: 'An end-to-end digital tracker utilizing event-driven synchronization, dynamic PDF generation, and secure API integration.',
     results: [
-      'Zero paper EPO submissions',
-      'Real-time case visibility across connected agencies',
-      'Immutable judicial audit trails',
-      'Evidence-based victim safety planning'
+      'Zero paper submissions',
+      'Real-time case visibility across connected departments',
+      'Immutable audit trails',
+      'Evidence-based safety planning'
     ],
-    technologies: ['ASP.NET Core', 'RabbitMQ', 'TX TextControl', 'Hangfire'],
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Redis', 'Docker'],
     metrics: [
       { label: 'Paper Usage', value: 'Zero' },
       { label: 'Sync Speed', value: 'Real-time' }
