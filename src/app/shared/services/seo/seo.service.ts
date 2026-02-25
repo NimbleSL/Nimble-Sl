@@ -120,7 +120,7 @@ export class SeoService {
         '@type': 'ContactPoint',
         'telephone': '+880-1796-109979',
         'contactType': 'customer service',
-        'email': 'nimblesoftwarelab@gmail.com',
+        'email': 'info@nimblesl.com',
         'availableLanguage': ['English', 'Bengali']
       },
       'sameAs': [
@@ -241,7 +241,7 @@ export class SeoService {
       'image': this.defaultImage,
       'url': this.baseUrl,
       'telephone': '+880-1796-109979',
-      'email': 'nimblesoftwarelab@gmail.com',
+      'email': 'info@nimblesl.com',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'House - 1, Road - 36, Gulshan - 2',

@@ -1,9 +1,9 @@
 <main class="page-container blog-page">
   <div class="page-header">
     <div class="page-header__container">
-      <h1 class="page-header__title">Engineering Insights</h1>
-      <p class="page-header__subtitle">Internal discussions, architectural decisions, and thoughts straight from the
-        engineering team at NimbleSL.</p>
+      <h1 class="page-header__title">Nimble Insights</h1>
+      <p class="page-header__subtitle">Engineering stories, AI deep-dives, and behind-the-scenes from the team at
+        NimbleSL. No fluff — just things we actually learned shipping code.</p>
     </div>
   </div>
 
@@ -11,21 +11,26 @@
     <div class="blog-content__container">
 
       <!-- Featured Post -->
-      <div class="featured-post" *ngIf="activeCategory === 'All'">
+      <article class="featured-post" *ngIf="activeCategory === 'All'" itemscope
+        itemtype="https://schema.org/BlogPosting">
         <div class="featured-post__image">
-          <img [src]="featuredPost.image" [alt]="featuredPost.title" loading="eager" />
+          <img [src]="featuredPost.image" [alt]="featuredPost.title" loading="eager" itemprop="image" />
         </div>
         <div class="featured-post__content">
           <div class="post-meta">
-            <span class="category">{{ featuredPost.category }}</span>
+            <span class="category" itemprop="articleSection">{{ featuredPost.category }}</span>
+            <span class="dot">•</span>
+            <time class="date" [attr.datetime]="featuredPost.date" itemprop="datePublished">{{ featuredPost.date
+              }}</time>
             <span class="dot">•</span>
             <span class="read-time">{{ featuredPost.readTime }}</span>
           </div>
-          <h2 class="featured-post__title">
+          <h2 class="featured-post__title" itemprop="headline">
             <a [routerLink]="['/blog', featuredPost.id]">{{ featuredPost.title }}</a>
           </h2>
-          <p class="featured-post__excerpt">{{ featuredPost.excerpt }}</p>
+          <p class="featured-post__excerpt" itemprop="description">{{ featuredPost.excerpt }}</p>
           <div class="post-footer">
+            <span class="author" itemprop="author">{{ featuredPost.author }}</span>
             <a [routerLink]="['/blog', featuredPost.id]" class="read-more">Read Article <svg viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -33,46 +38,49 @@
               </svg></a>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Categories Filter -->
-      <div class="blog-filters">
+      <nav class="blog-filters" aria-label="Blog categories">
         @for (category of categories; track category) {
-        <button class="filter-btn" [class.active]="activeCategory === category" (click)="setCategory(category)">
+        <button class="filter-btn" [class.active]="activeCategory === category" (click)="setCategory(category)"
+          [attr.aria-pressed]="activeCategory === category">
           {{ category }}
         </button>
         }
-      </div>
+      </nav>
 
       <!-- Posts Grid -->
       <div class="blog-grid">
         @for (post of paginatedPosts; track post.id) {
-        <div class="blog-card">
+        <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="blog-card__image">
-            <img [src]="post.image" [alt]="post.title" loading="lazy" />
+            <img [src]="post.image" [alt]="post.title" loading="lazy" itemprop="image" />
           </div>
           <div class="blog-card__content">
             <div class="post-meta">
-              <span class="category">{{ post.category }}</span>
+              <span class="category" itemprop="articleSection">{{ post.category }}</span>
               <span class="dot">•</span>
-              <span class="read-time">{{ post.readTime }}</span>
+              <time class="date" [attr.datetime]="post.date" itemprop="datePublished">{{ post.date }}</time>
             </div>
-            <h3 class="blog-card__title">
+            <h3 class="blog-card__title" itemprop="headline">
               <a [routerLink]="['/blog', post.id]">{{ post.title }}</a>
             </h3>
-            <p class="blog-card__excerpt">{{ post.excerpt }}</p>
+            <p class="blog-card__excerpt" itemprop="description">{{ post.excerpt }}</p>
             <div class="post-footer">
+              <span class="author" itemprop="author">{{ post.author }}</span>
               <a [routerLink]="['/blog', post.id]" class="read-more">Read Article</a>
             </div>
           </div>
-        </div>
+        </article>
         }
       </div>
 
       <!-- Pagination -->
       @if (totalPages > 1) {
-      <div class="blog-pagination" style="margin-top: 3rem;">
-        <button class="blog-pagination__btn" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+      <nav class="blog-pagination" aria-label="Blog pagination" style="margin-top: 3rem;">
+        <button class="blog-pagination__btn" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)"
+          aria-label="Previous page">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M15 18l-6-6 6-6" />
           </svg>
@@ -80,18 +88,20 @@
 
         <div class="blog-pagination__numbers">
           @for (page of pages; track page) {
-          <button class="blog-pagination__number" [class.active]="page === currentPage" (click)="setPage(page)">
+          <button class="blog-pagination__number" [class.active]="page === currentPage" (click)="setPage(page)"
+            [attr.aria-current]="page === currentPage ? 'page' : null">
             {{ page }}
           </button>
           }
         </div>
 
-        <button class="blog-pagination__btn" [disabled]="currentPage === totalPages" (click)="setPage(currentPage + 1)">
+        <button class="blog-pagination__btn" [disabled]="currentPage === totalPages" (click)="setPage(currentPage + 1)"
+          aria-label="Next page">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 18l6-6-6-6" />
           </svg>
         </button>
-      </div>
+      </nav>
       }
 
     </div>

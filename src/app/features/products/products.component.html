@@ -48,21 +48,12 @@
 
           <!-- CTA -->
           <div class="product-card__cta">
-            @if (product.status === 'live') {
-            <a [routerLink]="['/products', product.id]" class="btn btn-primary">
-              Explore {{ product.name }}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-            } @else {
-            <a [routerLink]="['/contact']" class="btn btn-secondary">
+            <button class="btn btn-primary" (click)="openWaitlist(product.name)">
               Join Waitlist
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
-            }
+            </button>
           </div>
         </div>
 
@@ -131,3 +122,73 @@
     </div>
   </section>
 </main>
+
+<!-- Waitlist Modal -->
+@if (showWaitlistModal) {
+<div class="waitlist-modal" (click)="closeWaitlist()">
+  <div class="waitlist-modal__card" (click)="$event.stopPropagation()">
+    <!-- Close Button -->
+    <button class="waitlist-modal__close" (click)="closeWaitlist()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    @if (submitStatus === 'success') {
+    <!-- Success State -->
+    <div class="waitlist-modal__success">
+      <div class="waitlist-modal__success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h3>You're on the list! 🎉</h3>
+      <p>We'll notify you when <strong>{{ waitlistProductName }}</strong> is ready. Stay tuned!</p>
+      <button class="waitlist-modal__btn waitlist-modal__btn--secondary" (click)="closeWaitlist()">
+        Close
+      </button>
+    </div>
+    } @else {
+    <!-- Form State -->
+    <div class="waitlist-modal__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    </div>
+    <h3 class="waitlist-modal__title">Join the Waitlist</h3>
+    <p class="waitlist-modal__subtitle">
+      Be the first to know when <strong>{{ waitlistProductName }}</strong> launches.
+    </p>
+
+    <form class="waitlist-modal__form" (ngSubmit)="submitWaitlist()">
+      <div class="waitlist-modal__field">
+        <input type="email" name="email" [(ngModel)]="waitlistEmail" placeholder="Enter your email address" required
+          [disabled]="isSubmitting" class="waitlist-modal__input" autocomplete="email" />
+      </div>
+
+      @if (submitStatus === 'error') {
+      <p class="waitlist-modal__error">Something went wrong. Please try again.</p>
+      }
+
+      <button type="submit" class="waitlist-modal__btn waitlist-modal__btn--primary"
+        [disabled]="isSubmitting || !waitlistEmail">
+        @if (isSubmitting) {
+        <span class="waitlist-modal__spinner"></span>
+        Joining...
+        } @else {
+        Join Waitlist
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+        }
+      </button>
+    </form>
+
+    <p class="waitlist-modal__privacy">We respect your privacy. No spam, ever.</p>
+    }
+  </div>
+</div>
+}

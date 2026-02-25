@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { SeoService } from '../../shared/services/seo/seo.service';
 
 interface Product {
@@ -16,12 +17,12 @@ interface Product {
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.seoService.updateSeo({
@@ -35,6 +36,7 @@ export class ProductsComponent implements OnInit {
       { name: 'Products', url: 'https://www.nimblesl.com/products' }
     ]);
   }
+
   products: Product[] = [
     {
       id: 'nimblebot',
@@ -69,4 +71,61 @@ export class ProductsComponent implements OnInit {
       color: 'green'
     }
   ];
+
+  // Waitlist Modal State
+  showWaitlistModal = false;
+  waitlistProductName = '';
+  waitlistEmail = '';
+  isSubmitting = false;
+  submitStatus: 'idle' | 'success' | 'error' = 'idle';
+
+  openWaitlist(productName: string): void {
+    this.waitlistProductName = productName;
+    this.waitlistEmail = '';
+    this.submitStatus = 'idle';
+    this.showWaitlistModal = true;
+  }
+
+  closeWaitlist(): void {
+    this.showWaitlistModal = false;
+    this.waitlistProductName = '';
+    this.waitlistEmail = '';
+    this.submitStatus = 'idle';
+  }
+
+  submitWaitlist(): void {
+    if (!this.waitlistEmail) return;
+
+    this.isSubmitting = true;
+    this.submitStatus = 'idle';
+    this.cdr.detectChanges();
+
+    fetch('https://formsubmit.co/ajax/nimblesoftwarelab@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        email: this.waitlistEmail,
+        product: this.waitlistProductName,
+        _subject: `Waitlist Signup - ${this.waitlistProductName}`
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          this.submitStatus = 'success';
+          this.waitlistEmail = '';
+        } else {
+          this.submitStatus = 'error';
+        }
+      })
+      .catch(() => {
+        this.submitStatus = 'error';
+      })
+      .finally(() => {
+        this.isSubmitting = false;
+        this.cdr.detectChanges();
+      });
+  }
 }

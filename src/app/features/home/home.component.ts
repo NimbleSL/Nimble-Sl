@@ -10,6 +10,7 @@ import { CtaSectionComponent } from './components/cta-section/cta-section.compon
 import { TestimonialsComponent } from './components/testimonials/testimonials';
 import { BlogPreviewComponent } from './components/blog-preview/blog-preview';
 import { SeoService } from '../../shared/services/seo/seo.service';
+import { Compliances } from './components/compliances/compliances';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { SeoService } from '../../shared/services/seo/seo.service';
     CommonModule,
     HeroComponent,
     TrustedByComponent,
+    Compliances,
     ClientsComponent,
     ServicesGridComponent,
     ProductsShowcaseComponent,
@@ -30,6 +32,7 @@ import { SeoService } from '../../shared/services/seo/seo.service';
     <main class="home">
       <app-hero />
       <app-trusted-by />
+      <app-compliances />
       <app-services-grid />
       <app-clients />
       <app-products-showcase />
@@ -47,7 +50,7 @@ import { SeoService } from '../../shared/services/seo/seo.service';
   `]
 })
 export class HomeComponent implements OnInit {
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService) { }
 
   ngOnInit(): void {
     this.seoService.updateSeo({

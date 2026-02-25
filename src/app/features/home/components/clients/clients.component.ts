@@ -15,10 +15,10 @@ interface Client {
 })
 export class ClientsComponent {
   clients: Client[] = [
-    { name: 'Rosachy', logo: 'assets/images/clients/rosachy.jpg' },
+    { name: 'Hayaa', logo: 'assets/images/clients/hayaacola.jpg' },
+    { name: 'Alieaz Resources', logo: 'assets/images/clients/ch15.jpg' },
     { name: 'North Avenue', logo: 'assets/images/clients/north-avenue.jpg' },
-    { name: 'HayaaCola', logo: 'assets/images/clients/hayaacola.jpg' },
-    { name: 'CH15', logo: 'assets/images/clients/ch15.jpg' },
+    { name: 'Rosachy', logo: 'assets/images/clients/rosachy.jpg' },
     { name: 'WPEDO', logo: 'assets/images/clients/wpedo.jpg' }
   ];
 }

@@ -54,12 +54,12 @@ export const routes: Routes = [
   {
     path: 'blog',
     loadComponent: () => import('./features/blog/blog').then(m => m.BlogComponent),
-    title: 'Blog | Nimble Software Lab'
+    title: 'Nimble Insights | Nimble Software Lab'
   },
   {
     path: 'blog/:id',
     loadComponent: () => import('./features/blog/blog-detail/blog-detail').then(m => m.BlogDetailComponent),
-    title: 'Article | Nimble Software Lab'
+    title: 'Article | Nimble Insights'
   },
   {
     path: 'privacy',

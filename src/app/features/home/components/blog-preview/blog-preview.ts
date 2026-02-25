@@ -22,31 +22,31 @@ interface BlogPostPreview {
 export class BlogPreviewComponent {
   posts: BlogPostPreview[] = [
     {
-      id: 'ai-in-enterprise',
-      title: 'The Future of AI in Enterprise Software Development',
-      excerpt: 'How large language models and RAG architectures are fundamentally transforming how businesses build and interact with internal tools.',
+      id: 'rag-vs-finetuning-business-chatbots',
+      title: 'RAG vs Fine-Tuning: Which One Actually Works for Business Chatbots?',
+      excerpt: 'We\'ve built chatbots both ways — fine-tuned and RAG-based. After shipping both to production, the difference in accuracy, cost, and maintenance was not what we expected.',
       category: 'Artificial Intelligence',
-      date: 'Feb 15, 2026',
-      readTime: '6 min read',
+      date: 'Feb 22, 2026',
+      readTime: '9 min read',
       image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'
     },
     {
-      id: 'fixing-memory-leaks-nodejs',
-      title: 'How We Fixed a Critical Memory Leak in Production Node.js',
-      excerpt: 'Our step-by-step investigation into a memory leak that crashed our client\'s servers every 6 hours, and the surprising root cause.',
-      category: 'Web Development',
-      date: 'Feb 10, 2026',
-      readTime: '10 min read',
-      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80'
+      id: 'why-we-built-nimblebot',
+      title: 'Why We Built NimbleBot: The Problem Nobody Was Solving Right',
+      excerpt: 'Every chatbot platform we evaluated either required a PhD in prompt engineering or cost $500/month for basic features. So we built our own.',
+      category: 'Product Updates',
+      date: 'Feb 04, 2026',
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1531746790095-e5995fea9cc6?w=600&q=80'
     },
     {
-      id: 'kubernetes-downtime-incident',
-      title: 'Post-Mortem: The Kubernetes Incident That Taught Us Everything',
-      excerpt: 'A transparent breakdown of how a misconfigured liveness probe caused cascading failures across our microservices.',
-      category: 'Cloud Architecture',
-      date: 'Feb 05, 2026',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&q=80'
+      id: 'insurance-fraud-detection-graph-neural-networks',
+      title: 'How We Detected Insurance Fraud with 96% Accuracy Using Graph Neural Networks',
+      excerpt: 'Traditional fraud detection looks at individual claims. We used Graph Attention Networks to catch organized fraud rings that rule-based systems miss.',
+      category: 'Artificial Intelligence',
+      date: 'Jan 17, 2026',
+      readTime: '12 min read',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'
     }
   ];
 }

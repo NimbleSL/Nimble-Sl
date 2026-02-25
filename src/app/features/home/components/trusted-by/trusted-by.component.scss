@@ -1,52 +1,154 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-
-
-
-
 .trusted {
-  padding: var(--space-10) 0;
-  border-bottom: 1px solid var(--color-border-light);
-  background: var(--color-background);
+  position: relative;
+  padding: var(--space-12) 0 var(--space-10);
+  background: #0a0e1a;
+  overflow: hidden;
 
+  @include tablet-up {
+    padding: var(--space-16) 0 var(--space-12);
+  }
+
+  // ── Floating Particles ─────────────────────────────
+  &__particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 20s infinite ease-in-out;
+
+    &--1 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+      top: -100px;
+      left: -50px;
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+      top: 50%;
+      right: -60px;
+      animation-delay: -5s;
+    }
+
+    &--3 {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #4ade80 0%, transparent 70%);
+      bottom: -40px;
+      left: 30%;
+      animation-delay: -10s;
+    }
+
+    &--4 {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #f59e0b 0%, transparent 70%);
+      top: 20%;
+      left: 60%;
+      animation-delay: -3s;
+    }
+
+    &--5 {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+      top: 10%;
+      right: 20%;
+      animation-delay: -7s;
+    }
+
+    &--6 {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+      bottom: 10%;
+      left: 10%;
+      animation-delay: -12s;
+    }
+  }
+
+  // ── Header ─────────────────────────────────────────
   &__container {
     @include container;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
-  &__label {
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
+  &__badge {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: var(--font-weight-medium);
-    margin-bottom: var(--space-4);
+    letter-spacing: 0.15em;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-3);
   }
 
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: var(--font-weight-bold);
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: var(--space-3);
+  }
+
+  &__accent {
+    background: linear-gradient(135deg, #4ade80, #22d3ee, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__subtitle {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.45);
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+    line-height: 1.6;
+
+    @include tablet-up {
+      margin-bottom: var(--space-10);
+    }
+  }
+
+  // ── Marquee ────────────────────────────────────────
   &__marquee {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: var(--space-8) 0;
+    padding: var(--space-2) 0;
 
-    // Smooth fade effect on edges
+    // Smooth fade edges
     mask-image: linear-gradient(to right,
         transparent,
-        black 15%,
-        black 85%,
+        black 10%,
+        black 90%,
         transparent);
     -webkit-mask-image: linear-gradient(to right,
         transparent,
-        black 15%,
-        black 85%,
+        black 10%,
+        black 90%,
         transparent);
   }
 
   &__track {
     display: flex;
     width: max-content;
-    animation: scroll 40s linear infinite;
+    animation: scrollTech 35s linear infinite;
 
     &:hover {
       animation-play-state: paused;
@@ -56,48 +158,106 @@
   &__logos {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
-    padding-right: var(--space-8);
+    gap: var(--space-6);
+    padding-right: var(--space-6);
 
-    span {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 2.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--color-border);
-      transition: all var(--transition-base);
-      cursor: default;
+    @include tablet-up {
+      gap: var(--space-8);
+      padding-right: var(--space-8);
+    }
+  }
 
-      @include tablet-up {
-        font-size: 3.5rem;
-        -webkit-text-stroke: 2px var(--color-border);
+  // ── Individual Tech Item ───────────────────────────
+  &__item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
+
+    @include tablet-up {
+      padding: var(--space-3) var(--space-6);
+      gap: var(--space-3);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+      .trusted__icon {
+        filter: none;
+        transform: scale(1.1);
       }
 
-      &:hover:not(.dot) {
-        color: var(--color-text-primary);
-        -webkit-text-stroke: 2px transparent;
-        transform: scale(1.05);
+      .trusted__name {
+        color: rgba(255, 255, 255, 0.9);
       }
+    }
+  }
 
-      &.dot {
-        font-size: 1.5rem;
-        -webkit-text-stroke: 0;
-        color: var(--color-border);
-        transform: translateY(-4px);
-      }
+  // ── Icon ───────────────────────────────────────────
+  &__icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
+
+    @include tablet-up {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  // ── Name Label ─────────────────────────────────────
+  &__name {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    color: rgba(255, 255, 255, 0.55);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    letter-spacing: 0.01em;
+
+    @include tablet-up {
+      font-size: 0.9375rem;
     }
   }
 }
 
-@keyframes scroll {
+// ── Animations ─────────────────────────────────────
+@keyframes scrollTech {
   0% {
     transform: translateX(0);
   }
 
   100% {
-    transform: translateX(-50%); // Move exact half
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(20px, 20px) scale(1.02);
   }
 }

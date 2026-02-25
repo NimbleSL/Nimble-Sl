@@ -18,7 +18,7 @@ export class HeaderComponent {
     { label: 'Services', path: '/services' },
     { label: 'Products', path: '/products' },
     { label: 'Case Studies', path: '/case-studies' },
-    { label: 'Blog', path: '/blog' },
+    { label: 'Insights', path: '/blog' },
     { label: 'About', path: '/about' },
     { label: 'Careers', path: '/careers' }
   ];
