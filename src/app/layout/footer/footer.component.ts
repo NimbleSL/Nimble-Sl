@@ -87,7 +87,7 @@ export class FooterComponent {
   contactInfo = {
     email: 'hello@nimblesl.com',
     phone: '+880-1796-109979',
-    address: 'House - 1, Road - 36, Gulshan - 2, Dhaka-1219, Bangladesh'
+    address: 'House - 1, Road - 36, Gulshan - 2, Dhaka-1212, Bangladesh.'
   };
 
   email = '';

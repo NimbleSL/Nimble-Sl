@@ -30,6 +30,7 @@
     opacity: 0;
     transform: translateY(30px) scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -112,6 +113,7 @@
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -119,10 +121,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
   }
+
   50% {
     opacity: 0.7;
     box-shadow: 0 0 16px rgba(34, 197, 94, 0.8);
@@ -185,9 +190,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -198,9 +206,11 @@
     transform: scale(1);
     opacity: 0.8;
   }
+
   50% {
     opacity: 0.4;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;
@@ -388,6 +398,57 @@
         font-size: 0.8rem;
         text-align: center;
         padding: var(--space-2);
+      }
+    }
+
+    // Link and CTA Button Styles inside messages
+    .chat-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+      transition: opacity var(--transition-fast);
+      pointer-events: auto;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .chat-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      margin: 4px 0;
+      padding: 6px 12px;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all var(--transition-fast);
+      pointer-events: auto;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background: #ffffff;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &.user .chat-cta-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--color-primary);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
       }
     }
   }

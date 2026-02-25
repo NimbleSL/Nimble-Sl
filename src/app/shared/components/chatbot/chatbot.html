@@ -36,8 +36,7 @@
       @for (message of chatService.messages$ | async; track message) {
       <div class="message" [class.user]="message.role === 'user'" [class.assistant]="message.role === 'assistant'"
         [class.system]="message.role === 'system'">
-        <div class="message-content">
-          {{ message.content }}
+        <div class="message-content" [innerHTML]="formatMessage(message.content)">
         </div>
       </div>
       }
