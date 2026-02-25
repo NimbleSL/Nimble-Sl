@@ -24,6 +24,12 @@
     border-radius: 50%;
     opacity: 0.15;
     animation: float 20s infinite ease-in-out;
+    will-change: transform;
+    contain: strict;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     &--1 {
       width: 300px;
@@ -149,9 +155,14 @@
     display: flex;
     width: max-content;
     animation: scrollTech 35s linear infinite;
+    will-change: transform;
 
     &:hover {
       animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
     }
   }
 

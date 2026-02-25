@@ -56,6 +56,12 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
+    will-change: transform;
+    contain: strict;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none !important;
+    }
 
     &--1 {
       width: 400px;
@@ -433,5 +439,23 @@
   50% {
     transform: translateY(6px);
     opacity: 0.3;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .hero__badge,
+  .hero__title,
+  .hero__subtitle,
+  .hero__ctas,
+  .hero__stats,
+  .hero__trust,
+  .hero__scroll {
+    animation: none !important;
+  }
+
+  .hero__badge-dot,
+  .hero__scroll-wheel {
+    animation: none !important;
   }
 }
