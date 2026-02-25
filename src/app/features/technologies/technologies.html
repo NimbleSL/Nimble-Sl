@@ -1,0 +1,43 @@
+<main class="tech-page">
+  <!-- Hero Section -->
+  <section class="tech-hero">
+    <div class="tech-hero__container">
+      <span class="tech-hero__badge">OUR TECHNOLOGIES</span>
+      <h1 class="tech-hero__title">
+        The Right Tools for the<br />
+        <span class="tech-hero__accent">Right Job</span>
+      </h1>
+      <p class="tech-hero__subtitle">
+        We don't force a single technology on every project. We select the best-in-class frameworks, languages, and
+        cloud providers tailored to your specific performance, scalability, and security needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tech Categories -->
+  <section class="tech-categories">
+    <div class="tech-categories__container">
+      @for (category of categories; track category.title) {
+      <div class="tech-category">
+        <div class="tech-category__header">
+          <h2 class="tech-category__title">{{ category.title }}</h2>
+          <p class="tech-category__desc">{{ category.description }}</p>
+        </div>
+
+        <div class="tech-grid">
+          @for (tech of category.items; track tech.name) {
+          <div class="tech-card" [style.--brand-color]="tech.color">
+            <div class="tech-card__icon-wrapper">
+              <img [src]="tech.icon" [alt]="tech.name + ' logo'" class="tech-card__icon" loading="lazy" />
+            </div>
+            <span class="tech-card__name">{{ tech.name }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <app-cta-section></app-cta-section>
+</main>

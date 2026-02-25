@@ -1,0 +1,49 @@
+<main class="process-page">
+  <!-- Hero Section -->
+  <section class="process-hero">
+    <div class="process-hero__container">
+      <span class="process-hero__badge">HOW WE WORK</span>
+      <h1 class="process-hero__title">
+        A Proven Process for<br />
+        <span class="process-hero__accent">Predictable Success</span>
+      </h1>
+      <p class="process-hero__subtitle">
+        We rely on a transparent, Agile methodology to transform complex ideas into robust digital products.
+        Zero surprises. Guaranteed delivery.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="process-timeline">
+    <div class="process-timeline__container">
+      <div class="timeline-line"></div>
+
+      @for (step of steps; track step.number; let i = $index) {
+      <div class="timeline-item" [class.timeline-item--right]="i % 2 !== 0">
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+          <span class="step-number">{{ step.number }}</span>
+          <h2 class="step-title">{{ step.title }}</h2>
+          <p class="step-desc">{{ step.description }}</p>
+
+          <ul class="step-activities">
+            @for (activity of step.activities; track activity) {
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="check-icon">
+                <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"></polyline>
+              </svg>
+              {{ activity }}
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <app-cta-section></app-cta-section>
+</main>

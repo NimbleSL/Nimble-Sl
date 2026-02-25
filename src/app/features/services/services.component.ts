@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SeoService } from '../../shared/services/seo/seo.service';
+import { EngagementModels } from './components/engagement-models/engagement-models';
+import { Faq } from '../../shared/components/faq/faq';
 
 interface ServiceDetail {
   id: string;
@@ -15,7 +17,7 @@ interface ServiceDetail {
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, EngagementModels, Faq],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })

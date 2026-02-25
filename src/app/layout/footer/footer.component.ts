@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 interface FooterLink {
   label: string;
   path: string;
+  fragment?: string;
   external?: boolean;
 }
 
@@ -36,11 +37,19 @@ export class FooterComponent {
     {
       title: 'Services',
       links: [
-        { label: 'Custom Software', path: '/services#custom-software' },
-        { label: 'Web Applications', path: '/services#web-apps' },
-        { label: 'Mobile Apps', path: '/services#mobile-apps' },
-        { label: 'Cloud Solutions', path: '/services#cloud' },
-        { label: 'AI Integration', path: '/services#ai' }
+        { label: 'Custom Software', path: '/services', fragment: 'custom-software' },
+        { label: 'Web Applications', path: '/services', fragment: 'web-apps' },
+        { label: 'Mobile Apps', path: '/services', fragment: 'mobile-apps' },
+        { label: 'Cloud Solutions', path: '/services', fragment: 'cloud' },
+        { label: 'AI Integration', path: '/services', fragment: 'ai' }
+      ]
+    },
+    {
+      title: 'Expertise',
+      links: [
+        { label: 'Industries We Serve', path: '/industries' },
+        { label: 'Technologies We Use', path: '/technologies' },
+        { label: 'Our Process', path: '/process' }
       ]
     },
     {

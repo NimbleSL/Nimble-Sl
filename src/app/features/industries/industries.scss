@@ -1,0 +1,203 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.industries-page {
+  background: var(--color-background-alt);
+}
+
+// ── Hero ─────────────────────────────────────────────
+.industries-hero {
+  padding: var(--space-16) 0 var(--space-12);
+  background: var(--color-surface, #ffffff);
+  border-bottom: 1px solid var(--color-border-light, rgba(0, 0, 0, 0.05));
+  text-align: center;
+
+  @include tablet-up {
+    padding: var(--space-20) 0 var(--space-16);
+  }
+
+  &__container {
+    @include container;
+    max-width: 800px;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-primary-light, rgba(59, 130, 246, 0.1));
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-5);
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+
+  &__accent {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+
+    @include tablet-up {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// ── List Section ─────────────────────────────────────
+.industries-list {
+  padding: var(--space-16) 0;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+
+    @include tablet-up {
+      gap: var(--space-24);
+    }
+  }
+}
+
+// ── Individual Card ──────────────────────────────────
+.industry-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: center;
+
+  @include tablet-up {
+    flex-direction: row;
+    gap: var(--space-16);
+
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-light, rgba(59, 130, 246, 0.1));
+    color: var(--color-primary);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+
+    @include tablet-up {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-6);
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-8) 0;
+    display: grid;
+    gap: var(--space-3);
+
+    @include tablet-up {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: 1rem;
+      color: var(--color-text-primary);
+
+      .check-icon {
+        width: 20px;
+        height: 20px;
+        color: #10b981; // Emerald green
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  &__action {
+    .btn {
+      width: 100%;
+
+      @include tablet-up {
+        width: auto;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    flex: 1;
+    width: 100%;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    aspect-ratio: 4/3;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

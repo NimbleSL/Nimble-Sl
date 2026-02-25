@@ -1,0 +1,95 @@
+<main class="industries-page">
+  <!-- Hero Section -->
+  <section class="industries-hero">
+    <div class="industries-hero__container">
+      <span class="industries-hero__badge">INDUSTRIES WE SERVE</span>
+      <h1 class="industries-hero__title">
+        Custom Software for<br />
+        <span class="industries-hero__accent">Key Industries</span>
+      </h1>
+      <p class="industries-hero__subtitle">
+        We rely on deep domain expertise to build software that solves actual industry-specific challenges. We ensure
+        compliance, security, and scalability.
+      </p>
+    </div>
+  </section>
+
+  <!-- Industries Grid -->
+  <section class="industries-list">
+    <div class="industries-list__container">
+      @for (industry of industries; track industry.id; let i = $index) {
+      <div class="industry-card" [class.industry-card--reverse]="i % 2 !== 0">
+        <div class="industry-card__content">
+          <div class="industry-card__icon">
+            <!-- Inline SVGs mapped by ID -->
+            @if (industry.id === 'fintech') {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+            } @else if (industry.id === 'healthcare') {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            } @else if (industry.id === 'enterprise-saas') {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+            } @else if (industry.id === 'ecommerce') {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            }
+          </div>
+          <h2 class="industry-card__title">{{ industry.title }}</h2>
+          <p class="industry-card__desc">{{ industry.description }}</p>
+
+          <ul class="industry-card__features">
+            @for (feature of industry.features; track feature) {
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              {{ feature }}
+            </li>
+            }
+          </ul>
+
+          <div class="industry-card__action">
+            <a routerLink="/case-studies" class="btn btn-outline">Explore Case Studies</a>
+          </div>
+        </div>
+
+        <div class="industry-card__image-wrapper">
+          <img [src]="industry.image" [alt]="industry.title + ' Solutions'" loading="lazy"
+            class="industry-card__image" />
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <app-cta-section></app-cta-section>
+</main>

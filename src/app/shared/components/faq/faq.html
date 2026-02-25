@@ -1,0 +1,29 @@
+<section class="faq-section section-padding">
+  <div class="faq-container">
+    <div class="faq-header text-center">
+      <h2>{{ title }}</h2>
+      <p>{{ subtitle }}</p>
+    </div>
+
+    <div class="faq-list">
+      @for (faq of faqs; track faq.question; let i = $index) {
+      <div class="faq-item" [class.is-open]="activeFaqIndex === i">
+        <button type="button" class="faq-toggle" (click)="toggleFaq(i)" [attr.aria-expanded]="activeFaqIndex === i">
+          <span class="faq-question">{{ faq.question }}</span>
+          <span class="faq-icon" [class.rotated]="activeFaqIndex === i">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+
+        <div class="faq-answer-wrapper" [style.height]="activeFaqIndex === i ? 'auto' : '0'">
+          <div class="faq-answer">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

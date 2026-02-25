@@ -17,6 +17,21 @@ export const routes: Routes = [
     title: 'Services | Nimble Software Lab'
   },
   {
+    path: 'process',
+    loadComponent: () => import('./features/process/process').then(m => m.Process),
+    title: 'Our Process | Nimble Software Lab'
+  },
+  {
+    path: 'industries',
+    loadComponent: () => import('./features/industries/industries').then(m => m.Industries),
+    title: 'Industries We Serve | Nimble Software Lab'
+  },
+  {
+    path: 'technologies',
+    loadComponent: () => import('./features/technologies/technologies').then(m => m.Technologies),
+    title: 'Technologies We Use | Nimble Software Lab'
+  },
+  {
     path: 'products',
     loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent),
     title: 'Our Products | Nimble Software Lab'

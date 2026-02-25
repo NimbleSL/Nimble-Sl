@@ -2,11 +2,12 @@ import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SeoService } from '../../shared/services/seo/seo.service';
+import { Faq, FaqItem } from '../../shared/components/faq/faq';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Faq],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -20,6 +21,25 @@ export class ContactComponent implements OnInit {
 
   isSubmitting = false;
   submissionStatus: 'idle' | 'success' | 'error' = 'idle';
+
+  contactFaqs: FaqItem[] = [
+    {
+      question: 'Where is your team located, and what timezones do you work in?',
+      answer: 'Our core development team is based in Gulshan, Dhaka, Bangladesh (GMT+6). However, we have flexible overlap hours tailored specifically for clients in North America, Europe, and Australia to ensure seamless daily communication.'
+    },
+    {
+      question: 'Who owns the intellectual property (IP) and source code?',
+      answer: 'You do. Upon full completion of the project and final payment, we transfer 100% of the Intellectual Property (IP) rights and source code repositories directly to your organization. This is guaranteed in our master services agreement.'
+    },
+    {
+      question: 'Do you work with startups, or only large enterprises?',
+      answer: 'We work with both. For startups, we focus on rapid MVP development and finding product-market fit. For enterprises, we focus on security, scalability, legacy modernization, and complex integrations.'
+    },
+    {
+      question: 'How do you ensure project security and data privacy?',
+      answer: 'We follow strict secure coding practices (OWASP Top 10), conduct regular code reviews, and implement role-based access controls. We are fully compliant with standard data protection regulations including GDPR and HIPAA where necessary.'
+    }
+  ];
 
   constructor(private cdr: ChangeDetectorRef, private seoService: SeoService) { }
 

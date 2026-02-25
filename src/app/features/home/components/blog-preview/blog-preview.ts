@@ -37,7 +37,7 @@ export class BlogPreviewComponent {
       category: 'Product Updates',
       date: 'Feb 04, 2026',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1531746790095-e5995fea9cc6?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80'
     },
     {
       id: 'insurance-fraud-detection-graph-neural-networks',
@@ -46,7 +46,7 @@ export class BlogPreviewComponent {
       category: 'Artificial Intelligence',
       date: 'Jan 17, 2026',
       readTime: '12 min read',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80'
     }
   ];
 }

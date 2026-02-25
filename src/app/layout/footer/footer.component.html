@@ -32,7 +32,8 @@
       <!-- Brand Column -->
       <div class="footer__brand">
         <a routerLink="/" class="footer__logo">
-          <img src="assets/images/logo/logo.png" alt="Nimble Software Lab" class="footer__logo-img" width="120" height="120" loading="lazy" />
+          <img src="assets/images/logo/logo.png" alt="Nimble Software Lab" class="footer__logo-img" width="120"
+            height="120" loading="lazy" />
         </a>
         <p class="footer__tagline">
           Building exceptional software for companies across the globe.
@@ -71,7 +72,7 @@
         <ul class="footer__links">
           @for (link of section.links; track link.path) {
           <li>
-            <a [routerLink]="link.path" class="footer__link">
+            <a [routerLink]="link.path" [fragment]="link.fragment" class="footer__link">
               {{ link.label }}
             </a>
           </li>
@@ -107,6 +108,22 @@
           </div>
         </div>
       </div>
+
+      <!-- Trust Badges -->
+      <div class="footer__column footer__trust-col">
+        <h4 class="footer__column-title">Powered By</h4>
+        <div class="footer__trust-logos-large">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+            alt="AWS" title="Amazon Web Services" loading="lazy" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg"
+            alt="Google Cloud" title="Google Cloud Platform" loading="lazy" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="Azure"
+            title="Microsoft Azure" loading="lazy" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg"
+            alt="Cloudflare" title="Cloudflare" loading="lazy" />
+        </div>
+      </div>
     </div>
 
     <!-- Footer Bottom -->
@@ -114,6 +131,7 @@
       <p class="footer__copyright">
         © {{ currentYear }} Nimble Software Lab. All rights reserved.
       </p>
+
       <div class="footer__bottom-links">
         <a routerLink="/privacy" class="footer__bottom-link">Privacy</a>
         <a routerLink="/terms" class="footer__bottom-link">Terms</a>

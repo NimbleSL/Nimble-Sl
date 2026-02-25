@@ -203,35 +203,10 @@
     }
   </div>
 
-  <!-- FAQ Section -->
-  <section class="faq-section section-padding">
-    <div class="container container--narrow">
-      <div class="faq-header text-center">
-        <h2>Frequently Asked Questions</h2>
-        <p>Common questions about engaging with NimbleSL.</p>
-      </div>
+  <app-engagement-models></app-engagement-models>
 
-      <div class="faq-list">
-        @for (faq of faqs; track faq.question; let i = $index) {
-        <div class="faq-item" [class.is-open]="activeFaqIndex === i">
-          <button type="button" class="faq-toggle" (click)="toggleFaq(i)">
-            <span class="faq-question">{{ faq.question }}</span>
-            <span class="faq-icon" [class.rotated]="activeFaqIndex === i">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </span>
-          </button>
-          @if (activeFaqIndex === i) {
-          <div class="faq-answer">
-            <p>{{ faq.answer }}</p>
-          </div>
-          }
-        </div>
-        }
-      </div>
-    </div>
-  </section>
+  <app-faq title="Frequently Asked Questions" subtitle="Common questions about engaging with NimbleSL." [faqs]="faqs">
+  </app-faq>
 
   <!-- CTA Section -->
   <section class="services-cta">

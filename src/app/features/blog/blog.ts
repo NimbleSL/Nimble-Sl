@@ -98,7 +98,7 @@ export class BlogComponent implements OnInit {
       date: 'Feb 04, 2026',
       author: 'NimbleSL Engineering',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1531746790095-e5995fea9cc6?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80',
       keywords: ['NimbleBot', 'AI chatbot platform', 'customer engagement AI', 'RAG chatbot']
     },
     {
@@ -133,7 +133,7 @@ export class BlogComponent implements OnInit {
       date: 'Jan 17, 2026',
       author: 'NimbleSL Engineering',
       readTime: '12 min read',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80',
       keywords: ['AI fraud detection', 'insurance fraud AI', 'graph neural networks', 'GNN', 'fDetect15']
     },
     {
@@ -192,7 +192,7 @@ export class BlogComponent implements OnInit {
       date: 'Feb 15, 2026',
       author: 'NimbleSL Engineering',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80',
       keywords: ['enterprise AI', 'LLM integration', 'generative AI', 'RAG architecture']
     },
     {
@@ -291,7 +291,7 @@ export class BlogComponent implements OnInit {
       date: 'Jan 05, 2026',
       author: 'NimbleSL Engineering',
       readTime: '9 min read',
-      image: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600&q=80',
       keywords: ['Flutter offline', 'offline-first architecture', 'rural connectivity', 'healthcare app']
     },
     {
@@ -302,7 +302,7 @@ export class BlogComponent implements OnInit {
       date: 'Dec 28, 2025',
       author: 'NimbleSL Engineering',
       readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&q=80',
       keywords: ['CI/CD optimization', 'deployment pipeline', 'build caching', 'DevOps']
     },
     {
