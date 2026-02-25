@@ -17,8 +17,8 @@ export class ClientsComponent {
   clients: Client[] = [
     { name: 'Hayaa', logo: 'assets/images/clients/hayaacola.jpg' },
     { name: 'Alieaz Resources', logo: 'assets/images/clients/ch15.jpg' },
-    { name: 'North Avenue', logo: 'assets/images/clients/north-avenue.jpg' },
+    { name: 'WPEDO', logo: 'assets/images/clients/north-avenue.jpg' },
     { name: 'Rosachy', logo: 'assets/images/clients/rosachy.jpg' },
-    { name: 'WPEDO', logo: 'assets/images/clients/wpedo.jpg' }
+    { name: 'Artisan Energy', logo: 'assets/images/clients/wpedo.jpg' }
   ];
 }
