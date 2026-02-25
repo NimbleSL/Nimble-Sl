@@ -28,6 +28,30 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Process Page -->
+  <url>
+    <loc>https://www.nimblesl.com/process</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Industries Page -->
+  <url>
+    <loc>https://www.nimblesl.com/industries</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Technologies Page -->
+  <url>
+    <loc>https://www.nimblesl.com/technologies</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Products Page -->
   <url>
     <loc>https://www.nimblesl.com/products</loc>
