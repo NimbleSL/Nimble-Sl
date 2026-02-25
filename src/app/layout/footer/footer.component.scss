@@ -10,13 +10,17 @@
   background-color: var(--color-primary);
   color: #ffffff;
   padding: var(--space-10) 0 var(--space-6);
+  min-height: 500px;
+  contain: layout style;
 
   @media (min-width: $breakpoint-md) {
     padding: var(--space-12) 0 var(--space-8);
+    min-height: 450px;
   }
 
   @media (min-width: $breakpoint-lg) {
     padding: var(--space-16) 0 var(--space-8);
+    min-height: 400px;
   }
 
   &__container {

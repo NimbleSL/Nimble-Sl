@@ -11,7 +11,7 @@
       @for (client of clients; track client.name) {
       <div class="clients__card">
         <div class="clients__logo-wrap">
-          <img [src]="client.logo" [alt]="client.name + ' logo'" class="clients__logo" loading="lazy" />
+          <img [src]="client.logo" [alt]="client.name + ' logo'" class="clients__logo" width="160" height="160" loading="lazy" />
         </div>
         <span class="clients__name">{{ client.name }}</span>
       </div>

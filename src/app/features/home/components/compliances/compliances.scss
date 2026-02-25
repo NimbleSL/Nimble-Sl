@@ -43,7 +43,7 @@
 
   &__badge {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-weight: var(--font-weight-semibold);
@@ -69,7 +69,7 @@
 
   &__subtitle {
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.75);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -172,7 +172,7 @@
 
   &__desc {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
   }
 

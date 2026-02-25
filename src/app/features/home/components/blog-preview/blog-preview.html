@@ -11,7 +11,7 @@
       @for (post of posts; track post.id) {
       <div class="blog-card" data-aos="fade-up" [attr.data-aos-delay]="$index * 100">
         <div class="blog-card__image">
-          <img [src]="post.image" [alt]="post.title" loading="lazy" />
+          <img [src]="post.image" [alt]="post.title" width="400" height="200" loading="lazy" />
         </div>
 
         <div class="blog-card__content">
@@ -28,9 +28,9 @@
           <p class="blog-card__excerpt">{{ post.excerpt }}</p>
 
           <div class="blog-card__footer">
-            <a [routerLink]="['/blog', post.id]" class="blog-card__link">
+            <a [routerLink]="['/blog', post.id]" class="blog-card__link" [attr.aria-label]="'Read article: ' + post.title">
               Read Article
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>

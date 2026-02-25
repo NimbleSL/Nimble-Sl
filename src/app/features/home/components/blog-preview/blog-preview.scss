@@ -22,7 +22,7 @@
     display: inline-block;
     padding: var(--space-1) var(--space-3);
     background: rgba(139, 92, 246, 0.1);
-    color: #a78bfa;
+    color: #7c3aed;
     border-radius: var(--radius-full);
     font-size: 0.75rem;
     font-weight: var(--font-weight-bold);
@@ -86,11 +86,11 @@
     }
 
     .blog-card__title a {
-      color: #a78bfa;
+      color: #7c3aed;
     }
 
     .blog-card__link {
-      color: #a78bfa;
+      color: #7c3aed;
 
       svg {
         transform: translateX(4px);
@@ -135,7 +135,7 @@
   }
 
   &__category {
-    color: #a78bfa; // Purple accent
+    color: #7c3aed; // Purple accent - darker for contrast
   }
 
   &__dot {
