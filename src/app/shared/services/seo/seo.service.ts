@@ -111,7 +111,7 @@ export class SeoService {
       'description': 'Software development company in Bangladesh offering custom software, web apps, mobile apps, cloud solutions, and AI services.',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': 'House - 1, Road - 36, Gulshan - 2',
+        'streetAddress': 'House - 1, Road - 34, Gulshan - 2',
         'addressLocality': 'Dhaka-1212',
         'postalCode': '1212',
         'addressCountry': 'Bangladesh'
@@ -244,7 +244,7 @@ export class SeoService {
       'email': 'info@nimblesl.com',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': 'House - 1, Road - 36, Gulshan - 2',
+        'streetAddress': 'House - 1, Road - 34, Gulshan - 2',
         'addressLocality': 'Dhaka-1212',
         'postalCode': '1212',
         'addressCountry': 'Bangladesh'
