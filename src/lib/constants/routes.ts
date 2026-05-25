@@ -1,0 +1,16 @@
+export const ROUTES = {
+  HOME: '/',
+  SERVICES: '/services',
+  SOLUTIONS: '/solutions',
+  CASE_STUDIES: '/case-studies',
+  ESTIMATOR: '/tools/project-estimator',
+  HIRE_DEVELOPERS: '/hire-developers',
+  BLOG: '/blog',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+  CAREERS: '/careers',
+  FAQ: '/faq',
+  COMPARE: '/compare',
+  PRIVACY: '/privacy-policy',
+  TERMS: '/terms',
+} as const;

@@ -1,0 +1,672 @@
+@import "tailwindcss";
+
+/* ============================================
+   NIMBLESL — DESIGN TOKENS
+   ============================================ */
+
+@theme inline {
+  /* Brand Colors */
+  --color-bg: #0A0E1A;
+  --color-surface: #0F1629;
+  --color-surface-2: #141925;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-2: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --color-text: #F1F5F9;
+  --color-text-2: #94A3B8;
+  --color-text-3: #475569;
+
+  /* Accent: Blue */
+  --color-blue: #3B82F6;
+  --color-blue-2: #60A5FA;
+
+  /* Accent: Cyan */
+  --color-cyan: #06B6D4;
+  --color-cyan-2: #22D3EE;
+
+  /* Accent: Emerald */
+  --color-emerald: #10B981;
+  --color-emerald-2: #34D399;
+
+  /* Accent: Purple */
+  --color-purple: #A855F7;
+  --color-purple-2: #C084FC;
+
+  /* Fonts */
+  --font-sans: var(--font-plus-jakarta);
+  --font-body: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* ============================================
+   CSS VARIABLES (Runtime — supports dark/light)
+   ============================================ */
+
+:root {
+  --bg: #0A0E1A;
+  --surface: #0F1629;
+  --surface-2: #141925;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-2: rgba(255, 255, 255, 0.12);
+  --text: #F1F5F9;
+  --text-2: #94A3B8;
+  --text-3: #475569;
+  --blue: #3B82F6;
+  --blue-2: #60A5FA;
+  --cyan: #06B6D4;
+  --cyan-2: #22D3EE;
+  --emerald: #10B981;
+  --emerald-2: #34D399;
+  --purple: #A855F7;
+  --purple-2: #C084FC;
+  --amber: #F59E0B;
+  --amber-2: #FCD34D;
+  --rose: #F43F5E;
+  --rose-2: #FB7185;
+}
+
+[data-theme="light"] {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --border: rgba(0, 0, 0, 0.07);
+  --border-2: rgba(0, 0, 0, 0.12);
+  --text: #0F172A;
+  --text-2: #475569;
+  --text-3: #94A3B8;
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+.font-display {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+/* Gradient text */
+.grad-blue {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-emerald {
+  background: linear-gradient(135deg, var(--emerald), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-purple {
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ============================================
+   CARD COMPONENTS
+   ============================================ */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+.glow-blue {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 24px 48px -12px rgba(59, 130, 246, 0.15);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2), 0 24px 48px -12px rgba(16, 185, 129, 0.15);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(15, 22, 41, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-2);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================
+   BUTTON COMPONENTS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), #2563EB);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.btn-emerald {
+  background: linear-gradient(135deg, var(--emerald), #059669);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-emerald:hover {
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border-2);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  border-color: var(--border-2);
+}
+
+/* ============================================
+   TAGS / BADGES
+   ============================================ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--surface-2);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+
+.tag-blue { background: rgba(59,130,246,0.12); color: var(--blue-2); border-color: rgba(59,130,246,0.25); }
+.tag-cyan { background: rgba(6,182,212,0.12); color: var(--cyan-2); border-color: rgba(6,182,212,0.25); }
+.tag-emerald { background: rgba(16,185,129,0.12); color: var(--emerald-2); border-color: rgba(16,185,129,0.25); }
+.tag-purple { background: rgba(168,85,247,0.12); color: var(--purple-2); border-color: rgba(168,85,247,0.25); }
+.tag-amber { background: rgba(245,158,11,0.12); color: var(--amber-2); border-color: rgba(245,158,11,0.25); }
+.tag-rose { background: rgba(244,63,94,0.12); color: var(--rose-2); border-color: rgba(244,63,94,0.25); }
+
+/* ============================================
+   EYEBROW / SECTION HEADERS
+   ============================================ */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--blue-2);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.ev-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+  animation: pulse-glow 2s infinite;
+}
+
+/* ============================================
+   BACKGROUNDS
+   ============================================ */
+
+.mesh-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 20% -10%, rgba(59,130,246,0.15), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 80% 50%, rgba(6,182,212,0.10), transparent 60%),
+    radial-gradient(ellipse 500px 300px at 50% 100%, rgba(16,185,129,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dot-bg {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px currentColor; }
+  50% { opacity: 0.6; box-shadow: 0 0 16px currentColor; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 24px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
+}
+
+/* ============================================
+   FOCUS VISIBLE
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: var(--text);
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+
+[data-theme="light"] .card {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="light"] .mesh-bg {
+  background:
+    radial-gradient(ellipse 800px 600px at 20% -10%, rgba(59,130,246,0.06), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 80% 50%, rgba(6,182,212,0.04), transparent 60%),
+    radial-gradient(ellipse 500px 300px at 50% 100%, rgba(16,185,129,0.04), transparent 60%);
+}
+
+/* Terminal stays dark in light mode */
+[data-theme="light"] .terminal-box {
+  background: #0A0E1A;
+  color: #F1F5F9;
+}
+
+/* ============================================
+   NAV LINK UNDERLINE ANIMATION
+   ============================================ */
+
+.nav-link-animated {
+  position: relative;
+}
+
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--blue-2);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.22s ease;
+}
+
+.nav-link-animated:hover::after,
+.nav-link-animated[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   MEGA MENU ITEM HOVER
+   ============================================ */
+
+.mega-item {
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.mega-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(2px);
+}
+
+.mega-item:hover span:first-child {
+  color: var(--blue-2) !important;
+}
+
+[data-theme="light"] .mega-item:hover {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+[data-theme="light"] .mega-item:hover span:first-child {
+  color: var(--blue) !important;
+}
+
+/* ============================================
+   BUTTON HOVER ENHANCEMENT
+   ============================================ */
+
+.btn:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.99) !important;
+  transition-duration: 0.08s;
+}
+
+/* ============================================
+   NIMBLEBOT — STICKY BAR AWARENESS (mobile)
+   When sticky bar is visible, float NimbleBot above it
+   ============================================ */
+
+@media (max-width: 767px) {
+  body.sticky-bar-visible .nimble-bot-fab {
+    bottom: 140px !important;
+    transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  body.sticky-bar-visible .nimble-bot-panel {
+    bottom: 210px !important;
+    transition: bottom 0.3s ease;
+  }
+  .nimble-bot-fab {
+    transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .nimble-bot-panel {
+    transition: bottom 0.3s ease;
+  }
+}
+
+/* ============================================
+   CARD ENERGY EFFECT  (applied globally to every .card)
+   1. ::before — comet orbiting the border (CSS mask, never bleeds inside)
+   2. ::after  — one-shot shimmer sweep on hover (current / energy flow feel)
+   ============================================ */
+
+@property --card-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Subtle border + shadow on any card hover */
+.card:hover {
+  border-color: rgba(96, 165, 250, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Comet — border-only via CSS mask (never fills interior) ── */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--card-angle) at 50% 50%,
+    transparent              0deg,
+    transparent              288deg,
+    rgba(96, 165, 250, 0)    302deg,
+    rgba(96, 165, 250, 0.38) 326deg,
+    rgba(96, 165, 250, 0.72) 341deg,
+    rgba(34, 211, 238, 0.90) 350deg,
+    rgba(255, 255, 255, 0.88) 354deg,
+    rgba(34, 211, 238, 0.50) 358deg,
+    transparent              360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation: comet-orbit 2.2s linear infinite;
+}
+
+@keyframes comet-orbit {
+  from { --card-angle: 0deg; }
+  to   { --card-angle: 360deg; }
+}
+
+/* ── Shimmer sweep — one-shot current pulse on hover-enter ── */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -80%;
+  width: 55%;
+  background: linear-gradient(
+    110deg,
+    transparent                20%,
+    rgba(96, 165, 250, 0.04)   44%,
+    rgba(255, 255, 255, 0.055) 50%,
+    rgba(96, 165, 250, 0.04)   56%,
+    transparent                78%
+  );
+  transform: skewX(-12deg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+}
+
+.card:hover::after {
+  opacity: 1;
+  animation: shimmer-cross 0.7s ease-out forwards;
+}
+
+@keyframes shimmer-cross {
+  from { left: -80%;  opacity: 1; }
+  to   { left: 130%;  opacity: 0.6; }
+}
+
+/* ── Exception: terminal card stays dark + no effects ── */
+.terminal-box::before,
+.terminal-box::after { display: none; }
+.terminal-box:hover  { border-color: var(--border) !important; box-shadow: none; }
+
+/* ── Light mode overrides ── */
+[data-theme="light"] .card:hover {
+  border-color: rgba(59, 130, 246, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.07),
+    0 6px 24px rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .card::before {
+  background: conic-gradient(
+    from var(--card-angle) at 50% 50%,
+    transparent              0deg,
+    transparent              288deg,
+    rgba(59, 130, 246, 0)    302deg,
+    rgba(59, 130, 246, 0.32) 326deg,
+    rgba(59, 130, 246, 0.65) 341deg,
+    rgba(6, 182, 212, 0.82)  350deg,
+    rgba(255, 255, 255, 0.75) 354deg,
+    rgba(6, 182, 212, 0.40)  358deg,
+    transparent              360deg
+  );
+}
+
+[data-theme="light"] .card::after {
+  background: linear-gradient(
+    110deg,
+    transparent               20%,
+    rgba(59, 130, 246, 0.04)  44%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(59, 130, 246, 0.04)  56%,
+    transparent               78%
+  );
+}
+
+/* card-border-trace kept as no-op for backward compat */
+.card-border-trace { /* effect lives in .card now */ }
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,68 @@
+// Inline SVG icon set — stroke-based, consistent with Linear/Vercel aesthetic
+const Icon = ({ d, size = 18, stroke = 1.6, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round" {...props}>
+    {typeof d === 'string' ? <path d={d} /> : d}
+  </svg>
+);
+
+const Icons = {
+  arrow: (p) => <Icon d="M5 12h14M13 6l6 6-6 6" {...p} />,
+  arrowDown: (p) => <Icon d="M12 5v14M6 13l6 6 6-6" {...p} />,
+  check: (p) => <Icon d="M5 12l5 5L20 7" {...p} />,
+  x: (p) => <Icon d="M6 6l12 12M18 6L6 18" {...p} />,
+  plus: (p) => <Icon d="M12 5v14M5 12h14" {...p} />,
+  star: (p) => <Icon d={<path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18 22l-6-3.5L6 22l1.5-7.2L2 10l7.1-1.1L12 2z" fill="currentColor" stroke="none"/>} {...p} />,
+  sparkle: (p) => <Icon d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5zM19 14l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM5 14l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" {...p} />,
+  bolt: (p) => <Icon d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" {...p} />,
+  shield: (p) => <Icon d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" {...p} />,
+  code: (p) => <Icon d="M16 18l6-6-6-6M8 6l-6 6 6 6" {...p} />,
+  globe: (p) => <Icon d={<><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 4 6.5 4 9s-1.5 6-4 9c-2.5-3-4-6.5-4-9s1.5-6 4-9z"/></>} {...p} />,
+  brain: (p) => <Icon d="M9 3a3 3 0 0 0-3 3v.5a3 3 0 0 0-2 5A3 3 0 0 0 6 17v.5a3 3 0 0 0 3 3.5 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM15 3a3 3 0 0 1 3 3v.5a3 3 0 0 1 2 5A3 3 0 0 1 18 17v.5a3 3 0 0 1-3 3.5 3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" {...p} />,
+  device: (p) => <Icon d={<><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></>} {...p} />,
+  mobile: (p) => <Icon d={<><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></>} {...p} />,
+  cloud: (p) => <Icon d="M17 18a5 5 0 0 0 0-10 7 7 0 0 0-13 3 4 4 0 0 0 1 7h12z" {...p} />,
+  layers: (p) => <Icon d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" {...p} />,
+  palette: (p) => <Icon d={<><circle cx="12" cy="12" r="9"/><circle cx="7" cy="11" r="1" fill="currentColor"/><circle cx="11" cy="7" r="1" fill="currentColor"/><circle cx="17" cy="11" r="1" fill="currentColor"/><path d="M12 21a4 4 0 0 0 4-4c0-2-2-2-2-4s2-2 2-2"/></>} {...p} />,
+  bank: (p) => <Icon d="M3 10l9-6 9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 21h18" {...p} />,
+  heart: (p) => <Icon d="M12 21s-8-5-8-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 7-8 12-8 12h-2z" {...p} />,
+  truck: (p) => <Icon d={<><rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 9h4l3 3v5h-7M5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></>} {...p} />,
+  shop: (p) => <Icon d="M3 8l1.5-4h15L21 8v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0V8zM5 10v10h14V10" {...p} />,
+  book: (p) => <Icon d="M4 4a2 2 0 0 1 2-2h12v18H6a2 2 0 0 0 0 4h12" {...p} />,
+  briefcase: (p) => <Icon d={<><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M2 13h20"/></>} {...p} />,
+  home: (p) => <Icon d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V11z" {...p} />,
+  search: (p) => <Icon d={<><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></>} {...p} />,
+  menu: (p) => <Icon d="M4 6h16M4 12h16M4 18h16" {...p} />,
+  message: (p) => <Icon d="M21 12a8 8 0 1 1-3-6.3L21 5l-1 4a8 8 0 0 1 1 3z" {...p} />,
+  phone: (p) => <Icon d="M22 16v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 19 19 0 0 1-6-6 19 19 0 0 1-3-8.3A2 2 0 0 1 4.5 2H7l2 5-2.5 1.5a13 13 0 0 0 6 6L14 12l5 2z" {...p} />,
+  mail: (p) => <Icon d={<><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></>} {...p} />,
+  pin: (p) => <Icon d={<><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></>} {...p} />,
+  clock: (p) => <Icon d={<><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>} {...p} />,
+  users: (p) => <Icon d={<><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M17 11a4 4 0 0 0 0-8M22 21a7 7 0 0 0-5-6.7"/></>} {...p} />,
+  user: (p) => <Icon d={<><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></>} {...p} />,
+  chart: (p) => <Icon d="M3 3v18h18M7 14l4-4 4 4 5-6" {...p} />,
+  trending: (p) => <Icon d="M3 17l6-6 4 4 8-8M17 7h4v4" {...p} />,
+  filter: (p) => <Icon d="M3 5h18l-7 9v6l-4-2v-4L3 5z" {...p} />,
+  download: (p) => <Icon d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" {...p} />,
+  upload: (p) => <Icon d="M12 21V9m0 0l-4 4m4-4l4 4M4 3h16" {...p} />,
+  link: (p) => <Icon d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" {...p} />,
+  external: (p) => <Icon d="M9 5h10v10M19 5L9 15M19 13v6H5V5h6" {...p} />,
+  play: (p) => <Icon d={<path d="M6 4l14 8-14 8V4z" fill="currentColor" stroke="none"/>} {...p} />,
+  send: (p) => <Icon d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" {...p} />,
+  lock: (p) => <Icon d={<><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></>} {...p} />,
+  gauge: (p) => <Icon d="M12 14l5-5M3 18a9 9 0 1 1 18 0" {...p} />,
+  rocket: (p) => <Icon d="M5 13L3 21l8-2M14 14l3-3a8 8 0 0 0 2-7 8 8 0 0 0-7 2l-3 3M9 11l4 4M14 9l2 2" {...p} />,
+  trophy: (p) => <Icon d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4zM7 6H3v2a4 4 0 0 0 4 4M17 6h4v2a4 4 0 0 1-4 4" {...p} />,
+  dollar: (p) => <Icon d="M12 2v20M17 6H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H6" {...p} />,
+  zap: (p) => <Icon d={<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="currentColor" stroke="none" opacity="0.2"/>} {...p} />,
+  sun: (p) => <Icon d={<><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></>} {...p} />,
+  moon: (p) => <Icon d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" {...p} />,
+  github: (p) => <Icon d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.8a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.4-3.8 1.4a13 13 0 0 0-7 0C8.3 1.6 7.2 2 7.2 2a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7-.4.4-.7.9-.8 1.5-.1.6-.1 1.3 0 1.9V22" {...p} />,
+  linkedin: (p) => <Icon d={<><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M6 9v8M6 6v.01M10 17v-5a2 2 0 1 1 4 0v5M14 12a2 2 0 1 1 4 0v5"/></>} {...p} />,
+  twitter: (p) => <Icon d="M22 5a8 8 0 0 1-2.4.7A4 4 0 0 0 21 3.4a8 8 0 0 1-2.6 1A4 4 0 0 0 12 8a11 11 0 0 1-8-4s-4 9 5 13a12 12 0 0 1-7 2c9 5 20 0 20-11.5 0-.3 0-.6-.1-.8A6 6 0 0 0 22 5z" {...p} />,
+  copy: (p) => <Icon d={<><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>} {...p} />,
+  smile: (p) => <Icon d={<><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9v.01M15 9v.01"/></>} {...p} />,
+  doc: (p) => <Icon d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 2v6h6M8 13h8M8 17h8M8 9h2" {...p} />,
+};
+
+window.Icons = Icons;
+window.Icon = Icon;
