@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { getOrganizationJsonLd, getWebSiteJsonLd, getLocalBusinessJsonLd } from '@/lib/seo/jsonLd';
 import { NimbleBot } from '@/components/widgets/NimbleBot';
 import { StickyBar } from '@/components/widgets/StickyBar';
@@ -94,7 +96,9 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
+          <Navbar />
           {children}
+          <Footer />
           <NimbleBot />
           <StickyBar />
           <ExitPopup />
