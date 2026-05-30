@@ -754,6 +754,97 @@ body {
 }
 
 /* ============================================
+   NAVBAR RESPONSIVE
+   ============================================ */
+
+.nav-logo {
+  width: 76px;
+  height: 76px;
+}
+
+@media (max-width: 767px) {
+  .nav-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Tighter nav row on mobile */
+  .nav-main-row {
+    height: 60px !important;
+  }
+}
+
+/* ============================================
+   HERO SECTION RESPONSIVE PADDING
+   ============================================ */
+
+.hero-section {
+  padding: 124px 0 120px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 0 56px;
+  }
+
+  /* Tighten hero grid row-gap on mobile */
+  .hero-section .rg-hero {
+    gap: 40px !important;
+  }
+
+  /* Hero H1 — match design spec 36px on mobile */
+  .hero-section h1 {
+    font-size: 36px !important;
+  }
+
+  /* Hero eyebrow — compact on mobile */
+  .hero-eyebrow {
+    font-size: 10px !important;
+  }
+
+  /* Hero CTAs — full-width stacked column on mobile */
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .hero-ctas a,
+  .hero-ctas button {
+    width: 100%;
+    justify-content: center !important;
+  }
+
+  /* Hide rate divider + Clutch text on mobile (design spec) */
+  .hero-rate-divider,
+  .hero-rate-text {
+    display: none;
+  }
+}
+
+/* Stats — 2×2 grid on mobile (design spec) */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ============================================
+   INNER PAGE HERO PADDING
+   — Desktop: 140px accounts for announcement bar (38px) + navbar (72px) + buffer
+   — Mobile: 80px for 60px navbar + small buffer (no announcement bar)
+   ============================================ */
+
+.inner-hero-pt {
+  padding-top: 140px !important;
+}
+
+@media (max-width: 767px) {
+  .inner-hero-pt {
+    padding-top: 80px !important;
+  }
+}
+
+/* ============================================
    SKIP TO MAIN CONTENT (accessibility)
    ============================================ */
 

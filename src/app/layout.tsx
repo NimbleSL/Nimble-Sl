@@ -91,8 +91,9 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
+      style={{ overflowX: 'hidden' }}
     >
-      <body>
+      <body style={{ overflowX: 'hidden' }}>
         <ThemeProvider>
           <a
             href="#main-content"
@@ -102,7 +103,7 @@ export default function RootLayout({
           </a>
           <LoadingScreen />
           <Navbar />
-          <div id="main-content">
+          <div id="main-content" style={{ overflowX: 'hidden', width: '100%' }}>
             {children}
           </div>
           <Footer />

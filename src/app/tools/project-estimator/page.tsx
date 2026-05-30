@@ -499,7 +499,7 @@ function ResultsScreen({
         <div style={{ position: 'absolute', width: 500, height: 500, bottom: '-10%', right: '-5%', borderRadius: '50%', background: `radial-gradient(circle, rgba(16,185,129,${isDark ? '0.06' : '0.05'}) 0%, transparent 70%)`, filter: 'blur(60px)' }} />
       </div>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: 48 }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: 120 }}>
         {/* Nav */}
         <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: 40 }}>
           <Link href="/" className="inline-flex items-center gap-1.5 text-sm transition-colors" style={{ color: 'var(--text-3)' }}>
@@ -909,7 +909,7 @@ export default function ProjectEstimatorPage() {
       {/* Content */}
       <div className="relative" style={{ zIndex: 1 }}>
         {/* Top bar */}
-        <div className="container" style={{ paddingTop: 28, paddingBottom: 0 }}>
+        <div className="container" style={{ paddingTop: 140, paddingBottom: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
             <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--text-3)', textDecoration: 'none' }}>
               <ArrowLeft size={13} /> Back to Home

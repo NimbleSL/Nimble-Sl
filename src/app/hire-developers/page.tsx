@@ -107,7 +107,7 @@ export default function HireDevelopersPage() {
     <main className="min-h-screen" style={{ background: 'var(--bg)' }}>
 
       {/* ── Hero ───────────────────────────────────────────────────────── */}
-      <section style={{ padding: '64px 0 48px', position: 'relative', overflow: 'hidden', paddingTop: 140 }}>
+      <section className="inner-hero-pt" style={{ padding: '64px 0 48px', position: 'relative', overflow: 'hidden' }}>
         <div className="mesh-bg" />
         <div className="container" style={{ position: 'relative' }}>
           <div className="rg-hero" style={{ gap: 56, alignItems: 'center' }}>

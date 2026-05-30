@@ -14,12 +14,29 @@ const LOGOS = [
 
 export function TechStackLogos() {
   return (
-    <section style={{ padding: '40px 0', borderBottom: '1px solid var(--border)' }}>
+    <section style={{ padding: '32px 0 48px', position: 'relative' }}>
       <div className="container overflow-hidden">
-        <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <span className="eyebrow" style={{ color: 'var(--text-3)', fontSize: '11px' }}>
-            Built with enterprise-grade technology
-          </span>
+        <div style={{ textAlign: 'center', marginBottom: 32, padding: '0 20px' }}>
+          <div style={{ 
+            padding: '8px 24px', 
+            background: 'rgba(59,130,246,0.05)', 
+            borderRadius: 100, 
+            border: '1px solid rgba(59,130,246,0.15)', 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+          }}>
+            <span style={{ 
+              fontSize: 10, 
+              fontWeight: 700, 
+              letterSpacing: '0.15em', 
+              color: 'var(--blue-2)',
+              textTransform: 'uppercase'
+            }}>
+              BUILT WITH ENTERPRISE-GRADE TECHNOLOGY
+            </span>
+          </div>
         </div>
         
         {/* Infinite Marquee Container */}
@@ -39,8 +56,8 @@ export function TechStackLogos() {
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
               <div 
                 key={`${logo.name}-${i}`} 
-                style={{ 
-                  padding: '0 40px',
+                style={{
+                  padding: '0 clamp(16px, 3vw, 40px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -59,22 +76,24 @@ export function TechStackLogos() {
                 }}
               >
                 {/* Simplified Logo Icon Dot */}
-                <div 
-                  style={{ 
-                    width: '12px', 
-                    height: '12px', 
-                    borderRadius: '50%', 
+                <div
+                  style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
                     backgroundColor: logo.color,
-                    boxShadow: `0 0 10px ${logo.color}88`
-                  }} 
+                    boxShadow: `0 0 8px ${logo.color}88`,
+                    flexShrink: 0,
+                  }}
                 />
-                <span 
-                  style={{ 
-                    fontSize: '18px', 
-                    fontWeight: 700, 
+                <span
+                  style={{
+                    fontSize: 'clamp(13px, 2.5vw, 18px)',
+                    fontWeight: 700,
                     fontFamily: 'var(--font-sans)',
                     letterSpacing: '-0.02em',
-                    color: 'var(--text)'
+                    color: 'var(--text)',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {logo.name}

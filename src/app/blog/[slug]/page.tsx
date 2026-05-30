@@ -149,6 +149,21 @@ function renderContent(content: string) {
       i++; continue;
     }
 
+    // image block
+    if (block.startsWith('![')) {
+      const match = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (match) {
+        result.push(
+          <figure key={i} style={{ margin: '40px 0' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={match[2]} alt={match[1]} style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border)' }} />
+            {match[1] && <figcaption style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-3)', marginTop: 12 }}>{match[1]}</figcaption>}
+          </figure>
+        );
+        i++; continue;
+      }
+    }
+
     // default paragraph
     result.push(
       <p
@@ -156,10 +171,11 @@ function renderContent(content: string) {
         style={{ color: 'var(--text-2)', fontSize: 17, lineHeight: 1.75, marginBottom: 20 }}
         dangerouslySetInnerHTML={{
           __html: block
+            // Avoid matching images ![alt](url)
+            .replace(/(^|[^!])\[([^\]]+)\]\(([^)]+)\)/g, `$1<a href="$3" style="color:var(--blue-2);text-decoration:underline">$2</a>`)
             .replace(/\*\*(.*?)\*\*/g, `<strong style="color:var(--text);font-weight:600">$1</strong>`)
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/`(.*?)`/g, `<code style="background:var(--surface-2);color:var(--cyan-2);padding:1px 6px;border-radius:4px;font-size:0.85em;font-family:var(--font-mono)">$1</code>`)
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2" style="color:var(--blue-2);text-decoration:underline">$1</a>`),
+            .replace(/`(.*?)`/g, `<code style="background:var(--surface-2);color:var(--cyan-2);padding:1px 6px;border-radius:4px;font-size:0.85em;font-family:var(--font-mono)">$1</code>`),
         }}
       />
     );
@@ -240,7 +256,7 @@ export default async function BlogPostPage({
       <main className="min-h-screen" style={{ background: 'var(--bg)' }}>
 
         {/* ── Post Header ─────────────────────────────────────────────── */}
-        <section style={{ padding: '48px 0 32px', position: 'relative', paddingTop: 140 }}>
+        <section className="inner-hero-pt" style={{ padding: '48px 0 32px', position: 'relative' }}>
           <div className="container" style={{ maxWidth: 880, margin: '0 auto' }}>
 
             {/* Breadcrumb */}
@@ -307,39 +323,54 @@ export default async function BlogPostPage({
         {/* ── Hero banner ──────────────────────────────────────────────── */}
         <section style={{ padding: '0 0 32px' }}>
           <div className="container">
-            <div style={{
-              maxWidth: 1120, margin: '0 auto',
-              height: 380,
-              background: `linear-gradient(135deg, ${post.accent}44, ${post.accent}06)`,
-              border: `1px solid ${post.accent}44`,
-              borderRadius: 16,
-              position: 'relative',
-              overflow: 'hidden',
-            }}>
-              <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.45 }} />
-              <div style={{ position: 'absolute', inset: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div className="font-mono" style={{ fontSize: 11, color: 'var(--text-2)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-                  // {post.category} · NimbleSL Engineering
-                </div>
-                <div>
-                  <div style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 800,
-                    fontSize: 'clamp(64px, 10vw, 120px)',
-                    color: post.accent,
-                    opacity: 0.88,
-                    letterSpacing: '-0.04em',
-                    lineHeight: 0.9,
-                  }}>
-                    {post.readTime.split(' ')[0]}
-                    <span style={{ fontSize: '0.45em', opacity: 0.7 }}> min</span>
+            {post.coverImage ? (
+              <div style={{
+                maxWidth: 1120, margin: '0 auto',
+                height: 480,
+                borderRadius: 16,
+                position: 'relative',
+                overflow: 'hidden',
+                border: `1px solid var(--border)`,
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,26,0.8), transparent)' }} />
+              </div>
+            ) : (
+              <div style={{
+                maxWidth: 1120, margin: '0 auto',
+                height: 380,
+                background: `linear-gradient(135deg, ${post.accent}44, ${post.accent}06)`,
+                border: `1px solid ${post.accent}44`,
+                borderRadius: 16,
+                position: 'relative',
+                overflow: 'hidden',
+              }}>
+                <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.45 }} />
+                <div style={{ position: 'absolute', inset: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div className="font-mono" style={{ fontSize: 11, color: 'var(--text-2)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                    // {post.category} · NimbleSL Engineering
                   </div>
-                  <div className="font-mono" style={{ fontSize: 12, color: 'var(--text-2)', marginTop: 10, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                    Read · {post.category} deep-dive
+                  <div>
+                    <div style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 800,
+                      fontSize: 'clamp(64px, 10vw, 120px)',
+                      color: post.accent,
+                      opacity: 0.88,
+                      letterSpacing: '-0.04em',
+                      lineHeight: 0.9,
+                    }}>
+                      {post.readTime.split(' ')[0]}
+                      <span style={{ fontSize: '0.45em', opacity: 0.7 }}> min</span>
+                    </div>
+                    <div className="font-mono" style={{ fontSize: 12, color: 'var(--text-2)', marginTop: 10, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                      Read · {post.category} deep-dive
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
 

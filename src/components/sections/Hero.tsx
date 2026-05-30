@@ -159,7 +159,7 @@ export function Hero() {
   };
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden" style={{ padding: '124px 0 120px' }}>
+    <section ref={heroRef} className="relative overflow-hidden hero-section">
 
       {/* ── Matrix Background (multi-layer parallax) ── */}
 
@@ -291,7 +291,7 @@ export function Hero() {
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
             {/* Eyebrow */}
             <motion.div variants={itemVariants} className="mb-7">
-              <span className="eyebrow">
+              <span className="eyebrow hero-eyebrow">
                 <span className="ev-dot" />
                 Currently booking 2–3 new engagements per quarter
               </span>
@@ -348,16 +348,17 @@ export function Hero() {
             {/* CTA buttons */}
             <motion.div
               variants={itemVariants}
-              style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}
+              className="hero-ctas flex-col sm:flex-row"
+              style={{ marginTop: 32, display: 'flex', gap: 12 }}
             >
               <MagneticWrapper>
-                <Link href="/tools/project-estimator" className="btn btn-emerald" style={{ padding: '14px 22px', fontSize: 15 }}>
+                <Link href="/tools/project-estimator" className="btn btn-emerald w-full sm:w-auto justify-center" style={{ padding: '14px 22px', fontSize: 15 }}>
                   <Sparkles size={16} />
                   Get a Free Estimate
                 </Link>
               </MagneticWrapper>
               <MagneticWrapper>
-                <Link href="/solutions" className="btn btn-ghost" style={{ padding: '14px 22px', fontSize: 15 }}>
+                <Link href="/solutions" className="btn btn-ghost w-full sm:w-auto justify-center" style={{ padding: '14px 22px', fontSize: 15 }}>
                   Explore Our Products
                   <ArrowRight size={16} />
                 </Link>
@@ -396,8 +397,8 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-              <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-2)' }}>
+              <div className="hidden sm:block hero-rate-divider" style={{ width: 1, height: 32, background: 'var(--border)' }} />
+              <div className="hidden sm:block hero-rate-text" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-2)' }}>
                 <span style={{ color: 'var(--emerald-2)' }}>$25–49/hr</span> · Clutch verified
               </div>
             </motion.div>

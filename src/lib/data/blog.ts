@@ -8,6 +8,7 @@ export interface BlogPost {
   accent: string;
   tagClass: string;
   featured?: boolean;
+  coverImage?: string;
   content: string;
 }
 
@@ -25,6 +26,7 @@ export const blogPosts: BlogPost[] = [
     accent: '#3B82F6',
     tagClass: 'tag-blue',
     featured: true,
+    coverImage: '/images/blog/fraud-shield.png',
     content: `
 Fraud detection is one of those problems that sounds straightforward until you actually build it. At NimbleSL, we built FraudShield — a real-time ML fraud detection system that processes over 10,000 transactions per second with 96% accuracy.
 

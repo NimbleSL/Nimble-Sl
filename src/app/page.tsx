@@ -27,8 +27,8 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <TechStackLogos />
       <StatsBar />
+      <TechStackLogos />
       <ServicesOverview />
       <ShowroomTeaser />
       <EstimatorBanner />

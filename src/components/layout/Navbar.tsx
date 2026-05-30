@@ -164,7 +164,7 @@ export function Navbar() {
   const navBlur = useTransform(scrollY, [0, 80], ['blur(0px)', 'blur(16px)']);
 
   useEffect(() => {
-    const unsub = scrollY.onChange((v) => setScrolled(v > 20));
+    const unsub = scrollY.on("change", (v) => setScrolled(v > 20));
     return unsub;
   }, [scrollY]);
 
@@ -183,16 +183,15 @@ export function Navbar() {
         className="fixed top-0 left-0 right-0 z-50"
         style={{ backgroundColor: navBg, backdropFilter: navBlur, WebkitBackdropFilter: navBlur }}
       >
-        {/* Announcement Bar */}
+        {/* Announcement Bar — desktop/tablet only, hidden on mobile per design */}
         <AnimatePresence>
           {announcementVisible && (
             <motion.div
               initial={{ height: 38, opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="hidden md:block overflow-hidden relative"
               style={{
-                overflow: 'hidden',
-                position: 'relative',
                 background: 'linear-gradient(90deg, var(--bg) 0%, var(--surface-2) 30%, var(--surface) 50%, var(--surface-2) 70%, var(--bg) 100%)',
                 borderBottom: '1px solid rgba(59,130,246,0.2)',
               }}
@@ -292,27 +291,41 @@ export function Navbar() {
           className="transition-all duration-300"
           style={{ borderBottom: `1px solid ${borderColor}`, marginTop: 5 }}
         >
-          <div className="container" style={{ paddingLeft: 16 }}>
-            <div className="flex items-center gap-8" style={{ height: 72 }}>
-              {/* Logo */}
-              <Link href="/" className="flex-shrink-0">
+          <div className="container px-5 md:px-8">
+            <div className="flex items-center justify-between nav-main-row" style={{ height: 72 }}>
+              {/* Desktop Logo */}
+              <Link href="/" className="hidden md:flex flex-shrink-0">
                 <Image
                   src="/assets/images/logo/logo.png"
                   alt="Nimble Software Lab"
                   width={76}
                   height={76}
+                  className="nav-logo"
                   style={{
-                    width: 76,
-                    height: 76,
                     filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
                     display: 'block',
                   }}
                   priority
                 />
               </Link>
+              
+              {/* Mobile Logo Block (Matches nimble-sl-design) */}
+              <Link href="/" className="md:hidden flex items-center gap-2 flex-shrink-0">
+                <div style={{ 
+                  width: 26, height: 26, borderRadius: 7, 
+                  background: 'linear-gradient(135deg, #3B82F6, #06B6D4)', 
+                  display: 'grid', placeItems: 'center', color: 'white', 
+                  fontWeight: 800, fontSize: 13, fontFamily: 'var(--font-display)' 
+                }}>
+                  N
+                </div>
+                <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
+                  NimbleSL
+                </div>
+              </Link>
 
               {/* Desktop Nav */}
-              <nav className="hidden lg:flex items-center gap-1 flex-1">
+              <nav className="hidden lg:flex items-center gap-1 flex-1 ml-8">
                 {NAV_LINKS.map((link) => {
                   const hasMega = link.hasMega;
                   const megaType = link.label.toLowerCase() as 'services' | 'solutions';
@@ -390,14 +403,21 @@ export function Navbar() {
                 </MagneticWrapper>
               </div>
 
-              {/* Mobile hamburger */}
+              {/* Mobile hamburger (Matches nimble-sl-design) */}
               <button
-                className="lg:hidden ml-auto p-2 rounded-lg"
-                style={{ color: 'var(--text-2)' }}
+                className="lg:hidden flex items-center justify-center transition-colors"
+                style={{ 
+                  background: 'var(--surface)', 
+                  border: '1px solid var(--border)', 
+                  borderRadius: 8, 
+                  color: 'var(--text)', 
+                  padding: 8,
+                  marginLeft: 'auto'
+                }}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
               >
-                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                {mobileOpen ? <X size={16} /> : <Menu size={16} />}
               </button>
             </div>
           </div>
@@ -412,33 +432,42 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 lg:hidden"
-            style={{ background: 'var(--bg)', backdropFilter: 'blur(12px)' }}
+            className="fixed inset-0 lg:hidden"
+            style={{ background: 'var(--bg)', backdropFilter: 'blur(12px)', zIndex: 9999 }}
           >
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full px-5 pb-5 pt-12 md:p-5">
               {/* Header */}
-              <div className="flex items-center justify-between p-5" style={{ borderBottom: '1px solid var(--border)' }}>
-                <Link href="/" onClick={() => setMobileOpen(false)}>
-                  <Image
-                    src="/assets/images/logo/logo.png"
-                    alt="Nimble Software Lab"
-                    width={52}
-                    height={52}
-                    style={{
-                      width: 52,
-                      height: 52,
-                      filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
-                      display: 'block',
-                    }}
-                  />
+              <div className="flex items-center justify-between pb-5" style={{ borderBottom: '1px solid var(--border)' }}>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
+                  <div style={{ 
+                    width: 26, height: 26, borderRadius: 7, 
+                    background: 'linear-gradient(135deg, #3B82F6, #06B6D4)', 
+                    display: 'grid', placeItems: 'center', color: 'white', 
+                    fontWeight: 800, fontSize: 13, fontFamily: 'var(--font-display)' 
+                  }}>
+                    N
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
+                    NimbleSL
+                  </div>
                 </Link>
-                <button onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-2)' }}>
-                  <X size={20} />
+                <button 
+                  onClick={() => setMobileOpen(false)} 
+                  className="flex items-center justify-center transition-colors"
+                  style={{ 
+                    background: 'var(--surface)', 
+                    border: '1px solid var(--border)', 
+                    borderRadius: 8, 
+                    color: 'var(--text)', 
+                    padding: 8
+                  }}
+                >
+                  <X size={16} />
                 </button>
               </div>
 
               {/* Links */}
-              <div className="flex-1 overflow-y-auto p-5">
+              <div className="flex-1 overflow-y-auto py-5">
                 <nav className="flex flex-col gap-1">
                   {NAV_LINKS.map((link, i) => (
                     <motion.div
