@@ -194,7 +194,14 @@ export async function generateMetadata({
       publishedTime: post.date,
       authors: ['NimbleSL Engineering'],
       tags: [post.category],
+      images: [{ url: `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(post.category)}` }]
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(post.category)}` }]
+    }
   };
 }
 
@@ -339,10 +346,8 @@ export default async function BlogPostPage({
         {/* ── Body + TOC ────────────────────────────────────────────────── */}
         <section style={{ padding: '32px 0 96px' }}>
           <div className="container">
-            <div style={{
+            <div className="rg-sidebar" style={{
               maxWidth: 1120, margin: '0 auto',
-              display: 'grid',
-              gridTemplateColumns: '1fr 240px',
               gap: 56,
               alignItems: 'start',
             }}>
@@ -426,7 +431,7 @@ export default async function BlogPostPage({
               <h2 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text)', marginBottom: 28, fontFamily: 'var(--font-sans)' }}>
                 More from the engineering desk.
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+              <div className="rg-3" style={{ gap: 16 }}>
                 {relatedPosts.map((related) => (
                   <Link
                     key={related.slug}

@@ -106,7 +106,7 @@ export function StatsBar() {
 
       {/* Stats */}
       <div className="container" style={{ padding: '0 32px 40px' }}>
-        <div style={{ paddingTop: 32, borderTop: '1px solid var(--border)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+        <div className="rg-4" style={{ paddingTop: 32, borderTop: '1px solid var(--border)', gap: 24 }}>
           <StatCounter end={50} suffix="+" label="Projects shipped" accent="var(--blue-2)" />
           <StatCounter end={12} suffix="" label="Countries served" accent="#67E8F9" />
           <StatCounter end={98} suffix="%" label="Client retention" accent="var(--emerald-2)" />

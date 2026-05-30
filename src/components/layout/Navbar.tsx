@@ -193,12 +193,8 @@ export function Navbar() {
               style={{
                 overflow: 'hidden',
                 position: 'relative',
-                background: theme === 'dark'
-                  ? 'linear-gradient(90deg, #060C1A 0%, #0D1F3C 30%, #0A1A2E 50%, #0D1F3C 70%, #060C1A 100%)'
-                  : 'linear-gradient(90deg, #EFF6FF 0%, #DBEAFE 40%, #E0F2FE 60%, #DBEAFE 80%, #EFF6FF 100%)',
-                borderBottom: theme === 'dark'
-                  ? '1px solid rgba(59,130,246,0.18)'
-                  : '1px solid rgba(59,130,246,0.2)',
+                background: 'linear-gradient(90deg, var(--bg) 0%, var(--surface-2) 30%, var(--surface) 50%, var(--surface-2) 70%, var(--bg) 100%)',
+                borderBottom: '1px solid rgba(59,130,246,0.2)',
               }}
             >
               {/* Shimmer sweep */}
@@ -208,9 +204,7 @@ export function Navbar() {
                 style={{
                   position: 'absolute', inset: 0,
                   width: '40%',
-                  background: theme === 'dark'
-                    ? 'linear-gradient(90deg, transparent, rgba(96,165,250,0.07), transparent)'
-                    : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
+                  background: 'linear-gradient(90deg, transparent, var(--overlay-sm), transparent)',
                   pointerEvents: 'none',
                 }}
               />
@@ -228,7 +222,7 @@ export function Navbar() {
                   <span
                     className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest"
                     style={{
-                      background: theme === 'dark' ? 'rgba(16,185,129,0.15)' : 'rgba(16,185,129,0.12)',
+                      background: 'rgba(16,185,129,0.12)',
                       color: '#10B981',
                       border: '1px solid rgba(16,185,129,0.35)',
                     }}
@@ -244,25 +238,22 @@ export function Navbar() {
                   {/* Main text */}
                   <span
                     className="text-xs font-medium tracking-wide"
-                    style={{ color: theme === 'dark' ? '#CBD5E1' : '#1E3A8A' }}
+                    style={{ color: 'var(--text-2)' }}
                   >
-                    Now booking{' '}
-                    <span style={{
-                      fontWeight: 700,
-                      color: theme === 'dark' ? '#93C5FD' : '#2563EB',
-                    }}>
-                      Q3 2026
+                    Currently booking{' '}
+                    <span style={{ fontWeight: 700, color: 'var(--blue-2)' }}>
+                      2–3 new engagements
                     </span>{' '}
-                    engagements
+                    per quarter
                   </span>
 
                   {/* Divider */}
-                  <span style={{ width: 1, height: 12, background: theme === 'dark' ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', display: 'inline-block', flexShrink: 0 }} />
+                  <span style={{ width: 1, height: 12, background: 'var(--border)', display: 'inline-block', flexShrink: 0 }} />
 
                   {/* CTA */}
                   <span
                     className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold transition-all duration-200 group-hover:gap-1.5"
-                    style={{ color: theme === 'dark' ? '#60A5FA' : '#2563EB' }}
+                    style={{ color: 'var(--blue-2)' }}
                   >
                     <Sparkles size={10} />
                     Get your free AI estimate
@@ -270,7 +261,7 @@ export function Navbar() {
                   </span>
                   <span
                     className="sm:hidden inline-flex items-center gap-1 text-xs font-semibold"
-                    style={{ color: theme === 'dark' ? '#60A5FA' : '#2563EB' }}
+                    style={{ color: 'var(--blue-2)' }}
                   >
                     Free estimate <ArrowRight size={10} />
                   </span>
@@ -283,9 +274,9 @@ export function Navbar() {
                     className="flex items-center justify-center rounded-md transition-colors"
                     style={{
                       width: 22, height: 22,
-                      color: theme === 'dark' ? '#475569' : '#94A3B8',
+                      color: 'var(--text-3)',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--overlay-md)')}
                     onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                     aria-label="Dismiss announcement"
                   >
@@ -341,6 +332,7 @@ export function Navbar() {
                           isActive ? 'text-white' : 'hover:bg-white/5'
                         )}
                         style={{ color: isActive ? 'var(--blue-2)' : 'var(--text-2)' }}
+                        aria-current={isActive ? 'page' : undefined}
                         data-active={isActive ? 'true' : 'false'}
                       >
                         {link.label}
@@ -371,8 +363,10 @@ export function Navbar() {
                   {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                 </button>
 
-                <Link
-                  href="/contact"
+                <a
+                  href="https://calendly.com/nimblesl/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-150"
                   style={{
                     color: 'var(--text-2)',
@@ -381,8 +375,8 @@ export function Navbar() {
                   onMouseEnter={(e) => (e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
-                  Contact
-                </Link>
+                  Book a Call
+                </a>
 
                 <MagneticWrapper>
                   <Link
@@ -419,7 +413,7 @@ export function Navbar() {
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="fixed inset-0 z-40 lg:hidden"
-            style={{ background: '#0A0E1A' }}
+            style={{ background: 'var(--bg)', backdropFilter: 'blur(12px)' }}
           >
             <div className="flex flex-col h-full">
               {/* Header */}
@@ -433,7 +427,7 @@ export function Navbar() {
                     style={{
                       width: 52,
                       height: 52,
-                      filter: 'brightness(0) invert(1)',
+                      filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
                       display: 'block',
                     }}
                   />
@@ -457,7 +451,8 @@ export function Navbar() {
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
                         className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all"
-                        style={{ color: 'var(--text)', background: pathname.startsWith(link.href) ? 'rgba(59,130,246,0.1)' : 'transparent' }}
+                        style={{ color: 'var(--text)', background: pathname.startsWith(link.href) ? 'var(--overlay-md)' : 'transparent' }}
+                        aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
                       >
                         {link.label}
                         <ArrowRight size={14} style={{ color: 'var(--text-3)' }} />
@@ -473,10 +468,10 @@ export function Navbar() {
                   className="btn btn-emerald w-full justify-center py-3.5 text-sm">
                   <Sparkles size={14} /> Try AI Estimator
                 </Link>
-                <Link href="/contact" onClick={() => setMobileOpen(false)}
+                <a href="https://calendly.com/nimblesl/30min" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}
                   className="btn btn-ghost w-full justify-center py-3.5 text-sm">
-                  Contact Us
-                </Link>
+                  Book a Call
+                </a>
                 <button onClick={toggleTheme} className="flex items-center justify-center gap-2 py-2 text-sm" style={{ color: 'var(--text-3)' }}>
                   {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
                   {theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}

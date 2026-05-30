@@ -286,14 +286,14 @@ export function Hero() {
       </AnimatePresence>
 
       <div className="container relative" style={{ zIndex: 2 }}>
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+        <div className="rg-hero" style={{ gap: 64, alignItems: 'center' }}>
           {/* Left: Copy */}
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
             {/* Eyebrow */}
             <motion.div variants={itemVariants} className="mb-7">
               <span className="eyebrow">
                 <span className="ev-dot" />
-                Now booking Q3 2026 engagements
+                Currently booking 2–3 new engagements per quarter
               </span>
             </motion.div>
 

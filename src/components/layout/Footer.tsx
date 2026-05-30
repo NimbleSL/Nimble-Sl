@@ -2,6 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { ComplianceBadges } from '@/components/ui/ComplianceBadge';
+import { BrandMark } from '@/components/ui/BrandMark';
+import { CodeSignature } from '@/components/ui/CodeSignature';
 
 // Social icon SVGs (lucide-react doesn't include brand icons)
 const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
@@ -61,7 +64,7 @@ const TECH_BADGES = ['Angular', 'React', 'Next.js', 'Flutter', '.NET', 'Python',
 
 export function Footer() {
   return (
-    <footer style={{ background: '#080C18', borderTop: '1px solid var(--border)' }}>
+    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
       {/* Main footer */}
       <div className="container" style={{ padding: '80px 32px 64px' }}>
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
@@ -170,18 +173,28 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-4">
               {/* Compliance badges */}
-              {['GDPR', 'HIPAA', 'OWASP'].map((badge) => (
-                <span key={badge} className="text-xs px-2 py-0.5 rounded"
-                  style={{ color: 'var(--text-3)', border: '1px solid var(--border)', fontFamily: 'var(--font-mono)' }}>
-                  {badge}
-                </span>
-              ))}
+              <ComplianceBadges />
               <span className="text-xs" style={{ color: 'var(--text-3)' }}>
                 Built with Next.js 15
               </span>
             </div>
           </div>
+          <div style={{ textAlign: 'center', paddingTop: 12, fontSize: 12, color: 'var(--text-3)' }}>
+            Crafted with <CodeSignature size="sm" />
+          </div>
         </div>
+      </div>
+
+      {/* Watermark */}
+      <div style={{
+        position: 'absolute',
+        bottom: -24,
+        right: -16,
+        opacity: 0.04,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}>
+        <BrandMark size={220} glow={false} />
       </div>
     </footer>
   );

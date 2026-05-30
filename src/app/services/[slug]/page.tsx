@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         {/* Content grid */}
         <section style={{ padding: '0 0 80px' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 32, alignItems: 'start' }}>
+            <div className="rg-content-cta" style={{ gap: 32, alignItems: 'start' }}>
               {/* Left */}
               <div>
                 {/* Deliverables */}
@@ -127,7 +127,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                               <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--text)', marginTop: 8 }}>{cs.title}</h3>
                               <p style={{ fontSize: 13, color: 'var(--text-2)', marginTop: 6, lineHeight: 1.5 }}>{cs.subtitle}</p>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, flexShrink: 0 }}>
+                            <div style={{ display: 'flex', gap: 10, flexShrink: 0, flexWrap: 'wrap' }}>
                               {cs.metrics.slice(0, 2).map((m) => (
                                 <div key={m.label} style={{ textAlign: 'center' }}>
                                   <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)' }}>{m.value}</div>

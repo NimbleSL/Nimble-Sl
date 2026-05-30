@@ -57,9 +57,9 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
         </section>
 
         {/* Metrics bar */}
-        <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', background: 'rgba(15,22,41,0.5)' }}>
+        <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', background: 'var(--surface-2)' }}>
           <div className="container" style={{ padding: '40px 32px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cs.metrics.length}, 1fr)`, gap: 24 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'space-around' }}>
               {cs.metrics.map((m) => (
                 <div key={m.label} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: 32, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-plus-jakarta)', lineHeight: 1 }}>{m.value}</div>
@@ -74,7 +74,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
         {/* Content */}
         <section style={{ padding: '64px 0 80px' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 48, alignItems: 'start' }}>
+            <div className="rg-content-cta" style={{ gap: 48, alignItems: 'start' }}>
               {/* Main content */}
               <div>
                 <div style={{ marginBottom: 48 }}>
@@ -113,21 +113,21 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
 
                 {/* Testimonial */}
                 {cs.testimonial && (
-                  <div className="card" style={{ padding: 32, background: 'linear-gradient(135deg, rgba(20,25,37,0.8), rgba(15,22,41,0.6))' }}>
+                  <div className="card" style={{ padding: 32, background: 'linear-gradient(135deg, var(--surface), var(--surface-2))' }}>
                     <div style={{ color: 'var(--blue-2)', fontSize: 40, fontFamily: 'Georgia, serif', lineHeight: 0.5, marginBottom: 14 }}>&ldquo;</div>
                     <p style={{ fontSize: 17, color: 'var(--text)', lineHeight: 1.65, fontWeight: 500, marginBottom: 20 }}>
                       {cs.testimonial.quote}
                     </p>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, #3B82F6, #A855F7)', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 700, color: 'white', flexShrink: 0 }}>
+                      <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, var(--blue), var(--purple))', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 700, color: 'white', flexShrink: 0 }}>
                         {cs.testimonial.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
                         <div style={{ fontWeight: 700, color: 'var(--text)', fontSize: 14 }}>{cs.testimonial.name}</div>
                         <div style={{ fontSize: 12, color: 'var(--text-3)' }}>{cs.testimonial.title} · {cs.testimonial.company}</div>
                       </div>
-                      <div style={{ marginLeft: 'auto', display: 'flex', gap: 2, color: '#FCD34D' }}>
-                        {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="#FCD34D" />)}
+                      <div style={{ marginLeft: 'auto', display: 'flex', gap: 2, color: 'var(--amber-2)' }}>
+                        {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="var(--amber-2)" />)}
                       </div>
                     </div>
                   </div>

@@ -110,7 +110,7 @@ export default function HireDevelopersPage() {
       <section style={{ padding: '64px 0 48px', position: 'relative', overflow: 'hidden', paddingTop: 140 }}>
         <div className="mesh-bg" />
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 56, alignItems: 'center' }}>
+          <div className="rg-hero" style={{ gap: 56, alignItems: 'center' }}>
 
             {/* Left */}
             <div>
@@ -148,7 +148,7 @@ export default function HireDevelopersPage() {
                 {[
                   { val: '48hr', label: 'Avg time-to-start', color: 'var(--blue-2)' },
                   { val: '4–8hr', label: 'Overlap with EU / US-East', color: 'var(--emerald-2)' },
-                  { val: '5+yr', label: 'Avg seniority', color: '#FCD34D' },
+                  { val: '5+yr', label: 'Avg seniority', color: 'var(--amber-2)' },
                 ].map((s) => (
                   <div key={s.label}>
                     <div style={{
@@ -210,7 +210,7 @@ export default function HireDevelopersPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginTop: 40 }}>
+          <div className="rg-4" style={{ gap: 16, marginTop: 40 }}>
             {skills.map((s) => (
               <div key={s.slug} className="card" style={{ padding: 24 }}>
                 {/* Icon + name */}
@@ -269,9 +269,9 @@ export default function HireDevelopersPage() {
           </div>
 
           {/* Steps */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, position: 'relative' }}>
+          <div className="rg-3" style={{ gap: 0, position: 'relative' }}>
             {/* Connector line */}
-            <div style={{
+            <div className="process-connector" style={{
               position: 'absolute', top: 28, left: '16.66%', right: '16.66%',
               height: 1, background: 'var(--border)', zIndex: 0,
             }} />
@@ -396,7 +396,7 @@ export default function HireDevelopersPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="rg-2" style={{ gap: 16 }}>
             {DEVELOPER_PROFILES.map((d) => (
               <div key={d.id} className="card card-hover" style={{ padding: 28 }}>
                 <div style={{ display: 'flex', alignItems: 'start', gap: 16 }}>
@@ -477,38 +477,43 @@ export default function HireDevelopersPage() {
               </p>
             </div>
 
-            {/* UTC header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 10 }}>
-              <div style={{ width: 168, fontSize: 12, color: 'var(--text-3)' }}>UTC hour →</div>
-              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(24, 1fr)', gap: 2 }}>
-                {Array.from({ length: 24 }).map((_, h) => (
-                  <div key={h} className="font-mono" style={{ fontSize: 9, textAlign: 'center', color: 'var(--text-3)' }}>{h}</div>
+            {/* Timezone grid — horizontally scrollable on small screens */}
+            <div style={{ overflowX: 'auto' }}>
+              <div style={{ minWidth: 560 }}>
+                {/* UTC header */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 10 }}>
+                  <div style={{ width: 168, flexShrink: 0, fontSize: 12, color: 'var(--text-3)' }}>UTC hour →</div>
+                  <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(24, 1fr)', gap: 2 }}>
+                    {Array.from({ length: 24 }).map((_, h) => (
+                      <div key={h} className="font-mono" style={{ fontSize: 9, textAlign: 'center', color: 'var(--text-3)' }}>{h}</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Timezone rows */}
+                {TIMEZONES.map((tz) => (
+                  <div key={tz.label} style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 6 }}>
+                    <div style={{ width: 168, flexShrink: 0, fontSize: 13, color: 'var(--text)', fontWeight: 500, paddingRight: 8 }}>
+                      {tz.label}
+                    </div>
+                    <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(24, 1fr)', gap: 2 }}>
+                      {Array.from({ length: 24 }).map((_, h) => (
+                        <div
+                          key={h}
+                          style={{
+                            height: 22,
+                            background: tz.work.includes(h) ? tz.color : 'var(--surface-2)',
+                            borderRadius: 3,
+                            opacity: tz.work.includes(h) ? 0.82 : 0.35,
+                            transition: 'opacity 0.15s',
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
-
-            {/* Timezone rows */}
-            {TIMEZONES.map((tz) => (
-              <div key={tz.label} style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 6 }}>
-                <div style={{ width: 168, fontSize: 13, color: 'var(--text)', fontWeight: 500, paddingRight: 8 }}>
-                  {tz.label}
-                </div>
-                <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(24, 1fr)', gap: 2 }}>
-                  {Array.from({ length: 24 }).map((_, h) => (
-                    <div
-                      key={h}
-                      style={{
-                        height: 22,
-                        background: tz.work.includes(h) ? tz.color : 'var(--surface-2)',
-                        borderRadius: 3,
-                        opacity: tz.work.includes(h) ? 0.82 : 0.35,
-                        transition: 'opacity 0.15s',
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
 
             {/* Sweet spot callout */}
             <div style={{

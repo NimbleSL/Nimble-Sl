@@ -17,7 +17,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${sol.name} — ${sol.tagline}`,
     description: sol.description,
-    openGraph: { title: `${sol.name} — ${sol.tagline}`, description: sol.description },
+    keywords: sol.keywords,
+    openGraph: { 
+      title: `${sol.name} — ${sol.tagline}`, 
+      description: sol.description,
+      images: [{ url: `/api/og?title=${encodeURIComponent(sol.name)}&category=${encodeURIComponent(sol.industry)}` }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${sol.name} — ${sol.tagline}`,
+      description: sol.description,
+      images: [{ url: `/api/og?title=${encodeURIComponent(sol.name)}&category=${encodeURIComponent(sol.industry)}` }]
+    }
   };
 }
 
@@ -53,9 +64,9 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
             </p>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href={sol.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '13px 22px', fontSize: 15 }}>
-                <Play size={15} /> Launch Live Demo
-              </a>
+              <Link href="/contact" className="btn btn-primary" style={{ padding: '13px 22px', fontSize: 15 }}>
+                <Play size={15} /> Request Demo Access
+              </Link>
               <Link href="/contact" className="btn btn-ghost" style={{ padding: '13px 22px', fontSize: 15 }}>
                 Get Custom Quote <ArrowRight size={14} />
               </Link>
@@ -67,7 +78,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
         <section style={{ padding: '0 0 64px' }}>
           <div className="container">
             <h2 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text)', marginBottom: 32 }}>Key features</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+            <div className="rg-4" style={{ gap: 20 }}>
               {sol.features.map((f) => (
                 <div key={f.title} className="card" style={{ padding: 20 }}>
                   <div style={{ width: 40, height: 40, borderRadius: 10, background: `${sol.accent}18`, display: 'grid', placeItems: 'center', marginBottom: 14, fontSize: 18 }}>
@@ -86,7 +97,7 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
           <div className="container">
             <h2 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>Customization tiers</h2>
             <p style={{ fontSize: 15, color: 'var(--text-2)', marginBottom: 32 }}>Start from our proven foundation. Customize to your exact needs.</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            <div className="rg-3" style={{ gap: 20 }}>
               {sol.customizationTiers.map((tier, i) => (
                 <div key={tier.name} className="card" style={{ padding: 28, border: i === 1 ? `1px solid ${sol.accent}40` : '1px solid var(--border)' }}>
                   {i === 1 && <div className="tag" style={{ fontSize: 10, marginBottom: 12, background: `${sol.accent}18`, color: sol.accent, borderColor: `${sol.accent}30` }}>Most popular</div>}
@@ -128,9 +139,9 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                 <Link href="/contact" className="btn btn-emerald" style={{ padding: '13px 24px' }}>
                   <Sparkles size={14} /> Book a demo walkthrough
                 </Link>
-                <a href={sol.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ padding: '13px 24px' }}>
-                  <Play size={14} /> Try the live demo
-                </a>
+                <Link href="/contact" className="btn btn-ghost" style={{ padding: '13px 24px' }}>
+                  <Play size={14} /> Request Demo Access
+                </Link>
               </div>
             </div>
           </div>

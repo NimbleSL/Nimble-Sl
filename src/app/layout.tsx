@@ -7,9 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { getOrganizationJsonLd, getWebSiteJsonLd, getLocalBusinessJsonLd } from '@/lib/seo/jsonLd';
 import { NimbleBot } from '@/components/widgets/NimbleBot';
 import { StickyBar } from '@/components/widgets/StickyBar';
-import { ExitPopup } from '@/components/widgets/ExitPopup';
-import { CookieBanner } from '@/components/widgets/CookieBanner';
-import { SocialProof } from '@/components/widgets/SocialProof';
+import { CookieBanner, ActivityToast, ExitIntent, LoadingScreen } from '@/components/overlays';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -96,14 +94,23 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
+          <a
+            href="#main-content"
+            className="skip-link"
+          >
+            Skip to main content
+          </a>
+          <LoadingScreen />
           <Navbar />
-          {children}
+          <div id="main-content">
+            {children}
+          </div>
           <Footer />
           <NimbleBot />
           <StickyBar />
-          <ExitPopup />
           <CookieBanner />
-          <SocialProof />
+          <ActivityToast />
+          <ExitIntent />
         </ThemeProvider>
         {/* JSON-LD Structured Data */}
         <script

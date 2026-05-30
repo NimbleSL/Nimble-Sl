@@ -42,6 +42,7 @@ export default function SolutionsPage() {
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
+                aria-pressed={activeFilter === f}
                 style={{
                   padding: '7px 14px',
                   borderRadius: 999,
@@ -67,7 +68,8 @@ export default function SolutionsPage() {
             <AnimatePresence mode="popLayout">
               <motion.div
                 layout
-                style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}
+                className="rg-3"
+                style={{ gap: 24 }}
               >
                 {filtered.map((sol) => (
                   <motion.div
@@ -84,8 +86,8 @@ export default function SolutionsPage() {
                         <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.6 }} />
                         <div style={{ position: 'absolute', inset: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
                           <div style={{ display: 'flex', gap: 6 }}>
-                            <div style={{ width: 64, height: 8, background: 'rgba(255,255,255,0.18)', borderRadius: 2 }} />
-                            <div style={{ width: 32, height: 8, background: 'rgba(255,255,255,0.10)', borderRadius: 2 }} />
+                            <div style={{ width: 64, height: 8, background: 'var(--overlay-lg)', borderRadius: 2 }} />
+                            <div style={{ width: 32, height: 8, background: 'var(--overlay-md)', borderRadius: 2 }} />
                           </div>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6, marginTop: 10 }}>
                             {[1, 2, 3].map((n) => (

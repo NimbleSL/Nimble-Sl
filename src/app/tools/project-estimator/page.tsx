@@ -119,8 +119,8 @@ function AmbientOrbs({ rgb, isDark }: { rgb: string; isDark: boolean }) {
       {/* Grid */}
       <div className="absolute inset-0" style={{
         backgroundImage: isDark
-          ? `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`
-          : `linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)`,
+          ? `linear-gradient(var(--overlay-xs) 1px, transparent 1px), linear-gradient(90deg, var(--overlay-xs) 1px, transparent 1px)`
+          : `linear-gradient(var(--overlay-sm) 1px, transparent 1px), linear-gradient(90deg, var(--overlay-sm) 1px, transparent 1px)`,
         backgroundSize: '48px 48px',
       }} />
     </div>
@@ -182,7 +182,7 @@ function GlowCard({ selected, rgb, onClick, children, isDark, className = '' }: 
   };
 
   const unselectedBg = isDark ? 'rgba(12,18,36,0.6)' : 'rgba(255,255,255,0.85)';
-  const unselectedBorder = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.08)';
+  const unselectedBorder = 'var(--border)';
 
   return (
     <motion.button
@@ -228,12 +228,12 @@ function GlowCard({ selected, rgb, onClick, children, isDark, className = '' }: 
 
 function StepProgress({ step, isDark }: { step: number; isDark: boolean }) {
   const theme = STEP_THEMES[step - 1];
-  const trackColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
-  const nodeBg = isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.04)';
-  const nodeBorder = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.15)';
-  const labelDone = isDark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.35)';
-  const labelFuture = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.2)';
-  const numColor = isDark ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.3)';
+  const trackColor = isDark ? 'var(--overlay-md)' : 'var(--overlay-md)';
+  const nodeBg = isDark ? 'var(--overlay-xs)' : 'var(--overlay-sm)';
+  const nodeBorder = isDark ? 'var(--overlay-md)' : 'var(--border-2)';
+  const labelDone = isDark ? 'var(--text-3)' : 'var(--text-3)';
+  const labelFuture = isDark ? 'var(--text-3)' : 'var(--text-3)';
+  const numColor = isDark ? 'var(--text-3)' : 'var(--text-3)';
 
   return (
     <div className="relative w-full max-w-xl mx-auto px-2 flex items-start justify-between">
@@ -351,10 +351,10 @@ function LoadingScreen() {
 
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#60A5FA', marginBottom: 8 }}>
+        <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--blue-2)', marginBottom: 8 }}>
           Nimble AI · Processing
         </div>
-        <h1 className="font-display" style={{ fontSize: 'clamp(22px, 4vw, 32px)', fontWeight: 800, color: '#F1F5F9' }}>
+        <h1 className="font-display" style={{ fontSize: 'clamp(22px, 4vw, 32px)', fontWeight: 800, color: 'var(--text)' }}>
           Analysing your project...
         </h1>
       </motion.div>
@@ -362,7 +362,7 @@ function LoadingScreen() {
       {/* SVG ring + center */}
       <div className="relative flex items-center justify-center" style={{ width: 140, height: 140 }}>
         <svg width={140} height={140} viewBox="0 0 140 140" style={{ position: 'absolute' }}>
-          <circle cx={70} cy={70} r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth={3} />
+          <circle cx={70} cy={70} r={r} fill="none" stroke="var(--overlay-sm)" strokeWidth={3} />
           <motion.circle
             cx={70} cy={70} r={r}
             fill="none"
@@ -415,8 +415,8 @@ function LoadingScreen() {
           <motion.div key={stageIdx} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
             className="text-center"
           >
-            <p style={{ fontSize: 16, fontWeight: 600, color: '#F1F5F9' }}>{stages[stageIdx].label}</p>
-            <p style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: '#475569', marginTop: 4 }}>
+            <p style={{ fontSize: 16, fontWeight: 600, color: 'var(--text)' }}>{stages[stageIdx].label}</p>
+            <p style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-3)', marginTop: 4 }}>
               Powered by Nimble AI · usually under 10 seconds
             </p>
           </motion.div>
@@ -482,13 +482,13 @@ function ResultsScreen({
   };
 
   const cardBase: React.CSSProperties = {
-    background: isDark ? 'rgba(10,14,26,0.7)' : 'var(--surface)',
-    border: `1px solid ${isDark ? 'rgba(255,255,255,0.07)' : 'var(--border)'}`,
+    background: 'var(--surface)',
+    border: '1px solid var(--border)',
     borderRadius: 16,
     backdropFilter: 'blur(12px)',
     padding: 32,
     marginBottom: 24,
-    boxShadow: isDark ? 'none' : '0 1px 3px rgba(0,0,0,0.06)',
+    boxShadow: 'var(--shadow-card)',
   };
 
   return (
@@ -592,7 +592,7 @@ function ResultsScreen({
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {result.team.map((member, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.07 }}
-                  style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 10, background: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 10, background: 'var(--overlay-xs)' }}
                 >
                   <div style={{ width: 36, height: 36, borderRadius: 10, background: PHASE_COLORS[i % PHASE_COLORS.length], display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 700, color: 'white', flexShrink: 0 }}>
                     {member.role.substring(0, 2).toUpperCase()}
@@ -620,7 +620,7 @@ function ResultsScreen({
                   <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>{phase.name}</span>
                   <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-3)' }}>{phase.weeks_low}–{phase.weeks_high} wks</span>
                 </div>
-                <div style={{ height: 6, borderRadius: 999, background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)' }}>
+                <div style={{ height: 6, borderRadius: 999, background: 'var(--overlay-sm)' }}>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
@@ -647,7 +647,7 @@ function ResultsScreen({
                     <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', textTransform: 'capitalize' }}>{cat.replace('_', ' ')}</span>
                     <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-3)' }}>{fmtCurrency(range.low)} – {fmtCurrency(range.high)}</span>
                   </div>
-                  <div style={{ height: 6, borderRadius: 999, background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)' }}>
+                  <div style={{ height: 6, borderRadius: 999, background: 'var(--overlay-sm)' }}>
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${pct}%` }}
@@ -669,7 +669,7 @@ function ResultsScreen({
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.06)' : 'var(--border)'}` }}>
+                <tr style={{ borderBottom: `1px solid var(--border)` }}>
                   {['Feature', 'Complexity', 'Est. Hours'].map((h) => (
                     <th key={h} style={{ textAlign: h === 'Est. Hours' ? 'right' : 'left', padding: '8px 12px', fontSize: 10, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-3)' }}>{h}</th>
                   ))}
@@ -679,7 +679,7 @@ function ResultsScreen({
                 {result.features.map((f, i) => {
                   const cColors: Record<string, string> = { low: '#10B981', medium: '#F59E0B', high: '#F43F5E' };
                   return (
-                    <motion.tr key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }} style={{ borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.04)' : 'var(--border)'}` }}>
+                    <motion.tr key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }} style={{ borderBottom: `1px solid var(--border)` }}>
                       <td style={{ padding: '10px 12px', fontSize: 13, color: 'var(--text)' }}>{f.name}</td>
                       <td style={{ padding: '10px 12px' }}>
                         <span style={{ fontSize: 10, fontFamily: 'var(--font-mono)', padding: '2px 8px', borderRadius: 4, background: `${cColors[f.complexity]}18`, color: cColors[f.complexity], border: `1px solid ${cColors[f.complexity]}30`, textTransform: 'uppercase', fontWeight: 700 }}>
@@ -997,8 +997,8 @@ export default function ProjectEstimatorPage() {
                           return (
                             <GlowCard key={value} selected={selected} rgb={theme.rgb} isDark={isDark} onClick={() => setFormData({ ...formData, projectType: value })}>
                               <div style={{ padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
-                                <div style={{ width: 40, height: 40, borderRadius: 10, background: selected ? `rgba(${theme.rgb},0.2)` : isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)', display: 'grid', placeItems: 'center', flexShrink: 0, border: `1px solid ${selected ? `rgba(${theme.rgb},0.3)` : isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)'}` }}>
-                                  <Icon size={18} style={{ color: selected ? theme.primary : isDark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.3)' }} />
+                                <div style={{ width: 40, height: 40, borderRadius: 10, background: selected ? `rgba(${theme.rgb},0.2)` : 'var(--overlay-sm)', display: 'grid', placeItems: 'center', flexShrink: 0, border: `1px solid ${selected ? `rgba(${theme.rgb},0.3)` : 'var(--border-2)'}` }}>
+                                  <Icon size={18} style={{ color: selected ? theme.primary : 'var(--text-3)' }} />
                                 </div>
                                 <div style={{ flex: 1, textAlign: 'left' }}>
                                   <div style={{ fontSize: 14, fontWeight: 600, color: selected ? 'var(--text)' : 'var(--text-2)' }}>{label}</div>
@@ -1027,7 +1027,7 @@ export default function ProjectEstimatorPage() {
                             <GlowCard key={ind} selected={selected} rgb={theme.rgb} isDark={isDark} onClick={() => setFormData({ ...formData, industry: ind })}>
                               <div style={{ padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <span style={{ fontSize: 14, fontWeight: 600, color: selected ? 'var(--text)' : 'var(--text-2)' }}>{ind}</span>
-                                {selected ? <Check size={15} style={{ color: theme.primary }} /> : <ChevronRight size={14} style={{ color: isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.2)' }} />}
+                                {selected ? <Check size={15} style={{ color: theme.primary }} /> : <ChevronRight size={14} style={{ color: 'var(--text-3)' }} />}
                               </div>
                             </GlowCard>
                           );
@@ -1060,7 +1060,7 @@ export default function ProjectEstimatorPage() {
                                 return (
                                   <GlowCard key={feat} selected={sel} rgb={theme.rgb} isDark={isDark} onClick={() => toggleFeature(feat)}>
                                     <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
-                                      <div style={{ width: 18, height: 18, borderRadius: 5, border: `1.5px solid ${sel ? theme.primary : isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.2)'}`, background: sel ? theme.primary : 'transparent', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                                      <div style={{ width: 18, height: 18, borderRadius: 5, border: `1.5px solid ${sel ? theme.primary : 'var(--border-2)'}`, background: sel ? theme.primary : 'transparent', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                                         {sel && <Check size={10} style={{ color: 'white' }} strokeWidth={3} />}
                                       </div>
                                       <span style={{ fontSize: 13, color: sel ? 'var(--text)' : 'var(--text-2)', fontWeight: sel ? 600 : 400 }}>{feat}</span>
@@ -1175,7 +1175,7 @@ export default function ProjectEstimatorPage() {
                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                             rows={6}
                             placeholder="e.g. We need a mobile-first fintech app that lets users send money internationally with real-time exchange rates, transaction history, and multi-currency wallets..."
-                            style={{ width: '100%', padding: '14px 16px', borderRadius: 12, background: isDark ? 'rgba(15,22,41,0.8)' : 'var(--surface)', border: `1px solid ${formData.description.length >= 20 ? `rgba(${theme.rgb},0.35)` : isDark ? 'rgba(255,255,255,0.08)' : 'var(--border)'}`, color: 'var(--text)', fontSize: 14, outline: 'none', resize: 'none', lineHeight: 1.6, fontFamily: 'inherit', transition: 'border-color 0.2s' }}
+                            style={{ width: '100%', padding: '14px 16px', borderRadius: 12, background: 'var(--surface)', border: `1px solid ${formData.description.length >= 20 ? `rgba(${theme.rgb},0.35)` : 'var(--border)'}`, color: 'var(--text)', fontSize: 14, outline: 'none', resize: 'none', lineHeight: 1.6, fontFamily: 'inherit', transition: 'border-color 0.2s' }}
                           />
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
                             <span style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: formData.description.length >= 20 ? '#10B981' : 'var(--text-3)' }}>
@@ -1195,7 +1195,7 @@ export default function ProjectEstimatorPage() {
                             value={formData.referenceUrl}
                             onChange={(e) => setFormData({ ...formData, referenceUrl: e.target.value })}
                             placeholder="https://example-you-like.com"
-                            style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: isDark ? 'rgba(15,22,41,0.8)' : 'var(--surface)', border: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'var(--border)'}`, color: 'var(--text)', fontSize: 14, outline: 'none', fontFamily: 'inherit' }}
+                            style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: 'var(--surface)', border: `1px solid var(--border)`, color: 'var(--text)', fontSize: 14, outline: 'none', fontFamily: 'inherit' }}
                           />
                         </div>
                       </div>
@@ -1228,7 +1228,7 @@ export default function ProjectEstimatorPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               {[1,2,3,4,5,6,7].map((s) => (
                 <motion.div key={s}
-                  animate={{ width: s === step ? 20 : 6, background: s === step ? theme.primary : s < step ? `rgba(${theme.rgb},0.4)` : isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.12)' }}
+                  animate={{ width: s === step ? 20 : 6, background: s === step ? theme.primary : s < step ? `rgba(${theme.rgb},0.4)` : 'var(--overlay-md)' }}
                   style={{ height: 6, borderRadius: 999 }}
                   transition={{ duration: 0.3 }}
                 />
@@ -1242,7 +1242,7 @@ export default function ProjectEstimatorPage() {
                 className="btn"
                 style={{
                   padding: '10px 24px',
-                  background: canProceed() ? `linear-gradient(135deg, ${theme.primary}, ${theme.primary}CC)` : isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+                  background: canProceed() ? `linear-gradient(135deg, ${theme.primary}, ${theme.primary}CC)` : 'var(--overlay-md)',
                   color: canProceed() ? 'white' : 'var(--text-3)',
                   boxShadow: canProceed() ? `0 4px 16px rgba(${theme.rgb},0.35)` : 'none',
                   border: 'none',
@@ -1259,7 +1259,7 @@ export default function ProjectEstimatorPage() {
                 className="btn"
                 style={{
                   padding: '11px 24px',
-                  background: canProceed() ? 'linear-gradient(135deg, #10B981, #059669)' : isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+                  background: canProceed() ? 'linear-gradient(135deg, #10B981, #059669)' : 'var(--overlay-md)',
                   color: canProceed() ? 'white' : 'var(--text-3)',
                   boxShadow: canProceed() ? '0 4px 20px rgba(16,185,129,0.4)' : 'none',
                   border: 'none',

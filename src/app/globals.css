@@ -64,6 +64,13 @@
   --amber-2: #FCD34D;
   --rose: #F43F5E;
   --rose-2: #FB7185;
+
+  /* Semantic overlay tokens — use these instead of raw rgba(white/black, X) */
+  --overlay-xs:  rgba(255, 255, 255, 0.03);  /* hairline tint */
+  --overlay-sm:  rgba(255, 255, 255, 0.05);  /* subtle hover bg */
+  --overlay-md:  rgba(255, 255, 255, 0.08);  /* section divider tint */
+  --overlay-lg:  rgba(255, 255, 255, 0.12);  /* prominent overlay */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.25);
 }
 
 [data-theme="light"] {
@@ -75,6 +82,13 @@
   --text: #0F172A;
   --text-2: #475569;
   --text-3: #94A3B8;
+
+  /* Overlay tokens — inverted for light mode */
+  --overlay-xs:  rgba(0, 0, 0, 0.02);
+  --overlay-sm:  rgba(0, 0, 0, 0.04);
+  --overlay-md:  rgba(0, 0, 0, 0.06);
+  --overlay-lg:  rgba(0, 0, 0, 0.09);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
 }
 
 /* ============================================
@@ -97,6 +111,7 @@ body {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 /* ============================================
@@ -147,6 +162,61 @@ body {
   .container {
     padding: 0 20px;
   }
+}
+
+/* ============================================
+   RESPONSIVE GRID UTILITIES
+   — Use these class names + keep gap/padding as inline styles.
+   — gridTemplateColumns must come from CSS (not inline) for
+     media queries to override.
+   ============================================ */
+
+/* Desktop base */
+.rg-2   { display: grid; grid-template-columns: 1fr 1fr; }
+.rg-3   { display: grid; grid-template-columns: repeat(3, 1fr); }
+.rg-4   { display: grid; grid-template-columns: repeat(4, 1fr); }
+.rg-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+.rg-hero-equal { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+.rg-sidebar { display: grid; grid-template-columns: 1fr 240px; }
+.rg-sidebar-lg { display: grid; grid-template-columns: 1fr 280px; }
+.rg-content-cta { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .rg-4   { grid-template-columns: 1fr 1fr; }
+  .rg-hero { grid-template-columns: 1fr 1fr; }
+  .rg-hero-equal { grid-template-columns: 1fr 1fr; }
+  .rg-sidebar-lg { grid-template-columns: 1fr 240px; }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .rg-2, .rg-3, .rg-4 { grid-template-columns: 1fr; }
+  .rg-hero, .rg-hero-equal { grid-template-columns: 1fr; }
+  .rg-sidebar, .rg-sidebar-lg { grid-template-columns: 1fr; }
+  .rg-content-cta { grid-template-columns: 1fr; }
+
+  /* Hide TOC sidebar on mobile */
+  .rg-sidebar > *:last-child,
+  .rg-sidebar-lg > *:last-child { display: none; }
+
+  /* Mobile section padding */
+  .section-pad { padding: 48px 0 !important; }
+  .section-pad-sm { padding: 32px 0 !important; }
+
+  /* Mobile hero typography */
+  .hero-title { font-size: clamp(32px, 8vw, 52px) !important; }
+}
+
+/* ── Small mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .rg-2   { grid-template-columns: 1fr; }
+}
+
+/* ── Process section steps connector ── */
+@media (max-width: 768px) {
+  /* Hide the horizontal connecting line on mobile */
+  .process-connector { display: none !important; }
 }
 
 /* ============================================
@@ -353,6 +423,18 @@ body {
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Metric card pulse glow — used on hero metric tiles (annotation #10) */
+@keyframes metric-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0px rgba(52, 211, 153, 0.12),
+                0 0 0 1px rgba(52, 211, 153, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.04),
+                0 0 24px 2px rgba(52, 211, 153, 0.12);
+  }
 }
 
 .blink {
@@ -669,4 +751,31 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ============================================
+   SKIP TO MAIN CONTENT (accessibility)
+   ============================================ */
+
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--blue);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid white;
+  outline-offset: 2px;
 }

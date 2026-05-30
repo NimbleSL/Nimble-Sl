@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Play, ArrowRight, Gauge } from 'lucide-react';
+import { ArrowRight, Gauge, Mail } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
 const PRODUCTS = [
@@ -41,7 +41,7 @@ export function ShowroomTeaser() {
         </div>
 
         {/* Product grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="rg-3" style={{ gap: 20 }}>
           {PRODUCTS.map((p, i) => (
             <motion.div
               key={p.name}
@@ -83,9 +83,9 @@ export function ShowroomTeaser() {
                     <Gauge size={11} /> {p.metric}
                   </div>
                   <div style={{ display: 'flex', gap: 8 }}>
-                    <a href={p.demoHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '8px 12px', fontSize: 12 }}>
-                      <Play size={11} /> Try Live Demo
-                    </a>
+                    <Link href="/contact" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '8px 12px', fontSize: 12 }}>
+                      <Mail size={11} /> Request Demo
+                    </Link>
                     <Link href={p.href} className="btn btn-ghost" style={{ padding: '8px 12px', fontSize: 12 }}>
                       <ArrowRight size={12} />
                     </Link>

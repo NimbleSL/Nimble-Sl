@@ -8,6 +8,7 @@ export interface ISolution {
   description: string;
   keyMetric: string;
   demoUrl: string;
+  keywords?: string[];
   features: { title: string; description: string; icon: string }[];
   techStack: string[];
   customizationTiers: {

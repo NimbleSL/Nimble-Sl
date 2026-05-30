@@ -81,21 +81,21 @@ const leadership = [
     title: 'CEO & Co-founder',
     bio: 'Ex-BRAC Bank tech lead, 15+ years in fintech. Built core banking systems serving 2M+ customers.',
     initials: 'RI',
-    gradient: 'from-blue-500 to-cyan-500',
+    color: 'linear-gradient(135deg, var(--blue), var(--cyan))',
   },
   {
     name: 'Nusrat Jahan',
     title: 'CTO',
     bio: 'ML engineer with 12+ years experience. Published researcher in neural networks. Built fraud detection at scale.',
     initials: 'NJ',
-    gradient: 'from-emerald-500 to-teal-500',
+    color: 'linear-gradient(135deg, var(--emerald), var(--cyan))',
   },
   {
     name: 'Mehedi Hasan',
     title: 'Head of Delivery',
     bio: 'PMP certified with 10+ years delivering enterprise software. Led projects for Fortune 500 clients across 3 continents.',
     initials: 'MH',
-    gradient: 'from-purple-500 to-pink-500',
+    color: 'linear-gradient(135deg, var(--purple), var(--rose))',
   },
 ];
 
@@ -193,7 +193,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rg-4" style={{ gap: 32 }}>
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
@@ -228,12 +228,13 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+          <div className="rg-3" style={{ gap: 32, maxWidth: 1120, margin: '0 auto' }}>
             {leadership.map((leader, index) => (
               <div key={index} className="card p-8 text-center">
                 <div className="mb-6 flex justify-center">
                   <div
-                    className={`flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br ${leader.gradient} text-2xl font-bold text-white`}
+                    className="flex h-24 w-24 items-center justify-center rounded-full text-2xl font-bold text-white"
+                    style={{ background: leader.color }}
                   >
                     {leader.initials}
                   </div>

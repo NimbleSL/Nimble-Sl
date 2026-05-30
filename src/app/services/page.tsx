@@ -52,7 +52,7 @@ export default function ServicesPage() {
         {/* Services grid */}
         <section style={{ padding: '0 0 80px' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+            <div className="rg-3" style={{ gap: 24 }}>
               {services.map((service) => {
                 const Icon = ICON_MAP[service.icon] ?? Code2;
                 const accent = ACCENT_MAP[service.tagVariant] ?? '#3B82F6';

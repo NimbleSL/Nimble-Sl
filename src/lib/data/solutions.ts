@@ -11,6 +11,7 @@ export const solutions: ISolution[] = [
     description: 'A full-stack digital banking platform supporting personal and business financial ecosystems. Real-time global payment processing, multi-currency engine, and digital KYC.',
     keyMetric: 'Real-time cross-border payments',
     demoUrl: 'https://payflow.nimblesl.com',
+    keywords: ["digital banking platform", "multi-currency wallet", "digital KYC", "fintech software development"],
     features: [
       { title: 'Digital Wallet', description: 'Multi-currency wallet with instant transfers', icon: 'wallet' },
       { title: 'KYC Verification', description: 'Automated identity verification pipeline', icon: 'shield' },
@@ -40,6 +41,7 @@ export const solutions: ISolution[] = [
     description: 'End-to-end digital insurance platform with OCR-powered document processing, automated premium calculation, and real-time claim tracking. Fully paperless.',
     keyMetric: '70% faster claim processing',
     demoUrl: 'https://claimwise.nimblesl.com',
+    keywords: ["digital insurance platform", "insurtech software", "automated claim processing", "OCR document extraction"],
     features: [
       { title: 'Digital Claim Submission', description: 'Fully digital, paperless claims', icon: 'file' },
       { title: 'OCR Processing', description: 'Automated document extraction', icon: 'scan' },
@@ -69,6 +71,7 @@ export const solutions: ISolution[] = [
     description: 'A 360° property platform with Elasticsearch-powered geo-search, AI recommendations, eKYC, and agent management. Sub-second search across thousands of listings.',
     keyMetric: '12k+ listings managed',
     demoUrl: 'https://propnest.nimblesl.com',
+    keywords: ["proptech software", "property management platform", "real estate tech", "elasticsearch property search"],
     features: [
       { title: 'Geo Search', description: 'Elasticsearch-powered property discovery', icon: 'map' },
       { title: 'AI Recommendations', description: 'Personalized property matching', icon: 'brain' },
@@ -98,6 +101,7 @@ export const solutions: ISolution[] = [
     description: 'Sequential multi-model AI pipeline using Graph Neural Networks, Bio_ClinicalBERT NLP, and explainable AI via SHAP values. Detects collusive network-level fraud.',
     keyMetric: '96% detection accuracy',
     demoUrl: 'https://fraudshield.nimblesl.com',
+    keywords: ["AI fraud detection", "GNN fraud model", "real-time fraud prevention", "explainable AI in finance"],
     features: [
       { title: 'GNN Detection', description: 'Graph Neural Network fraud analysis', icon: 'network' },
       { title: 'NLP Analysis', description: 'Bio_ClinicalBERT text processing', icon: 'file-text' },
@@ -127,6 +131,7 @@ export const solutions: ISolution[] = [
     description: 'Offline-first field force automation platform. GPS tracking, automated stock calculation, real-time SR tracking, and web admin dashboard. Works 8+ hours without connectivity.',
     keyMetric: '40–45% operational cost reduction',
     demoUrl: 'https://fieldops.nimblesl.com',
+    keywords: ["field force automation", "offline first mobile app", "logistics tracking software", "automated stock calculation"],
     features: [
       { title: 'Offline-First Mobile', description: '8+ hours offline data sync', icon: 'wifi-off' },
       { title: 'GPS Tracking', description: 'Real-time field agent location', icon: 'map-pin' },
@@ -156,6 +161,7 @@ export const solutions: ISolution[] = [
     description: 'Enterprise Identity & Access Management platform. SSO, MFA, RBAC, OAuth 2.0/OIDC, CRM integration, and cross-system audit trails with sub-second authentication.',
     keyMetric: 'Sub-second auth redirect',
     demoUrl: 'https://authgate.nimblesl.com',
+    keywords: ["enterprise IAM", "single sign on SSO", "identity access management", "RBAC security"],
     features: [
       { title: 'SSO & MFA', description: 'Single sign-on + multi-factor auth', icon: 'key' },
       { title: 'RBAC', description: 'Fine-grained role-based access control', icon: 'shield' },
@@ -185,6 +191,7 @@ export const solutions: ISolution[] = [
     description: 'Full-stack digital recruitment platform with automated merit list generation, quota-based distribution, and dynamic reporting. Handles thousands of concurrent candidates.',
     keyMetric: 'Zero manual tabulation errors',
     demoUrl: 'https://hiresync.nimblesl.com',
+    keywords: ["digital recruitment platform", "HR tech software", "automated merit list", "candidate tracking system"],
     features: [
       { title: 'Candidate Workflow', description: 'Automated end-to-end processing', icon: 'users' },
       { title: 'Merit System', description: 'Quota-based merit calculation', icon: 'award' },
@@ -214,6 +221,7 @@ export const solutions: ISolution[] = [
     description: 'AI-assisted case management platform with forensic audit trails, analytics integration, and cloud media management. Complete pre-deletion audit trail for compliance.',
     keyMetric: '100% forensic audit trail',
     demoUrl: 'https://caseflow.nimblesl.com',
+    keywords: ["AI case management", "forensic audit trails", "enterprise case software", "cloud evidence storage"],
     features: [
       { title: 'AI Narratives', description: 'AI-assisted report generation', icon: 'file-text' },
       { title: 'Audit Trail', description: 'Complete forensic logging', icon: 'shield' },

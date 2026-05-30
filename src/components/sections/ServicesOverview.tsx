@@ -113,7 +113,7 @@ export function ServicesOverview() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="rg-3" style={{ gap: 20 }}>
           {SERVICES.map((s, i) => (
             <ServiceCard key={s.href} {...s} index={i} />
           ))}

@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
         <section style={{ padding: '0 0 64px' }}>
           <div className="container">
             <div style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 24 }}>Featured case studies</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 48 }}>
+            <div className="rg-3" style={{ gap: 24, marginBottom: 48 }}>
               {featured.map((cs) => (
                 <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="card card-hover" style={{ padding: 0, overflow: 'hidden', display: 'block' }}>
                   {/* Color header */}
@@ -49,7 +49,7 @@ export default function CaseStudiesPage() {
                     <p style={{ fontSize: 13, color: 'var(--text-2)', marginBottom: 20, lineHeight: 1.6 }}>{cs.subtitle}</p>
 
                     {/* Key metrics */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
+                    <div className="rg-2" style={{ gap: 12, marginBottom: 20, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
                       {cs.metrics.slice(0, 2).map((m) => (
                         <div key={m.label}>
                           <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)' }}>{m.value}</div>
@@ -73,7 +73,7 @@ export default function CaseStudiesPage() {
             {rest.length > 0 && (
               <>
                 <div style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 24 }}>More case studies</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+                <div className="rg-3" style={{ gap: 20 }}>
                   {rest.map((cs) => (
                     <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="card card-hover" style={{ padding: 24 }}>
                       <span className={`tag tag-${cs.tagVariant}`} style={{ fontSize: 10 }}>{cs.industryTag}</span>

@@ -72,9 +72,9 @@ export default async function IndustryPage({
   const Icon = iconMap[industry.icon] || Building2;
 
   return (
-    <main className="min-h-screen bg-[#0A0E1A]">
+    <main className="min-h-screen" style={{ background: 'var(--bg)' }}>
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-white/5">
+      <section className="relative overflow-hidden" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="mesh-bg opacity-30" />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -89,35 +89,35 @@ export default async function IndustryPage({
             </div>
 
             {/* Title */}
-            <h1 className="mb-4 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl" style={{ color: 'var(--text)' }}>
               Software Development for
               <br />
               <span style={{ color: industry.accent }}>{industry.name}</span>
             </h1>
 
             {/* Tagline */}
-            <p className="mx-auto mb-6 max-w-2xl text-xl text-gray-300">
+            <p className="mx-auto mb-6 max-w-2xl text-xl" style={{ color: 'var(--text-2)' }}>
               {industry.tagline}
             </p>
 
             {/* Description */}
-            <p className="mx-auto mb-12 max-w-3xl text-lg leading-relaxed text-gray-400">
+            <p className="mx-auto mb-12 max-w-3xl text-lg leading-relaxed" style={{ color: 'var(--text-2)' }}>
               {industry.description}
             </p>
 
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8">
-              <div className="glass rounded-xl border border-white/10 px-6 py-4">
-                <div className="text-3xl font-bold text-white">
+              <div className="glass rounded-xl px-6 py-4" style={{ border: '1px solid var(--border-2)' }}>
+                <div className="text-3xl font-bold" style={{ color: 'var(--text)' }}>
                   {industry.projectCount}
                 </div>
-                <div className="mt-1 text-sm text-gray-400">Completed</div>
+                <div className="mt-1 text-sm" style={{ color: 'var(--text-3)' }}>Completed</div>
               </div>
-              <div className="glass rounded-xl border border-white/10 px-6 py-4">
-                <div className="text-3xl font-bold text-white">
+              <div className="glass rounded-xl px-6 py-4" style={{ border: '1px solid var(--border-2)' }}>
+                <div className="text-3xl font-bold" style={{ color: 'var(--text)' }}>
                   {industry.solutions.length}
                 </div>
-                <div className="mt-1 text-sm text-gray-400">Solutions Built</div>
+                <div className="mt-1 text-sm" style={{ color: 'var(--text-3)' }}>Solutions Built</div>
               </div>
             </div>
           </div>
@@ -125,13 +125,13 @@ export default async function IndustryPage({
       </section>
 
       {/* Challenges Section */}
-      <section className="relative border-b border-white/5 py-24">
+      <section className="relative py-24" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-white">
+            <h2 className="mb-4 text-4xl font-bold" style={{ color: 'var(--text)' }}>
               Industry Challenges
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-lg" style={{ color: 'var(--text-2)' }}>
               Common problems we solve for {industry.name.toLowerCase()} clients.
             </p>
           </div>
@@ -150,7 +150,7 @@ export default async function IndustryPage({
                     {index + 1}
                   </div>
                 </div>
-                <p className="text-gray-300">{challenge}</p>
+                <p style={{ color: 'var(--text-2)' }}>{challenge}</p>
               </div>
             ))}
           </div>
@@ -158,12 +158,12 @@ export default async function IndustryPage({
       </section>
 
       {/* What We Build Section */}
-      <section className="relative border-b border-white/5 py-24">
+      <section className="relative py-24" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="grid-bg opacity-10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-white">What We Build</h2>
-            <p className="text-lg text-gray-400">
+            <h2 className="mb-4 text-4xl font-bold" style={{ color: 'var(--text)' }}>What We Build</h2>
+            <p className="text-lg" style={{ color: 'var(--text-2)' }}>
               Custom software solutions tailored for {industry.name.toLowerCase()}.
             </p>
           </div>
@@ -209,10 +209,10 @@ export default async function IndustryPage({
                       style={{ color: industry.accent }}
                     />
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-white">
+                  <h3 className="mb-2 text-xl font-bold" style={{ color: 'var(--text)' }}>
                     {solutionTitles[solution] || solution}
                   </h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm" style={{ color: 'var(--text-2)' }}>
                     {solutionDescriptions[solution] ||
                       'Custom enterprise software tailored to your needs.'}
                   </p>
@@ -225,13 +225,13 @@ export default async function IndustryPage({
 
       {/* Compliance Section (if available) */}
       {industry.compliance && industry.compliance.length > 0 && (
-        <section className="border-b border-white/5 bg-white/[0.02] py-12">
+        <section className="py-12" style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface-2)' }}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-              <span className="text-white">Compliance Standards:</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm" style={{ color: 'var(--text-2)' }}>
+              <span style={{ color: 'var(--text)' }}>Compliance Standards:</span>
               {industry.compliance.map((standard, index) => (
                 <div key={index} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  <CheckCircle2 className="h-4 w-4" style={{ color: 'var(--emerald)' }} />
                   <span>{standard}</span>
                 </div>
               ))}
@@ -242,13 +242,13 @@ export default async function IndustryPage({
 
       {/* Related Case Studies */}
       {industry.relatedCaseStudies.length > 0 && (
-        <section className="relative border-b border-white/5 py-24">
+        <section className="relative py-24" style={{ borderBottom: '1px solid var(--border)' }}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-white">
+              <h2 className="mb-4 text-4xl font-bold" style={{ color: 'var(--text)' }}>
                 Featured Case Studies
               </h2>
-              <p className="text-lg text-gray-400">
+              <p className="text-lg" style={{ color: 'var(--text-2)' }}>
                 Real projects we&apos;ve built for {industry.name.toLowerCase()}{' '}
                 clients.
               </p>
@@ -270,10 +270,10 @@ export default async function IndustryPage({
                   >
                     Case Study
                   </div>
-                  <h3 className="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-blue-400">
+                  <h3 className="mb-3 text-2xl font-bold transition-colors group-hover:text-blue-400" style={{ color: 'var(--text)' }}>
                     {caseStudyTitles[caseStudy] || caseStudy}
                   </h3>
-                  <p className="mb-4 text-gray-400">
+                  <p className="mb-4" style={{ color: 'var(--text-2)' }}>
                     {caseStudy === 'payflow' &&
                       'A multi-currency payment gateway processing $2M+ daily transactions with 99.99% uptime.'}
                     {caseStudy === 'fraudshield-ai' &&
@@ -287,7 +287,7 @@ export default async function IndustryPage({
                     {caseStudy === 'authgate' &&
                       'Enterprise IAM platform serving 50,000+ employees across 12 business units.'}
                   </p>
-                  <div className="flex items-center gap-2 text-sm font-medium text-blue-400">
+                  <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--blue-2)' }}>
                     View Case Study →
                   </div>
                 </Link>
@@ -301,10 +301,10 @@ export default async function IndustryPage({
       <section className="relative py-24">
         <div className="mesh-bg opacity-20" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-6 text-4xl font-bold text-white">
+          <h2 className="mb-6 text-4xl font-bold" style={{ color: 'var(--text)' }}>
             Build Your {industry.name} Solution
           </h2>
-          <p className="mb-8 text-lg text-gray-300">
+          <p className="mb-8 text-lg" style={{ color: 'var(--text-2)' }}>
             We&apos;ve built {industry.projectCount} for {industry.name.toLowerCase()}{' '}
             clients. Let&apos;s build yours next.
           </p>

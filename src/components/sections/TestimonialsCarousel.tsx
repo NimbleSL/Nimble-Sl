@@ -4,7 +4,6 @@ import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
-import { useTheme } from '@/components/providers/ThemeProvider';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 const TESTIMONIALS = [
@@ -56,8 +55,6 @@ export function TestimonialsCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const prefersReducedMotion = useReducedMotion();
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
 
   const goTo = useCallback((next: number) => {
     setDirection(next > index ? 1 : -1);
@@ -160,9 +157,7 @@ export function TestimonialsCarousel() {
                 className="card"
                 style={{
                   padding: 'clamp(24px, 4vw, 56px)',
-                  background: isDark
-                    ? 'linear-gradient(135deg, rgba(20,25,37,0.8), rgba(15,22,41,0.6))'
-                    : 'var(--surface)',
+                  background: 'linear-gradient(135deg, var(--surface-2), var(--surface))',
                   userSelect: 'none',
                 }}
               >
@@ -192,9 +187,19 @@ export function TestimonialsCarousel() {
                   </div>
 
                   {/* Metrics */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
-                    {t.metrics.map((m) => (
-                      <div key={m.label} className="card" style={{ padding: 18 }}>
+                  <div className="rg-2" style={{ gap: 14 }}>
+                    {t.metrics.map((m, mi) => (
+                      <div
+                        key={m.label}
+                        className="card"
+                        style={{
+                          padding: 18,
+                          ...(mi === 0 ? {
+                            animation: 'metric-pulse 2.4s ease infinite',
+                            borderColor: `rgba(var(--${m.accent}-rgb, 52,211,153), 0.4)`,
+                          } : {}),
+                        }}
+                      >
                         <div style={{ fontSize: 28, fontWeight: 800, lineHeight: 1, color: `var(--${m.accent}-2)`, fontFamily: 'var(--font-plus-jakarta)' }}>
                           {m.value}
                         </div>
