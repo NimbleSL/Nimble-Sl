@@ -183,6 +183,7 @@ body {
 
 /* ── Tablet (≤ 1024px) ── */
 @media (max-width: 1024px) {
+  .rg-3   { grid-template-columns: 1fr 1fr; }
   .rg-4   { grid-template-columns: 1fr 1fr; }
   .rg-hero { grid-template-columns: 1fr 1fr; }
   .rg-hero-equal { grid-template-columns: 1fr 1fr; }

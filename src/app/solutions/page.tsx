@@ -77,7 +77,7 @@ export default function SolutionsPage() {
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <div className="card card-hover" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
+                    <div className="card card-hover" style={{ padding: 0, overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                       {/* Preview — product screenshot */}
                       <div style={{ height: 196, position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)', background: `linear-gradient(135deg, ${sol.accent}20, ${sol.accent}08)` }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -97,7 +97,7 @@ export default function SolutionsPage() {
                         </span>
                       </div>
 
-                      <div style={{ padding: 24 }}>
+                      <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
                         <h3 style={{ fontSize: 19, fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>{sol.name}</h3>
                         <p style={{ fontSize: 13, color: sol.accent, fontWeight: 600, marginBottom: 8 }}>{sol.tagline}</p>
                         <p style={{ fontSize: 13, color: 'var(--text-2)', lineHeight: 1.6, marginBottom: 12 }}>{sol.description.slice(0, 120)}...</p>
@@ -114,7 +114,7 @@ export default function SolutionsPage() {
                           {sol.techStack.length > 3 && <span className="tag" style={{ fontSize: 10 }}>+{sol.techStack.length - 3}</span>}
                         </div>
 
-                        <div style={{ display: 'flex', gap: 8, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
+                        <div style={{ display: 'flex', gap: 8, paddingTop: 16, borderTop: '1px solid var(--border)', marginTop: 'auto' }}>
                           <a href={sol.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '9px 14px', fontSize: 13 }}>
                             <Play size={12} /> Live Demo
                           </a>
