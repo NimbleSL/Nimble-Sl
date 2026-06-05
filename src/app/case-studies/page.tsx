@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { caseStudies } from '@/lib/data/caseStudies';
 
 export const metadata: Metadata = {
@@ -16,10 +14,9 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 64px', position: 'relative', overflow: 'hidden' }}>
           <div className="mesh-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>
@@ -110,7 +107,6 @@ export default function CaseStudiesPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

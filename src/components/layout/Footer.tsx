@@ -64,7 +64,7 @@ const TECH_BADGES = ['Angular', 'React', 'Next.js', 'Flutter', '.NET', 'Python',
 
 export function Footer() {
   return (
-    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+    <footer className="pb-[140px] md:pb-[80px]" style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
       {/* Main footer */}
       <div className="container" style={{ padding: '80px 32px 64px' }}>
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
@@ -173,10 +173,12 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-4">
               {/* Compliance badges */}
-              <ComplianceBadges />
-              <span className="text-xs" style={{ color: 'var(--text-3)' }}>
-                Built with Next.js 15
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>
+                  Architected for:
+                </span>
+                <ComplianceBadges />
+              </div>
             </div>
           </div>
           <div style={{ textAlign: 'center', paddingTop: 12, fontSize: 12, color: 'var(--text-3)' }}>

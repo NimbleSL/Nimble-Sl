@@ -33,11 +33,11 @@ export function ProcessTimeline() {
           </p>
         </div>
 
-        <div style={{ position: 'relative' }}>
-          {/* Connector line */}
-          <div style={{ position: 'absolute', top: 32, left: '4%', right: '4%', height: 1, background: 'linear-gradient(90deg, transparent, var(--border-2) 10%, var(--border-2) 90%, transparent)', zIndex: 0 }} />
+        <div className="relative">
+          {/* Connector line (desktop only) */}
+          <div className="hidden lg:block absolute top-8 left-[4%] right-[4%] h-[1px] z-0" style={{ background: 'linear-gradient(90deg, transparent, var(--border-2) 10%, var(--border-2) 90%, transparent)' }} />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 16, position: 'relative' }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 gap-x-4 relative">
             {PHASES.map((phase, i) => (
               <motion.div
                 key={phase.n}

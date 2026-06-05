@@ -1,63 +1,81 @@
+export type IRegion = 'local' | 'midtier' | 'international';
+
 export interface IEstimatorInput {
-  projectType: string;
+  projectTypes: string[];
   industry: string;
   features: string[];
   designStatus: string;
+  scale: string;
+  integration: string;
   timeline: string;
-  budget: string;
-  description: string;
+  description?: string;
   referenceUrl?: string;
+  region?: IRegion;
 }
 
-export interface IEstimatorResult {
-  summary: string;
+export interface IModule {
+  name: string;
+  description: string;
+  mandays: { low: number; high: number };
+  teamComposition: Record<string, number>;
+  complexity: 'low' | 'medium' | 'high';
+  costRange: { low: number; high: number };
+}
+
+export interface IPhase {
+  name: string;
+  modules: string[];
+  timeline: string;
+  mandaysPercent: number;
+  costRange: { low: number; high: number };
+}
+
+export interface ITechStack {
+  frontend: string[];
+  backend: string[];
+  database: string[];
+  cloud: string[];
+  other: string[];
+}
+
+/** Raw AI response — effort only, no pricing */
+export interface IAIEffortResponse {
+  projectSummary: string;
   scope: string;
-  tech_stack: {
-    frontend: string[];
-    backend: string[];
-    database: string[];
-    cloud: string[];
-    other: string[];
-  };
-  features: Array<{
-    name: string;
-    complexity: 'low' | 'medium' | 'high';
-    estimated_hours: number;
-  }>;
-  team: Array<{
-    role: string;
-    level: string;
-    count: number;
-  }>;
-  timeline: {
-    total_weeks_low: number;
-    total_weeks_high: number;
-    phases: Array<{
-      name: string;
-      weeks_low: number;
-      weeks_high: number;
-    }>;
-  };
-  cost: {
-    low: number;
-    high: number;
-    currency: string;
-    breakdown: {
-      design: { low: number; high: number };
-      development: { low: number; high: number };
-      qa_testing: { low: number; high: number };
-      pm_overhead: { low: number; high: number };
-    };
-  };
+  modules: Array<Omit<IModule, 'costRange'>>;
+  totalMandays: { low: number; high: number };
+  suggestedTimeline: string;
+  teamSize: string;
+  phases: Array<Omit<IPhase, 'costRange'>>;
+  riskFactors: string[];
+  recommendations: string[];
+  tech_stack: ITechStack;
   similar_project: string | null;
   similar_project_demo: string | null;
-  risks: string[];
-  recommendation: string;
+}
+
+/** Final result returned to the frontend — effort + computed pricing */
+export interface IEstimatorResult {
+  projectSummary: string;
+  scope: string;
+  modules: IModule[];
+  totalMandays: { low: number; high: number };
+  totalCost: { low: number; high: number; currency: 'USD' };
+  suggestedTimeline: string;
+  teamSize: string;
+  phases: IPhase[];
+  riskFactors: string[];
+  recommendations: string[];
+  tech_stack: ITechStack;
+  similar_project: string | null;
+  similar_project_demo: string | null;
+  region: IRegion;
+  fallback: boolean;
 }
 
 export interface ILeadData {
   name: string;
   email: string;
-  company?: string;
   phone?: string;
+  company?: string;
 }

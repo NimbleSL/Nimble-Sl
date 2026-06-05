@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { Mail, Phone, MapPin, Send, Sparkles, Shield } from 'lucide-react';
 import { ResponseBadge } from '@/components/ui/ResponseBadge';
 
@@ -57,10 +55,9 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 64px', position: 'relative', overflow: 'hidden' }}>
           <div className="mesh-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>
@@ -78,7 +75,7 @@ export default function ContactPage() {
         {/* Form + Info */}
         <section style={{ padding: '0 0 96px' }}>
           <div className="container">
-            <div className="rg-content-cta" style={{ gap: 48 }}>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-start">
               {/* Form */}
               <div className="card" style={{ padding: 40 }}>
                 {status === 'success' ? (
@@ -93,7 +90,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit}>
                     <h2 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text)', marginBottom: 24 }}>Tell us about your project</h2>
 
-                    <div className="rg-2" style={{ gap: 16, marginBottom: 16 }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                       <div>
                         <label htmlFor="contact-name" style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--text-2)', marginBottom: 6, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name *</label>
                         <input id="contact-name" required value={form.name} onChange={handleChange('name')} placeholder="John Smith" style={inputStyle} />
@@ -104,7 +101,7 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="rg-2" style={{ gap: 16, marginBottom: 16 }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                       <div>
                         <label htmlFor="contact-company" style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--text-2)', marginBottom: 6, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Company</label>
                         <input id="contact-company" value={form.company} onChange={handleChange('company')} placeholder="Acme Corp" style={inputStyle} />
@@ -194,7 +191,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

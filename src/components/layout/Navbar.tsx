@@ -293,35 +293,20 @@ export function Navbar() {
         >
           <div className="container px-5 md:px-8">
             <div className="flex items-center justify-between nav-main-row" style={{ height: 72 }}>
-              {/* Desktop Logo */}
-              <Link href="/" className="hidden md:flex flex-shrink-0">
+              {/* Logo */}
+              <Link href="/" className="flex flex-shrink-0 items-center -ml-2">
                 <Image
                   src="/assets/images/logo/logo.png"
                   alt="Nimble Software Lab"
                   width={76}
                   height={76}
-                  className="nav-logo"
+                  className="nav-logo w-[64px] h-[64px] md:w-[76px] md:h-[76px]"
                   style={{
                     filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
                     display: 'block',
                   }}
                   priority
                 />
-              </Link>
-              
-              {/* Mobile Logo Block (Matches nimble-sl-design) */}
-              <Link href="/" className="md:hidden flex items-center gap-2 flex-shrink-0">
-                <div style={{ 
-                  width: 26, height: 26, borderRadius: 7, 
-                  background: 'linear-gradient(135deg, #3B82F6, #06B6D4)', 
-                  display: 'grid', placeItems: 'center', color: 'white', 
-                  fontWeight: 800, fontSize: 13, fontFamily: 'var(--font-display)' 
-                }}>
-                  N
-                </div>
-                <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
-                  NimbleSL
-                </div>
               </Link>
 
               {/* Desktop Nav */}
@@ -438,18 +423,17 @@ export function Navbar() {
             <div className="flex flex-col h-full px-5 pb-5 pt-12 md:p-5">
               {/* Header */}
               <div className="flex items-center justify-between pb-5" style={{ borderBottom: '1px solid var(--border)' }}>
-                <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-                  <div style={{ 
-                    width: 26, height: 26, borderRadius: 7, 
-                    background: 'linear-gradient(135deg, #3B82F6, #06B6D4)', 
-                    display: 'grid', placeItems: 'center', color: 'white', 
-                    fontWeight: 800, fontSize: 13, fontFamily: 'var(--font-display)' 
-                  }}>
-                    N
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
-                    NimbleSL
-                  </div>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center flex-shrink-0 -ml-2">
+                  <Image
+                    src="/assets/images/logo/logo.png"
+                    alt="Nimble Software Lab"
+                    width={64}
+                    height={64}
+                    style={{
+                      filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
+                      display: 'block',
+                    }}
+                  />
                 </Link>
                 <button 
                   onClick={() => setMobileOpen(false)} 

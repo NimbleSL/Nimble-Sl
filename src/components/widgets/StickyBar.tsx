@@ -75,8 +75,8 @@ export function StickyBar() {
                     <Star key={s} size={13} style={{ fill: '#FBBF24', color: '#FBBF24' }} />
                   ))}
                 </div>
-                <span className="text-sm font-bold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>4.9/5</span>
-                <span className="text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>· 50+ verified reviews</span>
+                <span className="text-sm font-bold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>Client</span>
+                <span className="text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>reviews</span>
               </div>
 
               {/* Divider */}
@@ -96,7 +96,7 @@ export function StickyBar() {
                   transition={{ duration: 1.6, repeat: Infinity }}
                   style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981', flexShrink: 0 }}
                 />
-                $25–49/hr · Clutch verified
+                $25–49/hr · Verified rate
               </div>
             </div>
 
@@ -165,8 +165,8 @@ export function StickyBar() {
                     <Star key={s} size={11} style={{ fill: '#FBBF24', color: '#FBBF24' }} />
                   ))}
                 </div>
-                <span className="text-xs font-semibold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>4.9/5</span>
-                <span className="text-xs" style={{ color: isDark ? '#475569' : '#94A3B8' }}>· 50+ reviews</span>
+                <span className="text-xs font-semibold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>Client</span>
+                <span className="text-xs" style={{ color: isDark ? '#475569' : '#94A3B8' }}>reviews</span>
               </div>
               <div className="flex items-center gap-2">
                 <div

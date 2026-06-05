@@ -393,13 +393,13 @@ export function Hero() {
                     {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill="#FCD34D" />)}
                   </div>
                   <div style={{ marginTop: 2, color: 'var(--text-2)' }}>
-                    <b style={{ color: 'var(--text)' }}>4.9/5</b> · 50+ verified reviews
+                    <b style={{ color: 'var(--text)' }}>Client</b> reviews
                   </div>
                 </div>
               </div>
               <div className="hidden sm:block hero-rate-divider" style={{ width: 1, height: 32, background: 'var(--border)' }} />
               <div className="hidden sm:block hero-rate-text" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-2)' }}>
-                <span style={{ color: 'var(--emerald-2)' }}>$25–49/hr</span> · Clutch verified
+                <span style={{ color: 'var(--emerald-2)' }}>$25–49/hr</span> · Verified rate
               </div>
             </motion.div>
           </motion.div>

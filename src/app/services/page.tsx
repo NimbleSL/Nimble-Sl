@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Code2, Globe, Smartphone, Cloud, Brain, Palette, Sparkles, Shield } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { services } from '@/lib/data/services';
 
 export const metadata: Metadata = {
@@ -23,10 +21,9 @@ const ACCENT_MAP: Record<string, string> = {
 export default function ServicesPage() {
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 64px', position: 'relative', overflow: 'hidden' }}>
           <div className="mesh-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>
@@ -112,7 +109,6 @@ export default function ServicesPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

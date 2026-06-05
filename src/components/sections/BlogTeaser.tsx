@@ -32,7 +32,7 @@ export function BlogTeaser() {
           </Link>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {POSTS.map((post, i) => (
             <motion.div
               key={post.href}

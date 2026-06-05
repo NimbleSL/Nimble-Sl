@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { Shield } from 'lucide-react';
 
 const BADGES = [
-  { name: 'GDPR',       color: '#60A5FA', full: 'European General Data Protection Regulation. Data minimization, right-to-erase, DPO-ready audit logs.' },
-  { name: 'HIPAA',      color: '#34D399', full: 'US Health Insurance Portability & Accountability Act. PHI handling, audit trails, BAAs for healthcare clients.' },
-  { name: 'OWASP',      color: '#FCD34D', full: 'Continuous testing against the OWASP Top 10 web application security risks. Automated CI scans + annual pentest.' },
-  { name: 'SOC 2',      color: '#C084FC', full: 'SOC 2 Type 1 in progress (Q4 2026). Type 2 attestation expected Q2 2027. Trust services criteria audited.' },
-  { name: 'ISO 27001',  color: '#FDA4AF', full: 'Risk-based information security management system. Asset register, annual penetration tests, ISMS roadmap.' },
-  { name: 'PCI-DSS',    color: '#67E8F9', full: 'Payment Card Industry Data Security Standard. Required for FinTech projects handling card data.' },
+  { name: 'GDPR',       color: '#60A5FA', full: 'We build systems with data minimization, right-to-erase, and DPO-ready audit logs.' },
+  { name: 'HIPAA',      color: '#34D399', full: 'We architect software for secure PHI handling, encryption, and healthcare audit trails.' },
+  { name: 'OWASP',      color: '#FCD34D', full: 'We ensure applications are resilient against OWASP Top 10 web security risks.' },
+  { name: 'SOC 2',      color: '#C084FC', full: 'We design architectures ready for SOC 2 Type 1 & 2 attestation.' },
+  { name: 'ISO 27001',  color: '#FDA4AF', full: 'We implement risk-based security architectures ready for ISO 27001 certification.' },
+  { name: 'PCI-DSS',    color: '#67E8F9', full: 'We build compliant systems for FinTech projects handling sensitive payment card data.' },
 ];
 
 export function ComplianceBadge({ name, color, full }: { name: string; color: string; full: string }) {

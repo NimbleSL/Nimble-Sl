@@ -103,8 +103,8 @@ export default function OGImage() {
             <span style={{ fontSize: 16, color: '#94A3B8' }}>Countries</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontSize: 36, fontWeight: 700, color: '#3B82F6' }}>4.9/5</span>
-            <span style={{ fontSize: 16, color: '#94A3B8' }}>Rating</span>
+            <span style={{ fontSize: 36, fontWeight: 700, color: '#3B82F6' }}>20+</span>
+            <span style={{ fontSize: 16, color: '#94A3B8' }}>Team</span>
           </div>
         </div>
       </div>

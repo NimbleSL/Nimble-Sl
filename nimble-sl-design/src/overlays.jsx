@@ -31,26 +31,67 @@ const StickyBar = ({ onDismiss, onCTA }) => (
 const ChatWidget = ({ expanded, onToggle }) => {
   if (!expanded) {
     return (
-      <button onClick={onToggle} style={{
+      <div style={{
         position: 'absolute', bottom: 24, right: 24,
-        width: 56, height: 56, borderRadius: '50%',
-        background: 'linear-gradient(135deg, #3B82F6, #06B6D4)',
-        border: 0,
-        display: 'grid', placeItems: 'center',
-        color: 'white',
-        cursor: 'pointer',
-        boxShadow: '0 12px 32px -8px rgba(59,130,246,0.6)',
+        display: 'flex', alignItems: 'center', gap: 16,
         zIndex: 70
       }}>
-        <Icons.message size={22} />
-        <div style={{
-          position: 'absolute', top: -2, right: -2,
-          width: 14, height: 14, borderRadius: '50%',
-          background: '#10B981',
-          border: '2px solid var(--bg)',
-          animation: 'pulse-glow 2s infinite'
-        }} />
-      </button>
+        <div onClick={onToggle} style={{
+          background: 'var(--surface)',
+          border: '1px solid var(--border-2)',
+          padding: '12px 20px',
+          borderRadius: 14,
+          boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 4,
+          cursor: 'pointer',
+          animation: 'pulse-glow 3s infinite'
+        }}>
+          <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.01em' }}>
+            Let's Talk
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--emerald-2)', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--emerald)', boxShadow: '0 0 8px var(--emerald)' }} />
+            We're online!
+          </div>
+          
+          <div style={{
+            position: 'absolute',
+            right: -6,
+            top: '50%',
+            transform: 'translateY(-50%) rotate(45deg)',
+            width: 12,
+            height: 12,
+            background: 'var(--surface)',
+            borderTop: '1px solid var(--border-2)',
+            borderRight: '1px solid var(--border-2)'
+          }} />
+        </div>
+
+        <button onClick={onToggle} style={{
+          width: 56, height: 56, borderRadius: '50%',
+          background: 'linear-gradient(135deg, #3B82F6, #06B6D4)',
+          border: 0,
+          display: 'grid', placeItems: 'center',
+          color: 'white',
+          cursor: 'pointer',
+          boxShadow: '0 12px 32px -8px rgba(59,130,246,0.6)',
+          position: 'relative',
+          flexShrink: 0
+        }}>
+          <Icons.message size={22} />
+          <div style={{
+            position: 'absolute', top: -2, right: -2,
+            width: 14, height: 14, borderRadius: '50%',
+            background: '#10B981',
+            border: '2px solid var(--bg)',
+            animation: 'pulse-glow 2s infinite'
+          }} />
+        </button>
+      </div>
     );
   }
   return (

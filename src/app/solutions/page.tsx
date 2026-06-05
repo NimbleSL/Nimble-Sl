@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ArrowRight, Gauge, Sparkles } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { solutions } from '@/lib/data/solutions';
 
 const FILTERS = ['All', 'FinTech', 'InsurTech', 'PropTech', 'Logistics', 'Cybersecurity', 'HR Tech', 'Enterprise', 'AI/ML'];
@@ -17,10 +15,9 @@ export default function SolutionsPage() {
 
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 56px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 56px', position: 'relative', overflow: 'hidden' }}>
           <div className="mesh-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <span className="eyebrow" style={{ marginBottom: 20, display: 'inline-flex' }}>
@@ -135,7 +132,6 @@ export default function SolutionsPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

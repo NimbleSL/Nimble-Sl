@@ -29,8 +29,8 @@ export function CookieBanner() {
 
   return (
     <div style={{
-      position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-      zIndex: 80, width: 'min(920px, calc(100vw - 32px))',
+      position: 'fixed', bottom: 80, right: 24,
+      zIndex: 80, width: 'min(400px, calc(100vw - 48px))',
       background: 'var(--surface)',
       backdropFilter: 'blur(14px)',
       border: '1px solid var(--border-2)',

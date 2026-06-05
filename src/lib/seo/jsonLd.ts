@@ -30,10 +30,10 @@ export function getOrganizationJsonLd(): object {
     url: BASE_URL,
     logo: `${BASE_URL}/logo.png`,
     description: "Bangladesh's leading software development company. Silicon Valley engineering at Bangladesh pricing. Custom software, AI/ML, mobile apps, and enterprise SaaS development for clients across 12 countries.",
-    foundingDate: '2018',
+    foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Road 34, Gulshan-2',
+      streetAddress: 'House-1, Road-34, Gulshan-2',
       addressLocality: 'Dhaka',
       addressRegion: 'Dhaka',
       postalCode: '1212',
@@ -99,7 +99,7 @@ export function getLocalBusinessJsonLd(): object {
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Road 34, Gulshan-2',
+      streetAddress: 'House-1, Road-34, Gulshan-2',
       addressLocality: 'Dhaka',
       addressRegion: 'Dhaka',
       postalCode: '1212',

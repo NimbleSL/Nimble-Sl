@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Play, ArrowRight, Sparkles, Shield, CheckCircle2 } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { solutions } from '@/lib/data/solutions';
 
 export function generateStaticParams() {
@@ -39,10 +37,9 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
 
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 64px', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(800px 500px at 30% 0%, ${sol.accent}15, transparent 60%)`, pointerEvents: 'none' }} />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, fontSize: 13, color: 'var(--text-3)', fontFamily: 'var(--font-mono)' }}>
@@ -147,7 +144,6 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

@@ -205,6 +205,25 @@ export function NimbleBot() {
         className="nimble-bot-fab fixed bottom-6 right-4 md:right-6 z-50"
       >
         <div className="relative">
+          {/* CTA Tooltip */}
+          {!isOpen && (
+            <div 
+              onClick={() => setIsOpen(!isOpen)}
+              className="absolute right-[calc(100%+16px)] top-1/2 -translate-y-1/2 bg-white border border-slate-200 px-5 py-3 rounded-[14px] flex flex-col items-center cursor-pointer shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] whitespace-nowrap"
+            >
+              <div className="font-bold text-[15px] text-slate-900 tracking-tight leading-none mb-1.5">
+                Let's Talk
+              </div>
+              <div className="text-[12px] text-emerald-600 flex items-center gap-1.5 font-medium leading-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                We're online!
+              </div>
+              
+              <div className="absolute -right-[6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-t border-r border-slate-200 rotate-45" />
+            </div>
+          )}
+
+
           {/* Pulse ring — only when closed */}
           {!isOpen && (
             <motion.div

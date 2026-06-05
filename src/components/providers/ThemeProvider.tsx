@@ -27,8 +27,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     const stored = localStorage.getItem('nimblesl-theme') as TTheme | null;
-    const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    const initial = stored ?? preferred;
+    // Always default to dark — only respect localStorage if user explicitly toggled
+    const initial = stored ?? 'dark';
     setTheme(initial);
     document.documentElement.setAttribute('data-theme', initial);
   }, []);

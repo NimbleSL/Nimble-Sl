@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Shield, CheckCircle2, Code2, Globe, Smartphone, Cloud, Brain, Palette } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { services } from '@/lib/data/services';
 import { solutions } from '@/lib/data/solutions';
 import { caseStudies } from '@/lib/data/caseStudies';
@@ -46,10 +44,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <Navbar />
-      <main style={{ paddingTop: 80 }}>
+      <main>
         {/* Hero */}
-        <section style={{ padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+        <section className="inner-hero-pt" style={{ padding: '0 0 64px', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(800px 400px at 30% 0%, ${accent}15, transparent 60%)`, pointerEvents: 'none' }} />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             {/* Breadcrumb */}
@@ -197,7 +194,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
