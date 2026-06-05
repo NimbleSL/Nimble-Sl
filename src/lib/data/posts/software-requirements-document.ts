@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'July 12, 2025',
   accent: '#6366F1',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-amber',
   coverImage: '/blog/covers/software-requirements-document.svg',
   content: `When founders search for software requirements document solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'real-estate-management-platform',
   title: `Real Estate Management Platform: Features for Property Managers`,
   excerpt: `Optimize your real estate management platform pipeline. Tenant portals, document storage, payment automations, maintenance scheduling dashboards, and custom ...`,
-  category: 'Real Estate',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'November 7, 2025',
   accent: '#78716C',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/real-estate-management-platform.svg',
   content: `When founders search for real estate management platform solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

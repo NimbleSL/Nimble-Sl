@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'microservices-vs-monolith',
   title: `Microservices vs Monolith: When to Use What (with Real Examples)`,
   excerpt: `Optimize your microservices vs monolith pipeline. Evaluating operational pipelines, network lookup overheads, transactional rollbacks, and software team boun...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'February 23, 2025',
   accent: '#3B82F6',

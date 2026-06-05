@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'October 26, 2025',
   accent: '#7C3AED',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-purple',
   coverImage: '/blog/covers/ai-chatbot-development.svg',
   content: `When founders search for ai chatbot development solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

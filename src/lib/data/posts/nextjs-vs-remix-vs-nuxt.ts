@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'nextjs-vs-remix-vs-nuxt',
   title: `Next.js vs Remix vs Nuxt: Which Framework for Your SaaS?`,
   excerpt: `Optimize your nextjs vs remix vs nuxt pipeline. Evaluating server components, data loaders, edge caching compatibility, and bundle optimizations for modern w...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'February 6, 2026',
   accent: '#3B82F6',

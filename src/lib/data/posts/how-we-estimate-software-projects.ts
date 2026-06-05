@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'November 20, 2025',
   accent: '#6366F1',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-amber',
   coverImage: '/blog/covers/how-we-estimate-software-projects.svg',
   content: `When founders search for how we estimate software projects solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

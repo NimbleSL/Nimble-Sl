@@ -44,24 +44,25 @@ const SERVICES_MEGA = {
 const SOLUTIONS_MEGA = {
   sections: [
     {
-      title: 'FinTech & InsurTech',
+      title: 'Finance & Commerce',
       items: [
-        { label: 'PayFlow', href: '/solutions/payflow', desc: 'Digital banking platform' },
-        { label: 'ClaimWise', href: '/solutions/claimwise', desc: 'InsurTech platform' },
-        { label: 'FraudShield AI', href: '/solutions/fraudshield', desc: 'AI fraud detection' },
+        { label: 'PayFlow', href: '/solutions/payflow', desc: 'Digital banking & payments platform' },
+        { label: 'InsureFlow', href: '/solutions/insureflow', desc: 'Claims & policy management' },
+        { label: 'ShopNest', href: '/solutions/shopnest', desc: 'Multi-vendor e-commerce storefront' },
+        { label: 'QuickPOS', href: '/solutions/quickpos', desc: 'Smart POS for modern retail' },
       ],
     },
     {
-      title: 'Enterprise & Ops',
+      title: 'Enterprise & AI',
       items: [
-        { label: 'FieldOps', href: '/solutions/fieldops', desc: 'Field force automation' },
-        { label: 'AuthGate', href: '/solutions/authgate', desc: 'Enterprise IAM' },
-        { label: 'PropNest', href: '/solutions/propnest', desc: 'PropTech platform' },
-        { label: 'HireSync', href: '/solutions/hiresync', desc: 'Digital recruitment' },
+        { label: 'NimbleERP', href: '/solutions/nimbleerp', desc: 'Full-suite enterprise operations' },
+        { label: 'BotStudio', href: '/solutions/botstudio', desc: 'Omnichannel AI chatbot builder' },
+        { label: 'FlowAI', href: '/solutions/flowai', desc: 'AI-powered workflow automation' },
+        { label: 'RestoDesk', href: '/solutions/restodesk', desc: 'Complete F&B operations platform' },
       ],
     },
   ],
-  cta: { label: 'Product Showroom', desc: 'Try all 11 live product demos', href: '/solutions', accent: '#3B82F6' },
+  cta: { label: 'Product Showroom', desc: 'View all 12 live product demos', href: '/solutions', accent: '#3B82F6' },
 };
 
 interface MegaMenuProps {

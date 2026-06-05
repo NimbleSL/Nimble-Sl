@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'fintech-app-development-cost',
   title: `How to Build a FinTech App in 2026: Complete Guide`,
   excerpt: `Optimize your fintech app development pipeline. PCI DSS, KYC/AML, payment integrations, and double-entry ledgers — everything founders need to build fintech ...`,
-  category: 'FinTech',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'January 1, 2025',
   accent: '#1E40AF',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/fintech-app-development-cost.svg',
   content: `When founders search for fintech app development solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

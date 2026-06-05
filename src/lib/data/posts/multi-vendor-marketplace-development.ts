@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'multi-vendor-marketplace-development',
   title: `Building a Multi-vendor Marketplace: Architecture, Features, and Cost`,
   excerpt: `Optimize your multi-vendor marketplace development pipeline. Stripe Connect, real-time inventory synchronization, sub-merchant onboarding flows, and database...`,
-  category: 'E-commerce',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'May 9, 2025',
   accent: '#EA580C',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/multi-vendor-marketplace-development.svg',
   content: `When founders search for multi-vendor marketplace development solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'April 13, 2025',
   accent: '#6366F1',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-amber',
   coverImage: '/blog/covers/custom-software-cost.svg',
   content: `When founders search for custom software cost solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

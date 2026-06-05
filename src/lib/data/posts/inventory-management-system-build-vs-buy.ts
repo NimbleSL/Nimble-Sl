@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'inventory-management-system-build-vs-buy',
   title: `Inventory Management System: Build Custom vs Off-the-shelf`,
   excerpt: `Optimize your inventory management system pipeline. Barcode scanner integration, stock level reconciliations, warehouse routing paths, and how to decide betw...`,
-  category: 'E-commerce',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'July 27, 2025',
   accent: '#EA580C',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/inventory-management-system-build-vs-buy.svg',
   content: `When founders search for inventory management system solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'June 3, 2025',
   accent: '#6366F1',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-amber',
   coverImage: '/blog/covers/mvp-development-strategy.svg',
   content: `When founders search for mvp development solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

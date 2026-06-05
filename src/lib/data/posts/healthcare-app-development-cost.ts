@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'healthcare-app-development-cost',
   title: `How Much Does It Cost to Build a Healthcare App?`,
   excerpt: `Optimize your healthcare app development cost pipeline. HIPAA regulations, EHR integrations, patient portal builds, and real pricing guidelines for launching...`,
-  category: 'Healthcare',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'April 28, 2025',
   accent: '#0F766E',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/healthcare-app-development-cost.svg',
   content: `When founders search for healthcare app development cost solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

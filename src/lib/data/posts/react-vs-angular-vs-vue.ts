@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'react-vs-angular-vs-vue',
   title: `React vs Angular vs Vue for Enterprise Apps: 2026 Comparison`,
   excerpt: `Optimize your react vs angular vs vue pipeline. Comparing standard library constraints, signals data bindings, compiler overheads, and long-term maintainabil...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'January 25, 2026',
   accent: '#3B82F6',

@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'nodejs-vs-python-vs-go',
   title: `Node.js vs Python vs Go for Backend: Performance, Cost, DX Compared`,
   excerpt: `Optimize your nodejs vs python vs go pipeline. Comparing HTTP routing execution speeds, async concurrency engines, database client libraries, and hosting con...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'April 24, 2026',
   accent: '#3B82F6',

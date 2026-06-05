@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'rest-vs-graphql',
   title: `REST vs GraphQL: When Each Makes Sense for Your Product`,
   excerpt: `Optimize your rest vs graphql pipeline. Comparing network payloads, over-fetching constraints, client-side type generation libraries, and CDN edge caching se...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'March 4, 2025',
   accent: '#3B82F6',

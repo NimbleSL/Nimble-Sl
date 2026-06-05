@@ -18,7 +18,7 @@ export const solutions: ISolution[] = [
       { title: 'Card Management', description: 'Virtual & physical card issuance and controls', icon: 'credit-card' },
       { title: 'Analytics Dashboard', description: 'Real-time transaction and ops insights', icon: 'bar-chart' },
     ],
-    techStack: ['.NET', 'Flutter', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'AWS'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'White-labeling + branding + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$40K', description: 'Feature mods + new modules + integrations' },
@@ -48,7 +48,7 @@ export const solutions: ISolution[] = [
       { title: 'Fraud Detection', description: 'Rule-based and ML fraud screening', icon: 'shield-alert' },
       { title: 'Customer Portal', description: 'Self-service portal for policyholders', icon: 'user' },
     ],
-    techStack: ['.NET', 'Flutter', 'PostgreSQL', 'Docker', 'Redis', 'AWS'],
+    techStack: ['.NET', 'Angular', 'Flutter', 'PostgreSQL', 'Redis', 'AWS'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'White-labeling + branding + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$40K', description: 'Custom workflows + integrations + modules' },
@@ -78,7 +78,7 @@ export const solutions: ISolution[] = [
       { title: 'Billing & Invoicing', description: 'Automated billing and insurance claims', icon: 'receipt' },
       { title: 'Clinical Workflows', description: 'Configurable care pathway automation', icon: 'workflow' },
     ],
-    techStack: ['.NET', 'Flutter', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'Docker'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$8K–$18K', description: 'Branding + configuration + deployment' },
       { name: 'Custom Fit', priceRange: '$18K–$45K', description: 'Custom modules + EMR integrations' },
@@ -109,7 +109,7 @@ export const solutions: ISolution[] = [
       { title: 'Consumer App', description: 'Flutter mobile shopping experience', icon: 'smartphone' },
       { title: 'Order Management', description: 'End-to-end order lifecycle tracking', icon: 'package' },
     ],
-    techStack: ['.NET', 'Flutter', 'PostgreSQL', 'Redis', 'AWS', 'Docker'],
+    techStack: ['NestJS', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'Redis'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'Branding + vendor config + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$40K', description: 'Custom category flows + payment integrations' },
@@ -139,7 +139,7 @@ export const solutions: ISolution[] = [
       { title: 'Maintenance Requests', description: 'Tenant-to-technician request flow', icon: 'wrench' },
       { title: 'Financial Reporting', description: 'Revenue, occupancy, and P&L reports', icon: 'bar-chart' },
     ],
-    techStack: ['.NET', 'Flutter', 'PostgreSQL', 'Elasticsearch', 'Redis', 'Docker'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'Elasticsearch', 'PostgreSQL'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'Branding + config + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$40K', description: 'Custom workflows + listing integrations' },
@@ -169,7 +169,7 @@ export const solutions: ISolution[] = [
       { title: 'Technician Scheduling', description: 'Smart scheduling and availability', icon: 'calendar-check' },
       { title: 'Offline Mobile', description: '8+ hours without connectivity', icon: 'wifi-off' },
     ],
-    techStack: ['NestJS', 'Flutter', 'MySQL', 'Redis', 'Docker', 'AWS'],
+    techStack: ['NestJS', 'Angular', 'Flutter', 'MySQL', 'Redis', 'AWS'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'Branding + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$35K', description: 'Custom workflows + integrations' },
@@ -200,7 +200,7 @@ export const solutions: ISolution[] = [
       { title: 'Finance Module', description: 'Accounts, budgeting, and P&L', icon: 'dollar-sign' },
       { title: 'Ops Dashboards', description: 'Real-time KPI monitoring across divisions', icon: 'layout-dashboard' },
     ],
-    techStack: ['.NET', 'React', 'Flutter', 'PostgreSQL', 'Redis', 'Docker'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'Redis'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$10K–$25K', description: 'Module config + branding + deployment' },
       { name: 'Custom Fit', priceRange: '$25K–$60K', description: 'Custom modules + third-party integrations' },
@@ -231,7 +231,7 @@ export const solutions: ISolution[] = [
       { title: 'Sales Analytics', description: 'Revenue trends and product insights', icon: 'trending-up' },
       { title: 'Multi-Store Support', description: 'Centralized management across branches', icon: 'store' },
     ],
-    techStack: ['React', 'Flutter', 'PostgreSQL', 'Redis', 'Docker'],
+    techStack: ['.NET', 'Angular', 'Flutter', 'PostgreSQL', 'Redis', 'Docker'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$12K', description: 'Branding + config + deployment' },
       { name: 'Custom Fit', priceRange: '$12K–$30K', description: 'Custom reports + payment integrations' },
@@ -261,7 +261,7 @@ export const solutions: ISolution[] = [
       { title: 'Conversation Analytics', description: 'Drop-off, satisfaction, and intent reports', icon: 'bar-chart-2' },
       { title: 'Omnichannel Deploy', description: 'Web, mobile, WhatsApp, Messenger', icon: 'globe' },
     ],
-    techStack: ['Python', 'FastAPI', 'React', 'Flutter', 'PostgreSQL', 'Docker'],
+    techStack: ['Python', 'FastAPI', 'Next.js', 'Angular', 'PostgreSQL', 'Docker'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$8K–$20K', description: 'Bot config + channel setup + deployment' },
       { name: 'Custom Fit', priceRange: '$20K–$50K', description: 'Custom NLP models + CRM integrations' },
@@ -292,7 +292,7 @@ export const solutions: ISolution[] = [
       { title: 'AI Orchestration', description: 'LLM-powered decision nodes', icon: 'zap' },
       { title: 'Process Analytics', description: 'ROI and performance tracking', icon: 'bar-chart' },
     ],
-    techStack: ['Python', 'FastAPI', 'React', 'PostgreSQL', 'Redis', 'Docker'],
+    techStack: ['Python', 'FastAPI', 'Next.js', 'Angular', 'PostgreSQL', 'Redis'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$10K–$25K', description: 'Workflow config + bot deployment' },
       { name: 'Custom Fit', priceRange: '$25K–$60K', description: 'Custom automation flows + integrations' },
@@ -323,7 +323,7 @@ export const solutions: ISolution[] = [
       { title: 'Demand Forecasting', description: 'AI-powered restocking predictions', icon: 'trending-up' },
       { title: 'Stock Alerts', description: 'Low stock and expiry notifications', icon: 'bell' },
     ],
-    techStack: ['.NET', 'React', 'Flutter', 'PostgreSQL', 'Redis', 'Docker'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'Redis'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$15K', description: 'Branding + config + deployment' },
       { name: 'Custom Fit', priceRange: '$15K–$35K', description: 'ERP integrations + custom reports' },
@@ -354,7 +354,7 @@ export const solutions: ISolution[] = [
       { title: 'Kitchen Display', description: 'Real-time order routing to kitchen', icon: 'monitor' },
       { title: 'POS Integration', description: 'Seamless billing and payment handling', icon: 'credit-card' },
     ],
-    techStack: ['React', 'Flutter', 'PostgreSQL', 'Redis', 'Docker'],
+    techStack: ['.NET', 'Next.js', 'Angular', 'Flutter', 'PostgreSQL', 'Docker'],
     customizationTiers: [
       { name: 'Quick Start', priceRange: '$5K–$12K', description: 'Branding + menu config + deployment' },
       { name: 'Custom Fit', priceRange: '$12K–$30K', description: 'Custom workflows + delivery integrations' },

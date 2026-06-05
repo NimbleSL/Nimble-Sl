@@ -466,6 +466,29 @@ function formatMetaDescription(excerpt, keyword) {
   return desc;
 }
 
+const FINAL_CATEGORIES_MAP = {
+  'FinTech': 'Industries',
+  'Healthcare': 'Industries',
+  'E-commerce': 'Industries',
+  'Real Estate': 'Industries',
+  'Restaurant': 'Industries',
+  'Logistics': 'Industries',
+  'Tech/Dev': 'Engineering',
+  'Cloud': 'Engineering',
+  'Mobile': 'Mobile',
+  'AI/ML': 'AI/ML',
+  'Business': 'Business',
+  'Product': 'Business'
+};
+
+const TAG_CLASS_MAP = {
+  'Engineering': 'tag-blue',
+  'AI/ML': 'tag-purple',
+  'Mobile': 'tag-rose',
+  'Business': 'tag-amber',
+  'Industries': 'tag-emerald'
+};
+
 // Generate all 30 posts
 POSTS.forEach((post, index) => {
   generateCoverSvg(post, index);
@@ -480,17 +503,20 @@ POSTS.forEach((post, index) => {
   const day = 1 + (index * 9) % 28;
   const postDate = `${monthNames[monthIdx]} ${day}, ${year}`;
   
+  const finalCat = FINAL_CATEGORIES_MAP[post.category] || 'Engineering';
+  const tagClass = TAG_CLASS_MAP[finalCat] || 'tag-blue';
+  
   const fileContent = `import { BlogPost } from '../blog';
 
 export const post: BlogPost = {
   slug: '${post.slug}',
   title: \`${post.title}\`,
   excerpt: \`${finalExcerpt}\`,
-  category: '${post.category}',
+  category: '${finalCat}',
   readTime: '8 min read',
   date: '${postDate}',
   accent: '${CATEGORIES[post.category]?.to || '#3B82F6'}',
-  tagClass: 'tag-blue',
+  tagClass: '${tagClass}',
   coverImage: '/blog/covers/${post.slug}.svg',
   content: \`${content.replace(/`/g, '\\`').replace(/\${/g, '\\${')}\`
 };
@@ -529,7 +555,7 @@ export interface BlogPost {
   content: string;
 }
 
-export const CATEGORIES = ['All', 'Engineering', 'AI/ML', 'Product', 'Business', 'Cloud', 'Mobile', 'FinTech', 'Healthcare', 'E-commerce', 'Restaurant', 'Real Estate', 'Logistics'] as const;
+export const CATEGORIES = ['All', 'Engineering', 'AI/ML', 'Mobile', 'Business', 'Industries'] as const;
 
 ${importsContent}
 export const blogPosts: BlogPost[] = [

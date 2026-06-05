@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'field-force-management-app',
   title: `Field Force Management App: GPS Tracking, Offline Sync, and More`,
   excerpt: `Optimize your field force management app pipeline. Using SQLite client syncing, background workers, geo-tracking updates, and field reports logic to run logi...`,
-  category: 'Logistics',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'September 17, 2025',
   accent: '#16A34A',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/field-force-management-app.svg',
   content: `When founders search for field force management app solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

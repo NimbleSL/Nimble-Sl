@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'how-to-build-a-saas-product',
   title: `How to Build a SaaS Product in 2026: Step-by-Step`,
   excerpt: `Optimize your how to build a saas product pipeline. Multi-tenant database structures, Stripe subscription triggers, authentication systems, and an 8-week lau...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'December 16, 2025',
   accent: '#3B82F6',

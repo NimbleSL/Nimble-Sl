@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, Play, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Play, Sparkles, Star, ExternalLink } from 'lucide-react';
 import { caseStudies } from '@/lib/data/caseStudies';
 
 export function generateStaticParams() {
@@ -75,18 +75,30 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
               {/* Main content */}
               <div>
                 <div style={{ marginBottom: 48 }}>
-                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 16 }}>The Challenge</h2>
-                  <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75 }}>{cs.challenge}</p>
+                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 20 }}>The Challenge</h2>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    {cs.challenge.split('\n\n').map((para, i) => (
+                      <p key={i} style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.8, margin: 0 }}>{para}</p>
+                    ))}
+                  </div>
                 </div>
 
                 <div style={{ marginBottom: 48 }}>
-                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 16 }}>Our Approach</h2>
-                  <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75 }}>{cs.approach}</p>
+                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 20 }}>Our Approach</h2>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    {cs.approach.split('\n\n').map((para, i) => (
+                      <p key={i} style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.8, margin: 0 }}>{para}</p>
+                    ))}
+                  </div>
                 </div>
 
                 <div style={{ marginBottom: 48 }}>
-                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 16 }}>The Solution</h2>
-                  <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75, marginBottom: 20 }}>{cs.solution}</p>
+                  <h2 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', marginBottom: 20 }}>The Solution</h2>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 20 }}>
+                    {cs.solution.split('\n\n').map((para, i) => (
+                      <p key={i} style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.8, margin: 0 }}>{para}</p>
+                    ))}
+                  </div>
                   {/* Tech stack */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                     {cs.techStack.map((t) => (
@@ -133,12 +145,21 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
 
               {/* Sidebar */}
               <div style={{ position: 'sticky', top: 96 }}>
-                {cs.demoUrl && (
-                  <div className="card" style={{ padding: 24, marginBottom: 20 }}>
-                    <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)', marginBottom: 12 }}>Try the live demo</h3>
-                    <a href={cs.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '11px', fontSize: 13 }}>
-                      <Play size={13} /> Launch Demo
-                    </a>
+                {cs.relatedProduct && (
+                  <div className="card" style={{ padding: 24, marginBottom: 20, borderLeft: '3px solid var(--blue)' }}>
+                    <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Powered by</div>
+                    <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>{cs.title}</h3>
+                    <p style={{ fontSize: 13, color: 'var(--text-2)', lineHeight: 1.5, marginBottom: 14 }}>
+                      This project was built on our pre-built {cs.title} platform — customised for this client&apos;s exact needs.
+                    </p>
+                    <Link href={`/solutions/${cs.relatedProduct}`} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '10px', fontSize: 13 }}>
+                      <ExternalLink size={13} /> Explore {cs.title}
+                    </Link>
+                    {cs.demoUrl && (
+                      <a href={cs.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', padding: '9px', fontSize: 13, marginTop: 8 }}>
+                        <Play size={12} /> Try Live Demo
+                      </a>
+                    )}
                   </div>
                 )}
 

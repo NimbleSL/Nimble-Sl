@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'January 10, 2026',
   accent: '#6366F1',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-amber',
   coverImage: '/blog/covers/questions-to-ask-before-hiring-dev-agency.svg',
   content: `When founders search for questions to ask before hiring solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

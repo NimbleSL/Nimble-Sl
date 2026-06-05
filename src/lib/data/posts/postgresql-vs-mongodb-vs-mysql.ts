@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'postgresql-vs-mongodb-vs-mysql',
   title: `PostgreSQL vs MongoDB vs MySQL: Choosing the Right Database`,
   excerpt: `Optimize your postgresql vs mongodb vs mysql pipeline. Evaluating relational constraints, JSONB query performance, horizontally scaled clusters, and transact...`,
-  category: 'Tech/Dev',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'May 5, 2026',
   accent: '#3B82F6',

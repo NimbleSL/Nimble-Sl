@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'digital-banking-platform-build-vs-buy',
   title: `Digital Banking Platform: Build vs Buy — What's Right for Your Startup?`,
   excerpt: `Optimize your digital banking platform pipeline. Comparing cost, timeline, compliance, and custom features to decide whether to build a banking backend or li...`,
-  category: 'FinTech',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'February 10, 2025',
   accent: '#1E40AF',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/digital-banking-platform-build-vs-buy.svg',
   content: `When founders search for digital banking platform solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

@@ -4,11 +4,11 @@ export const post: BlogPost = {
   slug: 'restaurant-management-software',
   title: `Restaurant Management Software: What You Need and What It Costs`,
   excerpt: `Optimize your restaurant management software pipeline. POS systems, menu dispatch queues, inventory management tracking, and budget estimates for custom rest...`,
-  category: 'Restaurant',
+  category: 'Industries',
   readTime: '8 min read',
   date: 'June 18, 2025',
   accent: '#D97706',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-emerald',
   coverImage: '/blog/covers/restaurant-management-software.svg',
   content: `When founders search for restaurant management software solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 

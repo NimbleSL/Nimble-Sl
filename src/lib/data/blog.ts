@@ -13,7 +13,7 @@ export interface BlogPost {
   content: string;
 }
 
-export const CATEGORIES = ['All', 'Engineering', 'AI/ML', 'Product', 'Business', 'Cloud', 'Mobile', 'FinTech', 'Healthcare', 'E-commerce', 'Restaurant', 'Real Estate', 'Logistics'] as const;
+export const CATEGORIES = ['All', 'Engineering', 'AI/ML', 'Mobile', 'Business', 'Industries'] as const;
 
 import { post as post_0 } from './posts/ai-chatbot-development';
 import { post as post_1 } from './posts/aws-vs-azure-vs-gcp';

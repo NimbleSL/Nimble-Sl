@@ -4,7 +4,7 @@ export const post: BlogPost = {
   slug: 'aws-vs-azure-vs-gcp',
   title: `AWS vs Azure vs GCP for Startups: Cost, Features, and Our Pick`,
   excerpt: `Optimize your aws vs azure vs gcp pipeline. Analyzing credits structures, managed Kubernetes tools, serverless architectures, and private VPC networking feat...`,
-  category: 'Cloud',
+  category: 'Engineering',
   readTime: '8 min read',
   date: 'January 14, 2025',
   accent: '#3B82F6',

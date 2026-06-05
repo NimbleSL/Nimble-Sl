@@ -8,7 +8,7 @@ export const post: BlogPost = {
   readTime: '8 min read',
   date: 'March 15, 2026',
   accent: '#3B82F6',
-  tagClass: 'tag-blue',
+  tagClass: 'tag-rose',
   coverImage: '/blog/covers/react-native-vs-flutter.svg',
   content: `When founders search for react native vs flutter solutions, they face significant scaling and timeline bottlenecks. Choosing the correct database layout, mapping API boundaries, and configuring proper security gates are highly critical tasks. Making mistakes early in these development pipelines causes massive software maintenance costs later on.
 
