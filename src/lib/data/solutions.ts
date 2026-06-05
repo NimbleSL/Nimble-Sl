@@ -123,7 +123,7 @@ export const solutions: ISolution[] = [
   },
   {
     slug: 'realtydesk',
-    name: 'VistaProperties',
+    name: 'RealtyDesk',
     tagline: '360° Property Management, Simplified',
     industry: 'PropTech',
     tagVariant: 'cyan',

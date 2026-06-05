@@ -23,12 +23,12 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<TTheme>('dark');
+  const [theme, setTheme] = useState<TTheme>('light');
 
   useEffect(() => {
     const stored = localStorage.getItem('nimblesl-theme') as TTheme | null;
-    // Always default to dark — only respect localStorage if user explicitly toggled
-    const initial = stored ?? 'dark';
+    // Default to light — only respect localStorage if user explicitly toggled
+    const initial = stored ?? 'light';
     setTheme(initial);
     document.documentElement.setAttribute('data-theme', initial);
   }, []);

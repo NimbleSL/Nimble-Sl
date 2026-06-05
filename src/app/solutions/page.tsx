@@ -78,24 +78,23 @@ export default function SolutionsPage() {
                     transition={{ duration: 0.25 }}
                   >
                     <div className="card card-hover" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
-                      {/* Preview */}
-                      <div style={{ height: 168, background: `linear-gradient(135deg, ${sol.accent}22, ${sol.accent}08)`, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-                        <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.6 }} />
-                        <div style={{ position: 'absolute', inset: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          <div style={{ display: 'flex', gap: 6 }}>
-                            <div style={{ width: 64, height: 8, background: 'var(--overlay-lg)', borderRadius: 2 }} />
-                            <div style={{ width: 32, height: 8, background: 'var(--overlay-md)', borderRadius: 2 }} />
-                          </div>
-                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6, marginTop: 10 }}>
-                            {[1, 2, 3].map((n) => (
-                              <div key={n} style={{ height: 40, background: `${sol.accent}22`, borderRadius: 4, border: `1px solid ${sol.accent}44` }} />
-                            ))}
-                          </div>
-                        </div>
+                      {/* Preview — product screenshot */}
+                      <div style={{ height: 196, position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)', background: `linear-gradient(135deg, ${sol.accent}20, ${sol.accent}08)` }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={`/solutions/${sol.slug}.png`}
+                          alt={`${sol.name} preview`}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block', transform: 'scale(1.02)', transformOrigin: 'top center' }}
+                          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                        />
+                        {/* Top fade — blends into card bg */}
+                        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 40, background: 'linear-gradient(to bottom, var(--surface) 0%, transparent 100%)', pointerEvents: 'none' }} />
+                        {/* Bottom fade */}
+                        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 64, background: 'linear-gradient(to bottom, transparent 0%, var(--surface) 100%)', pointerEvents: 'none' }} />
                         {/* Industry badge */}
-                        <div style={{ position: 'absolute', top: 12, right: 12 }}>
-                          <span className={`tag tag-${sol.tagVariant}`} style={{ fontSize: 10 }}>{sol.industry}</span>
-                        </div>
+                        <span className={`tag tag-${sol.tagVariant}`} style={{ position: 'absolute', top: 10, right: 10, fontSize: 10 }}>
+                          {sol.industry}
+                        </span>
                       </div>
 
                       <div style={{ padding: 24 }}>
