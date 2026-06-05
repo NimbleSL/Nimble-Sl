@@ -871,3 +871,204 @@ body {
   outline: 2px solid white;
   outline-offset: 2px;
 }
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ============================================
+   RESPONSIVE TABLES (Premium Design)
+   ============================================ */
+.blog-table-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 28px 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.blog-table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  text-align: left;
+  min-width: 500px; /* Keep tabular alignment on desktop */
+}
+
+.blog-table th,
+.blog-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.blog-table th:last-child,
+.blog-table td:last-child {
+  border-right: none;
+}
+
+.blog-table th {
+  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.blog-table td {
+  color: var(--text-2);
+}
+
+.blog-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Zebra striping */
+.blog-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+[data-theme="light"] .blog-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+/* Mobile responsive scaling - collapse table into vertical card details */
+@media (max-width: 768px) {
+  /* Hide the swipe indicator header as layout is fully stacked and fits */
+  .blog-table-swipe-hint {
+    display: none !important;
+  }
+
+  .blog-table, 
+  .blog-table tbody, 
+  .blog-table tr, 
+  .blog-table td {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important; /* Reset desktop minimum width on mobile */
+  }
+
+  /* Hide raw table header row completely on mobile */
+  .blog-table th {
+    display: none;
+  }
+
+  /* Initialize counter on tbody */
+  .blog-table tbody {
+    counter-reset: blog-row-counter;
+    display: block;
+  }
+
+  /* Style each table row as a clean grid card with header badge */
+  .blog-table tr {
+    counter-increment: blog-row-counter;
+    position: relative !important;
+    margin-bottom: 24px !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    padding-top: 40px !important; /* spacing for the counter badge */
+    background: var(--surface-2) !important;
+    box-shadow: var(--shadow-card);
+  }
+  
+  [data-theme="light"] .blog-table tr {
+    background: #ffffff !important;
+    border: 1px solid var(--border-2) !important;
+  }
+
+  .blog-table tr:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Card header badge showing row number */
+  .blog-table tr::before {
+    content: "COMPARISON ITEM #" counter(blog-row-counter);
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--blue-2);
+    letter-spacing: 0.08em;
+  }
+
+  /* Zebra striping for mobile cards to distinguish rows clearly */
+  .blog-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+  [data-theme="light"] .blog-table tbody tr:nth-child(even) {
+    background: #f8fafc !important;
+  }
+
+  /* Style each cell as a vertical block layout showing label and value stacked */
+  .blog-table td {
+    display: block !important;
+    text-align: left !important;
+    padding: 12px 0 !important;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-right: none !important;
+  }
+
+  [data-theme="light"] .blog-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .blog-table td:last-child {
+    border-bottom: none !important;
+  }
+
+  /* Inject mobile column label dynamically on top */
+  .blog-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    color: var(--text-3);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+}
+
+/* ============================================
+   ANIMATED ACCORDION (FAQ)
+   ============================================ */
+.faq-item-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.faq-item-content[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.faq-item-inner {
+  min-height: 0;
+}
+
+
+
+

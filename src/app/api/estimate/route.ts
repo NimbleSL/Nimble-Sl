@@ -9,7 +9,7 @@ import type {
   IPhase,
   IRegion,
 } from '@/lib/types/estimator';
-import { randomUUID } from 'crypto';
+
 
 export const runtime = 'edge';
 
@@ -267,7 +267,7 @@ Generate a detailed module-level effort estimate. Return ONLY the JSON object â€
       const fallbackResult = buildFallbackResult(input, region);
       return NextResponse.json({
         success: true,
-        estimation_id: randomUUID(),
+        estimation_id: crypto.randomUUID(),
         result: fallbackResult,
       });
     }
@@ -276,7 +276,7 @@ Generate a detailed module-level effort estimate. Return ONLY the JSON object â€
 
     return NextResponse.json({
       success: true,
-      estimation_id: randomUUID(),
+      estimation_id: crypto.randomUUID(),
       result,
     });
 

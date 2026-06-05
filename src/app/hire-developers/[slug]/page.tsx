@@ -4,6 +4,24 @@ import { CheckCircle, Clock, GitBranch, Lock, MessageCircle, Shield, ArrowRight,
 import { skills, type ISkill } from '@/lib/data/skills';
 import type { Metadata } from 'next';
 
+const CASE_STUDY_MAP: Record<string, string> = {
+  'payflow': 'payflow-uae-neobank',
+  'insureflow': 'insureflow-claims-ai',
+  'claimwise': 'insureflow-claims-ai',
+  'fieldtrack': 'fieldtrack-logistics-automation',
+  'fieldops': 'fieldtrack-logistics-automation',
+  'nimbleerp': 'nimbleerp-manufacturing',
+  'botstudio': 'botstudio-insurance-support',
+  'realtydesk': 'realtydesk-proptech-platform',
+  'propnest': 'realtydesk-proptech-platform',
+  'shopnest': 'shopnest-multivendor-marketplace',
+  'restodesk': 'restodesk-restaurant-chain',
+  'authgate': 'payflow-uae-neobank',
+  'hiresync': 'botstudio-insurance-support',
+  'caseflow': 'insureflow-claims-ai',
+  'fraudshield': 'payflow-uae-neobank',
+};
+
 export async function generateStaticParams() {
   return skills.map((skill) => ({
     slug: skill.slug,
@@ -223,7 +241,7 @@ export default function SkillPage({ params }: { params: { slug: string } }) {
               {skill.relatedProjects.slice(0, 3).map((project) => (
                 <Link
                   key={project}
-                  href={`/work/${project}`}
+                  href={`/case-studies/${CASE_STUDY_MAP[project] || ''}`}
                   className="card group hover:scale-[1.02] transition-transform duration-300"
                 >
                   <div className="flex items-center justify-between">
@@ -240,7 +258,7 @@ export default function SkillPage({ params }: { params: { slug: string } }) {
             </div>
 
             <div className="text-center">
-              <Link href="/work" className="btn btn-ghost inline-flex items-center gap-2">
+              <Link href="/case-studies" className="btn btn-ghost inline-flex items-center gap-2">
                 View All Projects
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -259,7 +277,7 @@ export default function SkillPage({ params }: { params: { slug: string } }) {
               <p className="mb-6" style={{ color: 'var(--text-2)' }}>
                 Check out our complete portfolio of delivered projects.
               </p>
-              <Link href="/work" className="btn btn-primary inline-flex items-center gap-2">
+              <Link href="/case-studies" className="btn btn-primary inline-flex items-center gap-2">
                 View Portfolio
                 <ArrowRight className="w-5 h-5" />
               </Link>

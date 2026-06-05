@@ -46,19 +46,19 @@ const SOLUTIONS_MEGA = {
     {
       title: 'Finance & Commerce',
       items: [
-        { label: 'PayFlow', href: '/solutions/payflow', desc: 'Digital banking & payments platform' },
-        { label: 'InsureFlow', href: '/solutions/insureflow', desc: 'Claims & policy management' },
-        { label: 'ShopNest', href: '/solutions/shopnest', desc: 'Multi-vendor e-commerce storefront' },
-        { label: 'QuickPOS', href: '/solutions/quickpos', desc: 'Smart POS for modern retail' },
+        { label: 'PayFlow', href: 'https://payflow.nimblesl.com', desc: 'Digital banking & payments platform' },
+        { label: 'InsureFlow', href: 'https://insureflow.nimblesl.com', desc: 'Claims & policy management' },
+        { label: 'ShopNest', href: 'https://shopnest.nimblesl.com', desc: 'Multi-vendor e-commerce storefront' },
+        { label: 'QuickPOS', href: 'https://quickpos.nimblesl.com', desc: 'Smart POS for modern retail' },
       ],
     },
     {
       title: 'Enterprise & AI',
       items: [
-        { label: 'NimbleERP', href: '/solutions/nimbleerp', desc: 'Full-suite enterprise operations' },
-        { label: 'BotStudio', href: '/solutions/botstudio', desc: 'Omnichannel AI chatbot builder' },
-        { label: 'FlowAI', href: '/solutions/flowai', desc: 'AI-powered workflow automation' },
-        { label: 'RestoDesk', href: '/solutions/restodesk', desc: 'Complete F&B operations platform' },
+        { label: 'NimbleERP', href: 'https://nimbleerp.nimblesl.com', desc: 'Full-suite enterprise operations' },
+        { label: 'BotStudio', href: 'https://botstudio.nimblesl.com', desc: 'Omnichannel AI chatbot builder' },
+        { label: 'FlowAI', href: 'https://flowai.nimblesl.com', desc: 'AI-powered workflow automation' },
+        { label: 'RestoDesk', href: 'https://restodesk.nimblesl.com', desc: 'Complete F&B operations platform' },
       ],
     },
   ],
@@ -106,19 +106,27 @@ function MegaMenu({ type, onClose }: MegaMenuProps) {
               {section.title}
             </div>
             <div className="flex flex-col gap-0.5">
-              {section.items.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={onClose}
-                  className="mega-item group flex flex-col gap-0.5 px-3 py-2.5 rounded-xl transition-all duration-150"
-                >
-                  <span className="text-sm font-semibold transition-colors duration-150" style={{ color: 'var(--text)' }}>
-                    {item.label}
-                  </span>
-                  <span className="text-xs" style={{ color: 'var(--text-3)' }}>{item.desc}</span>
-                </Link>
-              ))}
+              {section.items.map((item) => {
+                const isExternal = item.href.startsWith('http');
+                const cls = "mega-item group flex flex-col gap-0.5 px-3 py-2.5 rounded-xl transition-all duration-150";
+                const content = (
+                  <>
+                    <span className="text-sm font-semibold transition-colors duration-150" style={{ color: 'var(--text)' }}>
+                      {item.label}
+                    </span>
+                    <span className="text-xs" style={{ color: 'var(--text-3)' }}>{item.desc}</span>
+                  </>
+                );
+                return isExternal ? (
+                  <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer" onClick={onClose} className={cls}>
+                    {content}
+                  </a>
+                ) : (
+                  <Link key={item.href} href={item.href} onClick={onClose} className={cls}>
+                    {content}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         ))}
@@ -153,6 +161,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<'services' | 'solutions' | null>(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<'services' | 'solutions' | null>(null);
   const [announcementVisible, setAnnouncementVisible] = useState(true);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
@@ -172,6 +181,7 @@ export function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
     setActiveMega(null);
+    setMobileSubmenu(null);
   }, [pathname]);
 
   const borderColor = scrolled
@@ -362,10 +372,8 @@ export function Navbar() {
                   {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                 </button>
 
-                <a
-                  href="https://calendly.com/nimblesl/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/contact"
                   className="px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-150"
                   style={{
                     color: 'var(--text-2)',
@@ -375,7 +383,7 @@ export function Navbar() {
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   Book a Call
-                </a>
+                </Link>
 
                 <MagneticWrapper>
                   <Link
@@ -454,25 +462,128 @@ export function Navbar() {
               {/* Links */}
               <div className="flex-1 overflow-y-auto py-5">
                 <nav className="flex flex-col gap-1">
-                  {NAV_LINKS.map((link, i) => (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.06 }}
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all"
-                        style={{ color: 'var(--text)', background: pathname.startsWith(link.href) ? 'var(--overlay-md)' : 'transparent' }}
-                        aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+                  {NAV_LINKS.map((link, i) => {
+                    const hasMega = link.hasMega;
+                    const megaType = link.label.toLowerCase() as 'services' | 'solutions';
+                    const isExpanded = mobileSubmenu === megaType;
+
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.06 }}
+                        className="flex flex-col"
                       >
-                        {link.label}
-                        <ArrowRight size={14} style={{ color: 'var(--text-3)' }} />
-                      </Link>
-                    </motion.div>
-                  ))}
+                        {hasMega ? (
+                          <>
+                            <button
+                              onClick={() => setMobileSubmenu(isExpanded ? null : megaType)}
+                              className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all text-left"
+                              style={{
+                                color: 'var(--text)',
+                                background: pathname.startsWith(link.href) ? 'var(--overlay-md)' : 'transparent',
+                              }}
+                            >
+                              <span>{link.label}</span>
+                              <ChevronDown
+                                size={15}
+                                className={cn(
+                                  'transition-transform duration-200',
+                                  isExpanded ? 'rotate-180 text-blue-400' : 'text-neutral-400'
+                                )}
+                              />
+                            </button>
+                            <AnimatePresence initial={false}>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden pl-4 pr-2 flex flex-col gap-1.5 mt-1 mb-2"
+                                  style={{ borderLeft: '1px solid var(--border)' }}
+                                >
+                                  {/* Main Section Link */}
+                                  <Link
+                                    href={link.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-blue-400"
+                                  >
+                                    View All {link.label} <ArrowRight size={11} />
+                                  </Link>
+
+                                  {/* Sub-items */}
+                                  {megaType === 'services' ? (
+                                    SERVICES_MEGA.sections.map((sec) => (
+                                      <div key={sec.title} className="mt-2 first:mt-0">
+                                        <div className="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'var(--font-mono)' }}>
+                                          {sec.title}
+                                        </div>
+                                        {sec.items.map((item) => (
+                                          <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            className="flex flex-col px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                                          >
+                                            <span className="text-sm font-semibold text-white">{item.label}</span>
+                                            <span className="text-xs text-neutral-400 mt-0.5">{item.desc}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    ))
+                                  ) : (
+                                    SOLUTIONS_MEGA.sections.map((sec) => (
+                                      <div key={sec.title} className="mt-2 first:mt-0">
+                                        <div className="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'var(--font-mono)' }}>
+                                          {sec.title}
+                                        </div>
+                                        {sec.items.map((item) => {
+                                          const isExternal = item.href.startsWith('http');
+                                          const cls = "flex flex-col px-3 py-2 rounded-lg hover:bg-white/5 transition-colors";
+                                          const inner = (
+                                            <>
+                                              <span className="text-sm font-semibold text-white flex items-center gap-1">
+                                                {item.label} {isExternal && <ArrowRight size={10} className="-rotate-45 text-neutral-400" />}
+                                              </span>
+                                              <span className="text-xs text-neutral-400 mt-0.5">{item.desc}</span>
+                                            </>
+                                          );
+                                          return isExternal ? (
+                                            <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className={cls}>
+                                              {inner}
+                                            </a>
+                                          ) : (
+                                            <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className={cls}>
+                                              {inner}
+                                            </Link>
+                                          );
+                                        })}
+                                      </div>
+                                    ))
+                                  )}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all"
+                            style={{
+                              color: 'var(--text)',
+                              background: pathname.startsWith(link.href) ? 'var(--overlay-md)' : 'transparent',
+                            }}
+                          >
+                            {link.label}
+                            <ArrowRight size={14} style={{ color: 'var(--text-3)' }} />
+                          </Link>
+                        )}
+                      </motion.div>
+                    );
+                  })}
                 </nav>
               </div>
 
@@ -482,10 +593,10 @@ export function Navbar() {
                   className="btn btn-emerald w-full justify-center py-3.5 text-sm">
                   <Sparkles size={14} /> Try AI Estimator
                 </Link>
-                <a href="https://calendly.com/nimblesl/30min" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}
+                <Link href="/contact" onClick={() => setMobileOpen(false)}
                   className="btn btn-ghost w-full justify-center py-3.5 text-sm">
                   Book a Call
-                </a>
+                </Link>
                 <button onClick={toggleTheme} className="flex items-center justify-center gap-2 py-2 text-sm" style={{ color: 'var(--text-3)' }}>
                   {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
                   {theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}

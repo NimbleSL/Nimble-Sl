@@ -4,6 +4,7 @@ import { solutions } from '@/lib/data/solutions';
 import { caseStudies } from '@/lib/data/caseStudies';
 import { skills } from '@/lib/data/skills';
 import { industries } from '@/lib/data/industries';
+import { blogPosts } from '@/lib/data/blog';
 
 const BASE_URL = 'https://nimblesl.com';
 
@@ -72,6 +73,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    {
+      url: `${BASE_URL}/careers`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/compare`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/privacy-policy`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
   ];
 
   // Dynamic service routes
@@ -114,20 +139,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Blog post routes (hardcoded slugs)
-  const blogSlugs = [
-    'how-we-built-fraudshield-realtime-ml-fraud-detection',
-    'angular-vs-react-2025-enterprise-guide',
-    'true-cost-software-development-bangladesh',
-    'building-offline-first-mobile-apps-flutter',
-    'idea-to-mvp-8-weeks-nimblesl-sprint-framework',
-    'llm-powered-features-saas-2025',
-    'claimwise-ocr-ml-insurance-processing',
-    'designing-for-enterprise-5-lessons',
-  ];
-
-  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${BASE_URL}/blog/${slug}`,
+  // Dynamic blog post routes
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.6,

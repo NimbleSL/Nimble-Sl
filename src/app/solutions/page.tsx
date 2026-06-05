@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, ArrowRight, Gauge, Sparkles } from 'lucide-react';
+import { Play, ArrowRight, Gauge } from 'lucide-react';
 import { solutions } from '@/lib/data/solutions';
 
 const FILTERS = ['All', 'FinTech', 'InsurTech', 'HealthTech', 'PropTech', 'E-Commerce', 'Retail', 'Logistics', 'Enterprise', 'F&B', 'AI/ML'];

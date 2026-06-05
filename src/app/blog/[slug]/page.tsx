@@ -45,7 +45,7 @@ function renderContent(content: string) {
         <h2
           key={i}
           id={id}
-          style={{ fontSize: 28, fontWeight: 700, color: 'var(--text)', marginTop: 48, marginBottom: 16, fontFamily: 'var(--font-sans)', scrollMarginTop: 100 }}
+          style={{ fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 700, color: 'var(--text)', marginTop: 48, marginBottom: 16, fontFamily: 'var(--font-sans)', scrollMarginTop: 100 }}
         >
           {text}
         </h2>
@@ -59,10 +59,108 @@ function renderContent(content: string) {
       result.push(
         <h3
           key={i}
-          style={{ fontSize: 20, fontWeight: 600, color: 'var(--text)', marginTop: 28, marginBottom: 10, fontFamily: 'var(--font-sans)' }}
+          style={{ fontSize: 'clamp(18px, 4vw, 20px)', fontWeight: 600, color: 'var(--text)', marginTop: 28, marginBottom: 10, fontFamily: 'var(--font-sans)' }}
         >
           {text}
         </h3>
+      );
+      i++; continue;
+    }
+
+    // table
+    if (block.startsWith('|')) {
+      const lines = block.split('\n');
+      const tableRows: React.ReactNode[] = [];
+      let isHeader = true;
+      let headers: string[] = [];
+
+      lines.forEach((line, lineIdx) => {
+        const cells = line.split('|').slice(1, -1).map(c => c.trim());
+        if (cells.length === 0) return;
+
+        // Skip separator row (like | --- | --- |)
+        const isSeparator = cells.every(cell => /^:?-+:?$/.test(cell));
+        if (isSeparator) return;
+
+        if (isHeader) {
+          headers = cells;
+        }
+
+        const rowCells = cells.map((cell, cellIdx) => {
+          const formattedContent = cell
+            .replace(/(^|[^!])\[([^\]]+)\]\(([^)]+)\)/g, `$1<a href="$3" style="color:var(--blue-2);text-decoration:underline">$2</a>`)
+            .replace(/\*\*(.*?)\*\*/g, `<strong style="color:var(--text);font-weight:600">$1</strong>`)
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/`(.*?)`/g, `<code style="background:var(--surface-2);color:var(--cyan-2);padding:1px 6px;border-radius:4px;font-size:0.85em;font-family:var(--font-mono)">$1</code>`);
+
+          if (isHeader) {
+            return (
+              <th
+                key={cellIdx}
+                dangerouslySetInnerHTML={{ __html: formattedContent }}
+              />
+            );
+          } else {
+            return (
+              <td
+                key={cellIdx}
+                data-label={headers[cellIdx] || ''}
+                dangerouslySetInnerHTML={{ __html: formattedContent }}
+              />
+            );
+          }
+        });
+
+        tableRows.push(
+          <tr key={lineIdx}>
+            {rowCells}
+          </tr>
+        );
+        isHeader = false;
+      });
+
+      result.push(
+        <div key={i} className="blog-table-wrapper">
+          {/* Swipe Hint */}
+          <div
+            className="blog-table-swipe-hint"
+            style={{
+              padding: '8px 16px',
+              borderBottom: '1px solid var(--border)',
+              background: 'var(--overlay-xs)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 8,
+            }}
+          >
+            <span className="font-mono" style={{ fontSize: 10, color: 'var(--text-3)', fontWeight: 600, letterSpacing: '0.05em' }}>
+              COMPARATIVE MATRIX
+            </span>
+            <span
+              className="font-mono"
+              style={{
+                fontSize: 10,
+                color: 'var(--blue-2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+                fontWeight: 500,
+              }}
+            >
+              Swipe horizontally to view <span className="blink">→</span>
+            </span>
+          </div>
+
+          <div className="blog-table-container scrollbar-hide">
+            <table className="blog-table">
+              <tbody>
+                {tableRows}
+              </tbody>
+            </table>
+          </div>
+        </div>
       );
       i++; continue;
     }
@@ -265,7 +363,7 @@ export default async function BlogPostPage({
             {/* Breadcrumb */}
             <nav
               className="font-mono"
-              style={{ color: 'var(--text-3)', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 8, fontSize: 12 }}
+              style={{ color: 'var(--text-3)', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, flexWrap: 'wrap' }}
             >
               <Link href="/" style={{ color: 'var(--text-3)', textDecoration: 'none' }} className="hover:opacity-80">Home</Link>
               <span style={{ fontSize: 10 }}>›</span>
@@ -282,7 +380,7 @@ export default async function BlogPostPage({
             </div>
 
             {/* Title */}
-            <h1 style={{ fontSize: 52, lineHeight: 1.08, fontFamily: 'var(--font-sans)', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>
+            <h1 style={{ fontSize: 'clamp(28px, 6vw, 52px)', lineHeight: 1.15, fontFamily: 'var(--font-sans)', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>
               {post.title.includes(':') ? (
                 <>
                   {post.title.split(':')[0]}:{' '}
@@ -298,20 +396,29 @@ export default async function BlogPostPage({
             </p>
 
             {/* Author row */}
-            <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', gap: 14 }}>
-              {/* Avatar */}
-              <div style={{
-                width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
-                background: `linear-gradient(135deg, ${post.accent}, ${post.accent}88)`,
-                display: 'grid', placeItems: 'center',
-                color: 'white', fontWeight: 700, fontSize: 18, fontFamily: 'var(--font-sans)',
-                border: '2px solid var(--surface)',
-              }}>N</div>
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 14, color: 'var(--text)' }}>NimbleSL Engineering</div>
-                <div className="font-mono" style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 2 }}>nimblesl.com</div>
+            <div style={{
+              marginTop: 28,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 16,
+              flexWrap: 'wrap',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                {/* Avatar */}
+                <div style={{
+                  width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
+                  background: `linear-gradient(135deg, ${post.accent}, ${post.accent}88)`,
+                  display: 'grid', placeItems: 'center',
+                  color: 'white', fontWeight: 700, fontSize: 18, fontFamily: 'var(--font-sans)',
+                  border: '2px solid var(--surface)',
+                }}>N</div>
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: 14, color: 'var(--text)' }}>NimbleSL Engineering</div>
+                  <div className="font-mono" style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 2 }}>nimblesl.com</div>
+                </div>
               </div>
-              <div style={{ marginLeft: 'auto', display: 'flex', gap: 16, color: 'var(--text-3)', fontSize: 13 }}>
+              <div style={{ display: 'flex', gap: 16, color: 'var(--text-3)', fontSize: 13, alignItems: 'center' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   {post.readTime}
@@ -329,7 +436,7 @@ export default async function BlogPostPage({
             {post.coverImage ? (
               <div style={{
                 maxWidth: 1120, margin: '0 auto',
-                height: 480,
+                height: 'clamp(240px, 45vw, 480px)',
                 borderRadius: 16,
                 position: 'relative',
                 overflow: 'hidden',
@@ -342,7 +449,7 @@ export default async function BlogPostPage({
             ) : (
               <div style={{
                 maxWidth: 1120, margin: '0 auto',
-                height: 380,
+                height: 'clamp(200px, 35vw, 380px)',
                 background: `linear-gradient(135deg, ${post.accent}44, ${post.accent}06)`,
                 border: `1px solid ${post.accent}44`,
                 borderRadius: 16,
@@ -386,7 +493,12 @@ export default async function BlogPostPage({
               alignItems: 'start',
             }}>
               {/* Article */}
-              <article>
+              <article style={{ minWidth: 0 }}>
+                {/* Mobile/Tablet Table of Contents */}
+                <div className="lg:hidden mb-8">
+                  <BlogTOC headings={headings} isMobile />
+                </div>
+
                 {renderContent(post.content)}
 
                 {/* Inline CTA */}
@@ -398,17 +510,25 @@ export default async function BlogPostPage({
                     borderColor: `${post.accent}44`,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-                    <div style={{ fontSize: 24 }}>⚡</div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>Building something similar?</div>
-                      <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 6 }}>
-                        Get a scoped estimate in 3 minutes — based on this and 50+ similar projects.
+                  <div className="rg-content-cta" style={{ gap: 20 }}>
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                      <div style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>⚡</div>
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>Building something similar?</div>
+                        <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 6, lineHeight: 1.5 }}>
+                          Get a scoped estimate in 3 minutes — based on this and 50+ similar projects.
+                        </div>
                       </div>
                     </div>
-                    <Link href="/tools/project-estimator" className="btn btn-primary">
-                      Try AI Estimator →
-                    </Link>
+                    <div>
+                      <Link
+                        href="/tools/project-estimator"
+                        className="btn btn-primary"
+                        style={{ width: '100%', justifyContent: 'center' }}
+                      >
+                        Try AI Estimator →
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
@@ -448,7 +568,9 @@ export default async function BlogPostPage({
               </article>
 
               {/* Sticky TOC sidebar */}
-              <BlogTOC headings={headings} />
+              <div className="hidden lg:block">
+                <BlogTOC headings={headings} />
+              </div>
             </div>
           </div>
         </section>

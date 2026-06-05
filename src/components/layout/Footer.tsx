@@ -36,12 +36,12 @@ const FOOTER_LINKS = {
     { label: 'UI/UX Design', href: '/services/ui-ux-design' },
   ],
   Solutions: [
-    { label: 'PayFlow — FinTech', href: '/solutions/payflow' },
-    { label: 'FraudShield AI', href: '/solutions/fraudshield' },
-    { label: 'FieldOps', href: '/solutions/fieldops' },
-    { label: 'ClaimWise', href: '/solutions/claimwise' },
-    { label: 'AuthGate', href: '/solutions/authgate' },
-    { label: 'View all 11 products →', href: '/solutions' },
+    { label: 'PayFlow — FinTech', href: 'https://payflow.nimblesl.com' },
+    { label: 'InsureFlow — InsurTech', href: 'https://insureflow.nimblesl.com' },
+    { label: 'NimbleERP — Enterprise', href: 'https://nimbleerp.nimblesl.com' },
+    { label: 'BotStudio — AI/ML', href: 'https://botstudio.nimblesl.com' },
+    { label: 'FieldTrack — Logistics', href: 'https://fieldtrack.nimblesl.com' },
+    { label: 'View all 12 products →', href: '/solutions' },
   ],
   Company: [
     { label: 'About Us', href: '/about' },
@@ -60,7 +60,7 @@ const FOOTER_LINKS = {
   ],
 };
 
-const TECH_BADGES = ['Angular', 'React', 'Next.js', 'Flutter', '.NET', 'Python', 'AWS', 'Docker'];
+const TECH_BADGES = ['Next.js', 'Angular', 'Flutter', '.NET', 'Python', 'FastAPI', 'AWS', 'Docker'];
 
 export function Footer() {
   return (
@@ -137,13 +137,25 @@ export function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm transition-colors duration-150 hover:text-white"
-                      style={{ color: 'var(--text-3)' }}
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith('http') ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm transition-colors duration-150 hover:text-white"
+                        style={{ color: 'var(--text-3)' }}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm transition-colors duration-150 hover:text-white"
+                        style={{ color: 'var(--text-3)' }}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

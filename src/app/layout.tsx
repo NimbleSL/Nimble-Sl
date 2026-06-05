@@ -32,6 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nimblesl.com'),
+  alternates: {
+    canonical: 'https://nimblesl.com',
+  },
   title: {
     default: 'Nimble Software Lab — Custom Software Development Company',
     template: '%s | Nimble Software Lab',
@@ -122,7 +125,7 @@ export default function RootLayout({
           </a>
           <LoadingScreen />
           <Navbar />
-          <div id="main-content" style={{ overflowX: 'hidden', width: '100%' }}>
+          <div id="main-content" style={{ overflowX: 'clip', width: '100%' }}>
             {children}
           </div>
           <Footer />

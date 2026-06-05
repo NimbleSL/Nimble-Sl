@@ -5,7 +5,7 @@ import { skills } from '@/lib/data/skills';
 export const metadata: Metadata = {
   title: 'Hire Dedicated Developers | React, Angular, Flutter, Node, Python, AI/ML — NimbleSL',
   description:
-    'Hire pre-vetted senior developers from Bangladesh. Start in 48 hours. From $22/hr. Dedicated, part-time, or project-based engagements.',
+    'Hire pre-vetted senior developers from Bangladesh. Start in 48 hours. Rates from $15–$38/hr. Dedicated, part-time, or project-based engagements.',
   keywords: [
     'hire developers bangladesh',
     'staff augmentation',
@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 
 const ENGAGEMENT_MODELS = [
   {
-    title: 'Dedicated',
-    desc: 'Full-time, 40hr/wk, your direct report. Min 3-month engagement.',
-    price: 'from $3,500/mo',
+    title: 'Dedicated (Full-time)',
+    desc: 'Dedicated full-time engineer, 40 hrs/week, integrated into your team communication pipelines.',
+    price: '$15 – $35 / hr',
   },
   {
-    title: 'Part-time',
-    desc: 'Half-time, 20hr/wk. Same engineer, flexible cadence.',
-    price: 'from $1,800/mo',
+    title: 'Dedicated (Part-time)',
+    desc: 'Half-time support, 20 hrs/week. Access the same engineer with flexible delivery cadences.',
+    price: '$18 – $38 / hr',
   },
   {
-    title: 'Project-based',
-    desc: 'Fixed-scope sprint or team. Outcome-priced, not hourly.',
-    price: 'from $5,000/sprint',
+    title: 'Project-based (SOW)',
+    desc: 'Fixed-scope project execution with defined milestones. Scoped after detailed workload calculations.',
+    price: 'Custom Quote',
   },
 ];
 
@@ -131,7 +131,7 @@ export default function HireDevelopersPage() {
               </h1>
               <p style={{ marginTop: 20, fontSize: 18, color: 'var(--text-2)', maxWidth: 520, lineHeight: 1.65 }}>
                 Scale your engineering team with senior developers we've already trained and shipped with.
-                Dedicated, part-time, or project-based. From $22/hr.
+                Dedicated, part-time, or project-based. Rates from $15–$38/hr.
               </p>
 
               <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
