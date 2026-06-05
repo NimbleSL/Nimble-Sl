@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ArrowRight, Gauge, Sparkles } from 'lucide-react';
 import { solutions } from '@/lib/data/solutions';
@@ -118,9 +117,9 @@ export default function SolutionsPage() {
                           <a href={sol.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '9px 14px', fontSize: 13 }}>
                             <Play size={12} /> Live Demo
                           </a>
-                          <Link href={`/solutions/${sol.slug}`} className="btn btn-ghost" style={{ padding: '9px 14px', fontSize: 13 }}>
+                          <a href={sol.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ padding: '9px 14px', fontSize: 13 }}>
                             Details <ArrowRight size={12} />
-                          </Link>
+                          </a>
                         </div>
                       </div>
                     </div>
