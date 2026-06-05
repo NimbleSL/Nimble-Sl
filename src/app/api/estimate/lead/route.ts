@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/info@nimblesl.com';
 
 export async function POST(request: NextRequest) {

@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { X, Star, Phone, Sparkles, ArrowRight, Clock } from 'lucide-react';
 import { useTheme } from '@/components/providers/ThemeProvider';
+import { BookCallModal } from '@/components/overlays/BookCallModal';
 
 export function StickyBar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export function StickyBar() {
   const isDark = theme === 'dark';
 
   return (
+    <>
     <AnimatePresence>
       {isVisible && (
         <motion.div
@@ -124,15 +127,15 @@ export function StickyBar() {
                 <Sparkles size={13} />
                 AI Estimate
               </Link>
-              <Link
-                href="/contact"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 14px rgba(59,130,246,0.35)' }}
+                style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 14px rgba(59,130,246,0.35)', border: 'none', cursor: 'pointer' }}
               >
                 <Phone size={13} />
                 Book a Free Call
                 <ArrowRight size={12} />
-              </Link>
+              </button>
               <button
                 onClick={handleDismiss}
                 className="w-8 h-8 rounded-full flex items-center justify-center transition-colors ml-1"
@@ -210,18 +213,20 @@ export function StickyBar() {
                 <Sparkles size={13} />
                 AI Estimate
               </Link>
-              <Link
-                href="/contact"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
+                style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 12px rgba(59,130,246,0.3)', border: 'none', cursor: 'pointer' }}
               >
                 <Phone size={13} />
                 Book Free Call
-              </Link>
+              </button>
             </div>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
+    <BookCallModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }

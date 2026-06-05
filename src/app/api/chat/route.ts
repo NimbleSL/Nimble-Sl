@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 const SYSTEM_PROMPT = `You are NimbleBot, the official friendly AI assistant for Nimble Software Lab (NimbleSL). Your job is to answer queries from potential clients using ONLY the context provided below.

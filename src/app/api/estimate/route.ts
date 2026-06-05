@@ -11,6 +11,8 @@ import type {
 } from '@/lib/types/estimator';
 import { randomUUID } from 'crypto';
 
+export const runtime = 'edge';
+
 // ─── Rate cards (USD / hour per role) ─────────────────────────────────────────
 
 const RATE_CARDS: Record<IRegion, Record<string, number>> = {
