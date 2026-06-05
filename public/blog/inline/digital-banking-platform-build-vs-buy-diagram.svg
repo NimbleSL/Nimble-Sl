@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#0A0E1A" rx="12" />
+  <circle cx="400" cy="225" r="200" fill="#1E40AF" opacity="0.08" filter="blur(60px)" />
+  
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  
+      <!-- Ingestion / Payment Processing flow -->
+      <g fill="#0F1629" stroke="#1E40AF" stroke-width="2">
+        <rect x="50" y="175" width="140" height="100" rx="8" />
+        <rect x="290" y="175" width="180" height="100" rx="8" />
+        <rect x="570" y="175" width="180" height="100" rx="8" />
+      </g>
+      <g stroke="#10B981" stroke-width="2" fill="none">
+        <line x1="190" y1="225" x2="280" y2="225" marker-end="url(#arrow)" />
+        <line x1="470" y1="225" x2="560" y2="225" marker-end="url(#arrow)" />
+      </g>
+      <g fill="#F1F5F9" font-family="sans-serif" font-size="12" text-anchor="middle">
+        <text x="120" y="215" font-weight="bold">USER TRANSACTION</text>
+        <text x="120" y="235">Submits checkout info</text>
+        
+        <text x="380" y="215" font-weight="bold">PCI COMPLIANT TOKEN</text>
+        <text x="380" y="235">Bypasses local servers</text>
+        
+        <text x="660" y="215" font-weight="bold">DOUBLE-ENTRY LEDGER</text>
+        <text x="660" y="235">Immutable credit/debit logs</text>
+      </g>
+    
+</svg>

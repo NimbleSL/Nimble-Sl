@@ -3,16 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gauge, Mail } from 'lucide-react';
+import { ArrowRight, Gauge, Play } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
 const PRODUCTS = [
-  { name: 'PayFlow', tag: 'FinTech', tagClass: 'tag-blue', tagline: 'Smart Digital Banking, Simplified', metric: 'Real-time cross-border payments', accent: '#3B82F6', href: '/solutions/payflow', demoHref: 'https://payflow.nimblesl.com' },
-  { name: 'FraudShield AI', tag: 'AI/ML', tagClass: 'tag-purple', tagline: '96% Accurate AI Fraud Detection', metric: '30–60 sec processing', accent: '#A855F7', href: '/solutions/fraudshield', demoHref: 'https://fraudshield.nimblesl.com' },
-  { name: 'FieldOps', tag: 'Logistics', tagClass: 'tag-emerald', tagline: 'Field Force Automation That Works Offline', metric: '8 hr offline sync', accent: '#10B981', href: '/solutions/fieldops', demoHref: 'https://fieldops.nimblesl.com' },
-  { name: 'ClaimWise', tag: 'InsurTech', tagClass: 'tag-cyan', tagline: 'Insurance, Digitized End-to-End', metric: '70% faster claims', accent: '#06B6D4', href: '/solutions/claimwise', demoHref: 'https://claimwise.nimblesl.com' },
-  { name: 'AuthGate', tag: 'Security', tagClass: 'tag-amber', tagline: 'Enterprise Identity, Unified', metric: 'OAuth2 / OIDC / SAML', accent: '#F59E0B', href: '/solutions/authgate', demoHref: 'https://authgate.nimblesl.com' },
-  { name: 'PropNest', tag: 'PropTech', tagClass: 'tag-rose', tagline: 'Your 360° Property Ecosystem', metric: '12k+ listings managed', accent: '#F43F5E', href: '/solutions/propnest', demoHref: 'https://propnest.nimblesl.com' },
+  { slug: 'payflow', name: 'PayFlow', tag: 'FinTech', tagClass: 'tag-blue', tagline: 'Complete Digital Banking, Built to Launch', metric: 'Real-time cross-border payments', accent: '#3B82F6', demoHref: 'https://payflow.nimblesl.com' },
+  { slug: 'insureflow', name: 'InsureFlow', tag: 'InsurTech', tagClass: 'tag-emerald', tagline: 'Insurance Operations, End-to-End Digital', metric: '70% faster claim processing', accent: '#10B981', demoHref: 'https://insureflow.nimblesl.com' },
+  { slug: 'mediflow', name: 'MediFlow', tag: 'HealthTech', tagClass: 'tag-rose', tagline: 'Modern Healthcare, Paperless & Connected', metric: 'Paperless EHR management', accent: '#F43F5E', demoHref: 'https://mediflow.nimblesl.com' },
+  { slug: 'shopnest', name: 'ShopNest', tag: 'E-Commerce', tagClass: 'tag-amber', tagline: 'Multi-Vendor Marketplace, Ready to Scale', metric: 'Multi-vendor GMV tracking', accent: '#F59E0B', demoHref: 'https://shopnest.nimblesl.com' },
+  { slug: 'realtydesk', name: 'RealtyDesk', tag: 'PropTech', tagClass: 'tag-cyan', tagline: '360° Property Management, Simplified', metric: '360° property lifecycle management', accent: '#06B6D4', demoHref: 'https://realtydesk.nimblesl.com' },
+  { slug: 'fieldtrack', name: 'FieldTrack', tag: 'Logistics', tagClass: 'tag-orange', tagline: 'Field Service Automation That Works Anywhere', metric: '40% operational cost reduction', accent: '#F97316', demoHref: 'https://fieldtrack.nimblesl.com' },
 ];
 
 export function ShowroomTeaser() {
@@ -36,7 +36,7 @@ export function ShowroomTeaser() {
             </p>
           </div>
           <Link href="/solutions" className="btn btn-ghost" style={{ flexShrink: 0 }}>
-            View all 11 products <ArrowRight size={14} />
+            View all 12 products <ArrowRight size={14} />
           </Link>
         </div>
 
@@ -44,32 +44,25 @@ export function ShowroomTeaser() {
         <div className="rg-3" style={{ gap: 20 }}>
           {PRODUCTS.map((p, i) => (
             <motion.div
-              key={p.name}
+              key={p.slug}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
             >
               <div className="card card-hover" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
                 {/* Preview thumbnail */}
-                <div style={{ height: 156, background: `linear-gradient(135deg, ${p.accent}22, ${p.accent}08)`, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-                  <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.6 }} />
-                  {/* Mini UI skeleton */}
-                  <div style={{ position: 'absolute', inset: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <div style={{ display: 'flex', gap: 6 }}>
-                      <div style={{ width: 60, height: 8, background: 'rgba(255,255,255,0.18)', borderRadius: 2 }} />
-                      <div style={{ width: 30, height: 8, background: 'rgba(255,255,255,0.10)', borderRadius: 2 }} />
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6, marginTop: 10 }}>
-                      {[1, 2, 3].map((n) => (
-                        <div key={n} style={{ height: 36, background: `${p.accent}22`, borderRadius: 4, border: `1px solid ${p.accent}44` }} />
-                      ))}
-                    </div>
-                    <div style={{ marginTop: 'auto', display: 'flex', gap: 6 }}>
-                      {[1, 2, 1].map((w, idx) => (
-                        <div key={idx} style={{ flex: w, height: 6, background: idx === 1 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)', borderRadius: 2 }} />
-                      ))}
-                    </div>
-                  </div>
+                <div style={{ height: 156, background: `linear-gradient(135deg, ${p.accent}20, ${p.accent}08)`, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/solutions/${p.slug}.png`}
+                    alt={`${p.name} preview`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block', transform: 'scale(1.02)', transformOrigin: 'top center' }}
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  {/* Top fade */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 32, background: 'linear-gradient(to bottom, var(--surface) 0%, transparent 100%)', pointerEvents: 'none' }} />
+                  {/* Bottom fade */}
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 48, background: 'linear-gradient(to bottom, transparent 0%, var(--surface) 100%)', pointerEvents: 'none' }} />
                 </div>
 
                 {/* Card body */}
@@ -83,12 +76,12 @@ export function ShowroomTeaser() {
                     <Gauge size={11} /> {p.metric}
                   </div>
                   <div style={{ display: 'flex', gap: 8 }}>
-                    <Link href="/contact" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '8px 12px', fontSize: 12 }}>
-                      <Mail size={11} /> Request Demo
-                    </Link>
-                    <Link href={p.href} className="btn btn-ghost" style={{ padding: '8px 12px', fontSize: 12 }}>
+                    <a href={p.demoHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '8px 12px', fontSize: 12 }}>
+                      <Play size={11} /> Live Demo
+                    </a>
+                    <a href={p.demoHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ padding: '8px 12px', fontSize: 12 }}>
                       <ArrowRight size={12} />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

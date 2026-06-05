@@ -3,6 +3,7 @@ export interface ISolution {
   name: string;
   tagline: string;
   industry: string;
+  extraCategories?: string[];
   tagVariant: string;
   accent: string;
   description: string;

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="grad-27" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181B" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#grad-27)" />
+  
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1.5"><line x1="0" y1="0" x2="0" y2="630" /><line x1="0" y1="0" x2="1200" y2="0" /><line x1="80" y1="0" x2="80" y2="630" /><line x1="0" y1="42" x2="1200" y2="42" /><line x1="160" y1="0" x2="160" y2="630" /><line x1="0" y1="84" x2="1200" y2="84" /><line x1="240" y1="0" x2="240" y2="630" /><line x1="0" y1="126" x2="1200" y2="126" /><line x1="320" y1="0" x2="320" y2="630" /><line x1="0" y1="168" x2="1200" y2="168" /><line x1="400" y1="0" x2="400" y2="630" /><line x1="0" y1="210" x2="1200" y2="210" /><line x1="480" y1="0" x2="480" y2="630" /><line x1="0" y1="252" x2="1200" y2="252" /><line x1="560" y1="0" x2="560" y2="630" /><line x1="0" y1="294" x2="1200" y2="294" /><line x1="640" y1="0" x2="640" y2="630" /><line x1="0" y1="336" x2="1200" y2="336" /><line x1="720" y1="0" x2="720" y2="630" /><line x1="0" y1="378" x2="1200" y2="378" /><line x1="800" y1="0" x2="800" y2="630" /><line x1="0" y1="420" x2="1200" y2="420" /><line x1="879.9999999999999" y1="0" x2="879.9999999999999" y2="630" /><line x1="0" y1="461.99999999999994" x2="1200" y2="461.99999999999994" /><line x1="960" y1="0" x2="960" y2="630" /><line x1="0" y1="504" x2="1200" y2="504" /><line x1="1040" y1="0" x2="1040" y2="630" /><line x1="0" y1="546" x2="1200" y2="546" /><line x1="1120" y1="0" x2="1120" y2="630" /><line x1="0" y1="588" x2="1200" y2="588" /><line x1="1200" y1="0" x2="1200" y2="630" /><line x1="0" y1="630" x2="1200" y2="630" /></g><circle cx="1000" cy="315" r="400" fill="#6366F1" opacity="0.18" filter="blur(80px)" /><polygon points="900,100 1100,200 1000,450 800,300" fill="none" stroke="#6366F1" stroke-width="2" opacity="0.25" /><circle cx="900" cy="100" r="6" fill="#6366F1" /><circle cx="1100" cy="200" r="6" fill="#6366F1" /><circle cx="1000" cy="450" r="6" fill="#6366F1" /><circle cx="800" cy="300" r="6" fill="#6366F1" />
+  
+  <!-- Left Side Text Safe Area Card -->
+  <rect x="80" y="80" width="650" height="470" rx="16" fill="#0A0E1A" fill-opacity="0.8" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+  
+  <!-- Content -->
+  <g transform="translate(120, 150)">
+    <!-- Category Tag -->
+    <rect width="120" height="28" rx="6" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5" />
+    <text x="60" y="18" fill="#6366F1" font-family="monospace" font-weight="bold" font-size="12" text-anchor="middle" letter-spacing="0.08em">BUSINESS</text>
+    
+    <!-- Title -->
+    <g transform="translate(0, 70)">
+      <text x="0" y="0" fill="#ffffff" font-family="sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">How We Estimate Software</text><text x="0" y="42" fill="#ffffff" font-family="sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">Projects: Inside Our</text><text x="0" y="84" fill="#ffffff" font-family="sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">Process</text>
+    </g>
+    
+    <!-- Watermark / Brand Logo -->
+    <g transform="translate(0, 320)">
+      <circle cx="15" cy="15" r="12" fill="none" stroke="#60A5FA" stroke-width="3" />
+      <path d="M 8 15 L 15 8 L 22 15" fill="none" stroke="#60A5FA" stroke-width="2.5" />
+      <text x="35" y="22" fill="#F1F5F9" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="0.05em">Nimble Software Lab</text>
+    </g>
+  </g>
+</svg>

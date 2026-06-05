@@ -1,0 +1,34 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <rect width="800" height="450" fill="#0A0E1A" rx="12" />
+  <circle cx="400" cy="225" r="150" fill="#06B6D4" opacity="0.08" filter="blur(50px)" />
+  
+  <!-- Grid Axis -->
+  <line x1="400" y1="50" x2="400" y2="400" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  <line x1="150" y1="225" x2="650" y2="225" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  
+  <circle cx="400" cy="225" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+  <circle cx="400" cy="225" r="120" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+  <circle cx="400" cy="225" r="180" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+  
+  <!-- Angular Polygon -->
+  <polygon points="400,105 540,225 400,345 300,225" fill="rgba(239,68,68,0.1)" stroke="#EF4444" stroke-width="2.5" />
+  
+  <!-- React Polygon -->
+  <polygon points="400,165 600,225 400,285 240,225" fill="rgba(59,130,246,0.1)" stroke="#3B82F6" stroke-width="2.5" />
+  
+  <!-- Labels -->
+  <g fill="#F1F5F9" font-family="monospace" font-size="12" font-weight="bold">
+    <text x="400" y="35" text-anchor="middle">ARCHITECTURAL CONSISTENCY</text>
+    <text x="400" y="425" text-anchor="middle">FLEXIBILITY &amp; SPEED OF DEVELOPMENT</text>
+    <text x="670" y="230" text-anchor="start">COMMUNITY ECOSYSTEM</text>
+    <text x="130" y="230" text-anchor="end">LONG TERM MAINTENANCE</text>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="620" y="40" width="12" height="12" fill="#EF4444" />
+  <text x="640" y="50" fill="#94A3B8" font-family="monospace" font-size="11">Angular</text>
+  
+  <rect x="620" y="60" width="12" height="12" fill="#3B82F6" />
+  <text x="640" y="70" fill="#94A3B8" font-family="monospace" font-size="11">React + Next.js</text>
+</svg>

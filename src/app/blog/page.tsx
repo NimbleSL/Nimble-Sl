@@ -65,47 +65,61 @@ export default function BlogPage() {
           <Link href={`/blog/${featuredPost.slug}`} className="group block">
             <div
               className="card card-hover relative overflow-hidden"
-              style={{ borderTop: `3px solid ${featuredPost.accent}` }}
+              style={{ borderTop: `3px solid ${featuredPost.accent}`, padding: 0 }}
             >
-              <div className="p-8 sm:p-10 lg:p-12">
-                <div className="mb-5 flex flex-wrap items-center gap-3">
-                  <span className={`tag ${featuredPost.tagClass}`}>{featuredPost.category}</span>
-                  <span className="text-sm" style={{ color: 'var(--text-3)' }}>
-                    {featuredPost.readTime}
-                  </span>
-                  <span className="text-sm" style={{ color: 'var(--text-3)' }}>
-                    · {featuredPost.date}
-                  </span>
+              <div className="grid grid-cols-1 md:grid-cols-12">
+                {/* Image Column */}
+                <div className="relative col-span-1 md:col-span-5 h-[240px] md:h-auto overflow-hidden border-b md:border-b-0 md:border-r border-border">
+                  <img
+                    src={featuredPost.coverImage || `/images/blog/categories/${featuredPost.category.toLowerCase().replace('/', '-')}.png`}
+                    alt={featuredPost.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
+                    className="transition-transform duration-500 group-hover:scale-103"
+                  />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,26,0.35), transparent)' }} />
                 </div>
 
-                <h2
-                  className="mb-4 text-2xl font-bold leading-snug font-display sm:text-3xl lg:text-4xl transition-opacity group-hover:opacity-80"
-                  style={{ color: 'var(--text)' }}
-                >
-                  {featuredPost.title}
-                </h2>
+                {/* Content Column */}
+                <div className="col-span-1 md:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                  <div className="mb-5 flex flex-wrap items-center gap-3">
+                    <span className={`tag ${featuredPost.tagClass}`}>{featuredPost.category}</span>
+                    <span className="text-sm" style={{ color: 'var(--text-3)' }}>
+                      {featuredPost.readTime}
+                    </span>
+                    <span className="text-sm" style={{ color: 'var(--text-3)' }}>
+                      · {featuredPost.date}
+                    </span>
+                  </div>
 
-                <p
-                  className="mb-6 max-w-3xl text-base leading-relaxed sm:text-lg"
-                  style={{ color: 'var(--text-2)' }}
-                >
-                  {featuredPost.excerpt}
-                </p>
-
-                <span
-                  className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-                  style={{ color: 'var(--blue-2)' }}
-                >
-                  Read Full Article
-                  <svg
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <h2
+                    className="mb-4 text-2xl font-bold leading-snug font-display sm:text-3xl lg:text-4xl transition-opacity group-hover:opacity-80"
+                    style={{ color: 'var(--text)' }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
+                    {featuredPost.title}
+                  </h2>
+
+                  <p
+                    className="mb-6 max-w-3xl text-base leading-relaxed sm:text-lg line-clamp-3"
+                    style={{ color: 'var(--text-2)' }}
+                  >
+                    {featuredPost.excerpt}
+                  </p>
+
+                  <span
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                    style={{ color: 'var(--blue-2)' }}
+                  >
+                    Read Full Article
+                    <svg
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </div>
           </Link>

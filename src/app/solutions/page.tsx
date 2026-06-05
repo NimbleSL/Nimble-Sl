@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ArrowRight, Gauge, Sparkles } from 'lucide-react';
 import { solutions } from '@/lib/data/solutions';
 
-const FILTERS = ['All', 'FinTech', 'InsurTech', 'PropTech', 'Logistics', 'Cybersecurity', 'HR Tech', 'Enterprise', 'AI/ML'];
+const FILTERS = ['All', 'FinTech', 'InsurTech', 'HealthTech', 'PropTech', 'E-Commerce', 'Retail', 'Logistics', 'Enterprise', 'F&B', 'AI/ML'];
 
 export default function SolutionsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filtered = solutions.filter((s) => activeFilter === 'All' || s.industry === activeFilter);
+  const filtered = solutions.filter((s) => activeFilter === 'All' || s.industry === activeFilter || s.extraCategories?.includes(activeFilter));
 
   return (
     <>

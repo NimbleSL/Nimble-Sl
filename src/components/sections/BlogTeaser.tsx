@@ -6,14 +6,30 @@ import { motion } from 'framer-motion';
 import { Clock, ArrowRight } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
-const POSTS = [
-  { tag: 'FinTech', cat: 'Cost & Decision', tagClass: 'tag-blue', title: 'How Much Does It Cost to Build a FinTech App in 2026?', read: '12 min', accent: '#3B82F6', href: '/blog/fintech-app-development-cost-2026' },
-  { tag: 'AI/ML', cat: 'Deep-Dive', tagClass: 'tag-purple', title: 'Fraud Detection with Graph Neural Networks: A 96% Accuracy Case Study', read: '18 min', accent: '#A855F7', href: '/blog/fraud-detection-graph-neural-networks' },
-  { tag: 'Mobile', cat: 'Engineering', tagClass: 'tag-emerald', title: 'Offline-First Mobile Apps with Flutter: How We Built FieldOps', read: '14 min', accent: '#10B981', href: '/blog/offline-first-flutter-fieldops' },
+import { blogPosts, BlogPost } from '@/lib/data/blog';
+
+const TEASER_SLUGS = [
+  'fintech-app-development-cost',
+  'healthcare-app-development-cost',
+  'how-to-build-a-saas-product',
 ];
 
 export function BlogTeaser() {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
+  // Map the slugs to actual post objects, fallback to first 3 posts if not found
+  const teaserPosts = TEASER_SLUGS.map(slug => blogPosts.find(p => p.slug === slug))
+    .filter((p): p is BlogPost => !!p);
+
+  const postsToDisplay = [...teaserPosts];
+  if (postsToDisplay.length < 3) {
+    for (const post of blogPosts) {
+      if (postsToDisplay.length >= 3) break;
+      if (!postsToDisplay.some(p => p.slug === post.slug)) {
+        postsToDisplay.push(post);
+      }
+    }
+  }
 
   return (
     <section ref={ref} style={{ padding: '0 0 96px' }}>
@@ -33,33 +49,39 @@ export function BlogTeaser() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {POSTS.map((post, i) => (
-            <motion.div
-              key={post.href}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-            >
-              <Link href={post.href} className="card card-hover" style={{ padding: 0, overflow: 'hidden', display: 'block', height: '100%' }}>
-                <div style={{ height: 156, background: `linear-gradient(135deg, ${post.accent}33, ${post.accent}10)`, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
-                  <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.6 }} />
-                  <div style={{ position: 'absolute', bottom: 16, left: 16, fontFamily: 'var(--font-mono)', fontSize: 48, fontWeight: 800, color: post.accent, opacity: 0.5, lineHeight: 1 }}>
-                    {post.tag.slice(0, 2).toUpperCase()}
+          {postsToDisplay.map((post, i) => {
+            const imageUrl = post.coverImage || `/images/blog/categories/${post.category.toLowerCase().replace('/', '-')}.png`;
+            return (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
+              >
+                <Link href={`/blog/${post.slug}`} className="card card-hover group" style={{ padding: 0, overflow: 'hidden', display: 'block', height: '100%' }}>
+                  <div style={{ height: 160, position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)' }}>
+                    <img
+                      src={imageUrl}
+                      alt={post.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,26,0.3), transparent)' }} />
                   </div>
-                </div>
-                <div style={{ padding: 20 }}>
-                  <div style={{ display: 'flex', gap: 6, marginBottom: 10 }}>
-                    <span className={`tag ${post.tagClass}`} style={{ fontSize: 10 }}>{post.tag}</span>
-                    <span className="tag" style={{ fontSize: 10 }}>{post.cat}</span>
+                  <div style={{ padding: 20 }}>
+                    <div style={{ display: 'flex', gap: 6, marginBottom: 10 }}>
+                      <span className={`tag ${post.tagClass}`} style={{ fontSize: 10 }}>{post.category}</span>
+                      <span className="tag" style={{ fontSize: 10 }}>Deep-Dive</span>
+                    </div>
+                    <h3 style={{ fontSize: 16, lineHeight: 1.4, color: 'var(--text)', marginBottom: 12, fontWeight: 600, minHeight: 44 }} className="line-clamp-2">{post.title}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--font-mono)' }}>
+                      <Clock size={11} /> {post.readTime}
+                    </div>
                   </div>
-                  <h3 style={{ fontSize: 16, lineHeight: 1.4, color: 'var(--text)', marginBottom: 12, fontWeight: 600 }}>{post.title}</h3>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--text-3)', fontFamily: 'var(--font-mono)' }}>
-                    <Clock size={11} /> {post.read} read
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

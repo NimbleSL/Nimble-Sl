@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#0A0E1A" rx="12" />
+  <circle cx="400" cy="225" r="200" fill="#3B82F6" opacity="0.08" filter="blur(60px)" />
+  
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  
+      <!-- Standard timeline development roadmap -->
+      <line x1="100" y1="225" x2="700" y2="225" stroke="rgba(255,255,255,0.15)" stroke-width="4" />
+      <g fill="#0F1629" stroke="#3B82F6" stroke-width="2.5">
+        <circle cx="150" cy="225" r="35" />
+        <circle cx="350" cy="225" r="35" />
+        <circle cx="550" cy="225" r="35" />
+        <circle cx="680" cy="225" r="25" />
+      </g>
+      <g fill="#F1F5F9" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+        <text x="150" y="228">PLAN</text>
+        <text x="350" y="228">BUILD</text>
+        <text x="550" y="228">AUDIT</text>
+        <text x="680" y="228" font-size="10">LAUNCH</text>
+        
+        <text x="150" y="290" fill="#94A3B8" font-weight="normal">Phase 1: Specs</text>
+        <text x="350" y="290" fill="#94A3B8" font-weight="normal">Phase 2: Code Sprints</text>
+        <text x="550" y="290" fill="#94A3B8" font-weight="normal">Phase 3: QA Checks</text>
+        <text x="680" y="290" fill="#10B981">Live URL</text>
+      </g>
+    
+</svg>

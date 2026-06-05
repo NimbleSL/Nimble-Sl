@@ -7,15 +7,29 @@ import { blogPosts, CATEGORIES, type BlogPost } from '@/lib/data/blog';
 const POSTS_PER_PAGE = 9;
 
 function PostCard({ post }: { post: BlogPost }) {
+  const imageUrl = post.coverImage || `/images/blog/categories/${post.category.toLowerCase().replace('/', '-')}.png`;
   return (
     <article
       className="card card-hover group relative overflow-hidden flex flex-col"
-      style={{ borderTop: `2px solid ${post.accent}` }}
+      style={{ padding: 0, height: '100%' }}
     >
-      <div className="p-6 flex flex-col flex-1">
-        {/* Category + read time */}
-        <div className="mb-4 flex items-center justify-between">
+      {/* Cover Image */}
+      <div style={{ height: 180, position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)' }}>
+        <img
+          src={imageUrl}
+          alt={post.title}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          className="transition-transform duration-500 group-hover:scale-105"
+        />
+        <div style={{ position: 'absolute', top: 12, left: 12, zIndex: 2 }}>
           <span className={`tag ${post.tagClass}`}>{post.category}</span>
+        </div>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,26,0.3), transparent)' }} />
+      </div>
+
+      <div className="p-6 flex flex-col flex-1">
+        {/* Read time */}
+        <div className="mb-3 flex items-center justify-between">
           <span className="text-xs" style={{ color: 'var(--text-3)' }}>{post.readTime}</span>
         </div>
 
@@ -42,10 +56,10 @@ function PostCard({ post }: { post: BlogPost }) {
           <span className="text-xs" style={{ color: 'var(--text-3)' }}>{post.date}</span>
           <Link
             href={`/blog/${post.slug}`}
-            className="inline-flex items-center gap-1 text-xs font-medium transition-colors hover:opacity-80"
+            className="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-80"
             style={{ color: 'var(--blue-2)' }}
           >
-            Read →
+            Read Article →
           </Link>
         </div>
       </div>

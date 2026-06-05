@@ -151,13 +151,16 @@ function renderContent(content: string) {
 
     // image block
     if (block.startsWith('![')) {
-      const match = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      const match = block.match(/^!\[([^\]]*)\]\(([^)]+)\)(?:\s*\n?\s*\*([^*]+)\*)?$/);
       if (match) {
+        const alt = match[1];
+        const src = match[2];
+        const caption = match[3] || alt;
         result.push(
-          <figure key={i} style={{ margin: '40px 0' }}>
+          <figure key={i} style={{ margin: '40px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={match[2]} alt={match[1]} style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border)' }} />
-            {match[1] && <figcaption style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-3)', marginTop: 12 }}>{match[1]}</figcaption>}
+            <img src={src} alt={alt} style={{ width: '100%', maxWidth: 760, borderRadius: 12, border: '1px solid var(--border)' }} />
+            {caption && <figcaption style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-3)', marginTop: 12, fontStyle: 'italic' }}>{caption}</figcaption>}
           </figure>
         );
         i++; continue;

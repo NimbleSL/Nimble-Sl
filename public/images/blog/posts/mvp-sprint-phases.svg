@@ -1,0 +1,61 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <rect width="800" height="450" fill="#0A0E1A" rx="12" />
+  <circle cx="400" cy="225" r="160" fill="#F59E0B" opacity="0.08" filter="blur(60px)" />
+  
+  <!-- Timeline Base Line -->
+  <line x1="80" y1="260" x2="720" y2="260" stroke="rgba(255,255,255,0.15)" stroke-width="4" />
+  
+  <!-- Weeks progress bars -->
+  <!-- Phase 1: W1-2 -->
+  <line x1="80" y1="260" x2="240" y2="260" stroke="#F59E0B" stroke-width="8" />
+  <!-- Phase 2: W3-6 -->
+  <line x1="240" y1="260" x2="560" y2="260" stroke="#E11D48" stroke-width="8" />
+  <!-- Phase 3: W7-8 -->
+  <line x1="560" y1="260" x2="720" y2="260" stroke="#10B981" stroke-width="8" />
+  
+  <!-- Phase Nodes -->
+  <circle cx="80" cy="260" r="12" fill="#0A0E1A" stroke="#F59E0B" stroke-width="3" />
+  <circle cx="240" cy="260" r="12" fill="#0A0E1A" stroke="#F59E0B" stroke-width="3" />
+  <circle cx="560" cy="260" r="12" fill="#0A0E1A" stroke="#E11D48" stroke-width="3" />
+  <circle cx="720" cy="260" r="12" fill="#0A0E1A" stroke="#10B981" stroke-width="3" />
+  
+  <!-- Card overlays above nodes -->
+  <g fill="#0F1629" stroke-width="1.5">
+    <!-- W1-2 Card -->
+    <rect x="80" y="60" width="140" height="140" rx="8" stroke="#F59E0B" />
+    <!-- W3-6 Card -->
+    <rect x="280" y="60" width="200" height="140" rx="8" stroke="#E11D48" />
+    <!-- W7-8 Card -->
+    <rect x="560" y="60" width="160" height="140" rx="8" stroke="#10B981" />
+  </g>
+  
+  <!-- Labels inside cards -->
+  <g font-family="monospace" font-size="11" fill="#F1F5F9" text-anchor="middle">
+    <!-- Card 1 -->
+    <text x="150" y="95" font-weight="bold" fill="#F59E0B">WEEK 1 - 2</text>
+    <text x="150" y="125">Discovery</text>
+    <text x="150" y="145">Design Sprint</text>
+    <text x="150" y="165">MoSCoW Rules</text>
+    
+    <!-- Card 2 -->
+    <text x="380" y="95" font-weight="bold" fill="#E11D48">WEEK 3 - 6</text>
+    <text x="380" y="125">Development Sprints</text>
+    <text x="380" y="145">Continuous Integrations</text>
+    <text x="380" y="165">Staging Deploys</text>
+    
+    <!-- Card 3 -->
+    <text x="640" y="95" font-weight="bold" fill="#10B981">WEEK 7 - 8</text>
+    <text x="640" y="125">QA Auditing</text>
+    <text x="640" y="145">Launch Checklist</text>
+    <text x="640" y="165">Live Release</text>
+  </g>
+  
+  <!-- Milestone Indicators -->
+  <g font-family="monospace" font-size="12" fill="#94A3B8" text-anchor="middle">
+    <text x="80" y="300">Start</text>
+    <text x="240" y="300">Design Signoff</text>
+    <text x="560" y="300">Feature Freeze</text>
+    <text x="720" y="300">Production</text>
+  </g>
+</svg>
