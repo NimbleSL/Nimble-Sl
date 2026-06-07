@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  const lastUpdated = 'January 10, 2025';
+  const lastUpdated = 'January 10, 2026';
 
   return (
     <main className="min-h-screen" style={{ background: 'var(--bg)' }}>

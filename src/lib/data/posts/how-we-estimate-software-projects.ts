@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your how we estimate software projects pipeline. Transparency benchmarks, feature breakdowns, scoping iterations, and variable risk pricing calculated.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'November 20, 2025',
+  date: 'November 20, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/how-we-estimate-software-projects.svg',

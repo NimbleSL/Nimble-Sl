@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your fintech app development pipeline. PCI DSS, KYC/AML, payment integrations, and double-entry ledgers — everything founders need to build fintech ...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'January 1, 2025',
+  date: 'January 1, 2026',
   accent: '#1E40AF',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/fintech-app-development-cost.svg',

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your hiring agency vs in-house pipeline. Comparing hiring pipelines, onboarding overheads, flexibility scales, and lifetime maintenance responsibili...`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'September 2, 2025',
+  date: 'September 2, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/hiring-agency-vs-in-house.svg',

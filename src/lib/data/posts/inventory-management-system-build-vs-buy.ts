@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your inventory management system pipeline. Barcode scanner integration, stock level reconciliations, warehouse routing paths, and how to decide betw...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'July 27, 2025',
+  date: 'July 27, 2026',
   accent: '#EA580C',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/inventory-management-system-build-vs-buy.svg',

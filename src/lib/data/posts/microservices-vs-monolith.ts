@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your microservices vs monolith pipeline. Evaluating operational pipelines, network lookup overheads, transactional rollbacks, and software team boun...`,
   category: 'Engineering',
   readTime: '8 min read',
-  date: 'February 23, 2025',
+  date: 'February 23, 2026',
   accent: '#3B82F6',
   tagClass: 'tag-blue',
   coverImage: '/blog/covers/microservices-vs-monolith.svg',

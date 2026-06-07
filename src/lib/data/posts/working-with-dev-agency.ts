@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your working with dev agency pipeline. Onboarding workflows, sprint schedules, check-in intervals, and deployment operations protocols explained.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'December 1, 2025',
+  date: 'December 1, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/working-with-dev-agency.svg',

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, useReducedMotion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Sparkles, ArrowRight, Star } from 'lucide-react';
+import { Sparkles, ArrowRight, Star, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { MagneticWrapper } from '@/components/ui/MagneticWrapper';
 
@@ -341,7 +341,7 @@ export function Hero() {
               variants={itemVariants}
               style={{ marginTop: 28, fontSize: 18, maxWidth: 520, color: 'var(--text-2)', lineHeight: 1.65 }}
             >
-              50+ enterprise platforms shipped across 12 countries. From $5K MVPs to $120K+ production
+              50+ enterprise platforms shipped across 8 countries. From $5K MVPs to $120K+ production
               systems — without the agency markup or the offshore quality lottery.
             </motion.p>
 
@@ -397,9 +397,9 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="hidden sm:block hero-rate-divider" style={{ width: 1, height: 32, background: 'var(--border)' }} />
-              <div className="hidden sm:block hero-rate-text" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-2)' }}>
-                <span style={{ color: 'var(--emerald-2)' }}>$25–49/hr</span> · Verified rate
+              <div style={{ padding: '6px 12px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 999, display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 500, color: 'var(--text-2)' }}>
+                <CheckCircle2 size={14} style={{ color: 'var(--emerald-2)' }} />
+                No subcontractors
               </div>
             </motion.div>
           </motion.div>

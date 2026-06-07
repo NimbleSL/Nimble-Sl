@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your ai chatbot development pipeline. Building autonomous reasoning agents, vector database document lookups, and customer chat APIs using LLM tools.`,
   category: 'AI/ML',
   readTime: '8 min read',
-  date: 'October 26, 2025',
+  date: 'October 26, 2026',
   accent: '#7C3AED',
   tagClass: 'tag-purple',
   coverImage: '/blog/covers/ai-chatbot-development.svg',

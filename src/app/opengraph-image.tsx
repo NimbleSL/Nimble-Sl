@@ -99,7 +99,7 @@ export default function OGImage() {
             <span style={{ fontSize: 16, color: '#94A3B8' }}>Projects</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontSize: 36, fontWeight: 700, color: '#3B82F6' }}>12</span>
+            <span style={{ fontSize: 36, fontWeight: 700, color: '#3B82F6' }}>8</span>
             <span style={{ fontSize: 16, color: '#94A3B8' }}>Countries</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>

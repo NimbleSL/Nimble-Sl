@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your software requirements document pipeline. Creating user stories, mapping system wireframes, charting third-party APIs, and building documentatio...`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'July 12, 2025',
+  date: 'July 12, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/software-requirements-document.svg',

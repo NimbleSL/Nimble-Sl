@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your mvp development pipeline. Defining core customer workflows, setting up scope blockades, and launching in 8 weeks using our sprint protocol.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'June 3, 2025',
+  date: 'June 3, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/mvp-development-strategy.svg',

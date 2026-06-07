@@ -50,7 +50,7 @@ export default function BlogPage() {
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: 'var(--text-2)' }}>
               Real-world engineering articles, product case studies, and business insights from
-              the team that has shipped 50+ enterprise products across 12 countries.
+              the team that has shipped 50+ enterprise products across 8 countries.
             </p>
           </div>
         </div>

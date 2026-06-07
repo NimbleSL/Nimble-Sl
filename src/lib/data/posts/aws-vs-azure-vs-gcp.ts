@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your aws vs azure vs gcp pipeline. Analyzing credits structures, managed Kubernetes tools, serverless architectures, and private VPC networking feat...`,
   category: 'Engineering',
   readTime: '8 min read',
-  date: 'January 14, 2025',
+  date: 'January 14, 2026',
   accent: '#3B82F6',
   tagClass: 'tag-blue',
   coverImage: '/blog/covers/aws-vs-azure-vs-gcp.svg',

@@ -29,7 +29,7 @@ export function getOrganizationJsonLd(): object {
     name: 'NimbleSL',
     url: BASE_URL,
     logo: `${BASE_URL}/logo.png`,
-    description: "Bangladesh's leading software development company. Silicon Valley engineering at Bangladesh pricing. Custom software, AI/ML, mobile apps, and enterprise SaaS development for clients across 12 countries.",
+    description: "Bangladesh's leading software development company. Silicon Valley engineering at Bangladesh pricing. Custom software, AI/ML, mobile apps, and enterprise SaaS development for clients across 8 countries.",
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',

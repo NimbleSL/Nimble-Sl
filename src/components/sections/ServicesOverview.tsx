@@ -20,7 +20,7 @@ const SERVICES = [
   },
   {
     icon: Smartphone, accent: 'purple', title: 'Mobile Apps',
-    desc: 'Flutter & React Native. Offline-first architecture proven across 8 production apps.',
+    desc: 'Flutter & React Native. Offline-first architecture proven across 48 production apps.',
     href: '/services/mobile-app-development',
   },
   {
@@ -30,7 +30,7 @@ const SERVICES = [
   },
   {
     icon: Brain, accent: 'amber', title: 'AI & Machine Learning',
-    desc: 'RAG systems, LLM apps, GNN fraud detection. We shipped a 96%-accurate model in 2024.',
+    desc: 'RAG systems, LLM apps, GNN fraud detection. Currently we are building a model with 96% accuracy for a renowned company.',
     href: '/services/ai-machine-learning',
   },
   {

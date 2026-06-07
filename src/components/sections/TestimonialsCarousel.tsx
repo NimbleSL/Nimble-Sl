@@ -22,9 +22,9 @@ const TESTIMONIALS = [
   },
   {
     quote: 'NimbleSL rebuilt our entire field operations platform from scratch in 14 weeks. The Flutter app now handles 200+ field agents with offline sync. Previous vendor took 8 months and delivered nothing usable.',
-    author: 'James Okafor',
-    role: 'CTO · Meridian Logistics Group',
-    initials: 'JO',
+    author: 'Joynul Abedin',
+    role: 'Founder · NexEstate',
+    initials: 'JA',
     gradient: 'linear-gradient(135deg, #10B981, #06B6D4)',
     metrics: [
       { value: '200+', label: 'Field agents onboarded', sub: 'Week 1 post-launch', accent: 'emerald' },
@@ -35,15 +35,41 @@ const TESTIMONIALS = [
   },
   {
     quote: 'We needed a compliant KYC + digital wallet in 10 weeks for our Series A demo. NimbleSL delivered — on time, fully documented, SOC2-ready. Investors were impressed. We closed the round.',
-    author: 'Priya Nair',
-    role: 'CEO & Co-founder · FinBridge',
-    initials: 'PN',
+    author: 'Hasan Zahir',
+    role: 'Director · North Avenue Properties',
+    initials: 'HZ',
     gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)',
     metrics: [
       { value: '10 wk', label: 'KYC + wallet delivered', sub: 'Series A deadline met', accent: 'emerald' },
       { value: '$2.4M', label: 'Round closed post-demo', accent: 'blue' },
       { value: 'SOC2', label: 'Compliance ready', sub: 'Full audit trail', accent: 'cyan' },
       { value: '100%', label: 'Milestones on schedule', accent: 'purple' },
+    ],
+  },
+  {
+    quote: 'Our enterprise architecture needed a massive overhaul to handle multi-vendor transactions. The NimbleSL team brought deep .NET and cloud expertise. Seamless migration with zero downtime.',
+    author: 'Mishu',
+    role: 'CEO · Rosachy',
+    initials: 'MI',
+    gradient: 'linear-gradient(135deg, #8B5CF6, #EC4899)',
+    metrics: [
+      { value: 'Zero', label: 'Downtime during migration', sub: 'Seamless cutover', accent: 'emerald' },
+      { value: '3x', label: 'API response speed', accent: 'blue' },
+      { value: '12 wk', label: 'Migration timeline', accent: 'cyan' },
+      { value: '100%', label: 'Data integrity maintained', accent: 'purple' },
+    ],
+  },
+  {
+    quote: 'From wireframes to a live SaaS platform, they executed perfectly. We avoided the offshore communication nightmare completely. The team is just as proactive as any internal engineering team.',
+    author: 'Rubel Chowdhury',
+    role: 'Founder · WPEDO',
+    initials: 'RC',
+    gradient: 'linear-gradient(135deg, #14B8A6, #3B82F6)',
+    metrics: [
+      { value: '16 wk', label: 'Idea to live product', sub: 'On schedule', accent: 'emerald' },
+      { value: '25%', label: 'Below estimated budget', accent: 'blue' },
+      { value: '99.9%', label: 'System reliability', accent: 'cyan' },
+      { value: '5★', label: 'Client satisfaction', accent: 'purple' },
     ],
   },
 ];

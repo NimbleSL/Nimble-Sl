@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your healthcare app development cost pipeline. HIPAA regulations, EHR integrations, patient portal builds, and real pricing guidelines for launching...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'April 28, 2025',
+  date: 'April 28, 2026',
   accent: '#0F766E',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/healthcare-app-development-cost.svg',

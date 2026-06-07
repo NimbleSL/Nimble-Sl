@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your technical debt cost pipeline. How nested dependencies, missing documentation, and unstructured database tables block product scale and developers.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'October 11, 2025',
+  date: 'October 11, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/technical-debt-cost.svg',

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your real estate management platform pipeline. Tenant portals, document storage, payment automations, maintenance scheduling dashboards, and custom ...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'November 7, 2025',
+  date: 'November 7, 2026',
   accent: '#78716C',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/real-estate-management-platform.svg',

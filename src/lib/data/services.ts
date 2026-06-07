@@ -42,7 +42,7 @@ export const services: IService[] = [
   {
     slug: 'mobile-app-development',
     title: 'Mobile App Development',
-    shortDescription: 'iOS & Android apps with Flutter. Offline-first architecture proven across 8 production apps.',
+    shortDescription: 'iOS & Android apps with Flutter. Offline-first architecture proven across 48 production apps.',
     fullDescription: 'Reach your customers on any device with native and cross-platform mobile development. Our Flutter expertise delivers offline-first apps that work where connectivity fails.',
     icon: 'mobile',
     deliverables: [
@@ -80,7 +80,7 @@ export const services: IService[] = [
   {
     slug: 'ai-machine-learning',
     title: 'AI & Machine Learning',
-    shortDescription: 'RAG systems, LLM apps, GNN fraud detection. We shipped a 96%-accurate model in 2024.',
+    shortDescription: 'RAG systems, LLM apps, GNN fraud detection. Currently we are building a model with 96% accuracy for a renowned company.',
     fullDescription: 'Transform your business with intelligent AI-powered solutions. We implement cutting-edge algorithms to automate processes, generate insights, and detect patterns humans miss.',
     icon: 'brain',
     deliverables: [

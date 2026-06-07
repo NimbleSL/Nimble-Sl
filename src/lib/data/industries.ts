@@ -121,7 +121,7 @@ export const industries: IIndustry[] = [
     tagline: 'Multi-Tenant Enterprise Platforms',
     description: 'CRMs, ERPs, IAM platforms, and multi-tenant SaaS architectures. We build the operational backbone of enterprise organizations.',
     icon: 'building',
-    projectCount: '12 projects',
+    projectCount: '10 projects',
     challenges: [
       'Complex multi-tenant data isolation requirements',
       'Legacy ERP systems blocking digital transformation',

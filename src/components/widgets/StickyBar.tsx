@@ -81,10 +81,6 @@ export function StickyBar() {
                 <span className="text-sm font-bold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>Client</span>
                 <span className="text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>reviews</span>
               </div>
-
-              {/* Divider */}
-              <div style={{ width: 1, height: 20, background: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)' }} />
-
               {/* Rate badge */}
               <div
                 className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
@@ -99,7 +95,7 @@ export function StickyBar() {
                   transition={{ duration: 1.6, repeat: Infinity }}
                   style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981', flexShrink: 0 }}
                 />
-                $25–49/hr · Verified rate
+                Top Rated Agency
               </div>
             </div>
 
@@ -181,7 +177,7 @@ export function StickyBar() {
                     transition={{ duration: 1.6, repeat: Infinity }}
                     style={{ width: 4, height: 4, borderRadius: '50%', background: '#10B981' }}
                   />
-                  $25–49/hr
+                  Top Rated
                 </div>
                 <button
                   onClick={handleDismiss}

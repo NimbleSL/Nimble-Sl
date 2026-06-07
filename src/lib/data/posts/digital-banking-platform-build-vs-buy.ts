@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your digital banking platform pipeline. Comparing cost, timeline, compliance, and custom features to decide whether to build a banking backend or li...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'February 10, 2025',
+  date: 'February 10, 2026',
   accent: '#1E40AF',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/digital-banking-platform-build-vs-buy.svg',

@@ -17,31 +17,31 @@ export const runtime = 'edge';
 
 const RATE_CARDS: Record<IRegion, Record<string, number>> = {
   local: {
-    frontend: 12, backend: 14, mobile: 14,
-    designer: 12, qa: 10, pm: 14, devops: 14, lead: 18,
+    frontend: 15, backend: 18, mobile: 18,
+    designer: 15, qa: 12, pm: 18, devops: 18, lead: 22,
   },
   midtier: {
-    frontend: 18, backend: 20, mobile: 20,
-    designer: 18, qa: 15, pm: 20, devops: 20, lead: 25,
-  },
-  international: {
     frontend: 22, backend: 25, mobile: 25,
     designer: 22, qa: 18, pm: 25, devops: 25, lead: 30,
+  },
+  international: {
+    frontend: 28, backend: 32, mobile: 32,
+    designer: 28, qa: 24, pm: 32, devops: 32, lead: 38,
   },
 };
 
 // Default blended hourly rate if teamComposition is empty / missing
 const BLENDED_DEFAULTS: Record<IRegion, number> = {
-  local: 13,
-  midtier: 19,
-  international: 24,
+  local: 16,
+  midtier: 24,
+  international: 30,
 };
 
 // Minimum total project floors
 const FLOORS: Record<IRegion, { default: number; saas: number }> = {
-  local:         { default: 3_000,  saas: 8_000 },
-  midtier:       { default: 8_000,  saas: 18_000 },
-  international: { default: 15_000, saas: 30_000 },
+  local:         { default: 4_500,  saas: 10_000 },
+  midtier:       { default: 10_000,  saas: 20_000 },
+  international: { default: 18_000, saas: 35_000 },
 };
 
 // ─── Pricing helpers ───────────────────────────────────────────────────────────

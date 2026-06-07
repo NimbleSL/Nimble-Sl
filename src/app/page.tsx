@@ -13,7 +13,7 @@ import { TechStackLogos } from '@/components/sections/TechStackLogos';
 
 export const metadata: Metadata = {
   title: 'NimbleSL — Custom Software Development Company | Bangladesh',
-  description: 'Enterprise-grade custom software development from Bangladesh. 50+ projects, 12 countries, 40-60% cost savings vs US/UK agencies. Web, Mobile, AI, Cloud — zero compromise.',
+  description: 'Enterprise-grade custom software development from Bangladesh. 50+ projects, 8 countries, 40-60% cost savings vs US/UK agencies. Web, Mobile, AI, Cloud — zero compromise.',
   keywords: ['custom software development', 'software development company bangladesh', 'offshore development', 'hire developers'],
   openGraph: {
     title: 'NimbleSL — Silicon Valley Engineering, Bangladesh Pricing',

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your rest vs graphql pipeline. Comparing network payloads, over-fetching constraints, client-side type generation libraries, and CDN edge caching se...`,
   category: 'Engineering',
   readTime: '8 min read',
-  date: 'March 4, 2025',
+  date: 'March 4, 2026',
   accent: '#3B82F6',
   tagClass: 'tag-blue',
   coverImage: '/blog/covers/rest-vs-graphql.svg',

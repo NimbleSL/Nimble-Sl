@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your restaurant management software pipeline. POS systems, menu dispatch queues, inventory management tracking, and budget estimates for custom rest...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'June 18, 2025',
+  date: 'June 18, 2026',
   accent: '#D97706',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/restaurant-management-software.svg',

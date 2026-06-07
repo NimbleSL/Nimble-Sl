@@ -131,7 +131,7 @@ export default function HireDevelopersPage() {
               </h1>
               <p style={{ marginTop: 20, fontSize: 18, color: 'var(--text-2)', maxWidth: 520, lineHeight: 1.65 }}>
                 Scale your engineering team with senior developers we've already trained and shipped with.
-                Dedicated, part-time, or project-based. Rates from $15–$38/hr.
+                Dedicated, part-time, or project-based. Everyone on your project is in our Dhaka office.
               </p>
 
               <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>

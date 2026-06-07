@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your custom software cost pipeline. Detailed calculations, hourly benchmarks, project scope configurations, and hidden implementation fees analyzed.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'April 13, 2025',
+  date: 'April 13, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/custom-software-cost.svg',

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const STATS = [
   { value: '2026', label: 'Founded', accent: 'var(--text)' },
   { value: '20+',  label: 'Team & growing', accent: 'var(--blue-2)' },
-  { value: '12',   label: 'Countries served', accent: '#67E8F9' },
+  { value: '8',   label: 'Countries served', accent: '#67E8F9' },
   { value: '98%',  label: 'Client retention', accent: 'var(--emerald-2)' },
 ];
 
@@ -191,7 +191,7 @@ export default function AboutPage() {
                 Two founders.<br />One thesis.
               </h2>
               <p style={{ marginTop: 24, fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75 }}>
-                In January 2026, Main Uddin Chisty and Habibur Rahman left their jobs and started NimbleSL
+                In January 2026, Md. Main Oddin Chisty and Habibur Rahman left their jobs and started NimbleSL
                 with a small crew of 4 exceptional developers. Not another outsourcing body shop — a proper
                 engineering company with real processes and real accountability.
               </p>
@@ -393,7 +393,7 @@ export default function AboutPage() {
               <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05))' }}>
                 <Image
                   src="/images/md-main-uddin-chisty-ceo.png"
-                  alt="Main Uddin Chisty — CEO & Co-founder, NimbleSL"
+                  alt="Md. Main Oddin Chisty — Co-founder & CEO, NimbleSL"
                   width={600}
                   height={600}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
@@ -404,9 +404,9 @@ export default function AboutPage() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
                   <div>
                     <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-display)' }}>
-                      Main Uddin Chisty
+                      Md. Main Oddin Chisty
                     </h3>
-                    <div style={{ fontSize: 13, color: 'var(--blue-2)', fontWeight: 600, marginTop: 4 }}>CEO & Co-founder</div>
+                    <div style={{ fontSize: 13, color: 'var(--blue-2)', fontWeight: 600, marginTop: 4 }}>Co-founder & CEO</div>
                   </div>
                   <span className="tag tag-blue" style={{ fontSize: 10, marginTop: 4 }}>CEO</span>
                 </div>
@@ -429,7 +429,7 @@ export default function AboutPage() {
               <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05))' }}>
                 <Image
                   src="/images/md-habibur-rahman-coo.jpeg"
-                  alt="Habibur Rahman — COO & Co-founder, NimbleSL"
+                  alt="Habibur Rahman — Co-founder & COO, NimbleSL"
                   width={600}
                   height={600}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
@@ -442,7 +442,7 @@ export default function AboutPage() {
                     <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-display)' }}>
                       Habibur Rahman
                     </h3>
-                    <div style={{ fontSize: 13, color: 'var(--emerald-2)', fontWeight: 600, marginTop: 4 }}>COO & Co-founder</div>
+                    <div style={{ fontSize: 13, color: 'var(--emerald-2)', fontWeight: 600, marginTop: 4 }}>Co-founder & COO</div>
                   </div>
                   <span className="tag tag-emerald" style={{ fontSize: 10, marginTop: 4 }}>COO</span>
                 </div>

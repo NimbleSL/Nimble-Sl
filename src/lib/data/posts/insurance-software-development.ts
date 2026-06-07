@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your insurance software development pipeline. A complete breakdown of modern claim management platforms, OCR parsing engines, fraud detection layers...`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'March 19, 2025',
+  date: 'March 19, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/insurance-software-development.svg',

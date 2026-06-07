@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your field force management app pipeline. Using SQLite client syncing, background workers, geo-tracking updates, and field reports logic to run logi...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'September 17, 2025',
+  date: 'September 17, 2026',
   accent: '#16A34A',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/field-force-management-app.svg',

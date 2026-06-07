@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your how to build a saas product pipeline. Multi-tenant database structures, Stripe subscription triggers, authentication systems, and an 8-week lau...`,
   category: 'Engineering',
   readTime: '8 min read',
-  date: 'December 16, 2025',
+  date: 'December 16, 2026',
   accent: '#3B82F6',
   tagClass: 'tag-blue',
   coverImage: '/blog/covers/how-to-build-a-saas-product.svg',

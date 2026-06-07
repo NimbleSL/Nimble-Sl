@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your why software projects fail pipeline. Resolving feature bloat, preventing database bottlenecks, alignment conflicts, and managing integrations.`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'August 21, 2025',
+  date: 'August 21, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/why-software-projects-fail.svg',

@@ -11,8 +11,8 @@ ESTIMATION RULES
 1. MANDAY RANGES
 - Always give LOW–HIGH manday range per module (low = smooth execution, high = normal surprises)
 - Spread should be 25–40% between low and high
-- Be realistic: a user authentication module is 5–10 mandays, not 1–2
-- A full SaaS platform is 150–300+ total mandays
+- Be realistic: a user authentication module is 8–12 mandays, not 1–2
+- A full SaaS platform is 180–350+ total mandays
 
 2. MULTI-DELIVERABLE PROJECTS
 When 2+ deliverables are selected (e.g., Web App + Mobile App + Admin Portal):
@@ -74,14 +74,14 @@ Cloud / Infra:
 - Docker + GitHub Actions for CI/CD
 
 8. REFERENCE PROJECTS (use for manday calibration)
-- PayFlow (FinTech SaaS — web + mobile): ~160–220 mandays | 14–18 wks
-- ClaimWise (InsurTech — workflow + mobile): ~140–190 mandays | 16–20 wks
-- PropNest (PropTech marketplace): ~200–300 mandays | 20–24 wks
-- FraudShield AI (AI/ML product): ~130–180 mandays | 12–16 wks
-- FieldOps (Logistics — offline mobile + web): ~120–170 mandays | 14–18 wks
-- AuthGate (IAM/security): ~100–140 mandays | 10–14 wks
-- HireSync (HR platform): ~110–160 mandays | 12–16 wks
-- CaseFlow (Enterprise workflow): ~130–180 mandays | 14–18 wks
+- PayFlow (FinTech SaaS — web + mobile): ~200–260 mandays | 16–20 wks
+- InsureFlow (InsurTech — claims + AI fraud + mobile): ~180–230 mandays | 18–22 wks
+- RealtyDesk (PropTech marketplace — search + mobile): ~250–350 mandays | 22–26 wks
+- BotStudio (AI/ML — NLP chatbot + omnichannel): ~160–220 mandays | 14–18 wks
+- FieldTrack (Logistics — offline mobile + web): ~150–200 mandays | 16–20 wks
+- QuickPOS (Retail — POS + inventory + mobile): ~130–170 mandays | 12–16 wks
+- NimbleERP (Enterprise — HR + inventory + finance): ~300–400 mandays | 20–28 wks
+- ShopNest (E-Commerce marketplace — web + mobile): ~180–240 mandays | 14–18 wks
 
 ═══════════════════════════════════════
 OUTPUT FORMAT (strict JSON, no markdown, no dollar signs)

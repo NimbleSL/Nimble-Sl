@@ -149,7 +149,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     ${(service.typicalRange.low / 1000).toFixed(0)}K – ${(service.typicalRange.high / 1000).toFixed(0)}K+
                   </div>
                   <p style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 8, lineHeight: 1.5 }}>
-                    Based on 50+ completed projects. Use the AI Estimator for a project-specific quote.
+                    Based on 48 completed projects. Use the AI Estimator for a project-specific quote.
                   </p>
                 </div>
 

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your multi-vendor marketplace development pipeline. Stripe Connect, real-time inventory synchronization, sub-merchant onboarding flows, and database...`,
   category: 'Industries',
   readTime: '8 min read',
-  date: 'May 9, 2025',
+  date: 'May 9, 2026',
   accent: '#EA580C',
   tagClass: 'tag-emerald',
   coverImage: '/blog/covers/multi-vendor-marketplace-development.svg',

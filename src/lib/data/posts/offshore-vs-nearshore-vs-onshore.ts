@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your offshore vs nearshore vs onshore pipeline. TimeZone overlays, developer communications, hourly rate differentials, and total ownership calculat...`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'May 22, 2025',
+  date: 'May 22, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/offshore-vs-nearshore-vs-onshore.svg',

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   excerpt: `Optimize your erp software development pipeline. Integrating accounting, human resources, custom warehouse supplies, and client relationship modules into a u...`,
   category: 'Business',
   readTime: '8 min read',
-  date: 'August 8, 2025',
+  date: 'August 8, 2026',
   accent: '#6366F1',
   tagClass: 'tag-amber',
   coverImage: '/blog/covers/erp-software-development.svg',

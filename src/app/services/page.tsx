@@ -33,7 +33,7 @@ export default function ServicesPage() {
               Six disciplines.<br /><span className="grad-blue">One delivery team.</span>
             </h1>
             <p style={{ marginTop: 20, fontSize: 18, color: 'var(--text-2)', maxWidth: 600, lineHeight: 1.65 }}>
-              No subcontractors, no token-counting agencies. Every service is delivered by engineers we hired, trained, and retained in our Gulshan-2 office.
+              No subcontractors, no token-counting agencies. Every service is delivered by engineers we hired, trained, and retained in our Dhaka office.
             </p>
             <div style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link href="/tools/project-estimator" className="btn btn-emerald" style={{ padding: '12px 20px' }}>
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                   title: 'Sprint Development',
                   duration: '2-week sprints',
                   color: '#10B981',
-                  description: 'Development runs in 2-week sprints with a working demo at the end of every sprint — not a status update, an actual working feature you can click through. You get access to a staging environment from week 2. Every sprint starts with a backlog review where you can reprioritise upcoming work based on what you\'ve seen. Our teams are small (4–7 people) and structured to work without hand-off delays: frontend, backend, mobile, and QA engineers in the same daily standup. We don\'t use offshore-to-offshore subcontracting — everyone on your project is in our Gulshan-2 office.',
+                  description: 'Development runs in 2-week sprints with a working demo at the end of every sprint — not a status update, an actual working feature you can click through. You get access to a staging environment from week 2. Every sprint starts with a backlog review where you can reprioritise upcoming work based on what you\'ve seen. Our teams are small (4–7 people) and structured to work without hand-off delays: frontend, backend, mobile, and QA engineers in the same daily standup. We don\'t use offshore-to-offshore subcontracting — everyone on your project is in our Dhaka office.',
                 },
                 {
                   step: '04',

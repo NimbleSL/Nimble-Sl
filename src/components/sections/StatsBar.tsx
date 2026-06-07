@@ -45,7 +45,7 @@ export function StatsBar() {
       {/* Flags + label */}
       <div className="container" style={{ padding: '40px 32px 0', textAlign: 'center' }}>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 16 }}>
-          Trusted by teams across 12 countries
+          Trusted by teams across 8 countries
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           {FLAGS.map((f) => (
@@ -108,7 +108,7 @@ export function StatsBar() {
       <div className="container" style={{ padding: '0 32px 40px' }}>
         <div className="rg-4 stats-grid" style={{ paddingTop: 32, borderTop: '1px solid var(--border)', gap: 24 }}>
           <StatCounter end={50} suffix="+" label="Projects shipped" accent="var(--blue-2)" />
-          <StatCounter end={12} suffix="" label="Countries served" accent="#67E8F9" />
+          <StatCounter end={8} suffix="" label="Countries served" accent="#67E8F9" />
           <StatCounter end={98} suffix="%" label="Client retention" accent="var(--emerald-2)" />
           <div className="text-center">
             <div style={{ fontSize: 36, fontWeight: 800, color: '#FCD34D', fontFamily: 'var(--font-plus-jakarta)', lineHeight: 1 }}>

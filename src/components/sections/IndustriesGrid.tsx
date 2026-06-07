@@ -7,14 +7,14 @@ import { Building2, Heart, Shield, Home, ShoppingCart, BookOpen, Truck, Briefcas
 import { useInView } from '@/hooks/useInView';
 
 const INDUSTRIES = [
-  { name: 'FinTech', icon: Building2, count: '14 projects', href: '/industries/fintech-banking' },
-  { name: 'HealthTech', icon: Heart, count: '7 projects', href: '/industries/healthcare-medtech' },
-  { name: 'InsurTech', icon: Shield, count: '6 projects', href: '/industries/insurance' },
-  { name: 'PropTech', icon: Home, count: '5 projects', href: '/industries/real-estate' },
-  { name: 'E-commerce', icon: ShoppingCart, count: '8 projects', href: '/industries/ecommerce-retail' },
-  { name: 'EdTech', icon: BookOpen, count: '4 projects', href: '/industries/edtech' },
-  { name: 'Logistics', icon: Truck, count: '6 projects', href: '/industries/logistics-supply-chain' },
-  { name: 'Enterprise SaaS', icon: Briefcase, count: '12 projects', href: '/industries/enterprise-saas' },
+  { name: 'FinTech', icon: Building2, count: '12 projects', href: '/industries/fintech-banking' },
+  { name: 'HealthTech', icon: Heart, count: '6 projects', href: '/industries/healthcare-medtech' },
+  { name: 'InsurTech', icon: Shield, count: '5 projects', href: '/industries/insurance' },
+  { name: 'PropTech', icon: Home, count: '4 projects', href: '/industries/real-estate' },
+  { name: 'E-commerce', icon: ShoppingCart, count: '6 projects', href: '/industries/ecommerce-retail' },
+  { name: 'EdTech', icon: BookOpen, count: '3 projects', href: '/industries/edtech' },
+  { name: 'Logistics', icon: Truck, count: '4 projects', href: '/industries/logistics-supply-chain' },
+  { name: 'Enterprise SaaS', icon: Briefcase, count: '8 projects', href: '/industries/enterprise-saas' },
 ];
 
 export function IndustriesGrid() {

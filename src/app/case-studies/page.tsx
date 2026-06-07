@@ -173,7 +173,7 @@ export default function CaseStudiesPage() {
                   <div style={{ display: 'flex', gap: 24, marginTop: 28, flexWrap: 'wrap' }}>
                     {[
                       { value: '50+', label: 'projects shipped' },
-                      { value: '12', label: 'countries served' },
+                      { value: '8', label: 'countries served' },
                       { value: '14 wks', label: 'avg delivery' },
                     ].map((s) => (
                       <div key={s.label}>
