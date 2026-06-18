@@ -228,130 +228,128 @@ async function generatePDF(
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
   const PW = 210;
   const PH = 297;
-  const M  = 20;          // margin
-  const CW = PW - 2 * M;  // content width = 170mm
+  const M  = 18;
+  const CW = PW - 2 * M;  // 174mm
 
-  // ── Brand colors ────────────────────────────────────────────────────────────
-  const NAVY   = [15,  23,  42]  as [number, number, number];
-  const BLUE   = [59,  130, 246] as [number, number, number];
-  const BLUE_D = [30,  64,  175] as [number, number, number];
-  const LG     = [241, 245, 249] as [number, number, number];
-  const LG_B   = [226, 232, 240] as [number, number, number];
-  const WHITE  = [255, 255, 255] as [number, number, number];
-  const BODY   = [55,  65,  81]  as [number, number, number];
-  const MUTED  = [107, 114, 128] as [number, number, number];
-  const GREEN  = [22,  163, 74]  as [number, number, number];
-  const AMBER  = [217, 119, 6]   as [number, number, number];
+  // ── Brand palette ───────────────────────────────────────────────────────────
+  const NAVY   = [10,  20,  42]  as [number,number,number];
+  const NAVY2  = [20,  36,  66]  as [number,number,number];
+  const BLUE   = [59,  130, 246] as [number,number,number];
+  const BLUE2  = [37,  99,  235] as [number,number,number];
+  const BLUE3  = [30,  64,  175] as [number,number,number];
+  const BLUEL  = [219, 234, 254] as [number,number,number];
+  const LG     = [244, 246, 250] as [number,number,number];
+  const LGB    = [218, 227, 240] as [number,number,number];
+  const WHITE  = [255, 255, 255] as [number,number,number];
+  const BODY   = [45,  55,  72]  as [number,number,number];
+  const MUTED  = [100, 116, 139] as [number,number,number];
+  const GREEN  = [16,  185, 129] as [number,number,number];
+  const AMBER  = [217, 119, 6]   as [number,number,number];
+  const RED    = [220, 38,  38]  as [number,number,number];
 
   const estDate    = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const estId      = `EST-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`;
   const clientName = (lead.name || 'Valued Client').trim();
 
-  // ── Low-level drawing helpers ────────────────────────────────────────────────
-  const F = (c: [number, number, number]) => doc.setFillColor(c[0], c[1], c[2]);
-  const D = (c: [number, number, number]) => doc.setDrawColor(c[0], c[1], c[2]);
-  const T = (c: [number, number, number]) => doc.setTextColor(c[0], c[1], c[2]);
-  const bd  = (sz: number) => { doc.setFont('helvetica', 'bold');   doc.setFontSize(sz); };
-  const nm  = (sz: number) => { doc.setFont('helvetica', 'normal'); doc.setFontSize(sz); };
-  const itl = (sz: number) => { doc.setFont('helvetica', 'italic'); doc.setFontSize(sz); };
+  // ── Drawing primitives ──────────────────────────────────────────────────────
+  const F  = (c: [number,number,number]) => doc.setFillColor(c[0], c[1], c[2]);
+  const D  = (c: [number,number,number]) => doc.setDrawColor(c[0], c[1], c[2]);
+  const T  = (c: [number,number,number]) => doc.setTextColor(c[0], c[1], c[2]);
+  const bd = (sz: number) => { doc.setFont('helvetica', 'bold');   doc.setFontSize(sz); };
+  const nm = (sz: number) => { doc.setFont('helvetica', 'normal'); doc.setFontSize(sz); };
+  const itl= (sz: number) => { doc.setFont('helvetica', 'italic'); doc.setFontSize(sz); };
+  const f  = (n: number)  => '$' + n.toLocaleString('en-US');
 
-  function hl(y: number, x1 = M, x2 = PW - M, col: [number, number, number] = LG_B, lw = 0.3) {
+  function hl(y: number, x1 = M, x2 = PW - M, col: [number,number,number] = LGB, lw = 0.3) {
     doc.setLineWidth(lw); D(col); doc.line(x1, y, x2, y);
   }
-  function f(n: number) { return '$' + n.toLocaleString('en-US'); }
 
-  // ── Programmatic logo (no image) ─────────────────────────────────────────────
-  // Draws "N" monogram box + "imble SOFTWARE LAB" wordmark
-  function drawLogo(x: number, y: number, boxSize = 11, textColor: [number,number,number] = WHITE) {
-    // Blue rounded box
-    F(BLUE);
-    doc.roundedRect(x, y, boxSize, boxSize, 1.2, 1.2, 'F');
-    // "N" letter inside
-    T(WHITE);
-    bd(Math.round(boxSize * 1.1));
-    doc.text('N', x + boxSize * 0.18, y + boxSize * 0.82);
-    // Wordmark
-    T(textColor);
-    bd(Math.round(boxSize * 1.35));
-    doc.text('imble', x + boxSize + 2.5, y + boxSize * 0.78);
-    // Tagline
-    T(textColor === WHITE ? [147, 197, 253] as [number, number, number] : MUTED);
-    nm(Math.round(boxSize * 0.58));
-    doc.text('SOFTWARE LAB', x + boxSize + 2.5, y + boxSize + 1);
+  // ── Logo: "N" box + "imble SOFTWARE LAB" ────────────────────────────────────
+  function drawLogo(x: number, y: number, sz = 12, tc: [number,number,number] = WHITE) {
+    F(BLUE); doc.roundedRect(x, y, sz, sz, 1.5, 1.5, 'F');
+    T(WHITE); bd(Math.round(sz * 1.1)); doc.text('N', x + sz * 0.17, y + sz * 0.82);
+    T(tc); bd(Math.round(sz * 1.3)); doc.text('imble', x + sz + 2.5, y + sz * 0.77);
+    T(tc === WHITE ? [147, 197, 253] as [number,number,number] : MUTED);
+    nm(Math.round(sz * 0.56)); doc.text('SOFTWARE LAB', x + sz + 2.5, y + sz + 0.9);
   }
 
-  // ── Repeating header bar for pages 2+ ────────────────────────────────────────
-  function repeatHeader() {
-    F(NAVY);
-    doc.rect(0, 0, PW, 12, 'F');
-    drawLogo(M, 0.7, 9.5);
-    T([147, 197, 253]);
-    nm(8);
-    doc.text(`Project Estimate for ${clientName}`, M + 26, 8);
-    T(MUTED);
-    nm(7.5);
-    doc.text(estId, PW - M, 8, { align: 'right' });
+  // ── Page header for pages 2+ ─────────────────────────────────────────────────
+  function pageHeader() {
+    F(NAVY); doc.rect(0, 0, PW, 13, 'F');
+    F(BLUE); doc.rect(0, 13, PW, 0.8, 'F');
+    drawLogo(M, 1.5, 10);
+    T([147, 197, 253]); nm(7.5);
+    const cn = clientName.length > 30 ? clientName.slice(0, 30) + '…' : clientName;
+    doc.text(`Project Estimate  ·  ${cn}`, M + 27, 9);
+    T([110, 150, 210] as [number,number,number]); nm(7);
+    doc.text(estId, PW - M, 9, { align: 'right' });
   }
 
-  // ── Shared page footer (line + contact) ──────────────────────────────────────
-  function repeatFooter(pgNum: number, pgTotal: number) {
-    hl(PH - 9, M, PW - M);
-    T(MUTED); nm(7);
-    doc.text('Nimble Software Lab · nimblesl.com · info@nimblesl.com · +880 017 9610 9979', M, PH - 5);
-    doc.text(`Page ${pgNum} / ${pgTotal}`, PW - M, PH - 5, { align: 'right' });
+  // ── Full-width dark footer for pages 2+ ─────────────────────────────────────
+  function pageFooter(pg: number, total: number) {
+    F(NAVY); doc.rect(0, PH - 10, PW, 10, 'F');
+    T([147, 197, 253]); nm(6.5);
+    doc.text('Nimble Software Lab  ·  nimblesl.com  ·  info@nimblesl.com  ·  +880 017 9610 9979', M, PH - 4);
+    T(WHITE); bd(7); doc.text(`${pg} / ${total}`, PW - M, PH - 4, { align: 'right' });
   }
 
-  // ── Section title with blue underline accent ─────────────────────────────────
-  function sTitle(label: string, y: number): number {
-    T(NAVY); bd(12);
-    doc.text(label, M, y);
-    F(BLUE);
-    doc.rect(M, y + 1.2, doc.getTextWidth(label), 0.8, 'F');
-    return y + 9;
+  // ── Full-width section header band ──────────────────────────────────────────
+  function sectionBand(label: string, y: number, col: [number,number,number] = NAVY2): number {
+    F(col); doc.rect(M, y, CW, 9, 'F');
+    T(WHITE); bd(8.5); doc.text(label, M + 4, y + 6.3);
+    return y + 12;
   }
 
   // ── Checked bullet ───────────────────────────────────────────────────────────
-  function checkBullet(x: number, y: number, col: [number, number, number]) {
-    F(col);
-    doc.roundedRect(x, y, 4.5, 4.5, 0.8, 0.8, 'F');
-    T(WHITE); bd(6);
-    doc.text('✓', x + 0.7, y + 3.7);
+  function checkBullet(x: number, y: number, col: [number,number,number]) {
+    F(col); doc.roundedRect(x, y, 4.5, 4.5, 0.8, 0.8, 'F');
+    T(WHITE); bd(6); doc.text('✓', x + 0.7, y + 3.7);
   }
 
   // ── Dot bullet ───────────────────────────────────────────────────────────────
-  function dotBullet(x: number, y: number, col: [number, number, number]) {
-    F(col); doc.circle(x, y, 1.2, 'F');
+  function dotBullet(x: number, y: number, col: [number,number,number]) {
+    F(col); doc.circle(x, y, 1.3, 'F');
   }
 
   // ══════════════════════════════════════════════════════════════════
   // PAGE 1 — COVER
   // ══════════════════════════════════════════════════════════════════
-  const NAVY_H = 118;  // navy header zone height in mm
+  const NAVY_H = 120;
 
-  // Navy background
-  F(NAVY);
-  doc.rect(0, 0, PW, NAVY_H, 'F');
+  // Full navy header zone
+  F(NAVY); doc.rect(0, 0, PW, NAVY_H, 'F');
 
-  // Logo (larger on cover)
-  drawLogo(M, 16, 14);
+  // ── Top-right corner diagonal accent (layered triangles via lines) ───────────
+  F(BLUE3);  doc.lines([[70, 0], [0, 70]], PW - 70, 0, [1, 1], 'F', true);
+  F(BLUE2);  doc.lines([[48, 0], [0, 48]], PW - 48, 0, [1, 1], 'F', true);
+  F(BLUE);   doc.lines([[30, 0], [0, 30]], PW - 30, 0, [1, 1], 'F', true);
+  F([100, 170, 255] as [number,number,number]); doc.lines([[14, 0], [0, 14]], PW - 14, 0, [1, 1], 'F', true);
 
-  // Separator line
-  hl(38, M, PW - M, BLUE, 0.7);
+  // ── Top bar ──────────────────────────────────────────────────────────────────
+  F(NAVY); doc.rect(0, 0, PW, 14, 'F');
+  drawLogo(M, 1.8, 10);
+  T([100, 140, 200] as [number,number,number]); nm(7.5);
+  doc.text('CONFIDENTIAL  ·  AI-POWERED PROJECT ESTIMATE', PW - M, 9, { align: 'right' });
+  F(BLUE); doc.rect(0, 14, PW, 0.7, 'F');
 
-  // "PROJECT ESTIMATE" large title
-  T(WHITE); bd(26);
-  doc.text('PROJECT ESTIMATE', PW / 2, 54, { align: 'center' });
+  // ── "PROJECT PROPOSAL ESTIMATE" title ────────────────────────────────────────
+  T(WHITE); bd(28);
+  doc.text('PROJECT', PW / 2, 46, { align: 'center' });
+  T(BLUEL); bd(20);
+  doc.text('PROPOSAL ESTIMATE', PW / 2, 61, { align: 'center' });
 
-  // "Prepared exclusively for"
+  // thin blue separator
+  F(BLUE); doc.rect(PW / 2 - 24, 66, 48, 0.6, 'F');
+
+  // ── Client info ──────────────────────────────────────────────────────────────
   T([147, 197, 253]); nm(10);
-  doc.text('Prepared exclusively for', PW / 2, 66, { align: 'center' });
+  doc.text('Prepared exclusively for', PW / 2, 75, { align: 'center' });
 
-  // Client name
   T(WHITE); bd(22);
-  const clientDisplay = clientName.length > 30 ? clientName.slice(0, 30) + '…' : clientName;
-  doc.text(clientDisplay, PW / 2, 79, { align: 'center' });
+  const clientDisplay = clientName.length > 32 ? clientName.slice(0, 32) + '…' : clientName;
+  doc.text(clientDisplay, PW / 2, 88, { align: 'center' });
 
-  let covY = 91;
+  let covY = 97;
   if (lead.company) {
     T([203, 213, 225]); nm(11);
     doc.text(lead.company, PW / 2, covY, { align: 'center' });
@@ -362,213 +360,225 @@ async function generatePDF(
     doc.text(lead.email, PW / 2, covY, { align: 'center' });
   }
 
-  // ─ White zone ─
-  let y = NAVY_H + 10;
+  // ── White zone ───────────────────────────────────────────────────────────────
+  let y = NAVY_H + 8;
 
-  // Date / ID / validity
-  T(MUTED); nm(8.5);
-  doc.text(`Date: ${estDate}`, M, y);
-  doc.text(`Estimate ID: ${estId}`, M + 68, y);
-  doc.text('Valid for: 30 days', M + 138, y);
-  y += 12;
+  // Meta strip (Date · ID · Valid)
+  F(LG); doc.rect(M, y, CW, 13, 'F');
+  D(LGB); doc.setLineWidth(0.3); doc.rect(M, y, CW, 13, 'S');
+  const metaW = CW / 3;
+  ([
+    ['Date', estDate],
+    ['Estimate ID', estId],
+    ['Valid for', '30 days'],
+  ] as [string, string][]).forEach(([lbl, val], i) => {
+    const mx = M + 5 + i * metaW;
+    T(MUTED); nm(7); doc.text(lbl, mx, y + 5);
+    T(BODY); bd(8.5); doc.text(val, mx, y + 10.5);
+  });
+  y += 17;
 
   // PROJECT OVERVIEW box
-  F(LG);
-  doc.roundedRect(M, y, CW, 40, 3, 3, 'F');
-  D(LG_B); doc.setLineWidth(0.3);
-  doc.roundedRect(M, y, CW, 40, 3, 3, 'S');
-  F(BLUE); doc.rect(M, y, 3, 40, 'F');  // left accent bar
+  F(LG); doc.roundedRect(M, y, CW, 43, 3, 3, 'F');
+  D(LGB); doc.setLineWidth(0.3); doc.roundedRect(M, y, CW, 43, 3, 3, 'S');
+  F(BLUE); doc.rect(M, y, 3.5, 43, 'F');
 
-  T(NAVY); bd(9.5);
-  doc.text('PROJECT OVERVIEW', M + 7, y + 8);
+  T(NAVY); bd(9.5); doc.text('PROJECT OVERVIEW', M + 8, y + 8);
 
-  const ovItems: [string, string][] = [
+  const ovCW = (CW - 12) / 2;
+  ([
     ['Deliverable(s)', projectTypes.length > 2
       ? projectTypes.slice(0, 2).join(', ') + ` +${projectTypes.length - 2} more`
       : projectTypes.join(', ')],
-    ['Industry',   industry],
-    ['Timeline',   result.suggestedTimeline],
-    ['Team size',  result.teamSize],
-  ];
-  const ovCW = (CW - 10) / 2;
-  ovItems.forEach(([lbl, val], i) => {
-    const ox = M + 7 + (i % 2) * (ovCW + 5);
-    const oy = y + 16 + Math.floor(i / 2) * 12;
+    ['Industry',  industry],
+    ['Timeline',  result.suggestedTimeline],
+    ['Team size', result.teamSize],
+  ] as [string, string][]).forEach(([lbl, val], i) => {
+    const ox = M + 8 + (i % 2) * (ovCW + 6);
+    const oy = y + 18 + Math.floor(i / 2) * 13;
     T(MUTED); nm(7.5); doc.text(lbl + ':', ox, oy);
-    T(BODY);  bd(8.5); doc.text(doc.splitTextToSize(val, ovCW - 30)[0] as string, ox + 26, oy);
+    T(BODY); bd(8.5); doc.text(doc.splitTextToSize(val, ovCW - 28)[0] as string, ox + 27, oy);
   });
-  y += 50;
+  y += 52;
 
-  // ESTIMATED INVESTMENT box (solid blue)
-  F(BLUE);
-  doc.roundedRect(M, y, CW, 52, 4, 4, 'F');
-
-  T([219, 234, 254]); nm(8);
-  doc.text('ESTIMATED INVESTMENT', PW / 2, y + 11, { align: 'center' });
-
-  T(WHITE); bd(28);
-  doc.text(`${f(result.totalCost.low)} — ${f(result.totalCost.high)} USD`, PW / 2, y + 30, { align: 'center' });
+  // ESTIMATED INVESTMENT box (premium design)
+  F(NAVY); doc.roundedRect(M, y, CW, 56, 4, 4, 'F');
+  F(NAVY2); doc.roundedRect(M + 2, y + 2, CW - 4, 52, 3, 3, 'F');
+  // Blue top accent stripe
+  F(BLUE); doc.rect(M + 2, y + 2, CW - 4, 6, 'F');
+  F(BLUE); doc.roundedRect(M + 2, y + 2, CW - 4, 8, 3, 3, 'F');
 
   T([219, 234, 254]); nm(8);
-  doc.text(`AI planning estimate  ·  ±15–25% on final scope  ·  ${result.suggestedTimeline}`, PW / 2, y + 41, { align: 'center' });
+  doc.text('ESTIMATED INVESTMENT', PW / 2, y + 9, { align: 'center' });
 
-  T([191, 219, 254]); nm(7.5);
-  doc.text('Not a final quote — a discovery call is needed to finalize scope.', PW / 2, y + 49, { align: 'center' });
-  y += 62;
+  // divider
+  D([255, 255, 255]); doc.setLineWidth(0.3); doc.line(M + 20, y + 13, PW - M - 20, y + 13);
 
-  // Bottom footer (cover-specific)
-  hl(PH - 20, M, PW - M);
-  T(NAVY);   bd(9);   doc.text('Nimble Software Lab', M, PH - 14.5);
-  T(MUTED);  nm(7.5); doc.text('nimblesl.com  ·  info@nimblesl.com  ·  +880 017 9610 9979', M, PH - 10);
-  nm(7); doc.text('House 1, Road 34, Gulshan-2, Dhaka-1219, Bangladesh', M, PH - 6);
-  doc.text('Page 1 / 4', PW - M, PH - 10, { align: 'right' });
+  T(WHITE); bd(30);
+  doc.text(`${f(result.totalCost.low)} – ${f(result.totalCost.high)}`, PW / 2, y + 33, { align: 'center' });
+
+  T([200, 225, 255] as [number,number,number]); nm(8);
+  doc.text('USD  ·  AI planning estimate  ·  ±15–25% on final scope', PW / 2, y + 43, { align: 'center' });
+
+  T([147, 197, 253]); itl(7.5);
+  doc.text(`${result.suggestedTimeline}  ·  ${result.teamSize}`, PW / 2, y + 51, { align: 'center' });
+  y += 64;
+
+  // Disclaimer note
+  T(MUTED); itl(7.5);
+  doc.text('AI-generated planning estimate. Not a binding quote — a discovery call is required to confirm scope and pricing.', PW / 2, y, { align: 'center' });
+
+  // Cover footer
+  F(NAVY); doc.rect(0, PH - 20, PW, 20, 'F');
+  T(WHITE); bd(9); doc.text('Nimble Software Lab', M, PH - 13);
+  T([147, 197, 253]); nm(7.5);
+  doc.text('nimblesl.com  ·  info@nimblesl.com  ·  +880 017 9610 9979', M, PH - 8);
+  nm(7); doc.text('House 1, Road 34, Gulshan-2, Dhaka-1219, Bangladesh', M, PH - 3.5);
+  T(WHITE); bd(7); doc.text('1 / 4', PW - M, PH - 8, { align: 'right' });
 
   // ══════════════════════════════════════════════════════════════════
   // PAGE 2 — DETAILED COST BREAKDOWN
   // ══════════════════════════════════════════════════════════════════
   doc.addPage();
-  repeatHeader();
+  pageHeader();
 
-  let p2y = 18;
-  p2y = sTitle('DETAILED COST BREAKDOWN', p2y) + 2;
+  let p2y = 16;
+  p2y = sectionBand('DETAILED COST BREAKDOWN', p2y);
 
   if (result.modules && result.modules.length > 0) {
-    // Table header row
-    F(NAVY);
-    doc.rect(M, p2y, CW, 8, 'F');
-    T(WHITE); bd(8);
-    doc.text('MODULE', M + 3, p2y + 5.5);
-    doc.text('EFFORT', M + 104, p2y + 5.5, { align: 'center' });
-    doc.text('COST RANGE', PW - M - 3, p2y + 5.5, { align: 'right' });
+    // Table column headers
+    F(NAVY); doc.rect(M, p2y, CW, 8, 'F');
+    T(WHITE); bd(7.5);
+    doc.text('MODULE', M + 4, p2y + 5.5);
+    doc.text('COMPLEXITY', M + 107, p2y + 5.5, { align: 'center' });
+    doc.text('EFFORT', M + 145, p2y + 5.5, { align: 'center' });
+    doc.text('INVESTMENT', PW - M - 3, p2y + 5.5, { align: 'right' });
     p2y += 8;
 
     result.modules.forEach((mod, i) => {
-      const descWrapped = doc.splitTextToSize(mod.description, CW - 12);
+      const descWrapped = doc.splitTextToSize(mod.description, CW - 75);
       const rowH = 10 + descWrapped.length * 4.5 + 3;
 
-      // Page overflow guard
-      if (p2y + rowH > PH - 22) {
-        repeatFooter(2, 4);
-        doc.addPage(); repeatHeader();
-        p2y = 18;
+      if (p2y + rowH > PH - 18) {
+        pageFooter(2, 4);
+        doc.addPage(); pageHeader();
+        p2y = 16;
         F(NAVY); doc.rect(M, p2y, CW, 8, 'F');
-        T(WHITE); bd(8);
-        doc.text('MODULE', M + 3, p2y + 5.5);
-        doc.text('EFFORT', M + 104, p2y + 5.5, { align: 'center' });
-        doc.text('COST RANGE', PW - M - 3, p2y + 5.5, { align: 'right' });
+        T(WHITE); bd(7.5);
+        doc.text('MODULE', M + 4, p2y + 5.5);
+        doc.text('COMPLEXITY', M + 107, p2y + 5.5, { align: 'center' });
+        doc.text('EFFORT', M + 145, p2y + 5.5, { align: 'center' });
+        doc.text('INVESTMENT', PW - M - 3, p2y + 5.5, { align: 'right' });
         p2y += 8;
       }
 
       F(i % 2 === 0 ? WHITE : LG);
       doc.rect(M, p2y, CW, rowH, 'F');
-      D(LG_B); doc.setLineWidth(0.2);
-      doc.rect(M, p2y, CW, rowH, 'S');
+      D(LGB); doc.setLineWidth(0.2); doc.rect(M, p2y, CW, rowH, 'S');
+      // Blue left accent on even rows
+      if (i % 2 === 0) { F(BLUE); doc.rect(M, p2y, 2.5, rowH, 'F'); }
 
       // Module name
-      T(NAVY); bd(9);
-      doc.text(mod.name, M + 3, p2y + 7);
+      T(NAVY); bd(8.5); doc.text(mod.name, M + 5, p2y + 7);
 
-      // Complexity badge (small colored text)
+      // Description
+      T(MUTED); nm(7.5);
+      descWrapped.forEach((line: string, li: number) => {
+        doc.text(line, M + 5, p2y + 13 + li * 4.5);
+      });
+
+      // Complexity badge with background
       const cCfg = mod.complexity === 'high'
-        ? { c: [220, 38, 38] as [number,number,number], l: 'High' }
+        ? { c: RED,   bg: [254, 226, 226] as [number,number,number], l: 'HIGH'   }
         : mod.complexity === 'low'
-          ? { c: GREEN, l: 'Low' }
-          : { c: AMBER, l: 'Medium' };
-      T(cCfg.c); nm(7);
-      doc.text(`● ${cCfg.l}`, M + 3, p2y + 13);
+          ? { c: GREEN, bg: [209, 250, 229] as [number,number,number], l: 'LOW' }
+          : { c: AMBER, bg: [254, 243, 199] as [number,number,number], l: 'MED'  };
+      F(cCfg.bg); doc.roundedRect(M + 97, p2y + 3, 20, 6, 1.5, 1.5, 'F');
+      T(cCfg.c); bd(7); doc.text(cCfg.l, M + 107, p2y + 7.5, { align: 'center' });
 
       // Effort
-      T(BODY); nm(8.5);
-      doc.text(`${mod.mandays.low}–${mod.mandays.high} days`, M + 85, p2y + 7);
+      T(BODY); nm(8); doc.text(`${mod.mandays.low}–${mod.mandays.high}d`, M + 145, p2y + 7, { align: 'center' });
 
-      // Cost range
-      T(BLUE_D); bd(9);
-      doc.text(`${f(mod.costRange.low)} – ${f(mod.costRange.high)}`, PW - M - 3, p2y + 7, { align: 'right' });
-
-      // Description lines
-      T(MUTED); nm(8);
-      descWrapped.forEach((line: string, li: number) => {
-        doc.text(line, M + 5, p2y + 15 + li * 4.5);
-      });
+      // Investment
+      T(BLUE3); bd(8.5); doc.text(`${f(mod.costRange.low)} – ${f(mod.costRange.high)}`, PW - M - 3, p2y + 7, { align: 'right' });
 
       p2y += rowH;
     });
 
-    // Total row
-    if (p2y + 10 > PH - 22) {
-      repeatFooter(2, 4); doc.addPage(); repeatHeader(); p2y = 18;
+    // TOTAL row
+    if (p2y + 11 > PH - 18) {
+      pageFooter(2, 4); doc.addPage(); pageHeader(); p2y = 16;
     }
-    F(NAVY);
-    doc.rect(M, p2y, CW, 10, 'F');
-    T(WHITE); bd(9);
-    doc.text('TOTAL ESTIMATE', M + 3, p2y + 7);
+    F(NAVY); doc.rect(M, p2y, CW, 11, 'F');
+    T(WHITE); bd(9); doc.text('TOTAL ESTIMATE', M + 4, p2y + 7.5);
     const tL = result.modules.reduce((s, m) => s + m.costRange.low,  0);
     const tH = result.modules.reduce((s, m) => s + m.costRange.high, 0);
-    doc.text(`${result.totalMandays.low}–${result.totalMandays.high} mandays`, M + 85, p2y + 7);
-    doc.text(`${f(tL)} — ${f(tH)} USD`, PW - M - 3, p2y + 7, { align: 'right' });
+    T([200, 220, 255] as [number,number,number]); nm(8);
+    doc.text(`${result.totalMandays.low}–${result.totalMandays.high} mandays`, M + 145, p2y + 7.5, { align: 'center' });
+    T(WHITE); bd(9.5);
+    doc.text(`${f(tL)} — ${f(tH)} USD`, PW - M - 3, p2y + 7.5, { align: 'right' });
     p2y += 14;
 
     // Scope note
-    if (result.scope && p2y + 22 < PH - 22) {
+    if (result.scope && p2y + 20 < PH - 18) {
       const scopeLines = doc.splitTextToSize(result.scope, CW - 10);
       const sH = Math.min(scopeLines.length, 3) * 4.5 + 8;
-      F(LG);
-      doc.roundedRect(M, p2y, CW, sH, 2, 2, 'F');
+      F(LG); doc.roundedRect(M, p2y, CW, sH, 2, 2, 'F');
+      D(LGB); doc.setLineWidth(0.3); doc.roundedRect(M, p2y, CW, sH, 2, 2, 'S');
       T(MUTED); nm(8);
-      const displayLines = scopeLines.slice(0, 3) as string[];
-      displayLines.forEach((ln: string, li: number) => {
+      (scopeLines.slice(0, 3) as string[]).forEach((ln: string, li: number) => {
         doc.text(ln, M + 5, p2y + 6 + li * 4.5);
       });
     }
   }
 
-  repeatFooter(2, 4);
+  pageFooter(2, 4);
 
   // ══════════════════════════════════════════════════════════════════
   // PAGE 3 — PHASED DELIVERY + TECH STACK + TEAM
   // ══════════════════════════════════════════════════════════════════
   doc.addPage();
-  repeatHeader();
+  pageHeader();
 
-  let p3y = 18;
-  p3y = sTitle('PHASED DELIVERY', p3y) + 2;
+  let p3y = 16;
+  p3y = sectionBand('PHASED DELIVERY PLAN', p3y);
 
-  const phaseAccents: [number, number, number][] = [
-    [59, 130, 246],
-    [99, 102, 241],
-    [16, 185, 129],
-    [245, 158, 11],
-    [239, 68, 68],
+  const phaseColors: [number,number,number][] = [
+    [59, 130, 246], [99, 102, 241], [16, 185, 129], [245, 158, 11], [239, 68, 68],
   ];
 
   result.phases.forEach((phase, i) => {
-    if (p3y + 24 > PH - 95) return;
-    const accent = phaseAccents[i % phaseAccents.length];
-    F(LG);
-    doc.roundedRect(M, p3y, CW, 22, 2, 2, 'F');
-    F(accent); doc.rect(M, p3y, 2.5, 22, 'F');
+    if (p3y + 27 > PH - 90) return;
+    const ac = phaseColors[i % phaseColors.length];
 
-    T(NAVY); bd(9.5);
-    doc.text(phase.name, M + 7, p3y + 7);
-    T(BLUE_D); bd(9);
-    doc.text(`${f(phase.costRange.low)} – ${f(phase.costRange.high)}`, PW - M - 3, p3y + 7, { align: 'right' });
+    F(LG); doc.roundedRect(M, p3y, CW, 25, 2, 2, 'F');
+    D(LGB); doc.setLineWidth(0.2); doc.roundedRect(M, p3y, CW, 25, 2, 2, 'S');
 
+    // Phase number circle
+    F(ac); doc.circle(M + 9, p3y + 12.5, 6.5, 'F');
+    T(WHITE); bd(9); doc.text(`${i + 1}`, M + 9, p3y + 15.2, { align: 'center' });
+
+    // Phase name + cost
+    T(NAVY); bd(9.5); doc.text(phase.name, M + 20, p3y + 9);
+    T(BLUE3); bd(9); doc.text(`${f(phase.costRange.low)} – ${f(phase.costRange.high)}`, PW - M - 3, p3y + 9, { align: 'right' });
+
+    // Timeline + effort
     T(MUTED); nm(8);
-    doc.text(`${phase.timeline}   ·   ${phase.mandaysPercent}% of total effort`, M + 7, p3y + 14);
+    doc.text(`${phase.timeline}   ·   ${phase.mandaysPercent}% of total effort`, M + 20, p3y + 16.5);
 
+    // Module list
     const mods = (phase.modules || []).slice(0, 5).join('  ·  ');
     if (mods) {
       T(BODY); nm(7.5);
-      doc.text(doc.splitTextToSize(mods, CW - 12)[0] as string, M + 7, p3y + 20);
+      doc.text(doc.splitTextToSize(mods, CW - 24)[0] as string, M + 20, p3y + 22.5);
     }
-
-    p3y += 25;
+    p3y += 28;
   });
   p3y += 4;
 
-  // Tech stack
-  hl(p3y, M, PW - M); p3y += 8;
-  p3y = sTitle('RECOMMENDED TECH STACK', p3y) + 2;
+  // TECH STACK
+  hl(p3y, M, PW - M); p3y += 6;
+  p3y = sectionBand('RECOMMENDED TECH STACK', p3y);
 
   const stackEntries = Object.entries(result.tech_stack)
     .filter(([, v]) => Array.isArray(v) && (v as string[]).length > 0);
@@ -577,24 +587,18 @@ async function generatePDF(
     if (p3y + 8 > PH - 75) return;
     F(i % 2 === 1 ? LG : WHITE);
     doc.rect(M, p3y, CW, 8, 'F');
-    D(LG_B); doc.setLineWidth(0.2); doc.rect(M, p3y, CW, 8, 'S');
-
-    T(MUTED); bd(8);
-    doc.text(cat.charAt(0).toUpperCase() + cat.slice(1), M + 3, p3y + 5.5);
-
-    F(BLUE); doc.rect(M + 32, p3y + 1.5, 0.5, 5, 'F');
-
-    T(BODY); nm(8.5);
-    doc.text((techs as string[]).join('  ·  '), M + 36, p3y + 5.5);
+    D(LGB); doc.setLineWidth(0.2); doc.rect(M, p3y, CW, 8, 'S');
+    T(MUTED); bd(8); doc.text(cat.charAt(0).toUpperCase() + cat.slice(1), M + 3, p3y + 5.5);
+    F(BLUE); doc.rect(M + 33, p3y + 2, 0.5, 4, 'F');
+    T(BODY); nm(8.5); doc.text((techs as string[]).join('  ·  '), M + 37, p3y + 5.5);
     p3y += 8;
   });
-  p3y += 8;
+  p3y += 6;
 
-  // Team composition
-  if (p3y + 45 < PH - 15) {
-    hl(p3y, M, PW - M); p3y += 8;
-    p3y = sTitle('RECOMMENDED TEAM', p3y) + 2;
-
+  // TEAM COMPOSITION
+  if (p3y + 44 < PH - 14) {
+    hl(p3y, M, PW - M); p3y += 6;
+    p3y = sectionBand('RECOMMENDED TEAM COMPOSITION', p3y);
     const teamItems = [
       '1×  Tech Lead / Architect',
       '2×  Full-stack Developers',
@@ -604,27 +608,28 @@ async function generatePDF(
     ];
     teamItems.forEach((member) => {
       if (p3y + 7 > PH - 18) return;
-      dotBullet(M + 2.5, p3y + 4, BLUE);
-      T(BODY); nm(9); doc.text(member, M + 7, p3y + 6);
+      dotBullet(M + 3, p3y + 4, BLUE);
+      T(BODY); nm(9); doc.text(member, M + 8, p3y + 6);
       p3y += 8;
     });
     p3y += 3;
-    if (p3y + 9 < PH - 15) {
-      F(LG); doc.roundedRect(M, p3y, CW, 9, 2, 2, 'F');
-      T(NAVY); bd(9); doc.text(`Total: ${result.teamSize}`, M + 5, p3y + 6.5);
+    if (p3y + 10 < PH - 14) {
+      F(LG); doc.roundedRect(M, p3y, CW, 10, 2, 2, 'F');
+      D(LGB); doc.setLineWidth(0.3); doc.roundedRect(M, p3y, CW, 10, 2, 2, 'S');
+      T(NAVY); bd(9); doc.text(`Total Team: ${result.teamSize}`, M + 5, p3y + 7);
     }
   }
 
-  repeatFooter(3, 4);
+  pageFooter(3, 4);
 
   // ══════════════════════════════════════════════════════════════════
-  // PAGE 4 — WHAT'S INCLUDED + RISKS + RECS + NEXT STEPS
+  // PAGE 4 — INCLUDED + RISKS + RECS + NEXT STEPS
   // ══════════════════════════════════════════════════════════════════
   doc.addPage();
-  repeatHeader();
+  pageHeader();
 
-  let p4y = 18;
-  p4y = sTitle("WHAT'S INCLUDED", p4y) + 2;
+  let p4y = 16;
+  p4y = sectionBand("WHAT'S INCLUDED IN YOUR BUILD", p4y, GREEN);
 
   const included = [
     'Complete source code ownership',
@@ -636,98 +641,107 @@ async function generatePDF(
     'Code review & quality assurance',
     'Performance testing & optimization',
   ];
-
-  // Two-column checklist
   const iCW = (CW - 4) / 2;
   included.forEach((item, i) => {
     const ix = M + (i % 2) * (iCW + 4);
     const iy = p4y + Math.floor(i / 2) * 8;
-    if (iy + 7 < PH - 95) {
+    if (iy + 7 < PH - 105) {
       checkBullet(ix, iy + 2, GREEN);
       T(BODY); nm(8.5); doc.text(item, ix + 6.5, iy + 5.5);
     }
   });
   p4y += Math.ceil(included.length / 2) * 8 + 5;
 
-  // Risk factors
-  if (result.riskFactors && result.riskFactors.length > 0 && p4y < PH - 100) {
-    hl(p4y, M, PW - M); p4y += 8;
-    p4y = sTitle('ASSUMPTIONS & RISK FACTORS', p4y) + 2;
+  // RISK FACTORS
+  if (result.riskFactors && result.riskFactors.length > 0 && p4y < PH - 112) {
+    hl(p4y, M, PW - M); p4y += 5;
+    p4y = sectionBand('ASSUMPTIONS & RISK FACTORS', p4y, AMBER);
     result.riskFactors.forEach((r: string) => {
       const lines = doc.splitTextToSize(r, CW - 9);
       const rh = lines.length * 4.5 + 7;
-      if (p4y + rh > PH - 95) return;
+      if (p4y + rh > PH - 108) return;
       F([255, 251, 235]); doc.roundedRect(M, p4y, CW, rh, 2, 2, 'F');
       D([253, 230, 138]); doc.setLineWidth(0.3); doc.roundedRect(M, p4y, CW, rh, 2, 2, 'S');
       dotBullet(M + 3, p4y + rh / 2, AMBER);
       T(BODY); nm(8);
-      lines.forEach((ln: string, li: number) => doc.text(ln, M + 7, p4y + 6 + li * 4.5));
+      (lines as string[]).forEach((ln: string, li: number) => doc.text(ln, M + 7, p4y + 6 + li * 4.5));
       p4y += rh + 4;
     });
     p4y += 2;
   }
 
-  // Recommendations
-  if (result.recommendations && result.recommendations.length > 0 && p4y < PH - 100) {
-    hl(p4y, M, PW - M); p4y += 8;
-    p4y = sTitle('AI RECOMMENDATIONS', p4y) + 2;
+  // AI RECOMMENDATIONS
+  if (result.recommendations && result.recommendations.length > 0 && p4y < PH - 112) {
+    hl(p4y, M, PW - M); p4y += 5;
+    p4y = sectionBand('AI RECOMMENDATIONS', p4y, BLUE2);
     result.recommendations.forEach((r: string) => {
       const lines = doc.splitTextToSize(r, CW - 9);
       const rh = lines.length * 4.5 + 7;
-      if (p4y + rh > PH - 95) return;
+      if (p4y + rh > PH - 108) return;
       F([240, 249, 255]); doc.roundedRect(M, p4y, CW, rh, 2, 2, 'F');
       D([191, 219, 254]); doc.setLineWidth(0.3); doc.roundedRect(M, p4y, CW, rh, 2, 2, 'S');
       dotBullet(M + 3, p4y + rh / 2, BLUE);
       T(BODY); nm(8);
-      lines.forEach((ln: string, li: number) => doc.text(ln, M + 7, p4y + 6 + li * 4.5));
+      (lines as string[]).forEach((ln: string, li: number) => doc.text(ln, M + 7, p4y + 6 + li * 4.5));
       p4y += rh + 4;
     });
   }
 
-  // ── NEXT STEPS box ──────────────────────────────────────────────────────────
-  const nsY = PH - 92;
-  D(BLUE); doc.setLineWidth(0.6);
-  doc.roundedRect(M, nsY, CW, 44, 3, 3, 'S');
+  // ── NEXT STEPS (dark navy box with blue left accent) ─────────────────────────
+  const nsY = PH - 104;
+  F(NAVY); doc.roundedRect(M, nsY, CW, 48, 4, 4, 'F');
+  F(BLUE); doc.rect(M, nsY, 4.5, 48, 'F');
+  F(BLUE); doc.roundedRect(M, nsY, 4.5, 8, 2, 2, 'F');
 
-  T(NAVY); bd(11);
-  doc.text('NEXT STEPS', M + 5, nsY + 8);
-  F(BLUE); doc.rect(M + 5, nsY + 9.5, doc.getTextWidth('NEXT STEPS'), 0.7, 'F');
+  T(WHITE); bd(11); doc.text('NEXT STEPS', M + 10, nsY + 9);
+  F([147, 197, 253]); doc.rect(M + 10, nsY + 10.5, 34, 0.7, 'F');
 
-  const steps = [
-    '1.  Review this estimate',
+  ([
+    '1.  Review this estimate carefully',
     '2.  Book a free 30-minute discovery call',
-    '3.  We refine scope & deliver a binding proposal',
+    '3.  We refine scope & send a binding proposal',
     '4.  Development kicks off with your dedicated team',
-  ];
-  steps.forEach((s, i) => {
-    T(BODY); nm(8.5); doc.text(s, M + 5, nsY + 16 + i * 7);
+  ] as string[]).forEach((s, i) => {
+    T(i === 0 ? WHITE : [200, 220, 255] as [number,number,number]);
+    nm(8.5); doc.text(s, M + 10, nsY + 18 + i * 7.5);
   });
 
-  T(BLUE); bd(8.5);
-  doc.text(
-    'nimblesl.com/contact   ·   info@nimblesl.com   ·   +880 017 9610 9979',
-    M + 5, nsY + 40
-  );
+  T(BLUE); bd(8);
+  doc.text('nimblesl.com/contact   ·   info@nimblesl.com   ·   +880 017 9610 9979', M + 10, nsY + 44);
 
-  // ── Dark navy footer block ──────────────────────────────────────────────────
-  const dfY = PH - 42;
-  F(NAVY);
-  doc.rect(0, dfY, PW, 42, 'F');
+  // ── Signature / Acceptance block ─────────────────────────────────────────────
+  const sigY = PH - 52;
+  D(LGB); doc.setLineWidth(0.4); doc.roundedRect(M, sigY, CW, 24, 2, 2, 'S');
 
-  T(WHITE);      bd(9);   doc.text('Nimble Software Lab', M, dfY + 8);
-  T([147, 197, 253]); nm(7.5); doc.text('House 1, Road 34, Gulshan-2, Dhaka-1219, Bangladesh  ·  nimblesl.com  ·  info@nimblesl.com', M, dfY + 15);
-  T([156, 163, 175]); itl(7);
+  const halfW = CW / 2 - 4;
+  T(MUTED); nm(7.5);
+  doc.text('CLIENT ACCEPTANCE', M + 4, sigY + 6);
+  doc.text('AUTHORISED BY — NIMBLE SOFTWARE LAB', M + halfW + 8, sigY + 6);
+
+  D(BODY); doc.setLineWidth(0.35);
+  doc.line(M + 4, sigY + 17, M + halfW, sigY + 17);
+  doc.line(M + halfW + 8, sigY + 17, PW - M - 4, sigY + 17);
+
+  T(MUTED); nm(7);
+  doc.text('Signature & Date', M + 4, sigY + 21.5);
+  doc.text('info@nimblesl.com  ·  nimblesl.com', M + halfW + 8, sigY + 21.5);
+
+  // ── Final navy footer ─────────────────────────────────────────────────────────
+  const dfY = PH - 25;
+  F(NAVY); doc.rect(0, dfY, PW, 25, 'F');
+  T(WHITE); bd(9); doc.text('Nimble Software Lab', M, dfY + 7);
+  T([147, 197, 253]); nm(7);
+  doc.text('House 1, Road 34, Gulshan-2, Dhaka-1219, Bangladesh  ·  nimblesl.com  ·  info@nimblesl.com', M, dfY + 13);
+  T([156, 163, 175]); itl(6.5);
   const disc = doc.splitTextToSize(
     'This estimate is valid for 30 days. It is not a final quote — a discovery call is required to confirm scope and pricing.',
     CW
   );
-  disc.forEach((ln: string, li: number) => doc.text(ln, M, dfY + 22 + li * 5));
-  T([156, 163, 175]); nm(7);
-  doc.text('© 2026 Nimble Software Lab. All rights reserved.', M, dfY + 35);
-  T([147, 197, 253]); nm(7.5);
-  doc.text('Page 4 / 4', PW - M, dfY + 8, { align: 'right' });
+  (disc as string[]).forEach((ln: string, li: number) => doc.text(ln, M, dfY + 19 + li * 4.5));
+  T([147, 197, 253]); nm(7); doc.text('© 2026 Nimble Software Lab', PW - M, dfY + 19, { align: 'right' });
+  T(WHITE); bd(7.5); doc.text('4 / 4', PW - M, dfY + 7, { align: 'right' });
 
-  // ── Save ────────────────────────────────────────────────────────────────────
+  // ── Save ─────────────────────────────────────────────────────────────────────
   const safeName = clientName.replace(/[^a-zA-Z0-9]/g, '-').slice(0, 30);
   doc.save(`NimbleSL-Estimate-${safeName}-${estId}.pdf`);
 }
