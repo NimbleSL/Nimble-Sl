@@ -45,6 +45,7 @@ const FOOTER_LINKS = {
   ],
   Company: [
     { label: 'About Us', href: '/about' },
+    { label: 'Our Products', href: '/products' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'Blog / Insights', href: '/blog' },
     { label: 'Hire Developers', href: '/hire-developers' },
@@ -53,6 +54,7 @@ const FOOTER_LINKS = {
   ],
   Tools: [
     { label: 'AI Project Estimator', href: '/tools/project-estimator' },
+    { label: 'NimbleScribe — Free Mac & Windows App', href: 'https://nimblescribe.nimblesl.com' },
     { label: 'Compare Us', href: '/compare' },
     { label: 'Contact', href: '/contact' },
     { label: 'Privacy Policy', href: '/privacy-policy' },

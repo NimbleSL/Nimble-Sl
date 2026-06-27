@@ -13,6 +13,7 @@ import { MagneticWrapper } from '@/components/ui/MagneticWrapper';
 const NAV_LINKS = [
   { label: 'Services', href: '/services', hasMega: true },
   { label: 'Solutions', href: '/solutions', hasMega: true },
+  { label: 'Products', href: '/products', hasMega: false },
   { label: 'Case Studies', href: '/case-studies', hasMega: false },
   { label: 'Hire Developers', href: '/hire-developers', hasMega: false },
   { label: 'Blog', href: '/blog', hasMega: false },
@@ -35,6 +36,8 @@ const SERVICES_MEGA = {
         { label: 'AI & Machine Learning', href: '/services/ai-machine-learning', desc: 'RAG, LLMs, fraud detection, NLP' },
         { label: 'Cloud & DevOps', href: '/services/cloud-solutions-devops', desc: 'AWS, GCP, CI/CD, Kubernetes' },
         { label: 'UI/UX Design', href: '/services/ui-ux-design', desc: 'Design systems, Figma to production' },
+        { label: 'Hire Developers', href: '/hire-developers', desc: 'Dedicated engineers, your timezone' },
+        { label: 'Case Studies', href: '/case-studies', desc: 'Real projects, real outcomes' },
       ],
     },
   ],
@@ -321,7 +324,7 @@ export function Navbar() {
               </Link>
 
               {/* Desktop Nav */}
-              <nav className="hidden lg:flex items-center gap-1 flex-1 ml-8">
+              <nav className="hidden xl:flex items-center gap-0.5 flex-1 ml-6">
                 {NAV_LINKS.map((link) => {
                   const hasMega = link.hasMega;
                   const megaType = link.label.toLowerCase() as 'services' | 'solutions';
@@ -330,14 +333,14 @@ export function Navbar() {
                   return (
                     <div
                       key={link.href}
-                      className="relative"
+                      className="relative shrink-0"
                       onMouseEnter={() => hasMega ? setActiveMega(megaType) : setActiveMega(null)}
                       onMouseLeave={() => !hasMega && setActiveMega(null)}
                     >
                       <Link
                         href={link.href}
                         className={cn(
-                          'nav-link-animated flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150',
+                          'nav-link-animated flex items-center gap-1 px-2.5 py-2 rounded-lg text-sm font-medium transition-all duration-150 whitespace-nowrap shrink-0',
                           isActive ? 'text-white' : 'hover:bg-white/5'
                         )}
                         style={{ color: isActive ? 'var(--blue-2)' : 'var(--text-2)' }}
@@ -361,7 +364,7 @@ export function Navbar() {
               </nav>
 
               {/* Right side CTAs */}
-              <div className="hidden lg:flex items-center gap-3 ml-auto flex-shrink-0">
+              <div className="hidden xl:flex items-center gap-2 ml-auto flex-shrink-0">
                 {/* Theme toggle */}
                 <button
                   onClick={toggleTheme}
@@ -399,7 +402,7 @@ export function Navbar() {
 
               {/* Mobile hamburger (Matches nimble-sl-design) */}
               <button
-                className="lg:hidden flex items-center justify-center transition-colors"
+                className="xl:hidden flex items-center justify-center transition-colors"
                 style={{ 
                   background: 'var(--surface)', 
                   border: '1px solid var(--border)', 
@@ -426,7 +429,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="fixed inset-0 lg:hidden"
+            className="fixed inset-0 xl:hidden"
             style={{ background: 'var(--bg)', backdropFilter: 'blur(12px)', zIndex: 9999 }}
           >
             <div className="flex flex-col h-full px-5 pb-5 pt-12 md:p-5">
