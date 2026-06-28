@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const DOWNLOAD_URL =
   'https://github.com/anikherenow/Nimblescribe-Releases/releases/latest/download/NimbleScribe.dmg';
 const DOWNLOAD_URL_WINDOWS =
-  'https://github.com/anikherenow/Nimblescribe-Releases/releases/latest/download/NimbleScribe.msix';
+  'https://github.com/anikherenow/Nimblescribe-Releases/releases/latest/download/NimbleScribeSetup.exe';
 
 const STEPS = [
   { n: '01', label: 'Press your shortcut', desc: 'Hold the hotkey you set — recording starts instantly from your microphone.' },
@@ -122,13 +122,26 @@ export default function ProductsPage() {
               Download for Windows
             </a>
             <a
-              href="https://github.com/anikherenow/Nimblescribe-Releases"
+              href="https://nimblescribe.nimblesl.com"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost"
               style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 20px', fontSize: 15, borderRadius: 12 }}
             >
               <ExternalLink size={15} />
+              Go to Website
+            </a>
+          </div>
+
+          {/* GitHub — small tertiary link */}
+          <div style={{ textAlign: 'center', marginBottom: 8 }}>
+            <a
+              href="https://github.com/anikherenow/Nimblescribe-Releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: 12, color: 'var(--text-3)', opacity: 0.5, display: 'inline-flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}
+            >
+              <ExternalLink size={11} />
               View on GitHub
             </a>
           </div>
