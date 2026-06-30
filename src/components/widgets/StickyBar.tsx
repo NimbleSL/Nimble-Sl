@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { X, Star, Phone, Sparkles, ArrowRight, Clock } from 'lucide-react';
+import { X, Star, Phone, Sparkles, ArrowRight } from 'lucide-react';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { BookCallModal } from '@/components/overlays/BookCallModal';
 
@@ -59,9 +59,9 @@ export function StickyBar() {
           transition={{ type: 'spring', stiffness: 340, damping: 32 }}
           className="fixed bottom-0 left-0 right-0 z-40"
         >
-          {/* ─── DESKTOP (md+) ─── */}
+          {/* ─── DESKTOP (md+) ─── full-width bg wrapper, content max-w inside ─── */}
           <div
-            className="hidden md:flex items-center justify-between px-6 h-16 max-w-screen-xl mx-auto"
+            className="hidden md:block"
             style={{
               background: isDark ? 'rgba(10,14,26,0.97)' : 'rgba(255,255,255,0.97)',
               backdropFilter: 'blur(16px)',
@@ -69,79 +69,84 @@ export function StickyBar() {
               borderTop: isDark ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(0,0,0,0.08)',
             }}
           >
-            {/* Left: Social proof */}
-            <div className="flex items-center gap-4">
-              {/* Stars */}
-              <div className="flex items-center gap-1.5">
-                <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map(s => (
-                    <Star key={s} size={13} style={{ fill: '#FBBF24', color: '#FBBF24' }} />
-                  ))}
+            <div className="flex items-center justify-between px-4 lg:px-6 h-14 lg:h-16 max-w-screen-xl mx-auto">
+              {/* Left: Social proof */}
+              <div className="flex items-center gap-2 lg:gap-4 flex-shrink-0">
+                {/* Stars */}
+                <div className="flex items-center gap-1.5">
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(s => (
+                      <Star key={s} size={12} style={{ fill: '#FBBF24', color: '#FBBF24' }} />
+                    ))}
+                  </div>
+                  <span className="text-sm font-bold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>Client</span>
+                  <span className="hidden lg:inline text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>reviews</span>
                 </div>
-                <span className="text-sm font-bold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>Client</span>
-                <span className="text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>reviews</span>
+                {/* Rate badge — hidden on md-lg to save space */}
+                <div
+                  className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
+                  style={{
+                    background: isDark ? 'rgba(16,185,129,0.1)' : 'rgba(16,185,129,0.08)',
+                    color: '#10B981',
+                    border: '1px solid rgba(16,185,129,0.25)',
+                  }}
+                >
+                  <motion.div
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ duration: 1.6, repeat: Infinity }}
+                    style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981', flexShrink: 0 }}
+                  />
+                  Top Rated Agency
+                </div>
               </div>
-              {/* Rate badge */}
-              <div
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
-                style={{
-                  background: isDark ? 'rgba(16,185,129,0.1)' : 'rgba(16,185,129,0.08)',
-                  color: '#10B981',
-                  border: '1px solid rgba(16,185,129,0.25)',
-                }}
-              >
-                <motion.div
-                  animate={{ opacity: [1, 0.4, 1] }}
-                  transition={{ duration: 1.6, repeat: Infinity }}
-                  style={{ width: 5, height: 5, borderRadius: '50%', background: '#10B981', flexShrink: 0 }}
-                />
-                Top Rated Agency
+
+              {/* Center: Copy */}
+              <div className="flex flex-col items-center px-3 min-w-0">
+                <p className="text-xs lg:text-sm font-semibold truncate" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>
+                  Ready to build your next project?
+                </p>
+                {/* Subtext hidden on tablet to prevent overflow */}
+                <p className="hidden lg:block text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>
+                  50+ enterprise platforms shipped · avg delivery 14 weeks
+                </p>
               </div>
-            </div>
 
-            {/* Center: Copy */}
-            <div className="flex flex-col items-center">
-              <p className="text-sm font-semibold" style={{ color: isDark ? '#F1F5F9' : '#0F172A' }}>
-                Ready to build your next project?
-              </p>
-              <p className="text-xs" style={{ color: isDark ? '#64748B' : '#94A3B8' }}>
-                50+ enterprise platforms shipped · avg delivery 14 weeks
-              </p>
-            </div>
-
-            {/* Right: CTAs */}
-            <div className="flex items-center gap-2">
-              <Link
-                href="/tools/project-estimator"
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:opacity-90"
-                style={{
-                  background: isDark ? 'rgba(59,130,246,0.12)' : 'rgba(59,130,246,0.08)',
-                  color: '#60A5FA',
-                  border: '1px solid rgba(59,130,246,0.25)',
-                }}
-              >
-                <Sparkles size={13} />
-                AI Estimate
-              </Link>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 14px rgba(59,130,246,0.35)', border: 'none', cursor: 'pointer' }}
-              >
-                <Phone size={13} />
-                Book a Free Call
-                <ArrowRight size={12} />
-              </button>
-              <button
-                onClick={handleDismiss}
-                className="w-8 h-8 rounded-full flex items-center justify-center transition-colors ml-1"
-                style={{ color: isDark ? '#475569' : '#94A3B8' }}
-                onMouseEnter={e => (e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                aria-label="Dismiss"
-              >
-                <X size={15} />
-              </button>
+              {/* Right: CTAs */}
+              <div className="flex items-center gap-1.5 lg:gap-2 flex-shrink-0">
+                <Link
+                  href="/tools/project-estimator"
+                  className="flex items-center gap-1.5 px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all hover:opacity-90"
+                  style={{
+                    background: isDark ? 'rgba(59,130,246,0.12)' : 'rgba(59,130,246,0.08)',
+                    color: '#60A5FA',
+                    border: '1px solid rgba(59,130,246,0.25)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <Sparkles size={12} />
+                  AI Estimate
+                </Link>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="flex items-center gap-1.5 px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold text-white transition-all hover:opacity-90"
+                  style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 14px rgba(59,130,246,0.35)', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                >
+                  <Phone size={12} />
+                  <span className="hidden lg:inline">Book a Free Call</span>
+                  <span className="lg:hidden">Book Call</span>
+                  <ArrowRight size={11} className="hidden lg:inline" />
+                </button>
+                <button
+                  onClick={handleDismiss}
+                  className="w-7 h-7 lg:w-8 lg:h-8 rounded-full flex items-center justify-center transition-colors ml-0.5"
+                  style={{ color: isDark ? '#475569' : '#94A3B8' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                  aria-label="Dismiss"
+                >
+                  <X size={14} />
+                </button>
+              </div>
             </div>
           </div>
 

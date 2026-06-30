@@ -279,9 +279,9 @@ export function NimbleBot() {
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 320, damping: 30 }}
             className="nimble-bot-panel fixed bottom-24 right-4 md:right-6 z-50"
-            style={{ width: 'min(340px, calc(100vw - 32px))', maxHeight: 560 }}
+            style={{ width: 'min(360px, calc(100vw - 32px))', maxHeight: 'min(560px, calc(100dvh - 220px))' }}
           >
-            <div className="glass rounded-2xl shadow-2xl overflow-hidden flex flex-col" style={{ maxHeight: 560 }}>
+            <div className="glass rounded-2xl shadow-2xl overflow-hidden flex flex-col" style={{ maxHeight: 'min(560px, calc(100dvh - 220px))' }}>
               {/* Header */}
               <div className="px-4 py-3 flex items-center justify-between flex-shrink-0" style={{ borderBottom: '1px solid var(--border)' }}>
                 <div className="flex items-center gap-2">

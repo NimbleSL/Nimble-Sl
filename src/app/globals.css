@@ -103,6 +103,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -188,6 +189,24 @@ body {
   .rg-hero { grid-template-columns: 1fr 1fr; }
   .rg-hero-equal { grid-template-columns: 1fr 1fr; }
   .rg-sidebar-lg { grid-template-columns: 1fr 240px; }
+}
+
+/* ── iPad / tablet (768-1024px) ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Collapse sidebar to single column — TOC hidden on tablet too */
+  .rg-sidebar, .rg-sidebar-lg { grid-template-columns: 1fr; }
+  .rg-sidebar > *:last-child,
+  .rg-sidebar-lg > *:last-child { display: none; }
+
+  /* 3-col grids → 2-col on tablet */
+  .rg-3 { grid-template-columns: 1fr 1fr; }
+
+  /* Section padding tweaks */
+  .section-pad { padding: 64px 0; }
+  .section-pad-sm { padding: 40px 0; }
+
+  /* Inner page hero top padding (announcement 38px + nav 77px + buffer 25px = 140px, same as desktop) */
+  .inner-hero-pt { padding-top: 140px !important; }
 }
 
 /* ── Mobile (≤ 768px) ── */
@@ -587,10 +606,13 @@ body {
 }
 
 /* ============================================
-   NIMBLEBOT — STICKY BAR AWARENESS (mobile)
-   When sticky bar is visible, float NimbleBot above it
+   NIMBLEBOT — STICKY BAR AWARENESS
+   When sticky bar is visible, float NimbleBot above it.
+   Mobile bar: ~112px tall  →  FAB at 140px, panel at 210px
+   Tablet/desktop bar: h-14 (56px) on md, h-16 (64px) on lg+  →  FAB at 76px, panel at 160px
    ============================================ */
 
+/* Mobile (<md) — taller mobile sticky bar */
 @media (max-width: 767px) {
   body.sticky-bar-visible .nimble-bot-fab {
     bottom: 140px !important;
@@ -604,6 +626,24 @@ body {
     transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .nimble-bot-panel {
+    transition: bottom 0.3s ease;
+  }
+}
+
+/* Tablet & desktop (md+) — compact desktop sticky bar */
+@media (min-width: 768px) {
+  .nimble-bot-fab {
+    transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .nimble-bot-panel {
+    transition: bottom 0.3s ease;
+  }
+  body.sticky-bar-visible .nimble-bot-fab {
+    bottom: 76px !important;
+    transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  body.sticky-bar-visible .nimble-bot-panel {
+    bottom: 160px !important;
     transition: bottom 0.3s ease;
   }
 }
