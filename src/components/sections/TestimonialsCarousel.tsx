@@ -6,7 +6,7 @@ import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
-const TESTIMONIALS = [
+const ALL_TESTIMONIALS = [
   {
     quote: 'We came to NimbleSL with a half-broken fraud system and a 6-week deadline. They shipped a GNN-based model that hit 96% accuracy in production. No US shop quoted under $250K — Anik\'s team built it for a fifth of that.',
     author: 'Sarah Patel',
@@ -73,6 +73,9 @@ const TESTIMONIALS = [
     ],
   },
 ];
+
+const TESTIMONIALS = ALL_TESTIMONIALS.filter(t => !t.role.toLowerCase().includes('insurance'));
+
 
 const DRAG_THRESHOLD = 50;
 

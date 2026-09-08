@@ -1,6 +1,6 @@
 import type { ISolution } from '@/lib/types/solution';
 
-export const solutions: ISolution[] = [
+const allSolutions: ISolution[] = [
   {
     slug: 'payflow',
     name: 'PayFlow',
@@ -366,5 +366,10 @@ export const solutions: ISolution[] = [
       { value: '4', label: 'Team members' },
     ],
     oldCode: 'RestoBase5',
-  },
 ];
+
+// Temporarily hide InsurTech solutions while preserving all code
+export const solutions: ISolution[] = allSolutions.filter(
+  (s) => s.slug !== 'insureflow' && s.industry !== 'InsurTech'
+);
+

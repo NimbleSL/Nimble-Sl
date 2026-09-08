@@ -52,7 +52,7 @@ export const navigationConfig = {
         title: 'FinTech & Banking',
         items: [
           { label: 'PayFlow', href: '/solutions/payflow', description: 'Digital banking platform' },
-          { label: 'ClaimWise', href: '/solutions/claimwise', description: 'InsurTech platform' },
+          // { label: 'ClaimWise', href: '/solutions/claimwise', description: 'InsurTech platform' },
           { label: 'FraudShield AI', href: '/solutions/fraudshield', description: 'AI fraud detection' },
         ],
       },

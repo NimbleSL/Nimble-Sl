@@ -9,6 +9,8 @@ export interface ITestimonial {
 }
 
 export const testimonials: ITestimonial[] = [
+  // Temporarily hidden
+  /*
   {
     id: 'sarah-patel',
     quote: 'We came to NimbleSL with a half-broken fraud system and a 6-week deadline. They shipped a GNN-based model that hit 96% accuracy in production. No US shop quoted under $250K — Anik\'s team built it for a fifth of that.',
@@ -18,6 +20,7 @@ export const testimonials: ITestimonial[] = [
     rating: 5,
     featured: true,
   },
+  */
   {
     id: 'rosachy-client',
     quote: 'NimbleSL delivered our enterprise web application 3 weeks ahead of schedule. Their attention to detail and proactive communication made them an exceptional development partner.',

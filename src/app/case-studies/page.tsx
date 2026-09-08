@@ -5,7 +5,7 @@ import { caseStudies } from '@/lib/data/caseStudies';
 
 export const metadata: Metadata = {
   title: 'Case Studies — Real Projects, Real Results',
-  description: 'Explore 8 detailed case studies from NimbleSL. FinTech, InsurTech, PropTech, Logistics, Enterprise, F&B — real client results, real metrics, no vague claims.',
+  description: 'Explore detailed case studies from NimbleSL. FinTech, PropTech, Logistics, Enterprise, F&B — real client results, real metrics, no vague claims.',
 };
 
 const COLOR_MAP: Record<string, string> = {
@@ -35,7 +35,7 @@ export default function CaseStudiesPage() {
               Real projects.<br /><span className="grad-blue">Real results.</span>
             </h1>
             <p style={{ marginTop: 20, fontSize: 18, color: 'var(--text-2)', maxWidth: 580, lineHeight: 1.65 }}>
-              8 in-depth client stories with hard metrics, architecture decisions, and honest timelines.
+              In-depth client stories with hard metrics, architecture decisions, and honest timelines.
               Every case study links to the live product it was built on — try it yourself.
             </p>
           </div>

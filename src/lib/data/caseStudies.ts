@@ -1,6 +1,6 @@
 import type { ICaseStudy } from '@/lib/types/caseStudy';
 
-export const caseStudies: ICaseStudy[] = [
+const allCaseStudies: ICaseStudy[] = [
 
   // ─── FEATURED ──────────────────────────────────────────────────────────────
 
@@ -414,5 +414,10 @@ The central analytics dashboard — the piece the CEO had been waiting for — p
     relatedProduct: 'restodesk',
     demoUrl: 'https://restodesk.nimblesl.com',
     featured: false,
-  },
 ];
+
+// Temporarily hide insurance-related case studies while preserving all code
+export const caseStudies: ICaseStudy[] = allCaseStudies.filter(
+  (cs) => cs.slug !== 'insureflow-claims-ai' && cs.slug !== 'botstudio-insurance-support' && !cs.industry.toLowerCase().includes('insurance')
+);
+

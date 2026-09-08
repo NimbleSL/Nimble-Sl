@@ -552,7 +552,7 @@ export default function CareersPage() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Anik Rahman"
+                      placeholder="Alex Morgan"
                       className="rounded-lg px-4 py-2.5 text-sm outline-none border border-border"
                       style={{ background: 'var(--surface-2)', color: 'var(--text)' }}
                     />
@@ -567,7 +567,7 @@ export default function CareersPage() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="anik@example.com"
+                      placeholder="alex@example.com"
                       className="rounded-lg px-4 py-2.5 text-sm outline-none border border-border"
                       style={{ background: 'var(--surface-2)', color: 'var(--text)' }}
                     />

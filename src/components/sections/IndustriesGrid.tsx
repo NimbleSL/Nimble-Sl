@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Building2, Heart, Shield, Home, ShoppingCart, BookOpen, Truck, Briefcase, ArrowRight } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
-const INDUSTRIES = [
+const ALL_INDUSTRIES = [
   { name: 'FinTech', icon: Building2, count: '12 projects', href: '/industries/fintech-banking' },
   { name: 'HealthTech', icon: Heart, count: '6 projects', href: '/industries/healthcare-medtech' },
   { name: 'InsurTech', icon: Shield, count: '5 projects', href: '/industries/insurance' },
@@ -16,6 +16,8 @@ const INDUSTRIES = [
   { name: 'Logistics', icon: Truck, count: '4 projects', href: '/industries/logistics-supply-chain' },
   { name: 'Enterprise SaaS', icon: Briefcase, count: '8 projects', href: '/industries/enterprise-saas' },
 ];
+
+const INDUSTRIES = ALL_INDUSTRIES.filter((ind) => ind.name !== 'InsurTech');
 
 export function IndustriesGrid() {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.1 });
@@ -31,7 +33,7 @@ export function IndustriesGrid() {
             Domain knowledge, not just code.
           </h2>
           <p style={{ marginTop: 14, fontSize: 16, color: 'var(--text-2)', maxWidth: 580, lineHeight: 1.65 }}>
-            Eight verticals where we&apos;ve shipped enough to know the regulations, edge cases, and how to actually talk to your customers.
+            Key verticals where we&apos;ve shipped enough to know the regulations, edge cases, and how to actually talk to your customers.
           </p>
         </div>
 

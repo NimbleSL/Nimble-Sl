@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Gauge, Play } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
-const PRODUCTS = [
+const ALL_PRODUCTS = [
   { slug: 'payflow', name: 'PayFlow', tag: 'FinTech', tagClass: 'tag-blue', tagline: 'Complete Digital Banking, Built to Launch', metric: 'Real-time cross-border payments', accent: '#3B82F6', demoHref: 'https://payflow.nimblesl.com' },
   { slug: 'insureflow', name: 'InsureFlow', tag: 'InsurTech', tagClass: 'tag-emerald', tagline: 'Insurance Operations, End-to-End Digital', metric: '70% faster claim processing', accent: '#10B981', demoHref: 'https://insureflow.nimblesl.com' },
   { slug: 'mediflow', name: 'MediFlow', tag: 'HealthTech', tagClass: 'tag-rose', tagline: 'Modern Healthcare, Paperless & Connected', metric: 'Paperless EHR management', accent: '#F43F5E', demoHref: 'https://mediflow.nimblesl.com' },
@@ -14,6 +14,8 @@ const PRODUCTS = [
   { slug: 'realtydesk', name: 'RealtyDesk', tag: 'PropTech', tagClass: 'tag-cyan', tagline: '360° Property Management, Simplified', metric: '360° property lifecycle management', accent: '#06B6D4', demoHref: 'https://realtydesk.nimblesl.com' },
   { slug: 'fieldtrack', name: 'FieldTrack', tag: 'Logistics', tagClass: 'tag-orange', tagline: 'Field Service Automation That Works Anywhere', metric: '40% operational cost reduction', accent: '#F97316', demoHref: 'https://fieldtrack.nimblesl.com' },
 ];
+
+const PRODUCTS = ALL_PRODUCTS.filter((p) => p.slug !== 'insureflow');
 
 export function ShowroomTeaser() {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.05 });
@@ -32,7 +34,7 @@ export function ShowroomTeaser() {
               Don&apos;t just read about our work. Try it.
             </h2>
             <p style={{ marginTop: 14, fontSize: 16, color: 'var(--text-2)', maxWidth: 560, lineHeight: 1.65 }}>
-              Six production-grade platforms running on real infrastructure. Click any demo — log in, click around, break things. Then customize from there.
+              Production-grade platforms running on real infrastructure. Click any demo — log in, click around, break things. Then customize from there.
             </p>
           </div>
           <Link href="/solutions" className="btn btn-ghost" style={{ flexShrink: 0 }}>

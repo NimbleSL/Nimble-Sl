@@ -6,19 +6,19 @@ import type { Metadata } from 'next';
 
 const CASE_STUDY_MAP: Record<string, string> = {
   'payflow': 'payflow-uae-neobank',
-  'insureflow': 'insureflow-claims-ai',
-  'claimwise': 'insureflow-claims-ai',
+  'insureflow': 'payflow-uae-neobank',
+  'claimwise': 'payflow-uae-neobank',
   'fieldtrack': 'fieldtrack-logistics-automation',
   'fieldops': 'fieldtrack-logistics-automation',
   'nimbleerp': 'nimbleerp-manufacturing',
-  'botstudio': 'botstudio-insurance-support',
+  'botstudio': 'nimbleerp-manufacturing',
   'realtydesk': 'realtydesk-proptech-platform',
   'propnest': 'realtydesk-proptech-platform',
   'shopnest': 'shopnest-multivendor-marketplace',
   'restodesk': 'restodesk-restaurant-chain',
   'authgate': 'payflow-uae-neobank',
-  'hiresync': 'botstudio-insurance-support',
-  'caseflow': 'insureflow-claims-ai',
+  'hiresync': 'nimbleerp-manufacturing',
+  'caseflow': 'payflow-uae-neobank',
   'fraudshield': 'payflow-uae-neobank',
 };
 

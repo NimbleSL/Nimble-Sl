@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ArrowRight, Gauge } from 'lucide-react';
 import { solutions } from '@/lib/data/solutions';
 
-const FILTERS = ['All', 'FinTech', 'InsurTech', 'HealthTech', 'PropTech', 'E-Commerce', 'Retail', 'Logistics', 'Enterprise', 'F&B', 'AI/ML'];
+const ALL_FILTERS = ['All', 'FinTech', 'InsurTech', 'HealthTech', 'PropTech', 'E-Commerce', 'Retail', 'Logistics', 'Enterprise', 'F&B', 'AI/ML'];
+const FILTERS = ALL_FILTERS.filter((f) => f !== 'InsurTech');
 
 export default function SolutionsPage() {
   const [activeFilter, setActiveFilter] = useState('All');

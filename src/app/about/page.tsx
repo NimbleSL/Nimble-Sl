@@ -33,7 +33,7 @@ const TIMELINE: { y: string; t: string; d: string; upcoming?: boolean }[] = [
   { y: 'Mar 2026',    t: 'First delivery',              d: 'First project shipped on time and within budget. Client refers us to two more within the month.' },
   { y: 'Q2 2026',     t: 'Team hits 20+ and growing',  d: 'Grew from 12+ to 20+ team members. First international clients from UK and EU in the pipeline.' },
   { y: 'Q2 2026',     t: 'AI Estimator goes live',     d: 'Claude-powered scoping tool launches. 3-minute project estimates, directly on the website.' },
-  { y: 'Q3 2026',     t: 'Product Showroom',           d: 'PayFlow, FraudShield AI, and ClaimWise launch as live working demos for prospective clients.', upcoming: true },
+  { y: 'Q3 2026',     t: 'Product Showroom',           d: 'PayFlow, FraudShield AI, and ShopNest launch as live working demos for prospective clients.', upcoming: true },
   { y: '2027',        t: 'Scale & expand',             d: 'Target: 50+ completed projects, 15+ active engagements, first proprietary SaaS product in market.', upcoming: true },
 ];
 
@@ -82,7 +82,7 @@ const GOALS = [
     num: '02',
     title: 'Product Evolution',
     description:
-      'Transition from pure services to a hybrid model. Our proprietary SaaS products — PayFlow, FraudShield AI, ClaimWise — already run in production for paying clients. We\'re expanding the portfolio.',
+      'Transition from pure services to a hybrid model. Our proprietary SaaS products — PayFlow, FraudShield AI, FieldOps — already run in production for paying clients. We\'re expanding the portfolio.',
     accent: '#10B981',
   },
   {
@@ -188,10 +188,11 @@ export default function AboutPage() {
                 <span className="ev-dot" />Our Story
               </span>
               <h2 className="font-display" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 800, lineHeight: 1.15, color: 'var(--text)' }}>
-                Two founders.<br />One thesis.
+                Built on engineering discipline.
               </h2>
               <p style={{ marginTop: 24, fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75 }}>
-                In January 2026, Md. Main Oddin Chisty and Habibur Rahman left their jobs and started NimbleSL
+                {/* In January 2026, Md. Main Oddin Chisty and Habibur Rahman left their jobs and started NimbleSL */}
+                In January 2026, Md. Main Oddin Chisty founded NimbleSL
                 with a small crew of 4 exceptional developers. Not another outsourcing body shop — a proper
                 engineering company with real processes and real accountability.
               </p>
@@ -386,14 +387,14 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 max-w-[900px] mx-auto">
+          <div className="grid grid-cols-1 max-w-[500px] mx-auto">
 
             {/* CEO */}
             <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
               <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05))' }}>
                 <Image
                   src="/images/md-main-uddin-chisty-ceo.png"
-                  alt="Md. Main Oddin Chisty — Co-founder & CEO, NimbleSL"
+                  alt="Md. Main Oddin Chisty — Founder & CEO, NimbleSL"
                   width={600}
                   height={600}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
@@ -406,7 +407,7 @@ export default function AboutPage() {
                     <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-display)' }}>
                       Md. Main Oddin Chisty
                     </h3>
-                    <div style={{ fontSize: 13, color: 'var(--blue-2)', fontWeight: 600, marginTop: 4 }}>Co-founder & CEO</div>
+                    <div style={{ fontSize: 13, color: 'var(--blue-2)', fontWeight: 600, marginTop: 4 }}>Founder & CEO</div>
                   </div>
                   <span className="tag tag-blue" style={{ fontSize: 10, marginTop: 4 }}>CEO</span>
                 </div>
@@ -424,7 +425,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* COO */}
+            {/* COO - Temporarily hidden */}
+            {/*
             <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
               <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05))' }}>
                 <Image
@@ -459,6 +461,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+            */}
 
           </div>
         </div>

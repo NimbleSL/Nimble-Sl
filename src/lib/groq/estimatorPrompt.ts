@@ -75,7 +75,7 @@ Cloud / Infra:
 
 8. REFERENCE PROJECTS (use for manday calibration)
 - PayFlow (FinTech SaaS — web + mobile): ~200–260 mandays | 16–20 wks
-- InsureFlow (InsurTech — claims + AI fraud + mobile): ~180–230 mandays | 18–22 wks
+// - InsureFlow (InsurTech — claims + AI fraud + mobile): ~180–230 mandays | 18–22 wks (temporarily hidden)
 - RealtyDesk (PropTech marketplace — search + mobile): ~250–350 mandays | 22–26 wks
 - BotStudio (AI/ML — NLP chatbot + omnichannel): ~160–220 mandays | 14–18 wks
 - FieldTrack (Logistics — offline mobile + web): ~150–200 mandays | 16–20 wks

@@ -46,7 +46,7 @@ import { post as post_27 } from './posts/technical-debt-cost';
 import { post as post_28 } from './posts/why-software-projects-fail';
 import { post as post_29 } from './posts/working-with-dev-agency';
 
-export const blogPosts: BlogPost[] = [
+const allBlogPosts: BlogPost[] = [
   post_0,
   post_1,
   post_2,
@@ -78,6 +78,12 @@ export const blogPosts: BlogPost[] = [
   post_28,
   post_29,
 ];
+
+// Temporarily hide insurance blog post while preserving all code
+export const blogPosts: BlogPost[] = allBlogPosts.filter(
+  (p) => p.slug !== 'insurance-software-development'
+);
+
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
