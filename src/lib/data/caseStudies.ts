@@ -414,6 +414,7 @@ The central analytics dashboard — the piece the CEO had been waiting for — p
     relatedProduct: 'restodesk',
     demoUrl: 'https://restodesk.nimblesl.com',
     featured: false,
+  },
 ];
 
 // Temporarily hide insurance-related case studies while preserving all code

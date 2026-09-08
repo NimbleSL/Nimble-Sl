@@ -366,6 +366,7 @@ const allSolutions: ISolution[] = [
       { value: '4', label: 'Team members' },
     ],
     oldCode: 'RestoBase5',
+  },
 ];
 
 // Temporarily hide InsurTech solutions while preserving all code

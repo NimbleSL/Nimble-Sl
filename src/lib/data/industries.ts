@@ -134,6 +134,7 @@ const allIndustries: IIndustry[] = [
     compliance: ['SOC 2', 'GDPR', 'ISO 27001'],
     accent: '#A855F7',
     tagVariant: 'purple',
+  },
 ];
 
 // Temporarily hide insurance industry while preserving all code
