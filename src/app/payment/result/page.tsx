@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import { COMPANY, DELIVERY } from '@/lib/constants/company';
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: 'Payment Status — NimbleSL',
   robots: { index: false },
