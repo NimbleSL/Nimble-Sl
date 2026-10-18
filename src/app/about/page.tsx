@@ -6,6 +6,7 @@ import {
   Target, Zap, Handshake, Eye, Award, ArrowRight,
   MapPin, Globe, Clock, Sparkles,
 } from 'lucide-react';
+import { COMPANY } from '@/lib/constants/company';
 
 export const metadata: Metadata = {
   title: 'About NimbleSL — Silicon Valley Engineering, Bangladesh Pricing',
@@ -210,9 +211,34 @@ export default function AboutPage() {
               {/* Address */}
               <div style={{ marginTop: 32, display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-2)', fontSize: 13 }}>
                 <MapPin size={14} style={{ color: 'var(--blue-2)', flexShrink: 0 }} />
-                <span>House-1, Road-34, Gulshan-2, Dhaka-1212, Bangladesh</span>
+                <span>{COMPANY.OFFICE_ADDRESS}</span>
                 <span style={{ color: 'var(--border-2)' }}>·</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12 }}>GMT +6</span>
+              </div>
+
+              {/* Company & management details */}
+              <div className="card" style={{ marginTop: 24, padding: 20 }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 12 }}>
+                  Company Details
+                </div>
+                <dl style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 16px', fontSize: 13, color: 'var(--text-2)', margin: 0 }}>
+                  {[
+                    ['Legal Name', COMPANY.LEGAL_NAME],
+                    ['Business Type', COMPANY.BUSINESS_TYPE],
+                    ['Managing Director', COMPANY.MANAGING_DIRECTOR],
+                    ['Founder & CEO', COMPANY.CEO],
+                    ['Trade License', `${COMPANY.TRADE_LICENSE_NO} (${COMPANY.TRADE_LICENSE_AUTHORITY})`],
+                    ...(COMPANY.TIN_NO ? [['TIN', COMPANY.TIN_NO]] : []),
+                    ['Registered Address', COMPANY.REGISTERED_ADDRESS],
+                    ['Office', COMPANY.OFFICE_ADDRESS],
+                    ['Contact', `${COMPANY.EMAIL} · ${COMPANY.PHONE}`],
+                  ].map(([label, value]) => (
+                    <div key={label} style={{ display: 'contents' }}>
+                      <dt style={{ color: 'var(--text-3)', whiteSpace: 'nowrap' }}>{label}</dt>
+                      <dd style={{ margin: 0, color: 'var(--text)' }}>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </div>
 

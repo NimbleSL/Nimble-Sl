@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FileText, Award, CreditCard, Shield, Scale, HelpCircle } from 'lucide-react';
+import { FileText, Award, CreditCard, Shield, Scale, HelpCircle, Truck } from 'lucide-react';
+import { COMPANY, DELIVERY, REFUND } from '@/lib/constants/company';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Professional Engagement Rules — NimbleSL',
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfServicePage() {
-  const lastUpdated = 'January 10, 2026';
+  const lastUpdated = 'October 18, 2026';
 
   return (
     <main className="min-h-screen" style={{ background: 'var(--bg)' }}>
@@ -148,6 +149,27 @@ export default function TermsOfServicePage() {
                 </p>
               </div>
 
+              {/* Section 6 */}
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold font-display mb-4 flex items-center gap-3" style={{ color: 'var(--text)' }}>
+                  <Truck size={20} style={{ color: 'var(--blue-2)' }} /> 6. Online Payments, Delivery &amp; Refunds
+                </h2>
+                <ul className="flex flex-col gap-4 list-none p-0 m-0 pl-4 mb-4">
+                  <li className="text-sm sm:text-base flex items-start gap-2.5" style={{ color: 'var(--text-2)' }}>
+                    <span style={{ color: 'var(--blue-2)', marginTop: 2 }}>•</span>
+                    <span><strong>Online Payments</strong>: Payments made on our <Link href="/payment" style={{ color: 'var(--blue-2)' }}>payment page</Link> are processed securely by SSLCommerz. Prices for our products (including WizzenAI) and services are set by quotation, and you pay the amount stated on your quotation or invoice.</span>
+                  </li>
+                  <li className="text-sm sm:text-base flex items-start gap-2.5" style={{ color: 'var(--text-2)' }}>
+                    <span style={{ color: 'var(--blue-2)', marginTop: 2 }}>•</span>
+                    <span><strong>Delivery Time</strong>: Inside Dhaka within {DELIVERY.INSIDE_DHAKA_DAYS} days, outside Dhaka within {DELIVERY.OUTSIDE_DHAKA_DAYS} days of payment. Software and licenses are delivered by email, download link or account access.</span>
+                  </li>
+                  <li className="text-sm sm:text-base flex items-start gap-2.5" style={{ color: 'var(--text-2)' }}>
+                    <span style={{ color: 'var(--blue-2)', marginTop: 2 }}>•</span>
+                    <span><strong>Refunds</strong>: Approved refunds are processed within {REFUND.PROCESSING_DAYS}, as explained in our <Link href="/refund-policy" style={{ color: 'var(--blue-2)' }}>Return &amp; Refund Policy</Link>.</span>
+                  </li>
+                </ul>
+              </div>
+
             </div>
 
             {/* Sidebar Details Card */}
@@ -167,6 +189,16 @@ export default function TermsOfServicePage() {
                 <a href="mailto:info@nimblesl.com" className="text-xs font-semibold hover:underline" style={{ color: 'var(--blue-2)' }}>
                   info@nimblesl.com
                 </a>
+              </div>
+              <div style={{ height: 1, background: 'var(--border)' }} />
+              <div>
+                <h3 className="text-sm font-bold mb-2" style={{ color: 'var(--text)' }}>Company Details</h3>
+                <p className="text-xs" style={{ color: 'var(--text-2)', lineHeight: 1.6 }}>
+                  {COMPANY.LEGAL_NAME}<br />
+                  Trade License: {COMPANY.TRADE_LICENSE_NO}<br />
+                  {COMPANY.TIN_NO && <>TIN: {COMPANY.TIN_NO}<br /></>}
+                  Registered Address: {COMPANY.REGISTERED_ADDRESS}
+                </p>
               </div>
             </div>
 

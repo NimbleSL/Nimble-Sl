@@ -5,6 +5,7 @@ import { ArrowRight, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 import { ComplianceBadges } from '@/components/ui/ComplianceBadge';
 import { BrandMark } from '@/components/ui/BrandMark';
 import { CodeSignature } from '@/components/ui/CodeSignature';
+import { COMPANY } from '@/lib/constants/company';
 
 // Social icon SVGs (lucide-react doesn't include brand icons)
 const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
@@ -57,8 +58,10 @@ const FOOTER_LINKS = {
     { label: 'NimbleScribe — Free Mac & Windows App', href: 'https://nimblescribe.nimblesl.com' },
     { label: 'Compare Us', href: '/compare' },
     { label: 'Contact', href: '/contact' },
+    { label: 'Pay Online', href: '/payment' },
+    { label: 'Terms & Conditions', href: '/terms' },
+    { label: 'Return & Refund Policy', href: '/refund-policy' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
-    { label: 'Terms of Service', href: '/terms' },
   ],
 };
 
@@ -95,15 +98,19 @@ export function Footer() {
             <div className="flex flex-col gap-3 mb-6">
               <span className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-3)' }}>
                 <Mail size={13} style={{ color: 'var(--blue-2)', flexShrink: 0 }} />
-                info@nimblesl.com
+                {COMPANY.EMAIL}
               </span>
-              <a href="tel:+8801796109979" className="flex items-center gap-2.5 text-sm hover:opacity-80 transition-opacity" style={{ color: 'var(--text-3)' }}>
+              <a href={COMPANY.PHONE_HREF} className="flex items-center gap-2.5 text-sm hover:opacity-80 transition-opacity" style={{ color: 'var(--text-3)' }}>
                 <Phone size={13} style={{ color: 'var(--blue-2)', flexShrink: 0 }} />
-                +880-1796-109979
+                {COMPANY.PHONE}
               </a>
               <div className="flex items-start gap-2.5 text-sm" style={{ color: 'var(--text-3)' }}>
                 <MapPin size={13} style={{ color: 'var(--blue-2)', flexShrink: 0, marginTop: 2 }} />
-                <span>House-1, Road-34, Gulshan-2<br />Dhaka-1212, Bangladesh</span>
+                <span><strong style={{ color: 'var(--text-2)' }}>Registered Address:</strong><br />{COMPANY.REGISTERED_ADDRESS}</span>
+              </div>
+              <div className="flex items-start gap-2.5 text-sm" style={{ color: 'var(--text-3)' }}>
+                <MapPin size={13} style={{ color: 'var(--blue-2)', flexShrink: 0, marginTop: 2 }} />
+                <span><strong style={{ color: 'var(--text-2)' }}>Office:</strong><br />{COMPANY.OFFICE_ADDRESS}</span>
               </div>
             </div>
 
@@ -176,14 +183,35 @@ export function Footer() {
             ))}
           </div>
         </div>
+
+        {/* Payment methods banner */}
+        <div className="mt-10">
+          <div className="text-xs mb-4" style={{ color: 'var(--text-3)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            Secure payments via SSLCommerz
+          </div>
+          <div style={{ background: '#fff', borderRadius: 12, padding: '8px 12px', border: '1px solid var(--border)' }}>
+            <Image
+              src="/images/payment/sslcommerz-banner.png"
+              alt="Pay with Visa, Mastercard, American Express, bKash, Nagad, Rocket, Upay and more — verified by SSLCommerz"
+              width={5235}
+              height={586}
+              sizes="(max-width: 1280px) 100vw, 1216px"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid var(--border)' }}>
         <div className="container" style={{ padding: '20px 32px' }}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-xs" style={{ color: 'var(--text-3)' }}>
-              © {new Date().getFullYear()} Nimble Software Lab. All rights reserved.
+            <div className="text-xs flex flex-col gap-1 text-center md:text-left" style={{ color: 'var(--text-3)' }}>
+              <span>© {new Date().getFullYear()} {COMPANY.LEGAL_NAME}. All rights reserved.</span>
+              <span style={{ fontFamily: 'var(--font-mono)' }}>
+                Trade License No: {COMPANY.TRADE_LICENSE_NO}
+                {COMPANY.TIN_NO && <> · TIN: {COMPANY.TIN_NO}</>}
+              </span>
             </div>
             <div className="flex items-center gap-4">
               {/* Compliance badges */}

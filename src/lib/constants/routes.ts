@@ -13,4 +13,6 @@ export const ROUTES = {
   COMPARE: '/compare',
   PRIVACY: '/privacy-policy',
   TERMS: '/terms',
+  REFUND: '/refund-policy',
+  PAYMENT: '/payment',
 } as const;
