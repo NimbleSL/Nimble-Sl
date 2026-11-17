@@ -9,7 +9,6 @@ export const COMPANY = {
   // TIN certificate number — leave empty until provided; the footer hides it while empty.
   TIN_NO: '',
   MANAGING_DIRECTOR: 'Zannatunessa',
-  CEO: 'Md. Main Oddin Chisty',
   REGISTERED_ADDRESS: '15, Bijoynagar, Dhaka-1000, Bangladesh',
   OFFICE_ADDRESS: 'House-1, Road-34, Gulshan-2, Dhaka-1212, Bangladesh',
   EMAIL: 'info@nimblesl.com',

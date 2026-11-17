@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   CheckCircle2, Shield, Users, DollarSign, BookOpen,
@@ -192,8 +191,7 @@ export default function AboutPage() {
                 Built on engineering discipline.
               </h2>
               <p style={{ marginTop: 24, fontSize: 16, color: 'var(--text-2)', lineHeight: 1.75 }}>
-                {/* In January 2026, Md. Main Oddin Chisty and Habibur Rahman left their jobs and started NimbleSL */}
-                In January 2026, Md. Main Oddin Chisty founded NimbleSL
+                In January 2026, NimbleSL was founded
                 with a small crew of 4 exceptional developers. Not another outsourcing body shop — a proper
                 engineering company with real processes and real accountability.
               </p>
@@ -226,7 +224,6 @@ export default function AboutPage() {
                     ['Legal Name', COMPANY.LEGAL_NAME],
                     ['Business Type', COMPANY.BUSINESS_TYPE],
                     ['Managing Director', COMPANY.MANAGING_DIRECTOR],
-                    ['Founder & CEO', COMPANY.CEO],
                     ['Trade License', `${COMPANY.TRADE_LICENSE_NO} (${COMPANY.TRADE_LICENSE_AUTHORITY})`],
                     ...(COMPANY.TIN_NO ? [['TIN', COMPANY.TIN_NO]] : []),
                     ['Registered Address', COMPANY.REGISTERED_ADDRESS],
@@ -394,101 +391,6 @@ export default function AboutPage() {
                 <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.75 }}>{g.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Founders ──────────────────────────────────────────────────── */}
-      <section style={{ padding: '96px 0', borderTop: '1px solid var(--border)', background: 'var(--surface)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: 56 }}>
-            <span className="eyebrow" style={{ marginBottom: 16, display: 'inline-flex' }}>
-              <span className="ev-dot" />The Founders
-            </span>
-            <h2 className="font-display" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 800, color: 'var(--text)' }}>
-              Who you'll actually work with.
-            </h2>
-            <p style={{ marginTop: 14, fontSize: 16, color: 'var(--text-2)', maxWidth: 560, margin: '14px auto 0' }}>
-              No account managers in the middle. You get direct access to the people who built this company.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 max-w-[500px] mx-auto">
-
-            {/* CEO */}
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05))' }}>
-                <Image
-                  src="/images/md-main-uddin-chisty-ceo.png"
-                  alt="Md. Main Oddin Chisty — Founder & CEO, NimbleSL"
-                  width={600}
-                  height={600}
-                  style={{ width: '100%', height: 'auto', display: 'block' }}
-                  priority
-                />
-              </div>
-              <div style={{ padding: 28 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
-                  <div>
-                    <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-display)' }}>
-                      Md. Main Oddin Chisty
-                    </h3>
-                    <div style={{ fontSize: 13, color: 'var(--blue-2)', fontWeight: 600, marginTop: 4 }}>Founder & CEO</div>
-                  </div>
-                  <span className="tag tag-blue" style={{ fontSize: 10, marginTop: 4 }}>CEO</span>
-                </div>
-                <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.75, marginTop: 14 }}>
-                  Main leads NimbleSL's strategic direction and client relationships. With a deep background
-                  in enterprise software architecture and business development, he built the operational
-                  blueprint that allows Nimble to deliver Silicon Valley-caliber engineering from Dhaka —
-                  on budget, on time, and without the agency markup.
-                </p>
-                <div style={{ marginTop: 20, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  {['Enterprise Strategy', 'Fintech', 'Client Partnerships'].map((tag) => (
-                    <span key={tag} className="tag" style={{ fontSize: 10 }}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* COO - Temporarily hidden */}
-            {/*
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05))' }}>
-                <Image
-                  src="/images/md-habibur-rahman-coo.jpeg"
-                  alt="Habibur Rahman — Co-founder & COO, NimbleSL"
-                  width={600}
-                  height={600}
-                  style={{ width: '100%', height: 'auto', display: 'block' }}
-                  priority
-                />
-              </div>
-              <div style={{ padding: 28 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
-                  <div>
-                    <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', fontFamily: 'var(--font-display)' }}>
-                      Habibur Rahman
-                    </h3>
-                    <div style={{ fontSize: 13, color: 'var(--emerald-2)', fontWeight: 600, marginTop: 4 }}>Co-founder & COO</div>
-                  </div>
-                  <span className="tag tag-emerald" style={{ fontSize: 10, marginTop: 4 }}>COO</span>
-                </div>
-                <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.75, marginTop: 14 }}>
-                  Known to clients and teammates as Anik, Habibur Rahman runs the engineering and delivery
-                  side of NimbleSL. He built the internal processes — code review culture, sprint cadence,
-                  Friday demo discipline — that make Nimble's delivery unusually reliable. If your project
-                  ships on time, it's largely because of the systems Anik designed.
-                </p>
-                <div style={{ marginTop: 20, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  {['Engineering Ops', 'Delivery', 'Full-Stack'].map((tag) => (
-                    <span key={tag} className="tag" style={{ fontSize: 10 }}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            */}
-
           </div>
         </div>
       </section>

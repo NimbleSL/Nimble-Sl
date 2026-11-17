@@ -13,7 +13,7 @@ export const testimonials: ITestimonial[] = [
   /*
   {
     id: 'sarah-patel',
-    quote: 'We came to NimbleSL with a half-broken fraud system and a 6-week deadline. They shipped a GNN-based model that hit 96% accuracy in production. No US shop quoted under $250K — Anik\'s team built it for a fifth of that.',
+    quote: 'We came to NimbleSL with a half-broken fraud system and a 6-week deadline. They shipped a GNN-based model that hit 96% accuracy in production. No US shop quoted under $250K — their team built it for a fifth of that.',
     name: 'Sarah Patel',
     title: 'VP Engineering',
     company: 'Blackstone Vale Insurance',
