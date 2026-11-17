@@ -224,6 +224,7 @@ export default function AboutPage() {
                     ['Legal Name', COMPANY.LEGAL_NAME],
                     ['Business Type', COMPANY.BUSINESS_TYPE],
                     ['Managing Director', COMPANY.MANAGING_DIRECTOR],
+                    ['Co-founders', COMPANY.CO_FOUNDERS.join(' · ')],
                     ['Trade License', `${COMPANY.TRADE_LICENSE_NO} (${COMPANY.TRADE_LICENSE_AUTHORITY})`],
                     ...(COMPANY.TIN_NO ? [['TIN', COMPANY.TIN_NO]] : []),
                     ['Registered Address', COMPANY.REGISTERED_ADDRESS],
