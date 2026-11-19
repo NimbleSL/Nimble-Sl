@@ -161,8 +161,8 @@ export default function FAQPage() {
                   <a href="mailto:info@nimblesl.com" className="flex items-center gap-2.5 text-xs font-medium hover:underline" style={{ color: 'var(--blue-2)' }}>
                     <Mail size={14} /> info@nimblesl.com
                   </a>
-                  <a href="tel:+8801796109979" className="flex items-center gap-2.5 text-xs font-medium hover:underline text-emerald-400">
-                    <Phone size={14} /> +880-1796-109979
+                  <a href="tel:+8801347526549" className="flex items-center gap-2.5 text-xs font-medium hover:underline text-emerald-400">
+                    <Phone size={14} /> +880-1347-526549
                   </a>
                   <Link href="/contact" className="btn btn-primary text-xs py-2 px-3 justify-center gap-1.5 mt-1">
                     Book Discovery Call <ArrowRight size={12} />

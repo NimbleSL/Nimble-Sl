@@ -13,8 +13,8 @@ export const COMPANY = {
   REGISTERED_ADDRESS: '15, Bijoynagar, Dhaka-1000, Bangladesh',
   OFFICE_ADDRESS: 'House-1, Road-34, Gulshan-2, Dhaka-1212, Bangladesh',
   EMAIL: 'info@nimblesl.com',
-  PHONE: '+880-1796-109979',
-  PHONE_HREF: 'tel:+8801796109979',
+  PHONE: '+880-1347-526549',
+  PHONE_HREF: 'tel:+8801347526549',
 } as const;
 
 export const DELIVERY = {

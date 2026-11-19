@@ -158,8 +158,8 @@ export default function ContactPage() {
                     <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-2)', fontSize: 14 }}>
                       <Mail size={15} style={{ color: 'var(--blue-2)', flexShrink: 0 }} /> sales@nimblesl.com
                     </span>
-                    <a href="tel:+8801796109979" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-2)', textDecoration: 'none', fontSize: 14 }}>
-                      <Phone size={15} style={{ color: 'var(--blue-2)', flexShrink: 0 }} /> +880-1796-109979
+                    <a href="tel:+8801347526549" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-2)', textDecoration: 'none', fontSize: 14 }}>
+                      <Phone size={15} style={{ color: 'var(--blue-2)', flexShrink: 0 }} /> +880-1347-526549
                     </a>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: 'var(--text-2)' }}>
                       <MapPin size={15} style={{ color: 'var(--blue-2)', flexShrink: 0, marginTop: 2 }} />

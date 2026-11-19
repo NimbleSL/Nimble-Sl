@@ -289,7 +289,7 @@ async function generatePDF(
   function pageFooter(pg: number, total: number) {
     F(NAVY); doc.rect(0, PH - 10, PW, 10, 'F');
     T([147, 197, 253]); nm(6.5);
-    doc.text('Nimble Software Lab  ·  nimblesl.com  ·  info@nimblesl.com  ·  +880 017 9610 9979', M, PH - 4);
+    doc.text('Nimble Software Lab  ·  nimblesl.com  ·  info@nimblesl.com  ·  +880 1347-526549', M, PH - 4);
     T(WHITE); bd(7); doc.text(`${pg} / ${total}`, PW - M, PH - 4, { align: 'right' });
   }
 
@@ -432,7 +432,7 @@ async function generatePDF(
   F(NAVY); doc.rect(0, PH - 20, PW, 20, 'F');
   T(WHITE); bd(9); doc.text('Nimble Software Lab', M, PH - 13);
   T([147, 197, 253]); nm(7.5);
-  doc.text('nimblesl.com  ·  info@nimblesl.com  ·  +880 017 9610 9979', M, PH - 8);
+  doc.text('nimblesl.com  ·  info@nimblesl.com  ·  +880 1347-526549', M, PH - 8);
   nm(7); doc.text('House 1, Road 34, Gulshan-2, Dhaka-1219, Bangladesh', M, PH - 3.5);
   T(WHITE); bd(7); doc.text('1 / 4', PW - M, PH - 8, { align: 'right' });
 
@@ -707,7 +707,7 @@ async function generatePDF(
   });
 
   T(BLUE); bd(8);
-  doc.text('nimblesl.com/contact   ·   info@nimblesl.com   ·   +880 017 9610 9979', M + 10, nsY + 44);
+  doc.text('nimblesl.com/contact   ·   info@nimblesl.com   ·   +880 1347-526549', M + 10, nsY + 44);
 
   // ── Signature / Acceptance block ─────────────────────────────────────────────
   const sigY = PH - 52;

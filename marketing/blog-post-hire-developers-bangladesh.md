@@ -276,7 +276,7 @@ We're a software development company in Bangladesh with expertise in web applica
 
 **Get started**: [Contact Us](https://www.nimblesl.com/#contact)
 
-**Phone**: +880-1796-109979
+**Phone**: +880-1347-526549
 
 ---
 

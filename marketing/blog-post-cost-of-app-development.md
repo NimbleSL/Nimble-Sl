@@ -215,7 +215,7 @@ Our team has delivered apps for startups and enterprises across healthcare, e-co
 
 **Get a free project estimate**: [Contact Us](https://www.nimblesl.com/#contact)
 
-**Phone**: +880-1796-109979
+**Phone**: +880-1347-526549
 
 ---
 

@@ -105,7 +105,7 @@ Check these categories:
 | Min. Project Size | $5,000 |
 | Location | Dhaka, Bangladesh |
 | Website | https://www.nimblesl.com |
-| Phone | +880-1796-109979 |
+| Phone | +880-1347-526549 |
 
 ---
 

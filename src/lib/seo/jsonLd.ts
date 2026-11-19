@@ -42,7 +42,7 @@ export function getOrganizationJsonLd(): object {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+880-1796-109979',
+        telephone: '+880-1347-526549',
         contactType: 'sales',
         email: 'sales@nimblesl.com',
         areaServed: 'Worldwide',
@@ -94,7 +94,7 @@ export function getLocalBusinessJsonLd(): object {
     name: 'NimbleSL',
     image: `${BASE_URL}/og-image.jpg`,
     url: BASE_URL,
-    telephone: '+880-1796-109979',
+    telephone: '+880-1347-526549',
     email: 'info@nimblesl.com',
     priceRange: '$$',
     address: {
